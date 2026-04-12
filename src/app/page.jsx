@@ -205,23 +205,23 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {MATIERES.map((ue) => {
               const colorMap = {
-                indigo: { bg: 'bg-indigo-50', border: 'border-indigo-200', icon: 'text-indigo-600', iconBg: 'bg-indigo-100', text: 'text-indigo-900' },
-                emerald: { bg: 'bg-emerald-50', border: 'border-emerald-200', icon: 'text-emerald-600', iconBg: 'bg-emerald-100', text: 'text-emerald-900' },
-                violet: { bg: 'bg-violet-50', border: 'border-violet-200', icon: 'text-violet-600', iconBg: 'bg-violet-100', text: 'text-violet-900' },
-                cyan: { bg: 'bg-cyan-50', border: 'border-cyan-200', icon: 'text-cyan-600', iconBg: 'bg-cyan-100', text: 'text-cyan-900' },
-                rose: { bg: 'bg-rose-50', border: 'border-rose-200', icon: 'text-rose-600', iconBg: 'bg-rose-100', text: 'text-rose-900' },
-                amber: { bg: 'bg-amber-50', border: 'border-amber-200', icon: 'text-amber-600', iconBg: 'bg-amber-100', text: 'text-amber-900' },
-                teal: { bg: 'bg-teal-50', border: 'border-teal-200', icon: 'text-teal-600', iconBg: 'bg-teal-100', text: 'text-teal-900' },
-                sky: { bg: 'bg-sky-50', border: 'border-sky-200', icon: 'text-sky-600', iconBg: 'bg-sky-100', text: 'text-sky-900' },
-                lime: { bg: 'bg-lime-50', border: 'border-lime-200', icon: 'text-lime-600', iconBg: 'bg-lime-100', text: 'text-lime-900' },
-                orange: { bg: 'bg-orange-50', border: 'border-orange-200', icon: 'text-orange-600', iconBg: 'bg-orange-100', text: 'text-orange-900' },
-                yellow: { bg: 'bg-yellow-50', border: 'border-yellow-200', icon: 'text-yellow-600', iconBg: 'bg-yellow-100', text: 'text-yellow-900' },
+                indigo: { top: 'border-t-indigo-500', icon: 'text-indigo-600', iconBg: 'bg-indigo-100' },
+                emerald: { top: 'border-t-emerald-500', icon: 'text-emerald-600', iconBg: 'bg-emerald-100' },
+                violet: { top: 'border-t-violet-500', icon: 'text-violet-600', iconBg: 'bg-violet-100' },
+                cyan: { top: 'border-t-cyan-500', icon: 'text-cyan-600', iconBg: 'bg-cyan-100' },
+                rose: { top: 'border-t-rose-500', icon: 'text-rose-600', iconBg: 'bg-rose-100' },
+                amber: { top: 'border-t-amber-500', icon: 'text-amber-600', iconBg: 'bg-amber-100' },
+                teal: { top: 'border-t-teal-500', icon: 'text-teal-600', iconBg: 'bg-teal-100' },
+                sky: { top: 'border-t-sky-500', icon: 'text-sky-600', iconBg: 'bg-sky-100' },
+                lime: { top: 'border-t-lime-500', icon: 'text-lime-600', iconBg: 'bg-lime-100' },
+                orange: { top: 'border-t-orange-500', icon: 'text-orange-600', iconBg: 'bg-orange-100' },
+                yellow: { top: 'border-t-yellow-500', icon: 'text-yellow-600', iconBg: 'bg-yellow-100' },
               };
               const c = colorMap[ue.color] || colorMap.teal;
               return (
-                <div key={ue.id} className={`${c.bg} rounded-xl p-5 border ${c.border} hover:shadow-md transition-all`}>
+                <div key={ue.id} className={`bg-white rounded-xl p-5 border border-slate-200 border-t-4 ${c.top} hover:shadow-md transition-all`}>
                   <div className={`w-10 h-10 ${c.iconBg} rounded-lg flex items-center justify-center mb-3 [&_svg]:w-5 [&_svg]:h-5 ${c.icon}`} dangerouslySetInnerHTML={{ __html: ue.icon }} />
-                  <h3 className={`font-semibold text-sm ${c.text}`}>{ue.name}</h3>
+                  <h3 className="font-semibold text-sm text-slate-900">{ue.name}</h3>
                 </div>
               );
             })}
