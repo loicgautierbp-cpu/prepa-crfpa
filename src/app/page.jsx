@@ -26,7 +26,7 @@ export default function HomePage() {
     <div className="bg-[#fef2f2]">
 
       {/* ========== HERO ========== */}
-      <section className="relative pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden min-h-[85vh] flex items-center bg-gradient-to-b from-[#fee2e2] via-[#fecaca] to-[#fef2f2]">
+      <section className="relative pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden min-h-[85vh] flex items-center bg-gradient-to-br from-[#fef2f2] via-[#fee2e2] to-[#fecaca]">
         {/* Floating legal icons - randomized positions */}
         <FloatingIcons />
 
