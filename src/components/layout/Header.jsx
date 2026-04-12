@@ -40,13 +40,13 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-10 h-10 bg-[#9b2d50] rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#c2185b] rounded-xl flex items-center justify-center">
               <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z" />
               </svg>
             </div>
             <div>
-              <span style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-slate-900 font-bold">Prépa <span className="text-[#9b2d50]">CRFPA</span></span>
+              <span style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-slate-900 font-bold">Prépa <span className="text-[#c2185b]">CRFPA</span></span>
               <p className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase -mt-0.5">EXAMEN DU BARREAU</p>
             </div>
           </Link>
@@ -58,7 +58,7 @@ export default function Header() {
                 href={link.href}
                 className={`text-sm transition-colors ${
                   isActive(link.href)
-                    ? 'text-[#9b2d50] font-semibold'
+                    ? 'text-[#c2185b] font-semibold'
                     : 'text-slate-600 font-medium hover:text-slate-900'
                 }`}
               >
@@ -77,7 +77,7 @@ export default function Header() {
                     </div>
                     <Link
                       href="/dashboard"
-                      className="px-4 py-2 bg-[#7b1636] text-white text-sm font-semibold rounded-xl hover:bg-[#5a0f27] transition-colors"
+                      className="px-4 py-2 bg-[#a01545] text-white text-sm font-semibold rounded-xl hover:bg-[#7b1030] transition-colors"
                     >
                       Mon tableau de bord
                     </Link>
@@ -96,7 +96,7 @@ export default function Header() {
                     <Link href="/connexion" className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
                       Connexion
                     </Link>
-                    <Link href="/inscription" className="px-5 py-2 bg-[#9b2d50] text-white text-sm font-semibold rounded-xl hover:bg-[#7b1636] transition-colors">
+                    <Link href="/inscription" className="px-5 py-2 bg-[#c2185b] text-white text-sm font-semibold rounded-xl hover:bg-[#a01545] transition-colors">
                       Inscription
                     </Link>
                   </div>
@@ -124,7 +124,7 @@ export default function Header() {
               href={link.href}
               onClick={() => setMenuOpen(false)}
               className={`block py-3 text-sm font-medium ${
-                isActive(link.href) ? 'text-[#9b2d50] font-semibold' : 'text-slate-600 hover:text-slate-900'
+                isActive(link.href) ? 'text-[#c2185b] font-semibold' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               {link.label}
@@ -140,7 +140,7 @@ export default function Header() {
                     </div>
                     <span className="text-sm font-medium text-slate-700">{user.displayName || user.email}</span>
                   </div>
-                  <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="block mt-1 px-5 py-2.5 bg-[#7b1636] text-white text-sm font-semibold rounded-xl text-center hover:bg-[#5a0f27] transition-colors">
+                  <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="block mt-1 px-5 py-2.5 bg-[#a01545] text-white text-sm font-semibold rounded-xl text-center hover:bg-[#7b1030] transition-colors">
                     Mon tableau de bord
                   </Link>
                   <button onClick={() => { handleLogout(); setMenuOpen(false); }} className="block w-full mt-2 px-5 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 rounded-xl text-center transition-colors">
@@ -152,7 +152,7 @@ export default function Header() {
                   <Link href="/connexion" onClick={() => setMenuOpen(false)} className="block mt-2 px-5 py-2.5 text-sm font-semibold text-slate-700 text-center border border-slate-200 rounded-xl hover:border-slate-300 transition-colors">
                     Connexion
                   </Link>
-                  <Link href="/inscription" onClick={() => setMenuOpen(false)} className="block mt-2 px-5 py-2.5 bg-[#7b1636] text-white text-sm font-semibold rounded-xl text-center hover:bg-[#5a0f27] transition-colors">
+                  <Link href="/inscription" onClick={() => setMenuOpen(false)} className="block mt-2 px-5 py-2.5 bg-[#a01545] text-white text-sm font-semibold rounded-xl text-center hover:bg-[#7b1030] transition-colors">
                     Inscription
                   </Link>
                 </>

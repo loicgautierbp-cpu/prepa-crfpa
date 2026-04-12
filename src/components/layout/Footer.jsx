@@ -30,7 +30,7 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#3d1020]">
+    <footer className="bg-[#5a0a20]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
@@ -66,7 +66,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 pt-8 border-t border-[#5a1a30] text-center">
+        <div className="mt-14 pt-8 border-t border-[#7b1838] text-center">
           <p className="text-xs text-slate-500">
             &copy; {new Date().getFullYear()} Prépa CRFPA &mdash; Tous droits réservés
           </p>

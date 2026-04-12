@@ -18,9 +18,9 @@
 
   --color-accent-50: #fdf2f3;
   --color-accent-100: #fce7ea;
-  --color-accent-500: #7b1636;
+  --color-accent-500: #a01545;
   --color-accent-600: #6b0d2e;
-  --color-accent-700: #45071a;
+  --color-accent-700: #6b0d25;
 }
 
 /* ===== GLOBAL ===== */
@@ -34,7 +34,7 @@ html { scroll-behavior: smooth; }
 .fiches-gradient-text,
 .blog-gradient-text,
 .programme-gradient-text {
-  color: #7b1636;
+  color: #a01545;
 }
 
 /* ===== ANIMATIONS ===== */
@@ -57,12 +57,12 @@ html { scroll-behavior: smooth; }
 
 /* ===== BORDEAUX ACCENT ===== */
 .btn-primary {
-  background-color: #7b1636;
+  background-color: #a01545;
   color: white;
   transition: all 0.2s ease;
 }
 .btn-primary:hover {
-  background-color: #5a0f27;
+  background-color: #7b1030;
 }
 
 /* ===== FAQ ACCORDION ===== */
@@ -84,11 +84,11 @@ html { scroll-behavior: smooth; }
 
 .subject-card { transition: all 0.2s ease; cursor: pointer; }
 .subject-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
-.subject-card.selected { border-color: #7b1636; background: #fdf2f3; box-shadow: 0 0 0 3px rgba(123,22,54,0.15); }
+.subject-card.selected { border-color: #a01545; background: #fdf2f3; box-shadow: 0 0 0 3px rgba(123,22,54,0.15); }
 
 .pricing-card { transition: all 0.2s ease; }
 .pricing-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-.pricing-card.popular { border-color: #7b1636; box-shadow: 0 12px 40px rgba(123,22,54,0.12); }
+.pricing-card.popular { border-color: #a01545; box-shadow: 0 12px 40px rgba(123,22,54,0.12); }
 
 .blog-card { transition: all 0.2s ease; }
 .blog-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
@@ -97,7 +97,7 @@ html { scroll-behavior: smooth; }
 .progress-bar { transition: width 0.5s ease; }
 .quiz-option-btn { transition: all 0.2s ease; }
 .quiz-option-btn:hover:not(:disabled) { border-color: #94a3b8; background: #f8fafc; }
-.quiz-option-btn.selected { border-color: #7b1636; background: #fdf2f3; color: #45071a; }
+.quiz-option-btn.selected { border-color: #a01545; background: #fdf2f3; color: #6b0d25; }
 .quiz-option-btn.correct { border-color: #10b981; background: #ecfdf5; color: #065f46; }
 .quiz-option-btn.incorrect { border-color: #ef4444; background: #fef2f2; color: #991b1b; }
 .quiz-option-btn:disabled { cursor: default; }
@@ -122,7 +122,7 @@ html { scroll-behavior: smooth; }
 .dash-stat { transition: transform 0.2s ease; }
 .dash-stat:hover { transform: translateY(-2px); }
 .dash-tab { transition: all 0.2s ease; }
-.dash-tab.active { color: #7b1636; border-color: #7b1636; }
+.dash-tab.active { color: #a01545; border-color: #a01545; }
 .premium-blur { filter: blur(5px); pointer-events: none; user-select: none; }
 
 /* ===== LOADING ===== */

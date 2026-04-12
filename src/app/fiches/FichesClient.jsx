@@ -186,7 +186,7 @@ function FicheCard({ fiche, index, onOpen, premiumUser, user, onLoginRequired, o
         </div>
         <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 mb-4">{fiche.summary}</p>
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-[#7b1636] text-xs font-bold group-hover:gap-2.5 transition-all">
+          <div className="flex items-center gap-1.5 text-[#a01545] text-xs font-bold group-hover:gap-2.5 transition-all">
             Lire la fiche
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -252,8 +252,8 @@ function FicheModal({ fiche, onClose, premiumUser, user, onLoginRequired, onUpgr
       const html2pdf = mod.default || mod;
 
       const pdfHexColors = {
-        indigo:  { bg: '#fdf2f3', accent: '#c92150', accentDark: '#8f173b', accentDeep: '#45071a', badge: '#fce7ea', badgeText: '#8f173b', light: '#facdd4', lighter: '#fce7ea' },
-        primary: { bg: '#fdf2f3', accent: '#c92150', accentDark: '#8f173b', accentDeep: '#45071a', badge: '#fce7ea', badgeText: '#8f173b', light: '#facdd4', lighter: '#fce7ea' },
+        indigo:  { bg: '#fdf2f3', accent: '#c92150', accentDark: '#8f173b', accentDeep: '#6b0d25', badge: '#fce7ea', badgeText: '#8f173b', light: '#facdd4', lighter: '#fce7ea' },
+        primary: { bg: '#fdf2f3', accent: '#c92150', accentDark: '#8f173b', accentDeep: '#6b0d25', badge: '#fce7ea', badgeText: '#8f173b', light: '#facdd4', lighter: '#fce7ea' },
         emerald: { bg: '#ecfdf5', accent: '#059669', accentDark: '#065f46', accentDeep: '#022c22', badge: '#d1fae5', badgeText: '#065f46', light: '#a7f3d0', lighter: '#d1fae5' },
         violet:  { bg: '#f5f3ff', accent: '#7c3aed', accentDark: '#5b21b6', accentDeep: '#2e1065', badge: '#ede9fe', badgeText: '#5b21b6', light: '#ddd6fe', lighter: '#ede9fe' },
         cyan:    { bg: '#ecfeff', accent: '#0891b2', accentDark: '#155e75', accentDeep: '#083344', badge: '#cffafe', badgeText: '#155e75', light: '#a5f3fc', lighter: '#cffafe' },
@@ -508,7 +508,7 @@ export default function FichesPage() {
                 </span>{' '}
                 en un clic
               </h1>
-              <div className="w-12 h-1 bg-[#7b1636] mx-auto mt-4 mb-6 rounded-full"></div>
+              <div className="w-12 h-1 bg-[#a01545] mx-auto mt-4 mb-6 rounded-full"></div>
               <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-xl mx-auto">
                 Revisez efficacement avec des <strong className="text-gray-900">fiches de revision</strong> synthetiques et des{' '}
                 <strong className="text-gray-900">cours detailles</strong> couvrant le{' '}
@@ -520,7 +520,7 @@ export default function FichesPage() {
               <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 bg-slate-100 rounded-xl flex items-center justify-center">
-                    <svg className="w-5 h-5 text-[#7b1636]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <svg className="w-5 h-5 text-[#a01545]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                     </svg>
                   </div>
