@@ -22,25 +22,25 @@ function CheckIcon() {
 
 export default function HomePage() {
   return (
-    <div className="bg-[#fdf5f7]">
+    <div className="bg-[#f5f3ff]">
 
       {/* ========== HERO ========== */}
-      <section className="relative pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden min-h-[85vh] flex items-center bg-gradient-to-b from-[#f8eef1] via-[#fdf5f7] to-white">
+      <section className="relative pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden min-h-[85vh] flex items-center bg-gradient-to-b from-[#ede9fe] via-[#f5f3ff] to-white">
         {/* Decorative scattered icons with animations */}
         {/* Balance de justice - haut centre */}
-        <svg className="hidden md:block absolute top-10 left-[42%] w-20 h-20 text-[#c2185b]/15 animate-[float_6s_ease-in-out_infinite]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
+        <svg className="hidden md:block absolute top-10 left-[42%] w-20 h-20 text-[#5b21b6]/15 animate-[float_6s_ease-in-out_infinite]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z" />
         </svg>
         {/* Personnage droit - gauche haut */}
-        <svg className="hidden md:block absolute top-16 left-[4%] w-24 h-24 text-[#c2185b]/10 animate-[float_7s_ease-in-out_infinite_0.5s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
+        <svg className="hidden md:block absolute top-16 left-[4%] w-24 h-24 text-[#5b21b6]/10 animate-[float_7s_ease-in-out_infinite_0.5s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
           <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
         </svg>
         {/* Tribunal - gauche milieu */}
-        <svg className="hidden md:block absolute top-[50%] left-[3%] w-28 h-28 text-[#c2185b]/8 animate-[float_8s_ease-in-out_infinite_1s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.7">
+        <svg className="hidden md:block absolute top-[50%] left-[3%] w-28 h-28 text-[#5b21b6]/8 animate-[float_8s_ease-in-out_infinite_1s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.7">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
         </svg>
         {/* Livre ouvert - bas gauche */}
-        <svg className="hidden md:block absolute bottom-20 left-[10%] w-20 h-20 text-[#c2185b]/12 animate-[float_6s_ease-in-out_infinite_2s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
+        <svg className="hidden md:block absolute bottom-20 left-[10%] w-20 h-20 text-[#5b21b6]/12 animate-[float_6s_ease-in-out_infinite_2s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>
         </svg>
         {/* Soleil doré - haut droite */}
@@ -56,11 +56,11 @@ export default function HomePage() {
           <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd"/>
         </svg>
         {/* Plante - bas centre droite */}
-        <svg className="hidden md:block absolute bottom-10 right-[30%] w-14 h-14 text-[#c2185b]/10 animate-[float_6s_ease-in-out_infinite_3s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
+        <svg className="hidden md:block absolute bottom-10 right-[30%] w-14 h-14 text-[#5b21b6]/10 animate-[float_6s_ease-in-out_infinite_3s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582" />
         </svg>
         {/* Document - haut gauche secondaire */}
-        <svg className="hidden lg:block absolute top-[30%] left-[18%] w-10 h-10 text-[#c2185b]/8 animate-[float_8s_ease-in-out_infinite_4s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
+        <svg className="hidden lg:block absolute top-[30%] left-[18%] w-10 h-10 text-[#5b21b6]/8 animate-[float_8s_ease-in-out_infinite_4s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/>
         </svg>
 
@@ -68,7 +68,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: text */}
             <div>
-              <div className="inline-flex items-center gap-2 bg-white border border-[#c2185b]/20 rounded-full px-4 py-1.5 text-sm font-medium text-[#c2185b] mb-8">
+              <div className="inline-flex items-center gap-2 bg-white border border-[#5b21b6]/20 rounded-full px-4 py-1.5 text-sm font-medium text-[#5b21b6] mb-8">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
                 </svg>
@@ -76,13 +76,13 @@ export default function HomePage() {
               </div>
               <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-5xl md:text-6xl lg:text-7xl tracking-tight text-slate-900 mb-6 leading-[1.1]">
                 Préparez le<br />CRFPA<br />
-                <span className="text-[#c2185b]">sereinement.</span>
+                <span className="text-[#5b21b6]">sereinement.</span>
               </h1>
               <p className="text-lg text-slate-500 max-w-lg mb-8">
                 La première plateforme de préparation au CRFPA. Exercices corrigés par IA, fiches de cours et entraînement aux épreuves écrites et orales.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
-                <Link href="/entrainement-ecrits" className="px-7 py-3.5 bg-[#c2185b] text-white font-bold rounded-xl hover:bg-[#a01545] transition-colors text-center">
+                <Link href="/entrainement-ecrits" className="px-7 py-3.5 bg-[#5b21b6] text-white font-bold rounded-xl hover:bg-[#4c1d95] transition-colors text-center">
                   Commencer l&apos;entraînement
                 </Link>
                 <Link href="/programme" className="px-7 py-3.5 bg-white border-2 border-slate-200 text-slate-700 font-bold rounded-xl hover:border-slate-300 transition-colors text-center">
@@ -104,7 +104,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== STATS BAR ========== */}
-      <section className="bg-[#5a0a20] py-10">
+      <section className="bg-[#1e0a3c] py-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
             {[
@@ -138,7 +138,7 @@ export default function HomePage() {
                 title: 'Exercices corrigés par IA',
                 description: 'Cas pratiques, dissertations et consultations générés et corrigés automatiquement avec références aux articles de loi.',
                 href: '/entrainement-ecrits',
-                color: 'bg-[#c2185b]/10 text-[#c2185b]',
+                color: 'bg-[#5b21b6]/10 text-[#5b21b6]',
                 icon: (
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
@@ -174,7 +174,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-bold text-slate-900 text-lg mb-2">{feature.title}</h3>
                 <p className="text-sm text-slate-500 mb-4 leading-relaxed">{feature.description}</p>
-                <span className="text-sm font-semibold text-[#c2185b] group-hover:underline">En savoir plus →</span>
+                <span className="text-sm font-semibold text-[#5b21b6] group-hover:underline">En savoir plus →</span>
               </Link>
             ))}
           </div>
@@ -191,9 +191,9 @@ export default function HomePage() {
             <p className="text-slate-500 max-w-xl mx-auto">L&apos;examen se compose de deux phases : l&apos;admissibilité (écrit) et l&apos;admission (oral).</p>
           </div>
           <div className="grid md:grid-cols-2 gap-6 mb-10">
-            <div className="bg-[#fdf5f7] rounded-2xl border border-[#c2185b]/10 p-8">
+            <div className="bg-[#f5f3ff] rounded-2xl border border-[#5b21b6]/10 p-8">
               <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-slate-900 mb-1">Épreuves écrites</h3>
-              <p className="text-sm text-[#c2185b] font-medium mb-5">Admissibilité</p>
+              <p className="text-sm text-[#5b21b6] font-medium mb-5">Admissibilité</p>
               <ul className="space-y-3 text-sm text-slate-700">
                 <li className="flex items-start gap-2"><CheckIcon />Note de synthèse (5h, coeff. 3)</li>
                 <li className="flex items-start gap-2"><CheckIcon />Droit des obligations (3h, coeff. 2)</li>
@@ -201,9 +201,9 @@ export default function HomePage() {
                 <li className="flex items-start gap-2"><CheckIcon />Procédure (2h, coeff. 2)</li>
               </ul>
             </div>
-            <div className="bg-[#fdf5f7] rounded-2xl border border-[#c2185b]/10 p-8">
+            <div className="bg-[#f5f3ff] rounded-2xl border border-[#5b21b6]/10 p-8">
               <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-slate-900 mb-1">Épreuves orales</h3>
-              <p className="text-sm text-[#c2185b] font-medium mb-5">Admission</p>
+              <p className="text-sm text-[#5b21b6] font-medium mb-5">Admission</p>
               <ul className="space-y-3 text-sm text-slate-700">
                 <li className="flex items-start gap-2"><CheckIcon />Grand oral — Libertés fondamentales (45 min + 1h prépa, coeff. 4)</li>
                 <li className="flex items-start gap-2"><CheckIcon />Anglais juridique (coeff. 1)</li>
@@ -212,7 +212,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/specialite"
-            className="block bg-[#5a0a20] rounded-2xl px-7 py-5 hover:bg-[#2d0a14] transition-colors"
+            className="block bg-[#1e0a3c] rounded-2xl px-7 py-5 hover:bg-[#2d0a14] transition-colors"
           >
             <div className="flex items-center justify-between">
               <div>
@@ -226,7 +226,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== PROGRAMME ========== */}
-      <section className="py-20 md:py-24 bg-[#5a0a20]">
+      <section className="py-20 md:py-24 bg-[#1e0a3c]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl tracking-tight text-white mb-4">
@@ -254,7 +254,7 @@ export default function HomePage() {
       <FaqSection />
 
       {/* ========== CTA FINAL ========== */}
-      <section className="py-20 md:py-24 bg-[#5a0a20]">
+      <section className="py-20 md:py-24 bg-[#1e0a3c]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl text-white mb-4">
             Prêt à réussir le barreau ?

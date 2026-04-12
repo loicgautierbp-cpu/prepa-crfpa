@@ -70,7 +70,7 @@ export default function ConnexionPage() {
         {/* Logo */}
         <div className="flex justify-center mb-6">
           <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center">
-            <svg className="w-9 h-9 text-[#a01545]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+            <svg className="w-9 h-9 text-[#4c1d95]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
             </svg>
           </div>
@@ -78,7 +78,7 @@ export default function ConnexionPage() {
 
         {/* Titre */}
         <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 text-center mb-1">Connectez-vous</h1>
-        <div className="w-12 h-1 bg-[#a01545] mx-auto mt-4 mb-6 rounded-full"></div>
+        <div className="w-12 h-1 bg-[#4c1d95] mx-auto mt-4 mb-6 rounded-full"></div>
         <p className="text-sm text-gray-400 text-center mb-8">pour accéder à votre espace d&apos;entraînement.</p>
 
         {/* Message de succès reset */}
@@ -166,7 +166,7 @@ export default function ConnexionPage() {
               <button
                 type="button"
                 onClick={handleResetPassword}
-                className="text-xs text-[#a01545] hover:text-[#5a1028] font-semibold hover:underline"
+                className="text-xs text-[#4c1d95] hover:text-[#5a1028] font-semibold hover:underline"
               >
                 Oublié ?
               </button>
@@ -211,7 +211,7 @@ export default function ConnexionPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 px-6 bg-[#a01545] hover:bg-[#7b1030] hover:scale-[1.02] transition-all text-white text-sm font-semibold rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
+            className="w-full py-3.5 px-6 bg-[#4c1d95] hover:bg-[#3b0764] hover:scale-[1.02] transition-all text-white text-sm font-semibold rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
           >
             {loading ? (
               <>
@@ -235,7 +235,7 @@ export default function ConnexionPage() {
         {/* Lien inscription */}
         <p className="mt-8 text-center text-sm text-gray-400">
           Pas encore de compte ?{' '}
-          <Link href="/inscription" className="text-[#a01545] hover:text-[#5a1028] font-bold hover:underline">
+          <Link href="/inscription" className="text-[#4c1d95] hover:text-[#5a1028] font-bold hover:underline">
             S&apos;inscrire gratuitement
           </Link>
         </p>

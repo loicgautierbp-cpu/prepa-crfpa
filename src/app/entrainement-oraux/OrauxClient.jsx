@@ -55,7 +55,7 @@ export default function OrauxClient() {
         <div className="sticky top-[64px] z-40 bg-white border-b border-gray-200">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
             <button onClick={() => setActiveEpreuve(null)}
-              className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-[#a01545] transition-colors">
+              className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-[#4c1d95] transition-colors">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
               </svg>
@@ -97,7 +97,7 @@ export default function OrauxClient() {
             Entraînement aux{' '}
             <span className="home-gradient-text">épreuves orales</span>
           </h1>
-          <div className="w-12 h-1 bg-[#a01545] mx-auto mt-4 mb-6 rounded-full"></div>
+          <div className="w-12 h-1 bg-[#4c1d95] mx-auto mt-4 mb-6 rounded-full"></div>
           <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base">
             Préparez les 2 épreuves orales du CRFPA. Grand oral sur les libertés fondamentales et anglais juridique.
           </p>
@@ -111,7 +111,7 @@ export default function OrauxClient() {
               className="lift group relative bg-white rounded-xl border border-gray-200 p-6 sm:p-7 text-left transition-all hover:border-slate-300 hover:shadow-md">
               <div className="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-slate-300 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
               <div className="flex items-start gap-5">
-                <div className="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-[#a01545] shrink-0 group-hover:bg-slate-100 transition-colors">
+                <div className="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-[#4c1d95] shrink-0 group-hover:bg-slate-100 transition-colors">
                   {epreuve.icon}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -130,7 +130,7 @@ export default function OrauxClient() {
                   </div>
                 </div>
                 <div className="shrink-0 self-center">
-                  <svg className="w-5 h-5 text-gray-300 group-hover:text-[#a01545] group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <svg className="w-5 h-5 text-gray-300 group-hover:text-[#4c1d95] group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                   </svg>
                 </div>
