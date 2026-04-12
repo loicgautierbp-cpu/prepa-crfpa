@@ -150,29 +150,29 @@ export default function HomePage() {
       </section>
 
       {/* ========== STRUCTURE DU CRFPA ========== */}
-      <section className="py-20 md:py-24 bg-white">
+      <section className="py-20 md:py-24 bg-[#042f2c]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
-            <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl tracking-tight text-slate-900 mb-4">
+            <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl tracking-tight text-white mb-4">
               Comment se déroule le CRFPA ?
             </h2>
-            <p className="text-slate-500 max-w-xl mx-auto">L&apos;examen se compose de deux phases : l&apos;admissibilité (écrit) et l&apos;admission (oral).</p>
+            <p className="text-white/60 max-w-xl mx-auto">L&apos;examen se compose de deux phases : l&apos;admissibilité (écrit) et l&apos;admission (oral).</p>
           </div>
           <div className="grid md:grid-cols-2 gap-6 mb-10">
-            <div className="bg-[#f0fdfa] rounded-2xl border border-[#0f766e]/10 p-8">
-              <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-slate-900 mb-1">Épreuves écrites</h3>
-              <p className="text-sm text-[#0f766e] font-medium mb-5">Admissibilité</p>
-              <ul className="space-y-3 text-sm text-slate-700">
+            <div className="bg-white/5 rounded-2xl border border-white/10 p-8">
+              <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-white mb-1">Épreuves écrites</h3>
+              <p className="text-sm text-emerald-400 font-medium mb-5">Admissibilité</p>
+              <ul className="space-y-3 text-sm text-white/80">
                 <li className="flex items-start gap-2"><CheckIcon />Note de synthèse (5h, coeff. 3)</li>
                 <li className="flex items-start gap-2"><CheckIcon />Droit des obligations (3h, coeff. 2)</li>
                 <li className="flex items-start gap-2"><CheckIcon />Épreuve de spécialité (3h, coeff. 2)</li>
                 <li className="flex items-start gap-2"><CheckIcon />Procédure (2h, coeff. 2)</li>
               </ul>
             </div>
-            <div className="bg-[#f0fdfa] rounded-2xl border border-[#0f766e]/10 p-8">
-              <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-slate-900 mb-1">Épreuves orales</h3>
-              <p className="text-sm text-[#0f766e] font-medium mb-5">Admission</p>
-              <ul className="space-y-3 text-sm text-slate-700">
+            <div className="bg-white/5 rounded-2xl border border-white/10 p-8">
+              <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-white mb-1">Épreuves orales</h3>
+              <p className="text-sm text-emerald-400 font-medium mb-5">Admission</p>
+              <ul className="space-y-3 text-sm text-white/80">
                 <li className="flex items-start gap-2"><CheckIcon />Grand oral — Libertés fondamentales (45 min + 1h prépa, coeff. 4)</li>
                 <li className="flex items-start gap-2"><CheckIcon />Anglais juridique (coeff. 1)</li>
               </ul>
@@ -180,7 +180,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/specialite"
-            className="block bg-[#042f2c] rounded-2xl px-7 py-5 hover:bg-[#2d0a14] transition-colors"
+            className="block bg-white/10 border border-white/15 rounded-2xl px-7 py-5 hover:bg-white/15 transition-colors"
           >
             <div className="flex items-center justify-between">
               <div>
