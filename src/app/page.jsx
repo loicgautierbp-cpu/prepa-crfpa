@@ -194,23 +194,39 @@ export default function HomePage() {
       </section>
 
       {/* ========== PROGRAMME ========== */}
-      <section className="py-20 md:py-24 bg-[#042f2c]">
+      <section className="py-20 md:py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
-            <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl tracking-tight text-white mb-4">
+            <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl tracking-tight text-slate-900 mb-4">
               Les matières de l&apos;examen
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {MATIERES.map((ue) => (
-              <div key={ue.id} className="bg-white/5 rounded-xl p-5 border border-white/10 hover:bg-white/10 transition-colors">
-                <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center mb-3 [&_svg]:w-5 [&_svg]:h-5 [&_svg]:text-white" dangerouslySetInnerHTML={{ __html: ue.icon }} />
-                <h3 className="font-semibold text-white text-sm">{ue.name}</h3>
-              </div>
-            ))}
+            {MATIERES.map((ue) => {
+              const colorMap = {
+                indigo: { bg: 'bg-indigo-50', border: 'border-indigo-200', icon: 'text-indigo-600', iconBg: 'bg-indigo-100', text: 'text-indigo-900' },
+                emerald: { bg: 'bg-emerald-50', border: 'border-emerald-200', icon: 'text-emerald-600', iconBg: 'bg-emerald-100', text: 'text-emerald-900' },
+                violet: { bg: 'bg-violet-50', border: 'border-violet-200', icon: 'text-violet-600', iconBg: 'bg-violet-100', text: 'text-violet-900' },
+                cyan: { bg: 'bg-cyan-50', border: 'border-cyan-200', icon: 'text-cyan-600', iconBg: 'bg-cyan-100', text: 'text-cyan-900' },
+                rose: { bg: 'bg-rose-50', border: 'border-rose-200', icon: 'text-rose-600', iconBg: 'bg-rose-100', text: 'text-rose-900' },
+                amber: { bg: 'bg-amber-50', border: 'border-amber-200', icon: 'text-amber-600', iconBg: 'bg-amber-100', text: 'text-amber-900' },
+                teal: { bg: 'bg-teal-50', border: 'border-teal-200', icon: 'text-teal-600', iconBg: 'bg-teal-100', text: 'text-teal-900' },
+                sky: { bg: 'bg-sky-50', border: 'border-sky-200', icon: 'text-sky-600', iconBg: 'bg-sky-100', text: 'text-sky-900' },
+                lime: { bg: 'bg-lime-50', border: 'border-lime-200', icon: 'text-lime-600', iconBg: 'bg-lime-100', text: 'text-lime-900' },
+                orange: { bg: 'bg-orange-50', border: 'border-orange-200', icon: 'text-orange-600', iconBg: 'bg-orange-100', text: 'text-orange-900' },
+                yellow: { bg: 'bg-yellow-50', border: 'border-yellow-200', icon: 'text-yellow-600', iconBg: 'bg-yellow-100', text: 'text-yellow-900' },
+              };
+              const c = colorMap[ue.color] || colorMap.teal;
+              return (
+                <div key={ue.id} className={`${c.bg} rounded-xl p-5 border ${c.border} hover:shadow-md transition-all`}>
+                  <div className={`w-10 h-10 ${c.iconBg} rounded-lg flex items-center justify-center mb-3 [&_svg]:w-5 [&_svg]:h-5 ${c.icon}`} dangerouslySetInnerHTML={{ __html: ue.icon }} />
+                  <h3 className={`font-semibold text-sm ${c.text}`}>{ue.name}</h3>
+                </div>
+              );
+            })}
           </div>
           <div className="text-center mt-10">
-            <Link href="/programme" className="inline-flex items-center gap-2 text-white/70 hover:text-white font-medium transition-colors text-sm">
+            <Link href="/programme" className="inline-flex items-center gap-2 text-[#0f766e] hover:text-[#0d6560] font-semibold transition-colors text-sm">
               Voir le programme complet
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
             </Link>
