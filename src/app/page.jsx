@@ -150,18 +150,34 @@ export default function HomePage() {
       </section>
 
       {/* ========== STRUCTURE DU CRFPA ========== */}
-      <section className="py-20 md:py-24 bg-[#450a0a]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-20 md:py-24 bg-gradient-to-br from-[#450a0a] via-[#5c1010] to-[#3a0808] relative overflow-hidden">
+        {/* Decorative shapes */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/[0.02] rounded-full -mr-48 -mt-48 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/[0.02] rounded-full -ml-40 -mb-40 pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#b91c1c]/[0.06] rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-1.5 text-sm font-medium text-white/70 mb-6">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z" /></svg>
+              Structure de l&apos;examen
+            </div>
             <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl tracking-tight text-white mb-4">
               Comment se déroule le CRFPA ?
             </h2>
-            <p className="text-white/60 max-w-xl mx-auto">L&apos;examen se compose de deux phases : l&apos;admissibilité (écrit) et l&apos;admission (oral).</p>
+            <p className="text-white/50 max-w-xl mx-auto">L&apos;examen se compose de deux phases : l&apos;admissibilité (écrit) et l&apos;admission (oral).</p>
           </div>
           <div className="grid md:grid-cols-2 gap-6 mb-10">
-            <div className="bg-white/5 rounded-2xl border border-white/10 p-8">
-              <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-white mb-1">Épreuves écrites</h3>
-              <p className="text-sm text-emerald-400 font-medium mb-5">Admissibilité</p>
+            <div className="bg-white/[0.07] backdrop-blur-sm rounded-2xl border border-white/10 p-8 hover:bg-white/10 transition-all">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 bg-amber-500/20 rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" /></svg>
+                </div>
+                <div>
+                  <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-white">Épreuves écrites</h3>
+                  <p className="text-xs text-amber-400 font-semibold uppercase tracking-wider">Admissibilité</p>
+                </div>
+              </div>
               <ul className="space-y-3 text-sm text-white/80">
                 <li className="flex items-start gap-2"><CheckIcon />Note de synthèse (5h, coeff. 3)</li>
                 <li className="flex items-start gap-2"><CheckIcon />Droit des obligations (3h, coeff. 2)</li>
@@ -169,9 +185,16 @@ export default function HomePage() {
                 <li className="flex items-start gap-2"><CheckIcon />Procédure (2h, coeff. 2)</li>
               </ul>
             </div>
-            <div className="bg-white/5 rounded-2xl border border-white/10 p-8">
-              <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-white mb-1">Épreuves orales</h3>
-              <p className="text-sm text-emerald-400 font-medium mb-5">Admission</p>
+            <div className="bg-white/[0.07] backdrop-blur-sm rounded-2xl border border-white/10 p-8 hover:bg-white/10 transition-all">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 bg-sky-500/20 rounded-lg flex items-center justify-center">
+                  <svg className="w-5 h-5 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" /></svg>
+                </div>
+                <div>
+                  <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-white">Épreuves orales</h3>
+                  <p className="text-xs text-sky-400 font-semibold uppercase tracking-wider">Admission</p>
+                </div>
+              </div>
               <ul className="space-y-3 text-sm text-white/80">
                 <li className="flex items-start gap-2"><CheckIcon />Grand oral — Libertés fondamentales (45 min + 1h prépa, coeff. 4)</li>
                 <li className="flex items-start gap-2"><CheckIcon />Anglais juridique (coeff. 1)</li>
@@ -180,7 +203,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/specialite"
-            className="block bg-white/10 border border-white/15 rounded-2xl px-7 py-5 hover:bg-white/15 transition-colors"
+            className="block bg-white/10 border border-white/15 rounded-2xl px-7 py-5 hover:bg-white/15 transition-colors group"
           >
             <div className="flex items-center justify-between">
               <div>
