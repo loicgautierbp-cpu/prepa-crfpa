@@ -56,22 +56,31 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="py-16 md:py-24 bg-[#fee2e2]">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl font-bold text-slate-900 text-center mb-12">
-          Questions fréquentes
-        </h2>
-        <div className="space-y-4">
+    <section id="faq" className="py-16 md:py-24 bg-white relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-[#b91c1c]/[0.03] rounded-full -ml-32 -mt-32 pointer-events-none"></div>
+      <div className="absolute bottom-0 right-0 w-[250px] h-[250px] bg-amber-400/[0.04] rounded-full -mr-24 -mb-24 pointer-events-none"></div>
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-[#b91c1c]/10 border border-[#b91c1c]/15 rounded-full px-4 py-1.5 text-sm font-medium text-[#b91c1c] mb-5">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" /></svg>
+            FAQ
+          </div>
+          <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl font-bold text-slate-900">
+            Questions fréquentes
+          </h2>
+        </div>
+        <div className="space-y-3">
           {FAQ_ITEMS.map((item, index) => (
-            <div key={index} className="bg-white rounded-2xl border border-gray-200">
+            <div key={index} className={`bg-[#fef2f2] rounded-2xl border transition-all ${openIndex === index ? 'border-[#b91c1c]/20 shadow-md' : 'border-transparent hover:border-slate-200'}`}>
               <button
                 onClick={() => toggleFaq(index)}
                 className="w-full flex items-center justify-between px-6 py-5 text-left"
               >
-                <span className="text-base font-semibold text-gray-900">{item.question}</span>
+                <span className={`text-base font-semibold ${openIndex === index ? 'text-[#b91c1c]' : 'text-slate-900'}`}>{item.question}</span>
                 <svg
-                  className={`faq-chevron w-5 h-5 text-gray-400 shrink-0 ml-4 ${
-                    openIndex === index ? 'open' : ''
+                  className={`faq-chevron w-5 h-5 shrink-0 ml-4 ${
+                    openIndex === index ? 'open text-[#b91c1c]' : 'text-slate-400'
                   }`}
                   fill="none"
                   viewBox="0 0 24 24"
