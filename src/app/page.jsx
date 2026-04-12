@@ -203,14 +203,17 @@ export default function HomePage() {
           </div>
           <Link
             href="/specialite"
-            className="block bg-white/10 border border-white/15 rounded-2xl px-7 py-5 hover:bg-white/15 transition-colors group"
+            className="block bg-white rounded-2xl px-7 py-6 shadow-lg shadow-black/20 hover:shadow-xl hover:scale-[1.01] transition-all group"
           >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="font-semibold text-white mb-1">Pas encore sûr de votre spécialité ?</p>
-                <p className="text-sm text-white/60">Quiz gratuit — Découvrez en 3 min la spécialité faite pour vous</p>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center shrink-0">
+                <svg className="w-6 h-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" /></svg>
               </div>
-              <svg className="w-5 h-5 text-white/40 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+              <div className="flex-1">
+                <p className="font-bold text-slate-900 mb-0.5">Pas encore sûr de votre spécialité ?</p>
+                <p className="text-sm text-slate-500">Quiz gratuit — Découvrez en 3 min la spécialité faite pour vous</p>
+              </div>
+              <svg className="w-5 h-5 text-slate-400 group-hover:text-[#b91c1c] group-hover:translate-x-1 transition-all shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
             </div>
           </Link>
         </div>
