@@ -37,76 +37,85 @@ export default function QuestionDuJour() {
 
     if (!validated) {
       if (idx === selectedIdx) {
-        return `${base} border-primary-500 bg-primary-50 text-primary-700`;
+        return `${base} border-[#0f766e] bg-[#f0fdfa] text-[#0f766e] shadow-sm`;
       }
-      return `${base} border-gray-200 hover:border-primary-400 text-gray-700`;
+      return `${base} border-slate-200 hover:border-[#0f766e]/40 hover:shadow-sm text-slate-700 bg-white`;
     }
 
-    // After validation
     if (idx === correctIdx) {
-      return `${base} border-green-500 bg-green-50 text-green-700`;
+      return `${base} border-emerald-500 bg-emerald-50 text-emerald-700 shadow-sm`;
     }
     if (idx === selectedIdx && !isCorrect) {
-      return `${base} border-red-500 bg-red-50 text-red-700`;
+      return `${base} border-red-400 bg-red-50 text-red-700`;
     }
-    return `${base} border-gray-200 text-gray-700`;
+    return `${base} border-slate-100 text-slate-400 bg-slate-50`;
   };
 
   return (
-    <div className="bg-white rounded-2xl p-6 md:p-8 quiz-card">
-      <div className="flex items-center justify-between mb-6">
-        <span className="text-sm font-semibold text-gray-500">Question du jour</span>
-        <span className="px-3 py-1 bg-primary-100 text-primary-700 text-xs font-bold rounded-full">
-          {subjectName}
-        </span>
-      </div>
-      <p className="text-base md:text-lg font-bold text-gray-900 mb-6 leading-relaxed">
-        {q.question}
-      </p>
-      <div className="space-y-3 mb-6">
-        {q.options.map((opt, i) => (
-          <button
-            key={i}
-            onClick={() => handleSelect(i)}
-            disabled={validated}
-            className={getOptionClasses(i)}
-          >
-            {opt.text}
-          </button>
-        ))}
-      </div>
-      <button
-        onClick={handleValidate}
-        disabled={selectedIdx === null || validated}
-        className="w-full py-4 bg-gray-900 text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-default"
-      >
-        Valider ma réponse
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth="2.5"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-        </svg>
-      </button>
-      {validated && (
-        <div
-          className={`mt-4 p-4 rounded-xl text-sm font-medium ${
-            isCorrect
-              ? 'bg-green-50 text-green-700 border border-green-200'
-              : 'bg-red-50 text-red-700 border border-red-200'
-          }`}
-        >
-          <strong>{isCorrect ? 'Bonne réponse !' : 'Mauvaise réponse.'}</strong>{' '}
-          {q.explanation}
+    <div className="bg-white rounded-2xl p-7 md:p-8 shadow-xl shadow-slate-900/[0.08] border border-slate-200/60 quiz-card relative">
+      {/* Subtle glow effect */}
+      <div className="absolute -inset-1 bg-gradient-to-br from-[#0f766e]/5 via-transparent to-amber-400/5 rounded-3xl blur-sm pointer-events-none" />
+      <div className="relative">
+        <div className="flex items-center justify-between mb-6">
+          <span className="text-sm font-semibold text-slate-400 tracking-wide">Question du jour</span>
+          <span className="px-3 py-1 bg-[#0f766e]/10 text-[#0f766e] text-xs font-bold rounded-full border border-[#0f766e]/15">
+            {subjectName}
+          </span>
         </div>
-      )}
-      <div className="mt-4 text-center">
-        <Link href="/qcm" className="text-sm text-primary-600 font-semibold hover:underline">
-          Plus de QCM &rarr;
-        </Link>
+        <p className="text-base md:text-lg font-bold text-slate-900 mb-6 leading-relaxed">
+          {q.question}
+        </p>
+        <div className="space-y-3 mb-6">
+          {q.options.map((opt, i) => (
+            <button
+              key={i}
+              onClick={() => handleSelect(i)}
+              disabled={validated}
+              className={getOptionClasses(i)}
+            >
+              <div className="flex items-center justify-between">
+                <span>{opt.text}</span>
+                {validated && i === correctIdx && (
+                  <svg className="w-5 h-5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                )}
+                {validated && i === selectedIdx && !isCorrect && (
+                  <svg className="w-5 h-5 text-red-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                  </svg>
+                )}
+              </div>
+            </button>
+          ))}
+        </div>
+        <button
+          onClick={handleValidate}
+          disabled={selectedIdx === null || validated}
+          className="w-full py-4 bg-[#0f766e] text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-[#0d6560] transition-colors disabled:opacity-40 disabled:cursor-default shadow-lg shadow-[#0f766e]/20"
+        >
+          Valider ma réponse
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </button>
+        {validated && (
+          <div
+            className={`mt-4 p-4 rounded-xl text-sm font-medium ${
+              isCorrect
+                ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                : 'bg-red-50 text-red-700 border border-red-200'
+            }`}
+          >
+            <strong>{isCorrect ? 'Bonne réponse !' : 'Mauvaise réponse.'}</strong>{' '}
+            {q.explanation}
+          </div>
+        )}
+        <div className="mt-5 text-center">
+          <Link href="/entrainement-ecrits" className="text-sm text-[#0f766e] font-semibold hover:underline">
+            Plus de QCM &rarr;
+          </Link>
+        </div>
       </div>
     </div>
   );
