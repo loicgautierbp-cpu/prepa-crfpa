@@ -194,7 +194,8 @@ export default function HomePage() {
       </section>
 
       {/* ========== PROGRAMME ========== */}
-      <section className="py-20 md:py-24 bg-white">
+      <section className="py-20 md:py-24 bg-[#f0fdfa] relative overflow-hidden">
+        <FloatingIcons />
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl tracking-tight text-slate-900 mb-4">
