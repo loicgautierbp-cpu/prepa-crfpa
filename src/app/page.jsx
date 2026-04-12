@@ -25,7 +25,7 @@ export default function HomePage() {
     <div className="bg-[#f0fdfa]">
 
       {/* ========== HERO ========== */}
-      <section className="relative pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden min-h-[85vh] flex items-center bg-gradient-to-b from-[#ccfbf1] via-[#f0fdfa] to-white">
+      <section className="relative pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden min-h-[85vh] flex items-center bg-gradient-to-b from-white via-[#f0fdfa] to-[#ccfbf1]">
         {/* Decorative scattered icons with animations */}
         {/* Balance de justice - haut centre */}
         <svg className="hidden md:block absolute top-10 left-[42%] w-20 h-20 text-[#0f766e]/15 animate-[float_6s_ease-in-out_infinite]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
