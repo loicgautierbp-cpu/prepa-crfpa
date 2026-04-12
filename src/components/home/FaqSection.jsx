@@ -56,7 +56,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="py-16 md:py-24 bg-[#e6f7f4]">
+    <section id="faq" className="py-16 md:py-24 bg-[#fee2e2]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl font-bold text-slate-900 text-center mb-12">
           Questions fréquentes

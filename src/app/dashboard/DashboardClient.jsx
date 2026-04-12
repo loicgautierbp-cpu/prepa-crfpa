@@ -253,7 +253,7 @@ export default function DashboardPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <svg className="animate-spin w-10 h-10 text-[#0d6560] mx-auto mb-4" fill="none" viewBox="0 0 24 24">
+          <svg className="animate-spin w-10 h-10 text-[#991b1b] mx-auto mb-4" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
@@ -284,12 +284,12 @@ export default function DashboardPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 leading-[1.1] mb-4">
             {user.displayName ? (
-              <>Bonjour <span className="text-[#0d6560]">{user.displayName.split(' ')[0]}</span> !</>
+              <>Bonjour <span className="text-[#991b1b]">{user.displayName.split(' ')[0]}</span> !</>
             ) : (
-              <>Mon <span className="text-[#0d6560]">tableau de bord</span></>
+              <>Mon <span className="text-[#991b1b]">tableau de bord</span></>
             )}
           </h1>
-          <div className="w-12 h-1 bg-[#0d6560] mx-auto mt-4 mb-6 rounded-full"></div>
+          <div className="w-12 h-1 bg-[#991b1b] mx-auto mt-4 mb-6 rounded-full"></div>
           <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
             {data.currentStreak > 0 && <span className="mr-1">🔥</span>}
             {heroSubtitle}
@@ -303,13 +303,13 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
           <Link href="/qcm" className="group flex items-center gap-4 p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md hover:-translate-y-[2px] transition-all">
             <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-slate-200 transition-colors">
-              <svg className="w-6 h-6 text-[#0d6560]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+              <svg className="w-6 h-6 text-[#991b1b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-bold text-gray-900 group-hover:text-slate-900 transition-colors">Lancer un QCM</p>
               <p className="text-xs text-gray-500 mt-0.5">Entrainez-vous sur les 14 matieres</p>
             </div>
-            <svg className="w-5 h-5 text-gray-300 group-hover:text-[#0d6560] transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+            <svg className="w-5 h-5 text-gray-300 group-hover:text-[#991b1b] transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
           </Link>
           <Link href="/examen" className="group flex items-center gap-4 p-5 bg-gradient-to-br from-violet-50/40 to-white rounded-2xl border border-violet-100/50 shadow-sm hover:border-violet-300 hover:shadow-lg hover:shadow-violet-600/10 hover:-translate-y-[2px] transition-all">
             <div className="w-12 h-12 bg-violet-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-violet-200 transition-colors">
@@ -399,7 +399,7 @@ export default function DashboardPage() {
                   <>
                     {/* Maitrise par matiere */}
                     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                      <h3 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#0d6560]"></span>Maitrise par matiere</h3>
+                      <h3 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#991b1b]"></span>Maitrise par matiere</h3>
                       <div className="space-y-4">
                         {SUBJECTS.map(s => ({ ...s, ...(data.subjectStats[s.id] || { avg: 0, count: 0 }) })).sort((a, b) => b.count - a.count).map(s => {
                           const colors = SUBJECT_COLORS[s.color] || SUBJECT_COLORS.primary;
@@ -567,7 +567,7 @@ export default function DashboardPage() {
                       )}
                       {!isPremiumPlus && data.last20.length > 10 && (
                         <div className="mt-3 pt-3 border-t border-gray-100 text-center">
-                          <Link href="/tarifs" className="text-xs font-semibold text-[#0d6560] hover:text-[#5a1028]">Voir les 20 dernieres sessions avec Premium+ →</Link>
+                          <Link href="/tarifs" className="text-xs font-semibold text-[#991b1b] hover:text-[#5a1028]">Voir les 20 dernieres sessions avec Premium+ →</Link>
                         </div>
                       )}
                     </div>
@@ -601,7 +601,7 @@ export default function DashboardPage() {
                               })}
                             </div>
                             {data.weaknesses.length > 0 && (
-                              <Link href="/qcm" className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#0d6560] hover:text-[#5a1028]">
+                              <Link href="/qcm" className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#991b1b] hover:text-[#5a1028]">
                                 Travailler {data.weaknesses[0]?.name}
                                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
                               </Link>
@@ -610,7 +610,7 @@ export default function DashboardPage() {
                         </div>
                         {!isPremiumPlus && data.strengths.length > 1 && (
                           <div className="mt-4 pt-4 border-t border-gray-100 text-center">
-                            <Link href="/tarifs" className="text-xs font-semibold text-[#0d6560] hover:text-[#5a1028]">Voir l&apos;analyse complete avec Premium+ →</Link>
+                            <Link href="/tarifs" className="text-xs font-semibold text-[#991b1b] hover:text-[#5a1028]">Voir l&apos;analyse complete avec Premium+ →</Link>
                           </div>
                         )}
                       </div>
@@ -635,7 +635,7 @@ export default function DashboardPage() {
                     </h3>
                     <div className="space-y-4">
                       {(() => { const pct = Math.min(100, Math.round((data.thisWeekSessions / 5) * 100)); return (<div><div className="flex justify-between items-center mb-1"><span className="text-sm text-gray-600">Sessions réalisées</span><span className="text-sm font-bold text-gray-900">{data.thisWeekSessions}/5 {pct >= 100 && <span className="text-emerald-500">✓</span>}</span></div><div className="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-violet-500 rounded-full transition-all duration-500" style={{ width: `${pct}%` }} /></div></div>); })()}
-                      {(() => { const mins = Math.round(data.thisWeekTime / 60000); const target = 120; const pct = Math.min(100, Math.round((mins / target) * 100)); return (<div><div className="flex justify-between items-center mb-1"><span className="text-sm text-gray-600">Temps d&apos;étude</span><span className="text-sm font-bold text-gray-900">{mins >= 60 ? `${Math.floor(mins / 60)}h${mins % 60 > 0 ? String(mins % 60).padStart(2, '0') : ''}` : `${mins} min`} / 2h{pct >= 100 && <span className="text-emerald-500 ml-1">✓</span>}</span></div><div className="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-[#0d6560] rounded-full transition-all duration-500" style={{ width: `${pct}%` }} /></div></div>); })()}
+                      {(() => { const mins = Math.round(data.thisWeekTime / 60000); const target = 120; const pct = Math.min(100, Math.round((mins / target) * 100)); return (<div><div className="flex justify-between items-center mb-1"><span className="text-sm text-gray-600">Temps d&apos;étude</span><span className="text-sm font-bold text-gray-900">{mins >= 60 ? `${Math.floor(mins / 60)}h${mins % 60 > 0 ? String(mins % 60).padStart(2, '0') : ''}` : `${mins} min`} / 2h{pct >= 100 && <span className="text-emerald-500 ml-1">✓</span>}</span></div><div className="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-[#991b1b] rounded-full transition-all duration-500" style={{ width: `${pct}%` }} /></div></div>); })()}
                       {(() => { const pct = Math.min(100, Math.round((data.thisWeekActiveDays / 5) * 100)); return (<div><div className="flex justify-between items-center mb-1"><span className="text-sm text-gray-600">Jours actifs</span><span className="text-sm font-bold text-gray-900">{data.thisWeekActiveDays}/5 {pct >= 100 && <span className="text-emerald-500">✓</span>}</span></div><div className="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-purple-500 rounded-full transition-all duration-500" style={{ width: `${pct}%` }} /></div></div>); })()}
                     </div>
                   </div>
@@ -715,7 +715,7 @@ export default function DashboardPage() {
                 <p className="text-xs text-gray-500">Aidez-nous a ameliorer la plateforme.</p>
               </div>
             </div>
-            <svg className="w-5 h-5 text-gray-400 group-hover:text-[#0d6560] transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+            <svg className="w-5 h-5 text-gray-400 group-hover:text-[#991b1b] transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
           </Link>
         </div>
       </div>
@@ -779,7 +779,7 @@ function PremiumLock({ title, description }) {
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center bg-white/95 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-lg p-8 max-w-sm mx-4">
           <div className="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <svg className="w-7 h-7 text-[#0d6560]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
+            <svg className="w-7 h-7 text-[#991b1b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
           </div>
           <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
           <p className="text-sm text-gray-500 mb-5">{description}</p>
@@ -1011,7 +1011,7 @@ function ClassementSection({ allSessions }) {
         <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-rose-500"></span>Classement</h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
           <div><p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Votre position</p><p className="text-3xl font-black text-gray-900">{userRank}<span className="text-lg text-gray-400">/{totalParticipants}</span></p></div>
-          <div><p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Percentile</p><p className="text-3xl font-black text-[#0d6560]">Top {Math.max(1, 100 - percentile)}%</p></div>
+          <div><p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Percentile</p><p className="text-3xl font-black text-[#991b1b]">Top {Math.max(1, 100 - percentile)}%</p></div>
           <div><p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Score moyen</p><p className={`text-3xl font-black ${scoreClass(userAvg)}`}>{userAvg}%</p></div>
         </div>
       </div>

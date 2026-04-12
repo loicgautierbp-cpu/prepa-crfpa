@@ -85,7 +85,7 @@ export const SUBJECT_COLORS = {
     icon: 'text-teal-500',
     ring: 'ring-teal-200',
     accent: '#0d9488',
-    barHex: '#14b8a6',
+    barHex: '#ef4444',
     gradient: 'from-teal-500 to-teal-600',
   },
   sky: {

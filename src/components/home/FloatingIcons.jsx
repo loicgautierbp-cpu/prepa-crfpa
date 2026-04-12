@@ -53,7 +53,7 @@ function shuffleArray(arr) {
 function IconSlot({ icon, position, size, duration, delay }) {
   return (
     <svg
-      className={`hidden md:block absolute ${size} text-[#0f766e]/20`}
+      className={`hidden md:block absolute ${size} text-[#b91c1c]/20`}
       style={{
         ...position,
         animation: `float ${duration}s ease-in-out infinite ${delay}s`,

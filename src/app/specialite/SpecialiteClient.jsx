@@ -64,7 +64,7 @@ export default function SpecialiteClient() {
     const progress = ((currentQ) / QUESTIONS.length) * 100;
 
     return (
-      <section className="min-h-screen bg-gradient-to-br from-[#f5ece4] via-[#f0fdfa] to-[#f5ece4]">
+      <section className="min-h-screen bg-gradient-to-br from-[#f5ece4] via-[#fef2f2] to-[#f5ece4]">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 py-12 md:py-16">
           {/* Header */}
           {currentQ === 0 && (
@@ -139,7 +139,7 @@ export default function SpecialiteClient() {
   const winnerColor = COLORS[winner.color] || COLORS.emerald;
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-[#f5ece4] via-[#f0fdfa] to-[#f5ece4]">
+    <section className="min-h-screen bg-gradient-to-br from-[#f5ece4] via-[#fef2f2] to-[#f5ece4]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
         {/* Header */}
         <div className="text-center mb-10">

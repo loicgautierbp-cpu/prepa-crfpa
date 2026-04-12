@@ -1001,7 +1001,7 @@ export default function SyntheseClient({ embedded = false }) {
   }
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-[#f5ece4] via-[#f0fdfa] to-[#f5ece4]">
+    <section className="min-h-screen bg-gradient-to-br from-[#f5ece4] via-[#fef2f2] to-[#f5ece4]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
         {/* Header */}
         <div className="text-center mb-10">

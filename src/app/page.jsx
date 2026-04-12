@@ -23,10 +23,10 @@ function CheckIcon() {
 
 export default function HomePage() {
   return (
-    <div className="bg-[#f0fdfa]">
+    <div className="bg-[#fef2f2]">
 
       {/* ========== HERO ========== */}
-      <section className="relative pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden min-h-[85vh] flex items-center bg-gradient-to-b from-[#e6f7f4] via-[#ecfaf7] to-[#f0fdfa]">
+      <section className="relative pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden min-h-[85vh] flex items-center bg-gradient-to-b from-[#fee2e2] via-[#fecaca] to-[#fef2f2]">
         {/* Floating legal icons - randomized positions */}
         <FloatingIcons />
 
@@ -34,7 +34,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: text */}
             <div>
-              <div className="inline-flex items-center gap-2 bg-white border border-[#0f766e]/20 rounded-full px-4 py-1.5 text-sm font-medium text-[#0f766e] mb-8">
+              <div className="inline-flex items-center gap-2 bg-white border border-[#b91c1c]/20 rounded-full px-4 py-1.5 text-sm font-medium text-[#b91c1c] mb-8">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
                 </svg>
@@ -42,13 +42,13 @@ export default function HomePage() {
               </div>
               <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-5xl md:text-6xl lg:text-7xl tracking-tight text-slate-900 mb-6 leading-[1.1]">
                 Préparez le<br />CRFPA<br />
-                <span className="text-[#0f766e]">sereinement.</span>
+                <span className="text-[#b91c1c]">sereinement.</span>
               </h1>
               <p className="text-lg text-slate-500 max-w-lg mb-8">
                 La première plateforme de préparation au CRFPA. Exercices corrigés par IA, fiches de cours et entraînement aux épreuves écrites et orales.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
-                <Link href="/entrainement-ecrits" className="px-7 py-3.5 bg-[#0f766e] text-white font-bold rounded-xl hover:bg-[#0d6560] transition-colors text-center">
+                <Link href="/entrainement-ecrits" className="px-7 py-3.5 bg-[#b91c1c] text-white font-bold rounded-xl hover:bg-[#991b1b] transition-colors text-center">
                   Commencer l&apos;entraînement
                 </Link>
                 <Link href="/programme" className="px-7 py-3.5 bg-white border-2 border-slate-200 text-slate-700 font-bold rounded-xl hover:border-slate-300 transition-colors text-center">
@@ -70,7 +70,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== STATS BAR ========== */}
-      <section className="bg-[#042f2c] py-10">
+      <section className="bg-[#450a0a] py-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
             {[
@@ -106,7 +106,7 @@ export default function HomePage() {
                 title: 'Exercices corrigés par IA',
                 description: 'Cas pratiques, dissertations et consultations générés et corrigés automatiquement avec références aux articles de loi.',
                 href: '/entrainement-ecrits',
-                color: 'bg-[#0f766e]/10 text-[#0f766e]',
+                color: 'bg-[#b91c1c]/10 text-[#b91c1c]',
                 icon: (
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
@@ -142,7 +142,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-bold text-slate-900 text-lg mb-2">{feature.title}</h3>
                 <p className="text-sm text-slate-500 mb-4 leading-relaxed">{feature.description}</p>
-                <span className="text-sm font-semibold text-[#0f766e] group-hover:underline">En savoir plus →</span>
+                <span className="text-sm font-semibold text-[#b91c1c] group-hover:underline">En savoir plus →</span>
               </Link>
             ))}
           </div>
@@ -150,7 +150,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== STRUCTURE DU CRFPA ========== */}
-      <section className="py-20 md:py-24 bg-[#042f2c]">
+      <section className="py-20 md:py-24 bg-[#450a0a]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl tracking-tight text-white mb-4">
@@ -194,7 +194,7 @@ export default function HomePage() {
       </section>
 
       {/* ========== PROGRAMME ========== */}
-      <section className="py-20 md:py-24 bg-[#f0fdfa] relative overflow-hidden">
+      <section className="py-20 md:py-24 bg-[#fef2f2] relative overflow-hidden">
         <FloatingIcons />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-14">
@@ -227,7 +227,7 @@ export default function HomePage() {
             })}
           </div>
           <div className="text-center mt-10">
-            <Link href="/programme" className="inline-flex items-center gap-2 text-[#0f766e] hover:text-[#0d6560] font-semibold transition-colors text-sm">
+            <Link href="/programme" className="inline-flex items-center gap-2 text-[#b91c1c] hover:text-[#991b1b] font-semibold transition-colors text-sm">
               Voir le programme complet
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
             </Link>
@@ -239,7 +239,7 @@ export default function HomePage() {
       <FaqSection />
 
       {/* ========== CTA FINAL ========== */}
-      <section className="py-20 md:py-24 bg-gradient-to-br from-[#0f766e] to-[#042f2c]">
+      <section className="py-20 md:py-24 bg-gradient-to-br from-[#b91c1c] to-[#450a0a]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl text-white mb-4">
             Prêt à réussir le barreau ?

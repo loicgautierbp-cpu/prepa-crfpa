@@ -37,9 +37,9 @@ export default function QuestionDuJour() {
 
     if (!validated) {
       if (idx === selectedIdx) {
-        return `${base} border-[#0f766e] bg-[#f0fdfa] text-[#0f766e] shadow-sm`;
+        return `${base} border-[#b91c1c] bg-[#fef2f2] text-[#b91c1c] shadow-sm`;
       }
-      return `${base} border-slate-200 hover:border-[#0f766e]/40 hover:shadow-sm text-slate-700 bg-white`;
+      return `${base} border-slate-200 hover:border-[#b91c1c]/40 hover:shadow-sm text-slate-700 bg-white`;
     }
 
     if (idx === correctIdx) {
@@ -54,11 +54,11 @@ export default function QuestionDuJour() {
   return (
     <div className="bg-white rounded-2xl p-7 md:p-8 shadow-xl shadow-slate-900/[0.08] border border-slate-200/60 quiz-card relative">
       {/* Subtle glow effect */}
-      <div className="absolute -inset-1 bg-gradient-to-br from-[#0f766e]/5 via-transparent to-amber-400/5 rounded-3xl blur-sm pointer-events-none" />
+      <div className="absolute -inset-1 bg-gradient-to-br from-[#b91c1c]/5 via-transparent to-amber-400/5 rounded-3xl blur-sm pointer-events-none" />
       <div className="relative">
         <div className="flex items-center justify-between mb-6">
           <span className="text-sm font-semibold text-slate-400 tracking-wide">Question du jour</span>
-          <span className="px-3 py-1 bg-[#0f766e]/10 text-[#0f766e] text-xs font-bold rounded-full border border-[#0f766e]/15">
+          <span className="px-3 py-1 bg-[#b91c1c]/10 text-[#b91c1c] text-xs font-bold rounded-full border border-[#b91c1c]/15">
             {subjectName}
           </span>
         </div>
@@ -92,7 +92,7 @@ export default function QuestionDuJour() {
         <button
           onClick={handleValidate}
           disabled={selectedIdx === null || validated}
-          className="w-full py-4 bg-[#0f766e] text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-[#0d6560] transition-colors disabled:opacity-40 disabled:cursor-default shadow-lg shadow-[#0f766e]/20"
+          className="w-full py-4 bg-[#b91c1c] text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-[#991b1b] transition-colors disabled:opacity-40 disabled:cursor-default shadow-lg shadow-[#b91c1c]/20"
         >
           Valider ma réponse
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -112,7 +112,7 @@ export default function QuestionDuJour() {
           </div>
         )}
         <div className="mt-5 text-center">
-          <Link href="/entrainement-ecrits" className="text-sm text-[#0f766e] font-semibold hover:underline">
+          <Link href="/entrainement-ecrits" className="text-sm text-[#b91c1c] font-semibold hover:underline">
             Plus de QCM &rarr;
           </Link>
         </div>

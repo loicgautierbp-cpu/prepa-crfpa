@@ -33,15 +33,15 @@ export default function ProgrammePage() {
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-slate-200 mb-6">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0d6560] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#0d6560]"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#991b1b] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#991b1b]"></span>
               </span>
               <span className="text-sm font-semibold text-slate-700">Programme officiel CRFPA</span>
             </div>
             <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight mb-5">
               Le programme <span className="programme-gradient-text">CRFPA</span> d&eacute;taill&eacute;
             </h1>
-            <div className="w-12 h-1 bg-[#0d6560] mx-auto mt-4 mb-6 rounded-full"></div>
+            <div className="w-12 h-1 bg-[#991b1b] mx-auto mt-4 mb-6 rounded-full"></div>
             <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-xl mx-auto">
               Retrouvez le d&eacute;tail des <strong className="text-gray-900">6 &eacute;preuves et 14 mati&egrave;res</strong> de l&rsquo;examen d&rsquo;acc&egrave;s au CRFPA. Chaque mati&egrave;re est d&eacute;crypt&eacute;e avec ses <strong className="text-gray-900">th&egrave;mes, coefficients</strong> et volumes horaires.
             </p>
@@ -49,7 +49,7 @@ export default function ProgrammePage() {
             <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
               <div className="prog-stat flex items-center gap-3">
                 <div className="w-11 h-11 bg-slate-100 rounded-xl flex items-center justify-center">
-                  <svg className="w-5 h-5 text-[#0d6560]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
+                  <svg className="w-5 h-5 text-[#991b1b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
                 </div>
                 <div>
                   <div className="text-xl font-black text-gray-900">6</div>
@@ -87,7 +87,7 @@ export default function ProgrammePage() {
           {PROGRAMME_DATA.map((ue, i) => (
             <div key={ue.id} className={`mb-12 ${i > 0 ? 'pt-12 border-t border-gray-200' : ''}`} id={`ue-${ue.id}`}>
               <div className="lift flex flex-col md:flex-row md:items-start gap-6">
-                <div className={`w-16 h-16 ${UE_ICON_STYLES[ue.color] || 'bg-slate-50 text-[#0d6560]'} rounded-2xl flex items-center justify-center shrink-0`}
+                <div className={`w-16 h-16 ${UE_ICON_STYLES[ue.color] || 'bg-slate-50 text-[#991b1b]'} rounded-2xl flex items-center justify-center shrink-0`}
                   dangerouslySetInnerHTML={{ __html: ue.icon }}
                 />
                 <div className="flex-1">
