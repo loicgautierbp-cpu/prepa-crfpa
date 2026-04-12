@@ -56,7 +56,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="py-16 md:py-24 bg-gradient-to-br from-[#0f766e] to-[#064e4a]">
+    <section id="faq" className="py-16 md:py-24 bg-gradient-to-br from-[#14b8a6] via-[#0f766e] to-[#042f2c]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
           Questions fréquentes
