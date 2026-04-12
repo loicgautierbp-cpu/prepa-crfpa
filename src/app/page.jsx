@@ -125,8 +125,21 @@ export default function HomePage() {
       </section>
 
       {/* ========== OUTILS DE REVISION ========== */}
-      <section className="py-20 md:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <section className="py-20 md:py-24 relative overflow-hidden">
+        {/* Decorative icons */}
+        <svg className="hidden md:block absolute top-16 left-[5%] w-16 h-16 text-[#0f766e]/8 animate-[float_7s_ease-in-out_infinite]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
+          <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+        </svg>
+        <svg className="hidden md:block absolute bottom-20 right-[6%] w-20 h-20 text-[#0f766e]/6 animate-[float_8s_ease-in-out_infinite_1s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.7">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>
+        </svg>
+        <svg className="hidden lg:block absolute top-[40%] right-[3%] w-12 h-12 text-amber-400/15 animate-[float_6s_ease-in-out_infinite_2s]" fill="currentColor" viewBox="0 0 24 24">
+          <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd"/>
+        </svg>
+        <svg className="hidden md:block absolute bottom-12 left-[15%] w-10 h-10 text-emerald-400/12 animate-[float_5s_ease-in-out_infinite_3s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+        </svg>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-14">
             <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl tracking-tight text-slate-900 mb-4">
               Vos outils de révision
