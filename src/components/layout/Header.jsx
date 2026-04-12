@@ -40,7 +40,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
-            <span style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-slate-900">Prépa <span className="text-[#7b1636]">CRFPA</span></span>
+            <span style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-slate-900">Prépa <span className="text-[#9b2d50]">CRFPA</span></span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -50,7 +50,7 @@ export default function Header() {
                 href={link.href}
                 className={`text-sm transition-colors ${
                   isActive(link.href)
-                    ? 'text-[#7b1636] font-semibold'
+                    ? 'text-[#9b2d50] font-semibold'
                     : 'text-slate-600 font-medium hover:text-slate-900'
                 }`}
               >
@@ -88,7 +88,7 @@ export default function Header() {
                     <Link href="/connexion" className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
                       Connexion
                     </Link>
-                    <Link href="/inscription" className="px-5 py-2 bg-[#7b1636] text-white text-sm font-semibold rounded-xl hover:bg-[#5a0f27] transition-colors">
+                    <Link href="/inscription" className="px-5 py-2 bg-[#9b2d50] text-white text-sm font-semibold rounded-xl hover:bg-[#7b1636] transition-colors">
                       Inscription
                     </Link>
                   </div>
@@ -116,7 +116,7 @@ export default function Header() {
               href={link.href}
               onClick={() => setMenuOpen(false)}
               className={`block py-3 text-sm font-medium ${
-                isActive(link.href) ? 'text-[#7b1636] font-semibold' : 'text-slate-600 hover:text-slate-900'
+                isActive(link.href) ? 'text-[#9b2d50] font-semibold' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               {link.label}
