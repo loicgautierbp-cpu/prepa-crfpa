@@ -17,7 +17,7 @@ function getSubjectBadgeColors(subjectId) {
 }
 
 const TYPE_BADGE = {
-  QCM: 'bg-primary-100 text-primary-700',
+  QCM: 'bg-slate-100 text-slate-700',
   Examen: 'bg-violet-100 text-violet-700',
 };
 
@@ -25,8 +25,8 @@ const TYPE_BADGE = {
 const MENU_ITEMS = [
   {
     id: 'overview', label: 'Vue d\'ensemble', premium: false, color: 'primary',
-    activeClasses: 'bg-primary-50 text-primary-700 border-primary-600',
-    iconActiveClass: 'text-primary-600',
+    activeClasses: 'bg-slate-50 text-slate-700 border-slate-600',
+    iconActiveClass: 'text-slate-600',
     icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25a2.25 2.25 0 0 1-2.25-2.25v-2.25Z" /></svg>,
   },
   {
@@ -253,7 +253,7 @@ export default function DashboardPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <svg className="animate-spin w-10 h-10 text-primary-600 mx-auto mb-4" fill="none" viewBox="0 0 24 24">
+          <svg className="animate-spin w-10 h-10 text-[#7b1636] mx-auto mb-4" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
@@ -280,16 +280,16 @@ export default function DashboardPage() {
   return (
     <>
       {/* ===== HERO ===== */}
-      <section className="bg-gradient-to-br from-[#f5ece4] via-[#fdf2f3] to-[#f5ece4] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
+      <section className="bg-[#eceef1] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 leading-[1.1] mb-4">
             {user.displayName ? (
-              <>Bonjour <span className="bg-gradient-to-r from-primary-600 via-violet-500 to-primary-600 bg-clip-text text-transparent">{user.displayName.split(' ')[0]}</span> !</>
+              <>Bonjour <span className="text-[#7b1636]">{user.displayName.split(' ')[0]}</span> !</>
             ) : (
-              <>Mon <span className="bg-gradient-to-r from-primary-600 via-violet-500 to-primary-600 bg-clip-text text-transparent">tableau de bord</span></>
+              <>Mon <span className="text-[#7b1636]">tableau de bord</span></>
             )}
           </h1>
-          <div className="w-12 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mt-4 mb-6 rounded-full"></div>
+          <div className="w-12 h-1 bg-[#7b1636] mx-auto mt-4 mb-6 rounded-full"></div>
           <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
             {data.currentStreak > 0 && <span className="mr-1">🔥</span>}
             {heroSubtitle}
@@ -301,15 +301,15 @@ export default function DashboardPage() {
 
         {/* ===== ACTIONS RAPIDES ===== */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-          <Link href="/qcm" className="group flex items-center gap-4 p-5 bg-gradient-to-br from-primary-50/40 to-white rounded-2xl border border-primary-100/50 shadow-sm hover:border-primary-300 hover:shadow-lg hover:shadow-primary-600/10 hover:-translate-y-[2px] transition-all">
-            <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary-200 transition-colors">
-              <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+          <Link href="/qcm" className="group flex items-center gap-4 p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md hover:-translate-y-[2px] transition-all">
+            <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-slate-200 transition-colors">
+              <svg className="w-6 h-6 text-[#7b1636]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-bold text-gray-900 group-hover:text-primary-700 transition-colors">Lancer un QCM</p>
+              <p className="text-sm font-bold text-gray-900 group-hover:text-slate-900 transition-colors">Lancer un QCM</p>
               <p className="text-xs text-gray-500 mt-0.5">Entrainez-vous sur les 14 matieres</p>
             </div>
-            <svg className="w-5 h-5 text-gray-300 group-hover:text-primary-500 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+            <svg className="w-5 h-5 text-gray-300 group-hover:text-[#7b1636] transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
           </Link>
           <Link href="/examen" className="group flex items-center gap-4 p-5 bg-gradient-to-br from-violet-50/40 to-white rounded-2xl border border-violet-100/50 shadow-sm hover:border-violet-300 hover:shadow-lg hover:shadow-violet-600/10 hover:-translate-y-[2px] transition-all">
             <div className="w-12 h-12 bg-violet-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-violet-200 transition-colors">
@@ -327,7 +327,7 @@ export default function DashboardPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <StatCard label="Jours consecutifs" value={data.currentStreak > 0 ? `${data.currentStreak}j` : '0j'} badge={data.currentStreak > 0 ? '🔥' : null} tint="bg-amber-50/60 border-amber-100" icon={<svg className="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z" /></svg>} />
           <StatCard label="Score moyen" value={data.hasAnySessions ? `${data.avgScore}%` : '--'} trend={data.trend} tint="bg-emerald-50/60 border-emerald-100" icon={<svg className="w-6 h-6 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" /></svg>} />
-          <StatCard label="Cette semaine" value={`${data.thisWeekSessions}`} sublabel={data.thisWeekSessions === 1 ? 'session' : 'sessions'} tint="bg-primary-50/60 border-primary-100" icon={<svg className="w-6 h-6 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>} />
+          <StatCard label="Cette semaine" value={`${data.thisWeekSessions}`} sublabel={data.thisWeekSessions === 1 ? 'session' : 'sessions'} tint="bg-slate-50/60 border-slate-100" icon={<svg className="w-6 h-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>} />
           <StatCard label="Temps total" value={data.hasAnySessions ? formatDuration(data.totalTime) : '--'} tint="bg-violet-50/60 border-violet-100" icon={<svg className="w-6 h-6 text-violet-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>} />
         </div>
 
@@ -399,7 +399,7 @@ export default function DashboardPage() {
                   <>
                     {/* Maitrise par matiere */}
                     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                      <h3 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-500"></span>Maitrise par matiere</h3>
+                      <h3 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#7b1636]"></span>Maitrise par matiere</h3>
                       <div className="space-y-4">
                         {SUBJECTS.map(s => ({ ...s, ...(data.subjectStats[s.id] || { avg: 0, count: 0 }) })).sort((a, b) => b.count - a.count).map(s => {
                           const colors = SUBJECT_COLORS[s.color] || SUBJECT_COLORS.primary;
@@ -427,7 +427,7 @@ export default function DashboardPage() {
 
                     {/* Dernieres sessions */}
                     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                      <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-400"></span>Dernieres sessions</h3>
+                      <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-slate-400"></span>Dernieres sessions</h3>
                       <div className="space-y-3">
                         {data.recent5.map((s, i) => {
                           const subjectColors = getSubjectBadgeColors(s.subject);
@@ -469,7 +469,7 @@ export default function DashboardPage() {
                       { key: 'examen', label: 'Examens', count: data.examCount },
                     ].map(f => (
                       <button key={f.key} onClick={() => setHistoryFilter(f.key)}
-                        className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${historyFilter === f.key ? 'bg-primary-600 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                        className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${historyFilter === f.key ? 'bg-slate-900 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                       >
                         {f.label} ({f.count})
                       </button>
@@ -567,7 +567,7 @@ export default function DashboardPage() {
                       )}
                       {!isPremiumPlus && data.last20.length > 10 && (
                         <div className="mt-3 pt-3 border-t border-gray-100 text-center">
-                          <Link href="/tarifs" className="text-xs font-semibold text-primary-600 hover:text-primary-700">Voir les 20 dernieres sessions avec Premium+ →</Link>
+                          <Link href="/tarifs" className="text-xs font-semibold text-[#7b1636] hover:text-[#5a1028]">Voir les 20 dernieres sessions avec Premium+ →</Link>
                         </div>
                       )}
                     </div>
@@ -601,7 +601,7 @@ export default function DashboardPage() {
                               })}
                             </div>
                             {data.weaknesses.length > 0 && (
-                              <Link href="/qcm" className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-primary-600 hover:text-primary-700">
+                              <Link href="/qcm" className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#7b1636] hover:text-[#5a1028]">
                                 Travailler {data.weaknesses[0]?.name}
                                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
                               </Link>
@@ -610,7 +610,7 @@ export default function DashboardPage() {
                         </div>
                         {!isPremiumPlus && data.strengths.length > 1 && (
                           <div className="mt-4 pt-4 border-t border-gray-100 text-center">
-                            <Link href="/tarifs" className="text-xs font-semibold text-primary-600 hover:text-primary-700">Voir l&apos;analyse complete avec Premium+ →</Link>
+                            <Link href="/tarifs" className="text-xs font-semibold text-[#7b1636] hover:text-[#5a1028]">Voir l&apos;analyse complete avec Premium+ →</Link>
                           </div>
                         )}
                       </div>
@@ -635,7 +635,7 @@ export default function DashboardPage() {
                     </h3>
                     <div className="space-y-4">
                       {(() => { const pct = Math.min(100, Math.round((data.thisWeekSessions / 5) * 100)); return (<div><div className="flex justify-between items-center mb-1"><span className="text-sm text-gray-600">Sessions réalisées</span><span className="text-sm font-bold text-gray-900">{data.thisWeekSessions}/5 {pct >= 100 && <span className="text-emerald-500">✓</span>}</span></div><div className="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-violet-500 rounded-full transition-all duration-500" style={{ width: `${pct}%` }} /></div></div>); })()}
-                      {(() => { const mins = Math.round(data.thisWeekTime / 60000); const target = 120; const pct = Math.min(100, Math.round((mins / target) * 100)); return (<div><div className="flex justify-between items-center mb-1"><span className="text-sm text-gray-600">Temps d&apos;étude</span><span className="text-sm font-bold text-gray-900">{mins >= 60 ? `${Math.floor(mins / 60)}h${mins % 60 > 0 ? String(mins % 60).padStart(2, '0') : ''}` : `${mins} min`} / 2h{pct >= 100 && <span className="text-emerald-500 ml-1">✓</span>}</span></div><div className="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-primary-500 rounded-full transition-all duration-500" style={{ width: `${pct}%` }} /></div></div>); })()}
+                      {(() => { const mins = Math.round(data.thisWeekTime / 60000); const target = 120; const pct = Math.min(100, Math.round((mins / target) * 100)); return (<div><div className="flex justify-between items-center mb-1"><span className="text-sm text-gray-600">Temps d&apos;étude</span><span className="text-sm font-bold text-gray-900">{mins >= 60 ? `${Math.floor(mins / 60)}h${mins % 60 > 0 ? String(mins % 60).padStart(2, '0') : ''}` : `${mins} min`} / 2h{pct >= 100 && <span className="text-emerald-500 ml-1">✓</span>}</span></div><div className="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-[#7b1636] rounded-full transition-all duration-500" style={{ width: `${pct}%` }} /></div></div>); })()}
                       {(() => { const pct = Math.min(100, Math.round((data.thisWeekActiveDays / 5) * 100)); return (<div><div className="flex justify-between items-center mb-1"><span className="text-sm text-gray-600">Jours actifs</span><span className="text-sm font-bold text-gray-900">{data.thisWeekActiveDays}/5 {pct >= 100 && <span className="text-emerald-500">✓</span>}</span></div><div className="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-purple-500 rounded-full transition-all duration-500" style={{ width: `${pct}%` }} /></div></div>); })()}
                     </div>
                   </div>
@@ -649,8 +649,8 @@ export default function DashboardPage() {
                         <p className="text-xs font-medium text-violet-500 mt-1">Jours consécutifs</p>
                         <p className="text-xs text-gray-400 mt-1">Record : {data.bestStreak} jours</p>
                       </div>
-                      <div className="bg-primary-50 rounded-xl p-4 text-center">
-                        {(() => { const thisW = Math.round(data.thisWeekTime / 60000); const lastW = Math.round(data.lastWeekTime / 60000); const diff = lastW > 0 ? Math.round(((thisW - lastW) / lastW) * 100) : (thisW > 0 ? 100 : 0); return (<><p className="text-3xl font-black text-primary-700">{thisW >= 60 ? `${Math.floor(thisW / 60)}h${thisW % 60 > 0 ? String(thisW % 60).padStart(2, '0') : ''}` : `${thisW}m`}</p><p className="text-xs font-medium text-primary-500 mt-1">Cette semaine</p><p className={`text-xs mt-1 font-semibold ${diff > 0 ? 'text-emerald-600' : diff < 0 ? 'text-red-500' : 'text-gray-400'}`}>{diff > 0 ? `↑ +${diff}%` : diff < 0 ? `↓ ${diff}%` : '→ Identique'} vs sem. passée</p></>); })()}
+                      <div className="bg-slate-50 rounded-xl p-4 text-center">
+                        {(() => { const thisW = Math.round(data.thisWeekTime / 60000); const lastW = Math.round(data.lastWeekTime / 60000); const diff = lastW > 0 ? Math.round(((thisW - lastW) / lastW) * 100) : (thisW > 0 ? 100 : 0); return (<><p className="text-3xl font-black text-slate-700">{thisW >= 60 ? `${Math.floor(thisW / 60)}h${thisW % 60 > 0 ? String(thisW % 60).padStart(2, '0') : ''}` : `${thisW}m`}</p><p className="text-xs font-medium text-slate-500 mt-1">Cette semaine</p><p className={`text-xs mt-1 font-semibold ${diff > 0 ? 'text-emerald-600' : diff < 0 ? 'text-red-500' : 'text-gray-400'}`}>{diff > 0 ? `↑ +${diff}%` : diff < 0 ? `↓ ${diff}%` : '→ Identique'} vs sem. passée</p></>); })()}
                       </div>
                     </div>
                   </div>
@@ -715,7 +715,7 @@ export default function DashboardPage() {
                 <p className="text-xs text-gray-500">Aidez-nous a ameliorer la plateforme.</p>
               </div>
             </div>
-            <svg className="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+            <svg className="w-5 h-5 text-gray-400 group-hover:text-[#7b1636] transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
           </Link>
         </div>
       </div>
@@ -756,7 +756,7 @@ function EmptyState({ title, description, ctaHref, ctaLabel }) {
       </div>
       <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
       <p className="text-sm text-gray-500 mb-5">{description}</p>
-      {ctaHref && <Link href={ctaHref} className="inline-flex px-5 py-2.5 bg-primary-600 text-white text-sm font-semibold rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/25">{ctaLabel || 'Commencer maintenant'}</Link>}
+      {ctaHref && <Link href={ctaHref} className="inline-flex px-5 py-2.5 bg-slate-900 text-white text-sm font-semibold rounded-xl hover:bg-black transition-colors">{ctaLabel || 'Commencer maintenant'}</Link>}
     </div>
   );
 }
@@ -778,12 +778,12 @@ function PremiumLock({ title, description }) {
       </div>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center bg-white/95 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-lg p-8 max-w-sm mx-4">
-          <div className="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <svg className="w-7 h-7 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
+          <div className="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg className="w-7 h-7 text-[#7b1636]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
           </div>
           <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
           <p className="text-sm text-gray-500 mb-5">{description}</p>
-          <Link href="/tarifs" className="inline-flex px-6 py-2.5 bg-primary-600 text-white text-sm font-semibold rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/25">Passer au Premium+</Link>
+          <Link href="/tarifs" className="inline-flex px-6 py-2.5 bg-slate-900 text-white text-sm font-semibold rounded-xl hover:bg-black transition-colors">Passer au Premium+</Link>
         </div>
       </div>
     </div>
@@ -1011,7 +1011,7 @@ function ClassementSection({ allSessions }) {
         <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-rose-500"></span>Classement</h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
           <div><p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Votre position</p><p className="text-3xl font-black text-gray-900">{userRank}<span className="text-lg text-gray-400">/{totalParticipants}</span></p></div>
-          <div><p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Percentile</p><p className="text-3xl font-black text-primary-600">Top {Math.max(1, 100 - percentile)}%</p></div>
+          <div><p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Percentile</p><p className="text-3xl font-black text-[#7b1636]">Top {Math.max(1, 100 - percentile)}%</p></div>
           <div><p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Score moyen</p><p className={`text-3xl font-black ${scoreClass(userAvg)}`}>{userAvg}%</p></div>
         </div>
       </div>
@@ -1023,7 +1023,7 @@ function ClassementSection({ allSessions }) {
               {rows.map((row, i) => {
                 if (row.type === 'gap') { const isExpanded = expandedGaps.has(row.gap.key); const hiddenCount = row.gap.to - row.gap.from + 1; return (<tr key={`gap-${row.gap.key}`} onClick={() => toggleGap(row.gap.key)} className="cursor-pointer hover:bg-gray-50 transition-colors"><td colSpan="4" className="py-2 text-center text-xs text-gray-400"><span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">{isExpanded ? (<><svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" /></svg>Masquer</>) : (<><svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>Afficher {hiddenCount} étudiant{hiddenCount > 1 ? 's' : ''}</>)}</span></td></tr>); }
                 const u = row.user; const rank = row.idx + 1; const medal = rank <= 3 ? medals[rank - 1] : `${rank}`;
-                return (<tr key={row.idx} className={`border-b hover:bg-gray-50/50 ${u.isUser ? 'bg-primary-50 border-primary-200 font-bold' : 'border-gray-50'}`}><td className="py-3 px-4 text-center text-lg">{medal}</td><td className={`py-3 px-4 text-sm ${u.isUser ? 'text-primary-700 font-bold' : 'text-gray-700'}`}>{u.name}</td><td className="py-3 px-4"><span className={`text-sm font-bold ${scoreClass(u.avg)}`}>{u.avg}%</span></td><td className="py-3 px-4 text-sm text-gray-500">{u.sessions}</td></tr>);
+                return (<tr key={row.idx} className={`border-b hover:bg-gray-50/50 ${u.isUser ? 'bg-slate-50 border-slate-200 font-bold' : 'border-gray-50'}`}><td className="py-3 px-4 text-center text-lg">{medal}</td><td className={`py-3 px-4 text-sm ${u.isUser ? 'text-slate-700 font-bold' : 'text-gray-700'}`}>{u.name}</td><td className="py-3 px-4"><span className={`text-sm font-bold ${scoreClass(u.avg)}`}>{u.avg}%</span></td><td className="py-3 px-4 text-sm text-gray-500">{u.sessions}</td></tr>);
               })}
             </tbody>
           </table>

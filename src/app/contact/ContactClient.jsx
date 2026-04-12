@@ -45,12 +45,12 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#f5ece4] via-[#fdf2f3] to-[#f5ece4] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
+      <section className="bg-[#eceef1] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 leading-[1.1] mb-4">
-            Nous <span className="bg-gradient-to-r from-primary-600 via-violet-500 to-primary-600 bg-clip-text text-transparent">contacter</span>
+            Nous <span className="text-[#7b1636]">contacter</span>
           </h1>
-          <div className="w-12 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mt-4 mb-6 rounded-full"></div>
+          <div className="w-12 h-1 bg-[#7b1636] mx-auto mt-4 mb-6 rounded-full"></div>
           <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
             Un bug, une suggestion ou une question ? N&apos;h&eacute;sitez pas &agrave; nous &eacute;crire.
           </p>
@@ -81,7 +81,7 @@ export default function ContactPage() {
                 </button>
                 <Link
                   href="/"
-                  className="px-6 py-3 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/25"
+                  className="px-6 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-colors"
                 >
                   Retour &agrave; l&apos;accueil
                 </Link>
@@ -101,7 +101,7 @@ export default function ContactPage() {
                       onClick={() => setCategory(cat.id)}
                       className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border-2 text-sm font-semibold transition-all ${
                         category === cat.id
-                          ? 'border-primary-500 bg-primary-50 text-primary-700'
+                          ? 'border-[#7b1636] bg-slate-50 text-slate-700'
                           : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300'
                       }`}
                     >
@@ -132,7 +132,7 @@ export default function ContactPage() {
                   onChange={(e) => setSubject(e.target.value)}
                   placeholder="Ex: Erreur lors du lancement d'un QCM"
                   required
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent transition-all"
                 />
               </div>
 
@@ -146,7 +146,7 @@ export default function ContactPage() {
                   placeholder="D&eacute;crivez votre probl&egrave;me ou votre suggestion en d&eacute;tail..."
                   required
                   rows={6}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent transition-all resize-none"
                 />
               </div>
 
@@ -161,7 +161,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={sending}
-                className="w-full py-3.5 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/25 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-3.5 bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {sending ? (
                   <>

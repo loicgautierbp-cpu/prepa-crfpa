@@ -1,12 +1,12 @@
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Sora, Young_Serif } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { PremiumProvider } from '@/contexts/PremiumContext';
 import { AuthProvider } from '@/contexts/AuthContext';
 
-const inter = Inter({ subsets: ['latin'] });
-const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-display' });
+const sora = Sora({ subsets: ['latin'] });
+const youngSerif = Young_Serif({ subsets: ['latin'], weight: '400', variable: '--font-display' });
 
 export const metadata = {
   metadataBase: new URL('https://prepa-crfpa.fr'),
@@ -43,7 +43,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <body className={`${inter.className} ${playfair.variable} bg-[#f5f0eb] text-gray-900 antialiased`}>
+      <body className={`${sora.className} ${youngSerif.variable} bg-[#eceef1] text-slate-900 antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

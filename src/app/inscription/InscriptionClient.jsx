@@ -50,19 +50,19 @@ export default function InscriptionPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f5ece4] via-[#fdf2f3] to-[#f5ece4] flex items-center justify-center px-4 py-24 relative overflow-hidden">
+    <div className="min-h-screen bg-[#eceef1] flex items-center justify-center px-4 py-24 relative overflow-hidden">
 
-      <div className="w-full max-w-[440px] glass rounded-3xl shadow-xl shadow-primary-900/[0.06] p-8 sm:p-10 relative z-10">
+      <div className="w-full max-w-[440px] bg-white rounded-xl border border-slate-200 shadow-sm p-8 sm:p-10 relative z-10">
         <div className="flex justify-center mb-6">
-          <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center">
-            <svg className="w-9 h-9 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+          <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center">
+            <svg className="w-9 h-9 text-[#7b1636]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z" />
             </svg>
           </div>
         </div>
 
         <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 text-center mb-1">Créez votre compte</h1>
-        <div className="w-12 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mt-4 mb-6 rounded-full"></div>
+        <div className="w-12 h-1 bg-[#7b1636] mx-auto mt-4 mb-6 rounded-full"></div>
         <p className="text-sm text-gray-400 text-center mb-8">et commencez votre préparation au CRFPA.</p>
 
         {error && (
@@ -95,22 +95,22 @@ export default function InscriptionPage() {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-1.5">Prénom</label>
-              <input id="firstName" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required autoComplete="given-name" placeholder="Jean" className="w-full px-4 py-3.5 bg-primary-50/60 border border-primary-100 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent focus:bg-white transition-all" />
+              <input id="firstName" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required autoComplete="given-name" placeholder="Jean" className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent focus:bg-white transition-all" />
             </div>
             <div>
               <label htmlFor="lastName" className="block text-sm font-semibold text-gray-700 mb-1.5">Nom</label>
-              <input id="lastName" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required autoComplete="family-name" placeholder="Dupont" className="w-full px-4 py-3.5 bg-primary-50/60 border border-primary-100 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent focus:bg-white transition-all" />
+              <input id="lastName" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required autoComplete="family-name" placeholder="Dupont" className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent focus:bg-white transition-all" />
             </div>
           </div>
 
           <div>
             <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1.5">Adresse email</label>
-            <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" placeholder="votre@email.com" className="w-full px-4 py-3.5 bg-primary-50/60 border border-primary-100 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent focus:bg-white transition-all" />
+            <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" placeholder="votre@email.com" className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent focus:bg-white transition-all" />
           </div>
 
           <div>
             <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-1.5">Mot de passe</label>
-            <input id="password" type={showPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="new-password" placeholder="Minimum 6 caractères" className="w-full px-4 py-3.5 bg-primary-50/60 border border-primary-100 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent focus:bg-white transition-all" />
+            <input id="password" type={showPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="new-password" placeholder="Minimum 6 caractères" className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent focus:bg-white transition-all" />
             {password.length > 0 && (
               <div className="mt-2 flex gap-1">
                 <div className={`h-1 flex-1 rounded-full ${password.length >= 6 ? 'bg-emerald-400' : 'bg-red-300'}`}></div>
@@ -122,20 +122,20 @@ export default function InscriptionPage() {
 
           <div>
             <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-700 mb-1.5">Confirmer le mot de passe</label>
-            <input id="confirmPassword" type={showPassword ? 'text' : 'password'} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required autoComplete="new-password" placeholder="Retapez votre mot de passe" className={`w-full px-4 py-3.5 border rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent focus:bg-white transition-all ${confirmPassword && confirmPassword !== password ? 'border-red-300 bg-red-50/50' : 'bg-primary-50/60 border-primary-100'}`} />
+            <input id="confirmPassword" type={showPassword ? 'text' : 'password'} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required autoComplete="new-password" placeholder="Retapez votre mot de passe" className={`w-full px-4 py-3.5 border rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent focus:bg-white transition-all ${confirmPassword && confirmPassword !== password ? 'border-red-300 bg-red-50/50' : 'bg-slate-50 border-slate-200'}`} />
             {confirmPassword && confirmPassword !== password && (
               <p className="text-xs text-red-500 mt-1">Les mots de passe ne correspondent pas.</p>
             )}
           </div>
 
-          <button type="submit" disabled={loading} className="w-full py-3.5 px-6 bg-primary-600 hover:bg-primary-700 shadow-lg shadow-primary-600/25 hover:scale-[1.02] transition-all text-white text-sm font-semibold rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2">
+          <button type="submit" disabled={loading} className="w-full py-3.5 px-6 bg-slate-900 hover:bg-black hover:scale-[1.02] transition-all text-white text-sm font-semibold rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2">
             {loading ? 'Création en cours...' : 'Créer mon compte'}
           </button>
         </form>
 
         <p className="mt-8 text-center text-sm text-gray-400">
           Déjà un compte ?{' '}
-          <Link href="/connexion" className="text-primary-600 hover:text-primary-700 font-bold hover:underline">Se connecter</Link>
+          <Link href="/connexion" className="text-[#7b1636] hover:text-[#5a1028] font-bold hover:underline">Se connecter</Link>
         </p>
       </div>
     </div>

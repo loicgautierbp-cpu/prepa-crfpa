@@ -69,7 +69,7 @@ function LoadingFallback() {
   return (
     <div className="flex items-center justify-center py-20">
       <div className="text-center">
-        <div className="w-10 h-10 border-3 border-primary-200 border-t-primary-600 rounded-full animate-spin mx-auto mb-4"></div>
+        <div className="w-10 h-10 border-3 border-slate-200 border-t-slate-600 rounded-full animate-spin mx-auto mb-4"></div>
         <p className="text-sm text-gray-500">Chargement de l&apos;exercice...</p>
       </div>
     </div>
@@ -88,7 +88,7 @@ export default function EcritsClient() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
             <button
               onClick={() => setActiveEpreuve(null)}
-              className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary-600 transition-colors"
+              className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-[#7b1636] transition-colors"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
@@ -103,7 +103,7 @@ export default function EcritsClient() {
                   onClick={() => setActiveEpreuve(ep.id)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     activeEpreuve === ep.id
-                      ? 'bg-primary-600 text-white'
+                      ? 'bg-slate-900 text-white'
                       : 'text-gray-500 hover:bg-gray-100'
                   }`}
                 >
@@ -129,7 +129,7 @@ export default function EcritsClient() {
 
   // ----- Vue d'accueil : sélection de l'épreuve -----
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f5ece4] via-[#fdf2f3] to-[#f5ece4]">
+    <div className="min-h-screen bg-[#eceef1]">
       {/* Hero compact */}
       <section className="pt-12 pb-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -143,7 +143,7 @@ export default function EcritsClient() {
             Entraînement aux{' '}
             <span className="home-gradient-text">épreuves écrites</span>
           </h1>
-          <div className="w-12 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mt-4 mb-6 rounded-full"></div>
+          <div className="w-12 h-1 bg-[#7b1636] mx-auto mt-4 mb-6 rounded-full"></div>
           <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base">
             Choisissez une épreuve pour vous entraîner dans les conditions du CRFPA. Exercices générés et corrigés.
           </p>
@@ -157,28 +157,28 @@ export default function EcritsClient() {
             <button
               key={epreuve.id}
               onClick={() => setActiveEpreuve(epreuve.id)}
-              className="lift group relative bg-white rounded-xl border border-gray-200 p-6 sm:p-7 text-left transition-all hover:border-primary-300 hover:shadow-md"
+              className="lift group relative bg-white rounded-xl border border-gray-200 p-6 sm:p-7 text-left transition-all hover:border-slate-300 hover:shadow-md"
             >
               {/* Accent top border */}
-              <div className="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-primary-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
+              <div className="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-slate-300 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
 
               <div className="flex items-start gap-5">
                 {/* Icon */}
-                <div className="w-14 h-14 bg-primary-50 rounded-xl flex items-center justify-center text-primary-600 shrink-0 group-hover:bg-primary-100 transition-colors">
+                <div className="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-[#7b1636] shrink-0 group-hover:bg-slate-100 transition-colors">
                   {epreuve.icon}
                 </div>
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 mb-1.5">
-                    <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-lg font-bold text-gray-900 group-hover:text-primary-700 transition-colors">
+                    <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-lg font-bold text-gray-900 group-hover:text-slate-900 transition-colors">
                       {epreuve.label}
                     </h2>
                     <div className="flex items-center gap-2">
                       <span className="px-2.5 py-0.5 bg-gray-100 text-gray-600 text-xs font-semibold rounded-full">
                         {epreuve.duree}
                       </span>
-                      <span className="px-2.5 py-0.5 bg-primary-50 text-primary-700 text-xs font-bold rounded-full">
+                      <span className="px-2.5 py-0.5 bg-slate-50 text-slate-700 text-xs font-bold rounded-full">
                         Coeff. {epreuve.coeff}
                       </span>
                     </div>
@@ -200,7 +200,7 @@ export default function EcritsClient() {
 
                 {/* Arrow */}
                 <div className="shrink-0 self-center">
-                  <svg className="w-5 h-5 text-gray-300 group-hover:text-primary-500 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <svg className="w-5 h-5 text-gray-300 group-hover:text-[#7b1636] group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                   </svg>
                 </div>

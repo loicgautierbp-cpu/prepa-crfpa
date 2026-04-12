@@ -101,7 +101,7 @@ export default function CoursContent() {
           </div>
           <h1 className="text-2xl font-black text-gray-900 mb-3">Cours introuvable</h1>
           <p className="text-gray-500 mb-8">Le cours demande n&apos;existe pas.</p>
-          <Link href="/fiches" className="inline-flex px-6 py-3 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 transition-colors">
+          <Link href="/fiches" className="inline-flex px-6 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-colors">
             Retour aux fiches
           </Link>
         </div>
@@ -122,10 +122,10 @@ export default function CoursContent() {
           <h1 className="text-2xl font-black text-gray-900 mb-3">Connexion requise</h1>
           <p className="text-gray-500 mb-8">Connectez-vous pour accéder aux cours détaillés.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/connexion" className="px-6 py-3 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 transition-colors">
+            <Link href="/connexion" className="px-6 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-colors">
               Se connecter
             </Link>
-            <Link href="/fiches" className="px-6 py-3 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-colors">
+            <Link href="/fiches" className="px-6 py-3 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-200 hover:border-slate-300 transition-colors">
               Retour aux fiches
             </Link>
           </div>
@@ -147,10 +147,10 @@ export default function CoursContent() {
           <h1 className="text-2xl font-black text-gray-900 mb-3">Contenu réservé aux membres Essentiel</h1>
           <p className="text-gray-500 mb-8">Les cours détaillés sont accessibles à partir de la formule Essentiel. Profitez d&apos;explications approfondies pour chaque sujet.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/tarifs" className="px-6 py-3 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 transition-colors">
+            <Link href="/tarifs" className="px-6 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-colors">
               Voir les offres
             </Link>
-            <Link href="/fiches" className="px-6 py-3 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-200 hover:border-primary-300 transition-colors">
+            <Link href="/fiches" className="px-6 py-3 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-200 hover:border-slate-300 transition-colors">
               Retour aux fiches
             </Link>
           </div>
@@ -184,7 +184,7 @@ export default function CoursContent() {
           </div>
           <h1 className="text-2xl font-black text-gray-900 mb-3">Cours bientot disponible</h1>
           <p className="text-gray-500 mb-8">Le cours detaille pour &laquo; {fiche.title} &raquo; est en cours de redaction. Revenez bientot !</p>
-          <Link href="/fiches" className="inline-flex px-6 py-3 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 transition-colors">
+          <Link href="/fiches" className="inline-flex px-6 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-colors">
             Retour aux fiches
           </Link>
         </div>
@@ -198,7 +198,7 @@ export default function CoursContent() {
       {/* Reading progress bar */}
       <div className="fixed top-[64px] left-0 right-0 z-40 h-1 bg-gray-100">
         <div
-          className="h-full bg-primary-500 rounded-r-full transition-[width] duration-300"
+          className="h-full bg-[#7b1636] rounded-r-full transition-[width] duration-300"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -349,12 +349,12 @@ export default function CoursContent() {
                           href={`#${sectionId}`}
                           className={`group flex items-center gap-3 pl-4 py-2 text-sm border-l-2 rounded-r-lg transition-all hover:translate-x-1 ${
                             isActive
-                              ? 'border-l-primary-600 text-primary-600 font-bold'
+                              ? 'border-l-[#7b1636] text-[#7b1636] font-bold'
                               : 'border-l-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-400'
                           }`}
                         >
                           <span className={`w-5 h-5 rounded-md flex items-center justify-center text-[10px] font-bold shrink-0 transition-colors ${
-                            isActive ? 'bg-primary-100 text-primary-600' : 'bg-gray-100 group-hover:bg-gray-200 text-gray-400 group-hover:text-gray-600'
+                            isActive ? 'bg-slate-100 text-[#7b1636]' : 'bg-gray-100 group-hover:bg-gray-200 text-gray-400 group-hover:text-gray-600'
                           }`}>
                             {i + 1}
                           </span>
@@ -369,7 +369,7 @@ export default function CoursContent() {
                 <div className="mt-4">
                   <Link
                     href="/fiches"
-                    className="flex items-center gap-2 px-4 py-2.5 bg-white rounded-xl border border-gray-200 text-xs font-medium text-gray-500 hover:text-primary-600 hover:border-primary-300 transition-colors shadow-sm hover:shadow-md"
+                    className="flex items-center gap-2 px-4 py-2.5 bg-white rounded-xl border border-gray-200 text-xs font-medium text-gray-500 hover:text-[#7b1636] hover:border-slate-300 transition-colors shadow-sm hover:shadow-md"
                   >
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
@@ -411,7 +411,7 @@ export default function CoursContent() {
                 <div className="flex flex-col sm:flex-row gap-3 justify-between">
                   <Link
                     href="/fiches"
-                    className="inline-flex items-center gap-2 px-5 py-3 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-200 hover:border-primary-300 hover:text-primary-600 transition-all text-sm shadow-sm"
+                    className="inline-flex items-center gap-2 px-5 py-3 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-200 hover:border-slate-300 hover:text-[#7b1636] transition-all text-sm shadow-sm"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />

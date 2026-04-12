@@ -56,8 +56,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="py-16 md:py-24 bg-primary-50/40 dot-grid relative overflow-hidden">
-      <div className="geo-ring-light w-56 h-56 -top-16 right-[8%] hidden lg:block"></div>
+    <section id="faq" className="py-16 md:py-24 bg-[#eceef1]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl font-black text-gray-900 text-center mb-12">
           Questions fréquentes

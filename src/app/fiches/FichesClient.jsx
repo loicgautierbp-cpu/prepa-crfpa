@@ -152,7 +152,7 @@ function FloatingSubjectCards() {
           </div>
         );
       })}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-primary-100/40 rounded-2xl rotate-12 blur-[2px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-slate-100/40 rounded-2xl rotate-12 blur-[2px] pointer-events-none" />
     </div>
   );
 }
@@ -181,12 +181,12 @@ function FicheCard({ fiche, index, onOpen, premiumUser, user, onLoginRequired, o
           </div>
           <div className="flex-1 min-w-0">
             <span className={`text-[11px] font-bold uppercase tracking-wider ${colors.icon}`}>{subject?.name || ''}</span>
-            <h3 className="text-[15px] font-bold text-gray-900 leading-snug mt-0.5 group-hover:text-primary-700 transition-colors">{fiche.title}</h3>
+            <h3 className="text-[15px] font-bold text-gray-900 leading-snug mt-0.5 group-hover:text-slate-900 transition-colors">{fiche.title}</h3>
           </div>
         </div>
         <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 mb-4">{fiche.summary}</p>
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-primary-600 text-xs font-bold group-hover:gap-2.5 transition-all">
+          <div className="flex items-center gap-1.5 text-[#7b1636] text-xs font-bold group-hover:gap-2.5 transition-all">
             Lire la fiche
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -429,7 +429,7 @@ function FicheModal({ fiche, onClose, premiumUser, user, onLoginRequired, onUpgr
                       <p className="text-xs text-gray-400">R&eacute;serv&eacute; aux membres Essentiel</p>
                     </div>
                   </div>
-                  <span className="px-3 py-1.5 bg-primary-100 text-primary-700 text-xs font-bold rounded-full">Essentiel</span>
+                  <span className="px-3 py-1.5 bg-slate-100 text-slate-700 text-xs font-bold rounded-full">Essentiel</span>
                 </button>
               )}
             </div>
@@ -490,7 +490,7 @@ export default function FichesPage() {
   return (
     <>
       {/* ====== HERO ====== */}
-      <section className="bg-gradient-to-br from-[#f5ece4] via-[#fdf2f3] to-[#f5ece4] pt-28 pb-14 md:pt-36 md:pb-20 relative overflow-hidden">
+      <section className="bg-[#eceef1] pt-28 pb-14 md:pt-36 md:pb-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <div>
@@ -508,7 +508,7 @@ export default function FichesPage() {
                 </span>{' '}
                 en un clic
               </h1>
-              <div className="w-12 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mt-4 mb-6 rounded-full"></div>
+              <div className="w-12 h-1 bg-[#7b1636] mx-auto mt-4 mb-6 rounded-full"></div>
               <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-xl mx-auto">
                 Revisez efficacement avec des <strong className="text-gray-900">fiches de revision</strong> synthetiques et des{' '}
                 <strong className="text-gray-900">cours detailles</strong> couvrant le{' '}
@@ -519,8 +519,8 @@ export default function FichesPage() {
               {/* Stats row */}
               <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 bg-primary-100 rounded-xl flex items-center justify-center">
-                    <svg className="w-5 h-5 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <div className="w-11 h-11 bg-slate-100 rounded-xl flex items-center justify-center">
+                    <svg className="w-5 h-5 text-[#7b1636]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                     </svg>
                   </div>
@@ -573,7 +573,7 @@ export default function FichesPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Rechercher une fiche par titre ou mot-cle..."
-                className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-primary-300 focus:ring-[3px] focus:ring-primary-500/15 transition-all"
+                className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-slate-300 focus:ring-[3px] focus:ring-slate-500/15 transition-all"
               />
             </div>
 
@@ -583,7 +583,7 @@ export default function FichesPage() {
                 onClick={() => setCurrentSubject('all')}
                 className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
                   currentSubject === 'all'
-                    ? 'bg-primary-600 text-white shadow-md shadow-primary-500/25'
+                    ? 'bg-slate-900 text-white shadow-sm'
                     : 'bg-white text-gray-700 border border-gray-200 hover:border-gray-300'
                 }`}
               >
@@ -605,7 +605,7 @@ export default function FichesPage() {
                     onClick={() => setCurrentSubject(sub.id)}
                     className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
                       isActive
-                        ? 'bg-primary-600 text-white shadow-md shadow-primary-500/25'
+                        ? 'bg-slate-900 text-white shadow-sm'
                         : 'bg-white text-gray-700 border border-gray-200 hover:border-gray-300'
                     }`}
                   >

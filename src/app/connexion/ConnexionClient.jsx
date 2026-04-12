@@ -63,14 +63,14 @@ export default function ConnexionPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f5ece4] via-[#fdf2f3] to-[#f5ece4] flex items-center justify-center px-4 py-24 relative overflow-hidden">
+    <div className="min-h-screen bg-[#eceef1] flex items-center justify-center px-4 py-24 relative overflow-hidden">
 
       {/* Carte */}
-      <div className="w-full max-w-[440px] glass rounded-3xl shadow-xl shadow-primary-900/[0.06] p-8 sm:p-10 relative z-10">
+      <div className="w-full max-w-[440px] bg-white rounded-xl border border-slate-200 shadow-sm p-8 sm:p-10 relative z-10">
         {/* Logo */}
         <div className="flex justify-center mb-6">
-          <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center">
-            <svg className="w-9 h-9 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+          <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center">
+            <svg className="w-9 h-9 text-[#7b1636]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
             </svg>
           </div>
@@ -78,7 +78,7 @@ export default function ConnexionPage() {
 
         {/* Titre */}
         <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 text-center mb-1">Connectez-vous</h1>
-        <div className="w-12 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mt-4 mb-6 rounded-full"></div>
+        <div className="w-12 h-1 bg-[#7b1636] mx-auto mt-4 mb-6 rounded-full"></div>
         <p className="text-sm text-gray-400 text-center mb-8">pour accéder à votre espace d&apos;entraînement.</p>
 
         {/* Message de succès reset */}
@@ -139,7 +139,7 @@ export default function ConnexionPage() {
               Adresse email
             </label>
             <div className="relative">
-              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-primary-400">
+              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                 </svg>
@@ -152,7 +152,7 @@ export default function ConnexionPage() {
                 required
                 autoComplete="email"
                 placeholder="votre@email.com"
-                className="w-full pl-11 pr-4 py-3.5 bg-primary-50/60 border border-primary-100 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent focus:bg-white transition-all"
+                className="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent focus:bg-white transition-all"
               />
             </div>
           </div>
@@ -166,13 +166,13 @@ export default function ConnexionPage() {
               <button
                 type="button"
                 onClick={handleResetPassword}
-                className="text-xs text-primary-600 hover:text-primary-700 font-semibold hover:underline"
+                className="text-xs text-[#7b1636] hover:text-[#5a1028] font-semibold hover:underline"
               >
                 Oublié ?
               </button>
             </div>
             <div className="relative">
-              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-primary-400">
+              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
                 </svg>
@@ -185,7 +185,7 @@ export default function ConnexionPage() {
                 required
                 autoComplete="current-password"
                 placeholder="••••••••"
-                className="w-full pl-11 pr-12 py-3.5 bg-primary-50/60 border border-primary-100 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent focus:bg-white transition-all"
+                className="w-full pl-11 pr-12 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent focus:bg-white transition-all"
               />
               <button
                 type="button"
@@ -211,7 +211,7 @@ export default function ConnexionPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 px-6 bg-primary-600 hover:bg-primary-700 shadow-lg shadow-primary-600/25 hover:scale-[1.02] transition-all text-white text-sm font-semibold rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
+            className="w-full py-3.5 px-6 bg-slate-900 hover:bg-black hover:scale-[1.02] transition-all text-white text-sm font-semibold rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
           >
             {loading ? (
               <>
@@ -235,7 +235,7 @@ export default function ConnexionPage() {
         {/* Lien inscription */}
         <p className="mt-8 text-center text-sm text-gray-400">
           Pas encore de compte ?{' '}
-          <Link href="/inscription" className="text-primary-600 hover:text-primary-700 font-bold hover:underline">
+          <Link href="/inscription" className="text-[#7b1636] hover:text-[#5a1028] font-bold hover:underline">
             S&apos;inscrire gratuitement
           </Link>
         </p>
