@@ -45,6 +45,12 @@ html { scroll-behavior: smooth; }
 .quiz-card { animation: fadeInUp 0.5s ease-out; }
 .view-enter { animation: fadeInUp 0.3s ease-out; }
 
+/* ===== FLOAT ANIMATION ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
 /* ===== LIFT HOVER ===== */
 .lift { transition: all 0.2s ease; }
 .lift:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }

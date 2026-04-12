@@ -25,25 +25,43 @@ export default function HomePage() {
     <div className="bg-[#fdf5f7]">
 
       {/* ========== HERO ========== */}
-      <section className="relative pt-16 pb-12 md:pt-24 md:pb-20 overflow-hidden">
-        {/* Decorative scattered icons */}
-        <svg className="absolute top-12 right-[8%] w-16 h-16 text-[#9b2d50]/15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z" />
+      <section className="relative pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden min-h-[85vh] flex items-center bg-gradient-to-b from-[#f8eef1] via-[#fdf5f7] to-white">
+        {/* Decorative scattered icons with animations */}
+        {/* Balance de justice - haut centre */}
+        <svg className="hidden md:block absolute top-10 left-[42%] w-20 h-20 text-[#9b2d50]/15 animate-[float_6s_ease-in-out_infinite]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z" />
         </svg>
-        <svg className="absolute top-8 right-[22%] w-10 h-10 text-amber-400/30" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0Zm9.97-5.03a.75.75 0 0 1 0 1.06l-1.59 1.59a.75.75 0 1 1-1.06-1.06l1.59-1.59a.75.75 0 0 1 1.06 0Z"/>
+        {/* Personnage droit - gauche haut */}
+        <svg className="hidden md:block absolute top-16 left-[4%] w-24 h-24 text-[#9b2d50]/10 animate-[float_7s_ease-in-out_infinite_0.5s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
         </svg>
-        <svg className="absolute top-[40%] left-[3%] w-20 h-20 text-[#9b2d50]/10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1">
+        {/* Tribunal - gauche milieu */}
+        <svg className="hidden md:block absolute top-[50%] left-[3%] w-28 h-28 text-[#9b2d50]/8 animate-[float_8s_ease-in-out_infinite_1s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.7">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
         </svg>
-        <svg className="absolute bottom-16 left-[8%] w-14 h-14 text-[#9b2d50]/12" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1">
+        {/* Livre ouvert - bas gauche */}
+        <svg className="hidden md:block absolute bottom-20 left-[10%] w-20 h-20 text-[#9b2d50]/12 animate-[float_6s_ease-in-out_infinite_2s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>
         </svg>
-        <svg className="absolute bottom-[30%] right-[3%] w-12 h-12 text-amber-400/20" fill="currentColor" viewBox="0 0 24 24">
+        {/* Soleil doré - haut droite */}
+        <svg className="hidden md:block absolute top-12 right-[18%] w-14 h-14 text-amber-400/25 animate-[float_5s_ease-in-out_infinite_0.3s]" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0Z"/>
+        </svg>
+        {/* Smiley - droite milieu */}
+        <svg className="hidden lg:block absolute top-[45%] right-[4%] w-16 h-16 text-emerald-400/20 animate-[float_7s_ease-in-out_infinite_1.5s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z"/>
+        </svg>
+        {/* Étoile dorée - droite bas */}
+        <svg className="hidden md:block absolute bottom-[25%] right-[5%] w-12 h-12 text-amber-400/20 animate-[float_5s_ease-in-out_infinite_2.5s]" fill="currentColor" viewBox="0 0 24 24">
           <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd"/>
         </svg>
-        <svg className="absolute top-[60%] right-[15%] w-10 h-10 text-[#9b2d50]/10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z"/>
+        {/* Plante - bas centre droite */}
+        <svg className="hidden md:block absolute bottom-10 right-[30%] w-14 h-14 text-[#9b2d50]/10 animate-[float_6s_ease-in-out_infinite_3s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582" />
+        </svg>
+        {/* Document - haut gauche secondaire */}
+        <svg className="hidden lg:block absolute top-[30%] left-[18%] w-10 h-10 text-[#9b2d50]/8 animate-[float_8s_ease-in-out_infinite_4s]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="0.8">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/>
         </svg>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

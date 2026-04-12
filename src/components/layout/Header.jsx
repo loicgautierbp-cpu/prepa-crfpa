@@ -39,8 +39,16 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center">
-            <span style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-slate-900">Prépa <span className="text-[#9b2d50]">CRFPA</span></span>
+          <Link href="/" className="flex items-center gap-2.5">
+            <div className="w-10 h-10 bg-[#9b2d50] rounded-xl flex items-center justify-center">
+              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z" />
+              </svg>
+            </div>
+            <div>
+              <span style={{ fontFamily: 'var(--font-display)' }} className="text-xl text-slate-900 font-bold">Prépa <span className="text-[#9b2d50]">CRFPA</span></span>
+              <p className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase -mt-0.5">EXAMEN DU BARREAU</p>
+            </div>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
