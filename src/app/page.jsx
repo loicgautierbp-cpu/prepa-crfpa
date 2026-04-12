@@ -219,7 +219,7 @@ export default function HomePage() {
               };
               const c = colorMap[ue.color] || colorMap.teal;
               return (
-                <div key={ue.id} className={`bg-white rounded-xl p-5 border border-slate-200 border-t-4 ${c.top} hover:shadow-md transition-all`}>
+                <div key={ue.id} className="bg-white/70 backdrop-blur-sm rounded-xl p-5 border border-white/60 shadow-sm hover:shadow-lg hover:bg-white transition-all">
                   <div className={`w-10 h-10 ${c.iconBg} rounded-lg flex items-center justify-center mb-3 [&_svg]:w-5 [&_svg]:h-5 ${c.icon}`} dangerouslySetInnerHTML={{ __html: ue.icon }} />
                   <h3 className="font-semibold text-sm text-slate-900">{ue.name}</h3>
                 </div>
