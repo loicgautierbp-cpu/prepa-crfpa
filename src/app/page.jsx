@@ -239,7 +239,7 @@ export default function HomePage() {
       <FaqSection />
 
       {/* ========== CTA FINAL ========== */}
-      <section className="py-20 md:py-24 bg-[#042f2c]">
+      <section className="py-20 md:py-24 bg-gradient-to-br from-[#0f766e] to-[#042f2c]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl text-white mb-4">
             Prêt à réussir le barreau ?
