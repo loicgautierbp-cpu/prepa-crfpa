@@ -95,7 +95,7 @@ export default function FloatingIcons() {
   }, [generateSlots]);
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
       {slots.map((slot) => (
         <IconSlot
           key={slot.key}
