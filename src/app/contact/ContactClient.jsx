@@ -48,9 +48,9 @@ export default function ContactPage() {
       <section className="bg-[#eceef1] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 leading-[1.1] mb-4">
-            Nous <span className="text-[#4c1d95]">contacter</span>
+            Nous <span className="text-[#0d6560]">contacter</span>
           </h1>
-          <div className="w-12 h-1 bg-[#4c1d95] mx-auto mt-4 mb-6 rounded-full"></div>
+          <div className="w-12 h-1 bg-[#0d6560] mx-auto mt-4 mb-6 rounded-full"></div>
           <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
             Un bug, une suggestion ou une question ? N&apos;h&eacute;sitez pas &agrave; nous &eacute;crire.
           </p>
@@ -101,7 +101,7 @@ export default function ContactPage() {
                       onClick={() => setCategory(cat.id)}
                       className={`flex flex-col items-center gap-1.5 p-3 rounded-xl border-2 text-sm font-semibold transition-all ${
                         category === cat.id
-                          ? 'border-[#4c1d95] bg-slate-50 text-slate-700'
+                          ? 'border-[#0d6560] bg-slate-50 text-slate-700'
                           : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300'
                       }`}
                     >

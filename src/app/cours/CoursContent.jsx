@@ -198,13 +198,13 @@ export default function CoursContent() {
       {/* Reading progress bar */}
       <div className="fixed top-[64px] left-0 right-0 z-40 h-1 bg-gray-100">
         <div
-          className="h-full bg-[#4c1d95] rounded-r-full transition-[width] duration-300"
+          className="h-full bg-[#0d6560] rounded-r-full transition-[width] duration-300"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
 
       {/* ====== HERO ====== */}
-      <section className="relative pt-4 pb-5 md:pt-6 md:pb-6 overflow-hidden" style={{ background: 'linear-gradient(135deg, #2e1065 0%, #4c1d95 40%, #8f173b 70%, #ab1842 100%)' }}>
+      <section className="relative pt-4 pb-5 md:pt-6 md:pb-6 overflow-hidden" style={{ background: 'linear-gradient(135deg, #053d3a 0%, #0d6560 40%, #8f173b 70%, #ab1842 100%)' }}>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Breadcrumb */}
@@ -349,12 +349,12 @@ export default function CoursContent() {
                           href={`#${sectionId}`}
                           className={`group flex items-center gap-3 pl-4 py-2 text-sm border-l-2 rounded-r-lg transition-all hover:translate-x-1 ${
                             isActive
-                              ? 'border-l-[#4c1d95] text-[#4c1d95] font-bold'
+                              ? 'border-l-[#0d6560] text-[#0d6560] font-bold'
                               : 'border-l-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-400'
                           }`}
                         >
                           <span className={`w-5 h-5 rounded-md flex items-center justify-center text-[10px] font-bold shrink-0 transition-colors ${
-                            isActive ? 'bg-slate-100 text-[#4c1d95]' : 'bg-gray-100 group-hover:bg-gray-200 text-gray-400 group-hover:text-gray-600'
+                            isActive ? 'bg-slate-100 text-[#0d6560]' : 'bg-gray-100 group-hover:bg-gray-200 text-gray-400 group-hover:text-gray-600'
                           }`}>
                             {i + 1}
                           </span>
@@ -369,7 +369,7 @@ export default function CoursContent() {
                 <div className="mt-4">
                   <Link
                     href="/fiches"
-                    className="flex items-center gap-2 px-4 py-2.5 bg-white rounded-xl border border-gray-200 text-xs font-medium text-gray-500 hover:text-[#4c1d95] hover:border-slate-300 transition-colors shadow-sm hover:shadow-md"
+                    className="flex items-center gap-2 px-4 py-2.5 bg-white rounded-xl border border-gray-200 text-xs font-medium text-gray-500 hover:text-[#0d6560] hover:border-slate-300 transition-colors shadow-sm hover:shadow-md"
                   >
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
@@ -411,7 +411,7 @@ export default function CoursContent() {
                 <div className="flex flex-col sm:flex-row gap-3 justify-between">
                   <Link
                     href="/fiches"
-                    className="inline-flex items-center gap-2 px-5 py-3 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-200 hover:border-slate-300 hover:text-[#4c1d95] transition-all text-sm shadow-sm"
+                    className="inline-flex items-center gap-2 px-5 py-3 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-200 hover:border-slate-300 hover:text-[#0d6560] transition-all text-sm shadow-sm"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />

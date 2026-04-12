@@ -55,14 +55,14 @@ export default function InscriptionPage() {
       <div className="w-full max-w-[440px] bg-white rounded-xl border border-slate-200 shadow-sm p-8 sm:p-10 relative z-10">
         <div className="flex justify-center mb-6">
           <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center">
-            <svg className="w-9 h-9 text-[#4c1d95]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+            <svg className="w-9 h-9 text-[#0d6560]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z" />
             </svg>
           </div>
         </div>
 
         <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 text-center mb-1">Créez votre compte</h1>
-        <div className="w-12 h-1 bg-[#4c1d95] mx-auto mt-4 mb-6 rounded-full"></div>
+        <div className="w-12 h-1 bg-[#0d6560] mx-auto mt-4 mb-6 rounded-full"></div>
         <p className="text-sm text-gray-400 text-center mb-8">et commencez votre préparation au CRFPA.</p>
 
         {error && (
@@ -128,14 +128,14 @@ export default function InscriptionPage() {
             )}
           </div>
 
-          <button type="submit" disabled={loading} className="w-full py-3.5 px-6 bg-[#4c1d95] hover:bg-[#3b0764] hover:scale-[1.02] transition-all text-white text-sm font-semibold rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2">
+          <button type="submit" disabled={loading} className="w-full py-3.5 px-6 bg-[#0d6560] hover:bg-[#064e4a] hover:scale-[1.02] transition-all text-white text-sm font-semibold rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2">
             {loading ? 'Création en cours...' : 'Créer mon compte'}
           </button>
         </form>
 
         <p className="mt-8 text-center text-sm text-gray-400">
           Déjà un compte ?{' '}
-          <Link href="/connexion" className="text-[#4c1d95] hover:text-[#5a1028] font-bold hover:underline">Se connecter</Link>
+          <Link href="/connexion" className="text-[#0d6560] hover:text-[#5a1028] font-bold hover:underline">Se connecter</Link>
         </p>
       </div>
     </div>

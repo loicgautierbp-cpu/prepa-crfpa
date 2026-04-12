@@ -43,7 +43,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <body className={`${sora.className} ${youngSerif.variable} bg-[#f5f3ff] text-slate-900 antialiased`}>
+      <body className={`${sora.className} ${youngSerif.variable} bg-[#f0fdfa] text-slate-900 antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
