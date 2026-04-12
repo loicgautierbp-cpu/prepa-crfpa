@@ -137,6 +137,45 @@ export const COURS_SYNTHESE = {
 </ul>
 
 <div class="fiche-key-point">Point clé : La note de synthèse n'est ni une dissertation, ni un résumé document par document. C'est un exercice de synthèse transversale qui exige d'exploiter tous les documents, de les croiser autour d'un plan structuré, et de restituer objectivement les informations sans aucun apport personnel.</div>`
+      },
+      {
+        title: "L'entraînement et la gestion du temps le jour J",
+        content: `<p>La réussite de la note de synthèse repose en grande partie sur la <b>préparation en amont</b> et la <b>gestion rigoureuse du temps</b> le jour de l'épreuve. Les 5 heures imparties ne laissent aucune place à l'improvisation.</p>
+
+<h4>A. Le planning détaillé des 5 heures</h4>
+<p>Un découpage précis du temps est indispensable et doit être intériorisé par l'entraînement :</p>
+<ul>
+  <li><b>Lecture et analyse du dossier (1h30)</b> : lecture exploratoire (20 min), puis lecture approfondie avec surlignage, annotation et numérotation des informations clés (1h10). À la fin de cette phase, toutes les informations essentielles doivent être identifiées et classées par thèmes.</li>
+  <li><b>Élaboration du plan (1h)</b> : regroupement des informations par idées directrices, formulation de la problématique, construction du plan en deux parties et deux sous-parties, vérification de l'équilibre et de l'exhaustivité, rédaction des intitulés. Le plan détaillé sert de feuille de route pour la rédaction.</li>
+  <li><b>Rédaction (2h)</b> : rédaction de l'introduction (15 min), du corps de la note (1h30) et de la conclusion (15 min). Le rythme doit être soutenu et régulier. Ne pas revenir en arrière ni chercher à peaufiner excessivement un passage.</li>
+  <li><b>Relecture (30 min)</b> : vérification de l'orthographe, de la syntaxe, de la cohérence du plan, du référencement des documents. Corriger les coquilles et améliorer les transitions si nécessaire.</li>
+</ul>
+
+<h4>B. Techniques de gestion du stress</h4>
+<ul>
+  <li><b>Respiration contrôlée</b> : avant le début de l'épreuve et en cas de blocage, pratiquer des respirations profondes (inspirer 4 secondes, expirer 6 secondes) pour réduire l'anxiété et retrouver sa concentration.</li>
+  <li><b>Ancrage temporel</b> : noter l'heure de début de chaque phase sur le brouillon et s'y tenir. Se fixer des micro-objectifs (par exemple : « à 10h30, mon plan doit être terminé »).</li>
+  <li><b>Accepter l'imperfection</b> : la note de synthèse n'exige pas la perfection. Un plan correct avec un contenu complet vaut mieux qu'un plan parfait inachevé.</li>
+</ul>
+
+<h4>C. Checklist finale avant de rendre la copie</h4>
+<ul>
+  <li>Tous les documents du dossier sont-ils référencés au moins une fois ?</li>
+  <li>Le plan est-il apparent avec des titres clairs (I/A/B - II/A/B) ?</li>
+  <li>L'introduction contient-elle une problématique et une annonce de plan ?</li>
+  <li>Aucune connaissance personnelle n'a-t-elle été ajoutée ?</li>
+  <li>La copie est-elle lisible et les pages numérotées ?</li>
+</ul>
+
+<h4>D. Conseils d'anciens admis</h4>
+<ul>
+  <li><b>S'entraîner régulièrement</b> : réaliser au minimum 5 à 10 notes de synthèse complètes en conditions d'examen avant le jour J. La vitesse et la méthode s'acquièrent par la répétition.</li>
+  <li><b>Chronométrer chaque phase</b> : lors des entraînements, respecter strictement le découpage temporel pour créer des automatismes.</li>
+  <li><b>Travailler à partir de dossiers réels</b> : utiliser les annales des sessions précédentes du CRFPA pour se familiariser avec la longueur et la complexité des dossiers.</li>
+  <li><b>Se faire corriger</b> : soumettre ses notes à des correcteurs expérimentés ou à des groupes de travail pour identifier ses points faibles et progresser.</li>
+</ul>
+
+<div class="fiche-key-point">Point clé : La gestion du temps est déterminante. Le planning des 5 heures doit être préparé et automatisé par l'entraînement : lecture 1h30, plan 1h, rédaction 2h, relecture 30 min. Ne jamais sacrifier la relecture ni se laisser absorber par un seul document.</div>`
       }
     ]
   },

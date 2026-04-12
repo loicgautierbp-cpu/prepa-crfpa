@@ -63,19 +63,10 @@ export default function ConnexionPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f0f4ff] flex items-center justify-center px-4 py-24 relative overflow-hidden">
-      {/* Textures flottantes arrière-plan */}
-      <div className="absolute w-64 h-64 bg-primary-400/[0.07] rounded-full filter blur-[80px] top-[10%] left-[5%]"></div>
-      <div className="absolute w-48 h-48 bg-violet-400/[0.06] rounded-full filter blur-[60px] bottom-[15%] right-[8%]"></div>
-      <div className="absolute w-32 h-32 bg-primary-300/[0.05] rounded-full filter blur-[40px] top-[60%] left-[60%]"></div>
-
-      <div className="geo-circle-light w-48 h-48 top-[8%] right-[15%]"></div>
-      <div className="geo-circle-light w-32 h-32 bottom-[12%] left-[10%]"></div>
-      <div className="geo-ring-light w-40 h-40 top-[50%] left-[5%]"></div>
-      <div className="geo-ring-light w-28 h-28 top-[20%] right-[6%]"></div>
+    <div className="min-h-screen bg-gradient-to-br from-[#f5ece4] via-[#fdf2f3] to-[#f5ece4] flex items-center justify-center px-4 py-24 relative overflow-hidden">
 
       {/* Carte */}
-      <div className="w-full max-w-[440px] bg-white rounded-3xl shadow-xl shadow-primary-900/[0.06] p-8 sm:p-10 relative z-10">
+      <div className="w-full max-w-[440px] glass rounded-3xl shadow-xl shadow-primary-900/[0.06] p-8 sm:p-10 relative z-10">
         {/* Logo */}
         <div className="flex justify-center mb-6">
           <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center">
@@ -86,7 +77,8 @@ export default function ConnexionPage() {
         </div>
 
         {/* Titre */}
-        <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-2xl font-black text-gray-900 text-center mb-1">Connectez-vous</h1>
+        <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 text-center mb-1">Connectez-vous</h1>
+        <div className="w-12 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mt-4 mb-6 rounded-full"></div>
         <p className="text-sm text-gray-400 text-center mb-8">pour accéder à votre espace d&apos;entraînement.</p>
 
         {/* Message de succès reset */}
@@ -219,7 +211,7 @@ export default function ConnexionPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 px-6 bg-primary-950 text-white text-sm font-semibold rounded-xl hover:bg-primary-900 transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
+            className="w-full py-3.5 px-6 bg-primary-600 hover:bg-primary-700 shadow-lg shadow-primary-600/25 hover:scale-[1.02] transition-all text-white text-sm font-semibold rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
           >
             {loading ? (
               <>

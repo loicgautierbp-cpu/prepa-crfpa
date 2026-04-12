@@ -43,135 +43,54 @@ export default function BlogPage() {
   return (
     <>
       {/* Hero */}
-      <section className="gradient-hero noise-overlay dot-grid pt-28 pb-14 md:pt-36 md:pb-20 relative overflow-hidden">
-        <div className="blob-1"></div>
-        <div className="blob-2"></div>
-        <div className="absolute w-[250px] h-[250px] bg-purple-300/8 rounded-full blur-[80px] top-1/3 right-1/4 pointer-events-none"></div>
-        <div className="geo-circle-light w-40 h-40 top-24 right-[10%] hidden lg:block"></div>
-        <div className="geo-ring-light w-56 h-56 -bottom-12 left-[5%] hidden lg:block"></div>
+      <section className="bg-gradient-to-br from-[#f5ece4] via-[#fdf2f3] to-[#f5ece4] pt-28 pb-14 md:pt-36 md:pb-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Left: Text */}
-            <div>
-              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full border border-primary-200 mb-6">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-500"></span>
-                </span>
-                <span className="text-sm font-semibold text-primary-700">Ressources &amp; actualit&eacute;s</span>
-              </div>
-              <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-black text-gray-900 leading-[1.1] mb-5">
-                Blog &amp; <span className="blog-gradient-text">Conseils</span> CRFPA
-              </h1>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-xl">
-                Guides pratiques, <strong className="text-gray-900">conseils m&eacute;thodologiques</strong> et actualit&eacute;s pour maximiser vos chances de r&eacute;ussite &agrave; l&rsquo;<strong className="text-gray-900">examen du barreau</strong>.
-              </p>
-              {/* Stats row */}
-              <div className="flex flex-wrap items-center gap-5 sm:gap-6">
-                <div className="blog-stat flex items-center gap-3">
-                  <div className="w-11 h-11 bg-primary-100 rounded-xl flex items-center justify-center">
-                    <svg className="w-5 h-5 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6V7.5Z" /></svg>
-                  </div>
-                  <div>
-                    <div className="text-xl font-black text-gray-900">{BLOG_ARTICLES.length}</div>
-                    <div className="text-xs font-medium text-gray-500">Articles</div>
-                  </div>
-                </div>
-                <div className="w-px h-10 bg-gray-200/60 hidden sm:block"></div>
-                <div className="blog-stat flex items-center gap-3">
-                  <div className="w-11 h-11 bg-purple-100 rounded-xl flex items-center justify-center">
-                    <svg className="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6Z" /></svg>
-                  </div>
-                  <div>
-                    <div className="text-xl font-black text-gray-900">{categories.length}</div>
-                    <div className="text-xs font-medium text-gray-500">Cat&eacute;gories</div>
-                  </div>
-                </div>
-                <div className="w-px h-10 bg-gray-200/60 hidden sm:block"></div>
-                <div className="blog-stat flex items-center gap-3">
-                  <div className="w-11 h-11 bg-green-100 rounded-xl flex items-center justify-center">
-                    <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
-                  </div>
-                  <div>
-                    <div className="text-xl font-black text-gray-900">5 min</div>
-                    <div className="text-xs font-medium text-gray-500">Lecture moyenne</div>
-                  </div>
-                </div>
-              </div>
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full border border-primary-200 mb-6">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-500"></span>
+              </span>
+              <span className="text-sm font-semibold text-primary-700">Ressources &amp; actualit&eacute;s</span>
             </div>
-
-            {/* Right: Floating blog category cards */}
-            <div className="hidden lg:block relative h-[320px]">
-              {/* Card 1 - Orientation (blue) */}
-              <div className="blog-float absolute top-0 left-4 w-[220px] bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg shadow-blue-500/10 border border-blue-100/50 p-5">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
-                  </div>
-                  <div>
-                    <div className="text-sm font-bold text-blue-700">Orientation</div>
-                    <div className="text-[10px] text-gray-400">Choisir sa sp&eacute;cialit&eacute;</div>
-                  </div>
+            <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight mb-5">
+              Blog &amp; <span className="blog-gradient-text">Conseils</span> CRFPA
+            </h1>
+            <div className="w-12 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mt-4 mb-6 rounded-full"></div>
+            <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-xl mx-auto">
+              Guides pratiques, <strong className="text-gray-900">conseils m&eacute;thodologiques</strong> et actualit&eacute;s pour maximiser vos chances de r&eacute;ussite &agrave; l&rsquo;<strong className="text-gray-900">examen du barreau</strong>.
+            </p>
+            {/* Stats row */}
+            <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
+              <div className="blog-stat flex items-center gap-3">
+                <div className="w-11 h-11 bg-primary-100 rounded-xl flex items-center justify-center">
+                  <svg className="w-5 h-5 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6V7.5Z" /></svg>
                 </div>
-                <div className="space-y-1.5">
-                  <div className="h-2 bg-blue-100 rounded-full w-full"></div>
-                  <div className="h-2 bg-blue-50 rounded-full w-3/4"></div>
-                </div>
-              </div>
-
-              {/* Card 2 - Methodologie (purple) */}
-              <div className="blog-float-reverse absolute top-4 right-0 w-[220px] bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg shadow-purple-500/10 border border-purple-100/50 p-5">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-4 h-4 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" /></svg>
-                  </div>
-                  <div>
-                    <div className="text-sm font-bold text-purple-700">M&eacute;thodologie</div>
-                    <div className="text-[10px] text-gray-400">5 erreurs &agrave; &eacute;viter</div>
-                  </div>
-                </div>
-                <div className="space-y-1.5">
-                  <div className="h-2 bg-purple-100 rounded-full w-full"></div>
-                  <div className="h-2 bg-purple-50 rounded-full w-4/5"></div>
+                <div>
+                  <div className="text-xl font-black text-gray-900">{BLOG_ARTICLES.length}</div>
+                  <div className="text-xs font-medium text-gray-500">Articles</div>
                 </div>
               </div>
-
-              {/* Card 3 - Conseils (green) */}
-              <div className="blog-float absolute bottom-10 -left-1 w-[220px] bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg shadow-green-500/10 border border-green-100/50 p-5">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 bg-green-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
-                  </div>
-                  <div>
-                    <div className="text-sm font-bold text-green-700">Conseils</div>
-                    <div className="text-[10px] text-gray-400">Organiser ses r&eacute;visions</div>
-                  </div>
+              <div className="w-px h-10 bg-gray-200/60 hidden sm:block"></div>
+              <div className="blog-stat flex items-center gap-3">
+                <div className="w-11 h-11 bg-purple-100 rounded-xl flex items-center justify-center">
+                  <svg className="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6Z" /></svg>
                 </div>
-                <div className="space-y-1.5">
-                  <div className="h-2 bg-green-100 rounded-full w-full"></div>
-                  <div className="h-2 bg-green-50 rounded-full w-2/3"></div>
+                <div>
+                  <div className="text-xl font-black text-gray-900">{categories.length}</div>
+                  <div className="text-xs font-medium text-gray-500">Cat&eacute;gories</div>
                 </div>
               </div>
-
-              {/* Card 4 - Bien-etre (pink) */}
-              <div className="blog-float-reverse absolute bottom-0 right-6 w-[220px] bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg shadow-pink-500/10 border border-pink-100/50 p-5">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 bg-pink-100 rounded-lg flex items-center justify-center">
-                    <svg className="w-4 h-4 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" /></svg>
-                  </div>
-                  <div>
-                    <div className="text-sm font-bold text-pink-700">Bien-&ecirc;tre</div>
-                    <div className="text-[10px] text-gray-400">G&eacute;rer le stress</div>
-                  </div>
+              <div className="w-px h-10 bg-gray-200/60 hidden sm:block"></div>
+              <div className="blog-stat flex items-center gap-3">
+                <div className="w-11 h-11 bg-green-100 rounded-xl flex items-center justify-center">
+                  <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
                 </div>
-                <div className="space-y-1.5">
-                  <div className="h-2 bg-pink-100 rounded-full w-full"></div>
-                  <div className="h-2 bg-pink-50 rounded-full w-5/6"></div>
+                <div>
+                  <div className="text-xl font-black text-gray-900">5 min</div>
+                  <div className="text-xs font-medium text-gray-500">Lecture moyenne</div>
                 </div>
               </div>
-
-              {/* Decorative center */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-primary-100/30 rounded-2xl rotate-12 blur-[2px]"></div>
             </div>
           </div>
         </div>
@@ -218,7 +137,7 @@ export default function BlogPage() {
               return (
                 <article
                   key={a.id}
-                  className="blog-card bg-white rounded-2xl border border-gray-200 overflow-hidden cursor-pointer"
+                  className="blog-card lift bg-white rounded-2xl border border-gray-200 overflow-hidden cursor-pointer"
                   onClick={() => openArticle(a.id)}
                 >
                   <div className="h-2 bg-primary-500"></div>

@@ -254,6 +254,274 @@ export const COURS_SOCIAL = {
         </ul>
         <p><b>Le cas du salarié protégé :</b></p>
         <p>Aucune modification du contrat ni changement des conditions de travail ne peut être imposé à un salarié protégé. Le refus ne constitue pas une faute et ne peut fonder un licenciement (Cass. soc., 13 janvier 2009).</p>`
+      },
+      {
+        title: "La rupture du contrat de travail hors licenciement",
+        content: `<p>Le contrat de travail peut être rompu par d'autres modes que le licenciement. Ces modes de rupture obéissent chacun à un régime juridique spécifique, dont la maîtrise est indispensable en droit social.</p>
+        <p><b>1. La démission :</b></p>
+        <ul>
+          <li>Acte unilatéral par lequel le salarié manifeste de façon <b>claire et non équivoque</b> sa volonté de rompre le contrat (Cass. soc., 9 mai 2007). Aucun formalisme n'est imposé par la loi, sauf dispositions conventionnelles.</li>
+          <li>Le salarié doit respecter un <b>délai de préavis</b> fixé par la loi, la convention collective ou les usages.</li>
+          <li>La démission ne donne pas droit aux allocations chômage, sauf cas de démission légitime (violences conjugales, non-paiement des salaires, etc.).</li>
+        </ul>
+        <p><b>2. La rupture conventionnelle individuelle (art. L. 1237-11 à L. 1237-16 C. trav.) :</b></p>
+        <ul>
+          <li>Mode de rupture amiable du CDI introduit par la loi du 25 juin 2008, permettant à l'employeur et au salarié de convenir d'un commun accord des conditions de la rupture.</li>
+          <li><b>Procédure</b> : un ou plusieurs entretiens, signature d'une convention fixant la date de rupture et le montant de l'indemnité spécifique (au moins égale à l'indemnité légale de licenciement), <b>délai de rétractation de 15 jours calendaires</b>, puis <b>homologation par la DREETS</b> (délai d'instruction de 15 jours ouvrables, le silence valant homologation).</li>
+          <li>La rupture conventionnelle ouvre droit aux <b>allocations chômage</b>.</li>
+          <li>Le consentement doit être libre : la convention est nulle en cas de vice du consentement (Cass. soc., 23 mai 2013) ou de harcèlement moral (Cass. soc., 30 janvier 2013).</li>
+        </ul>
+        <p><b>3. La prise d'acte de la rupture :</b></p>
+        <ul>
+          <li>Le salarié prend acte de la rupture en raison de faits qu'il reproche à l'employeur. Le juge prud'homal apprécie si les manquements invoqués sont <b>suffisamment graves</b> pour empêcher la poursuite du contrat (Cass. soc., 26 mars 2014).</li>
+          <li>Si les faits sont établis et suffisamment graves : la prise d'acte produit les effets d'un <b>licenciement sans cause réelle et sérieuse</b> (ou nul si les faits le justifient).</li>
+          <li>Si les faits ne sont pas établis ou insuffisamment graves : elle produit les effets d'une <b>démission</b>.</li>
+        </ul>
+        <p><b>4. La résiliation judiciaire :</b></p>
+        <ul>
+          <li>Le salarié saisit le conseil de prud'hommes pour demander la résiliation du contrat aux torts de l'employeur en raison de manquements graves à ses obligations (non-paiement des salaires, modification unilatérale du contrat, harcèlement).</li>
+          <li>Pendant la procédure, le contrat <b>continue de s'exécuter</b>. Si la résiliation est prononcée, elle produit les effets d'un licenciement sans cause réelle et sérieuse à la date du jugement.</li>
+        </ul>
+        <p><b>5. La force majeure (art. L. 1234-12 C. trav.) :</b></p>
+        <ul>
+          <li>Événement <b>extérieur, imprévisible et irrésistible</b> rendant impossible la poursuite du contrat. Application très restrictive par la jurisprudence (Cass. soc., 12 février 2003 : la liquidation judiciaire ne constitue pas un cas de force majeure).</li>
+          <li>La rupture est immédiate, sans préavis ni procédure. Le salarié perçoit une indemnité compensatrice si la force majeure est d'origine professionnelle (art. L. 1234-13).</li>
+        </ul>
+        <p><b>6. La mise à la retraite et le départ volontaire à la retraite :</b></p>
+        <ul>
+          <li><b>Mise à la retraite</b> (art. L. 1237-5 C. trav.) : décision de l'employeur, possible à partir de <b>70 ans</b> ou, entre 67 et 69 ans, avec l'accord du salarié (procédure d'interrogation annuelle). Indemnité au moins égale à l'indemnité de licenciement.</li>
+          <li><b>Départ volontaire</b> (art. L. 1237-9) : initiative du salarié ayant atteint l'âge d'ouverture du droit à pension. Indemnité de départ à la retraite (inférieure à l'indemnité de licenciement).</li>
+        </ul>`
+      }
+    ]
+  },
+  'social-representation': {
+    introduction: "La représentation du personnel, profondément réformée par les ordonnances Macron du 22 septembre 2017, est désormais unifiée au sein du Comité social et économique (CSE). Instance unique de représentation, le CSE se substitue aux anciennes institutions (délégués du personnel, comité d'entreprise, CHSCT) et constitue l'interlocuteur central des salariés dans l'entreprise. Sa maîtrise est essentielle pour le CRFPA en droit social.",
+    readTime: 20,
+    sections: [
+      {
+        title: "Le Comité social et économique (CSE) : mise en place et composition",
+        content: `<p>Le <b>Comité social et économique</b> (CSE), institué par l'ordonnance n° 2017-1386 du 22 septembre 2017, est l'instance unique de représentation du personnel dans les entreprises d'au moins <b>11 salariés</b> (art. L. 2311-2 C. trav.). Il fusionne les anciennes instances représentatives du personnel.</p>
+        <p><b>Les conditions de mise en place :</b></p>
+        <ul>
+          <li><b>Seuil d'effectif</b> : le CSE est obligatoire dans les entreprises d'au moins 11 salariés pendant <b>12 mois consécutifs</b> (art. L. 2311-2). Le calcul de l'effectif obéit aux règles des articles L. 1111-2 et L. 1111-3.</li>
+          <li><b>Obligation de l'employeur</b> : l'employeur doit organiser les élections. À défaut, il commet un délit d'entrave (art. L. 2317-1) puni d'un an d'emprisonnement et 7 500 euros d'amende.</li>
+          <li><b>Carence</b> : si aucun candidat ne se présente ou si le quorum n'est pas atteint, un procès-verbal de carence est dressé et transmis à l'inspection du travail (art. L. 2314-9).</li>
+        </ul>
+        <p><b>La composition du CSE :</b></p>
+        <ul>
+          <li><b>Présidence</b> : l'employeur ou son représentant, assisté éventuellement de 3 collaborateurs (art. L. 2315-23).</li>
+          <li><b>Délégation élue du personnel</b> : nombre de titulaires et de suppléants fixé par le décret n° 2017-1819 en fonction de l'effectif (ex. : 1 titulaire et 1 suppléant pour 11 à 24 salariés, 4 pour 50 à 74 salariés, etc.).</li>
+          <li><b>Représentant syndical au CSE</b> : chaque organisation syndicale représentative peut désigner un représentant syndical au CSE (art. L. 2314-2).</li>
+          <li><b>Secrétaire et trésorier</b> : désignés parmi les membres titulaires dans les entreprises d'au moins 50 salariés (art. L. 2315-23 al. 2).</li>
+        </ul>
+        <p><b>Le mandat :</b></p>
+        <ul>
+          <li>La durée du mandat est de <b>4 ans</b> (art. L. 2314-33), réduite à 2 ou 3 ans par accord collectif.</li>
+          <li>Le nombre de mandats successifs est limité à <b>3</b>, sauf dans les entreprises de moins de 50 salariés ou disposition contraire d'un accord collectif (art. L. 2314-33).</li>
+        </ul>`
+      },
+      {
+        title: "Les élections professionnelles",
+        content: `<p>Les <b>élections professionnelles</b> du CSE obéissent à des règles précises qui garantissent la sincérité du scrutin et la représentativité des élus. Elles constituent par ailleurs le principal critère de mesure de la <b>représentativité syndicale</b> dans l'entreprise.</p>
+        <p><b>L'initiative des élections :</b></p>
+        <ul>
+          <li>L'employeur doit engager le processus électoral en <b>informant le personnel</b> de l'organisation des élections, puis en <b>invitant les organisations syndicales</b> intéressées à négocier le protocole d'accord préélectoral (PAP) et à établir leurs listes de candidats (art. L. 2314-5).</li>
+          <li>Un salarié ou une organisation syndicale peut demander l'organisation des élections en l'absence d'initiative de l'employeur (art. L. 2314-8).</li>
+        </ul>
+        <p><b>Le protocole d'accord préélectoral (PAP) :</b></p>
+        <ul>
+          <li>Le PAP fixe les <b>modalités d'organisation</b> des élections : répartition du personnel et des sièges entre les collèges électoraux, horaires et lieu du scrutin.</li>
+          <li><b>Double condition de majorité</b> (art. L. 2314-6) : le PAP doit être signé par la majorité des organisations syndicales ayant participé à la négociation, dont les organisations syndicales représentatives ayant recueilli la majorité des suffrages exprimés aux dernières élections.</li>
+          <li>Le PAP peut modifier le nombre et la composition des collèges électoraux (sous réserve de respecter l'article L. 2314-11 imposant un collège spécifique pour les cadres dans les entreprises de plus de 25 cadres).</li>
+        </ul>
+        <p><b>Le scrutin :</b></p>
+        <ul>
+          <li><b>Mode de scrutin</b> : scrutin de liste à <b>deux tours</b> avec représentation proportionnelle à la plus forte moyenne (art. L. 2314-29).</li>
+          <li><b>Premier tour</b> : réservé aux listes présentées par les organisations syndicales. Le quorum doit être atteint (nombre de votants au moins égal à la moitié des électeurs inscrits).</li>
+          <li><b>Second tour</b> : organisé dans les 15 jours si le quorum n'est pas atteint au premier tour ou si tous les sièges n'ont pas été pourvus. Les candidatures libres sont possibles.</li>
+          <li><b>Représentation équilibrée femmes-hommes</b> (art. L. 2314-30) : les listes doivent être composées d'un nombre de femmes et d'hommes correspondant à leur proportion dans le collège, sous peine d'annulation de l'élection des candidats du sexe surreprésenté.</li>
+        </ul>`
+      },
+      {
+        title: "Les attributions du CSE",
+        content: `<p>Les <b>attributions du CSE</b> varient selon l'effectif de l'entreprise. La distinction fondamentale oppose les entreprises de <b>11 à 49 salariés</b> et les entreprises d'<b>au moins 50 salariés</b>.</p>
+        <p><b>Dans les entreprises de 11 à 49 salariés (art. L. 2312-5 et s.) :</b></p>
+        <ul>
+          <li>La délégation du personnel au CSE a pour mission de <b>présenter à l'employeur les réclamations</b> individuelles ou collectives relatives aux salaires, à l'application du Code du travail et des accords collectifs.</li>
+          <li>Elle contribue à promouvoir la <b>santé, la sécurité et les conditions de travail</b> et peut exercer le droit d'alerte en cas d'atteinte aux droits des personnes (art. L. 2312-5 al. 2).</li>
+          <li>Elle peut saisir l'<b>inspection du travail</b> de toute plainte et observation relatives à l'application des dispositions légales et conventionnelles.</li>
+        </ul>
+        <p><b>Dans les entreprises d'au moins 50 salariés (art. L. 2312-8 et s.) :</b></p>
+        <ul>
+          <li><b>Attributions économiques</b> : le CSE est <b>informé et consulté</b> sur les questions intéressant l'organisation, la gestion et la marche générale de l'entreprise, notamment sur les mesures affectant le volume ou la structure des effectifs, la durée du travail, les conditions d'emploi et de formation.</li>
+          <li><b>Trois consultations récurrentes obligatoires</b> (art. L. 2312-17) : les orientations stratégiques de l'entreprise, la situation économique et financière, la politique sociale, les conditions de travail et l'emploi.</li>
+          <li><b>Consultations ponctuelles</b> (art. L. 2312-8 et L. 2312-37) : restructurations, licenciements collectifs, introduction de nouvelles technologies, modifications importantes de l'organisation du travail.</li>
+          <li><b>Attributions en matière de santé et sécurité</b> : le CSE reprend les anciennes missions du CHSCT. Il peut constituer une <b>Commission santé, sécurité et conditions de travail</b> (CSSCT), obligatoire dans les entreprises d'au moins 300 salariés (art. L. 2315-36).</li>
+          <li><b>Activités sociales et culturelles</b> (art. L. 2312-78) : gestion des œuvres sociales au bénéfice des salariés (chèques vacances, billetterie, activités sportives et culturelles).</li>
+        </ul>
+        <p><b>Le droit d'alerte :</b></p>
+        <ul>
+          <li><b>Alerte économique</b> (art. L. 2312-63) : lorsque le CSE a connaissance de faits de nature à affecter de manière préoccupante la situation économique de l'entreprise.</li>
+          <li><b>Alerte en cas d'atteinte aux droits des personnes</b> (art. L. 2312-59) : si un membre du CSE constate une atteinte aux droits des personnes, à leur santé physique ou mentale ou aux libertés individuelles (harcèlement, discrimination).</li>
+        </ul>`
+      },
+      {
+        title: "Les moyens d'action du CSE",
+        content: `<p>Pour exercer ses missions, le CSE dispose de <b>moyens matériels et humains</b> dont l'étendue varie selon la taille de l'entreprise. La protection des membres du CSE est assurée par le statut protecteur des représentants du personnel.</p>
+        <p><b>Les heures de délégation :</b></p>
+        <ul>
+          <li>Chaque membre titulaire du CSE dispose d'un <b>crédit d'heures</b> mensuel fixé par le décret n° 2017-1819 (ex. : 10 heures pour les entreprises de 11 à 49 salariés, 18 heures pour 50 à 74 salariés, 24 heures pour 500 à 1499, etc.).</li>
+          <li>Les heures de délégation sont assimilées à du <b>temps de travail effectif</b> et rémunérées comme telles (art. L. 2315-10). Le temps passé aux réunions du CSE convoquées par l'employeur n'est pas décompté des heures de délégation (art. L. 2315-11).</li>
+          <li>Les heures sont <b>mutualisables</b> entre titulaires et suppléants et <b>reportables</b> d'un mois sur l'autre dans la limite de 12 mois (art. R. 2315-5 et R. 2315-6).</li>
+        </ul>
+        <p><b>Les moyens matériels et financiers :</b></p>
+        <ul>
+          <li><b>Local</b> : l'employeur met à disposition un local aménagé et le matériel nécessaire (art. L. 2315-25).</li>
+          <li><b>Budget de fonctionnement</b> : subvention de <b>0,20 %</b> de la masse salariale brute dans les entreprises de 50 à 1999 salariés, <b>0,22 %</b> dans les entreprises de 2000 salariés et plus (art. L. 2315-61).</li>
+          <li><b>Budget des activités sociales et culturelles</b> : fixé par accord d'entreprise ou, à défaut, maintien au niveau de la contribution patronale de l'année précédente (art. L. 2312-81 et L. 2312-82).</li>
+          <li><b>Recours à un expert</b> : le CSE peut recourir à un expert-comptable (consultations récurrentes, licenciement collectif) ou à un expert habilité en matière de santé et sécurité (art. L. 2315-78 et s.). Le financement de l'expertise est partagé (80 % employeur, 20 % CSE) ou intégralement à la charge de l'employeur selon les cas.</li>
+        </ul>
+        <p><b>La protection des membres du CSE :</b></p>
+        <ul>
+          <li>Les membres titulaires et suppléants du CSE bénéficient du <b>statut de salarié protégé</b> (art. L. 2411-1 et s.) : leur licenciement est subordonné à l'<b>autorisation préalable de l'inspecteur du travail</b>.</li>
+          <li>La protection s'étend aux <b>candidats</b> aux élections (pendant 6 mois après la publication des candidatures), aux anciens membres du CSE (pendant 6 mois après la fin du mandat) et aux salariés ayant demandé l'organisation des élections.</li>
+          <li>Le <b>délit d'entrave</b> au fonctionnement du CSE est puni d'un an d'emprisonnement et 7 500 euros d'amende (art. L. 2317-1).</li>
+        </ul>`
+      },
+      {
+        title: "L'unité économique et sociale (UES)",
+        content: `<p>L'<b>unité économique et sociale</b> (UES), construction jurisprudentielle consacrée par le législateur (art. L. 2313-8 C. trav.), permet de regrouper plusieurs entités juridiquement distinctes en une seule unité pour la mise en place d'un CSE commun. Elle joue un rôle essentiel dans les groupes de sociétés.</p>
+        <p><b>Les critères de reconnaissance de l'UES :</b></p>
+        <ul>
+          <li><b>Unité économique</b> : caractérisée par la similarité ou la complémentarité des activités, la concentration du pouvoir de direction et de gestion, l'existence d'une communauté d'intérêts économiques. L'unité économique se manifeste par la direction commune, l'intégration des activités, la dépendance économique entre les entités (Cass. soc., 18 juillet 2000).</li>
+          <li><b>Unité sociale</b> : caractérisée par l'existence d'une communauté de travailleurs liés par des conditions de travail similaires (statut social comparable, permutabilité du personnel, gestion commune des ressources humaines, convention collective identique).</li>
+          <li>Les deux critères sont <b>cumulatifs</b> mais s'apprécient de manière <b>globale</b> : la jurisprudence n'exige pas que chaque élément soit parfaitement réuni, mais que l'ensemble des indices caractérise une unité économique et sociale (Cass. soc., 31 janvier 2012).</li>
+        </ul>
+        <p><b>Les modes de reconnaissance :</b></p>
+        <ul>
+          <li><b>Par accord collectif</b> entre les employeurs et les organisations syndicales représentatives (art. L. 2313-8 al. 1).</li>
+          <li><b>Par décision de justice</b> : le tribunal judiciaire peut reconnaître l'existence d'une UES à la demande d'une organisation syndicale ou de salariés (art. L. 2313-8 al. 2).</li>
+          <li>La reconnaissance de l'UES peut être <b>remise en cause</b> si les conditions ne sont plus réunies (évolution de la structure du groupe, autonomisation d'une entité).</li>
+        </ul>
+        <p><b>Les effets de la reconnaissance :</b></p>
+        <ul>
+          <li><b>Mise en place d'un CSE commun</b> : l'ensemble des salariés des entités composant l'UES élisent un CSE unique (art. L. 2313-8).</li>
+          <li><b>Appréciation des seuils d'effectif</b> : les effectifs sont calculés en additionnant les salariés de toutes les entités composant l'UES, ce qui peut entraîner le franchissement de seuils (50 salariés, 300 salariés) et l'application de règles plus protectrices.</li>
+          <li><b>Négociation collective</b> : la négociation obligatoire s'exerce au niveau de l'UES. Les accords collectifs sont conclus au niveau de l'UES et s'appliquent à l'ensemble des salariés des entités qui la composent.</li>
+          <li><b>Licenciement économique</b> : le périmètre d'appréciation du motif économique et des obligations de reclassement s'étend à l'ensemble de l'UES (Cass. soc., 16 novembre 2010).</li>
+        </ul>
+        <h4>Les autres niveaux de représentation</h4>
+        <p>Au-delà du CSE d'entreprise, le droit du travail prévoit des <b>CSE d'établissement</b> dans les entreprises comportant au moins deux établissements distincts (art. L. 2313-1) et un <b>CSE central</b> (art. L. 2313-1 al. 2). Un <b>comité de groupe</b> peut être mis en place dans les groupes de sociétés (art. L. 2331-1). Au niveau européen, un <b>comité d'entreprise européen</b> peut être constitué dans les entreprises de dimension communautaire (directive 2009/38/CE, art. L. 2341-1 et s. C. trav.).</p>`
+      }
+    ]
+  },
+  'social-temps-travail': {
+    introduction: "Le temps de travail constitue un domaine central du droit social, à la croisée de l'ordre public de protection des salariés et de la négociation collective. Depuis les lois Aubry de 1998 et 2000, la durée légale est fixée à 35 heures hebdomadaires, mais de nombreux dispositifs (heures supplémentaires, forfaits, temps partiel) permettent d'adapter le temps de travail aux besoins des entreprises et des salariés.",
+    readTime: 20,
+    sections: [
+      {
+        title: "La durée légale du travail et ses dérogations",
+        content: `<p>La <b>durée légale du travail</b> est fixée à <b>35 heures par semaine</b> (art. L. 3121-27 C. trav.) pour toutes les entreprises, quel que soit leur effectif. Cette durée n'est ni un minimum (le temps partiel est possible) ni un maximum (les heures supplémentaires sont possibles), mais constitue le <b>seuil de déclenchement</b> des heures supplémentaires.</p>
+        <p><b>La notion de temps de travail effectif (art. L. 3121-1) :</b></p>
+        <ul>
+          <li>Le temps de travail effectif est « le temps pendant lequel le salarié est à la disposition de l'employeur et se conforme à ses directives sans pouvoir vaquer librement à des occupations personnelles ».</li>
+          <li><b>Temps assimilés</b> : les heures de formation obligatoire (art. L. 6321-2), les visites médicales obligatoires, les temps de délégation des représentants du personnel.</li>
+          <li><b>Temps exclus</b> : les temps de trajet domicile-travail (sauf s'il dépasse le temps normal et constitue un temps de travail effectif – Cass. soc., 31 octobre 2007), les temps de pause, les temps de restauration (sauf si le salarié reste à la disposition de l'employeur).</li>
+          <li><b>Les astreintes</b> (art. L. 3121-9) : période pendant laquelle le salarié, sans être sur son lieu de travail, doit être en mesure d'intervenir. L'astreinte n'est pas du temps de travail effectif, mais le temps d'intervention est du temps de travail effectif.</li>
+        </ul>
+        <p><b>Les durées maximales de travail :</b></p>
+        <ul>
+          <li><b>Durée quotidienne maximale</b> : 10 heures (art. L. 3121-18), sauf dérogation conventionnelle portant à 12 heures (art. L. 3121-19) ou autorisation de l'inspecteur du travail.</li>
+          <li><b>Durée hebdomadaire maximale absolue</b> : 48 heures au cours d'une même semaine (art. L. 3121-20).</li>
+          <li><b>Durée hebdomadaire maximale moyenne</b> : 44 heures sur une période de 12 semaines consécutives (art. L. 3121-22), portée à 46 heures par accord collectif (art. L. 3121-23).</li>
+        </ul>`
+      },
+      {
+        title: "Les heures supplémentaires",
+        content: `<p>Les <b>heures supplémentaires</b> sont les heures de travail effectuées au-delà de la durée légale de 35 heures hebdomadaires (art. L. 3121-28 C. trav.) ou de la durée considérée comme équivalente dans certains secteurs. Leur régime a été profondément modifié par les lois Travail de 2016 et les ordonnances de 2017.</p>
+        <p><b>Le contingent annuel d'heures supplémentaires :</b></p>
+        <ul>
+          <li>Le contingent est fixé par <b>accord collectif</b> (d'entreprise ou de branche). À défaut d'accord, le contingent réglementaire est de <b>220 heures</b> par an et par salarié (art. D. 3121-24).</li>
+          <li>Les heures effectuées <b>au-delà du contingent</b> ouvrent droit à une <b>contrepartie obligatoire en repos</b> (COR) : 50 % dans les entreprises de 20 salariés au plus, 100 % dans les entreprises de plus de 20 salariés (art. L. 3121-33).</li>
+          <li>L'employeur doit informer et consulter le CSE préalablement à l'accomplissement d'heures supplémentaires au-delà du contingent (art. L. 3121-33).</li>
+        </ul>
+        <p><b>La majoration des heures supplémentaires :</b></p>
+        <ul>
+          <li>La <b>loi du 20 août 2008</b> a donné la priorité à l'accord d'entreprise sur l'accord de branche pour fixer le taux de majoration, avec un plancher de <b>10 %</b> (art. L. 3121-33).</li>
+          <li>À défaut d'accord, les taux légaux s'appliquent : <b>25 %</b> pour les 8 premières heures supplémentaires (de la 36e à la 43e heure), <b>50 %</b> au-delà (art. L. 3121-36).</li>
+          <li>Le paiement de la majoration peut être remplacé par un <b>repos compensateur de remplacement</b> (RCR) prévu par accord collectif (art. L. 3121-33). Les heures compensées en repos ne s'imputent pas sur le contingent annuel.</li>
+        </ul>
+        <p><b>Le régime fiscal et social :</b></p>
+        <ul>
+          <li>Depuis la loi du 24 décembre 2018 (mesures d'urgence économiques et sociales), les heures supplémentaires bénéficient d'une <b>exonération de cotisations salariales</b> et d'une <b>exonération d'impôt sur le revenu</b> dans la limite de 7 500 euros par an (portée à 7 500 euros nets par la loi de finances pour 2022).</li>
+          <li>La <b>déduction forfaitaire de cotisations patronales</b> s'applique dans les entreprises de moins de 250 salariés (art. L. 241-18 CSS).</li>
+        </ul>`
+      },
+      {
+        title: "Les conventions de forfait",
+        content: `<p>Les <b>conventions de forfait</b> permettent de déroger au décompte horaire du temps de travail en rémunérant le salarié sur la base d'un volume global de travail. Le Code du travail distingue le forfait en heures et le forfait en jours.</p>
+        <p><b>Le forfait en heures (art. L. 3121-56 et s.) :</b></p>
+        <ul>
+          <li><b>Forfait en heures sur la semaine ou le mois</b> : peut être conclu par tout salarié. La convention individuelle de forfait intègre un nombre déterminé d'heures supplémentaires, rémunérées avec leur majoration. Pas de nécessité d'un accord collectif préalable.</li>
+          <li><b>Forfait en heures sur l'année</b> : réservé aux cadres dont la nature des fonctions ne les conduit pas à suivre l'horaire collectif et aux salariés disposant d'une réelle autonomie dans l'organisation de leur emploi du temps (art. L. 3121-56). Un <b>accord collectif</b> est nécessaire.</li>
+        </ul>
+        <p><b>Le forfait en jours sur l'année (art. L. 3121-58 et s.) :</b></p>
+        <ul>
+          <li><b>Bénéficiaires</b> : les cadres disposant d'une autonomie dans l'organisation de leur emploi du temps et dont la nature des fonctions ne les conduit pas à suivre l'horaire collectif ; les salariés dont la durée du temps de travail ne peut être prédéterminée et qui disposent d'une réelle autonomie (art. L. 3121-58).</li>
+          <li><b>Plafond légal</b> : 218 jours par an (art. L. 3121-64), incluant la journée de solidarité. Ce plafond peut être réduit par accord collectif ou convention individuelle.</li>
+          <li><b>Accord collectif préalable obligatoire</b> (art. L. 3121-63) : l'accord doit déterminer les catégories de salariés concernées, la période de référence, le nombre de jours compris dans le forfait, les conditions de prise en compte des absences et des arrivées/départs en cours de période, et les <b>modalités de suivi de la charge de travail</b>.</li>
+        </ul>
+        <p><b>Le contrôle jurisprudentiel du forfait en jours :</b></p>
+        <ul>
+          <li>La Cour de cassation exerce un contrôle strict des garanties prévues par l'accord collectif : l'accord doit assurer la <b>protection de la santé et de la sécurité</b> du salarié (Cass. soc., 29 juin 2011, <i>Association APEI d'Avignon</i>). À défaut de garanties suffisantes, le forfait est <b>nul</b> et le salarié peut réclamer le paiement des heures supplémentaires.</li>
+          <li>L'employeur doit organiser un <b>entretien annuel</b> portant sur la charge de travail, l'organisation du travail et l'articulation vie professionnelle/vie privée (art. L. 3121-65).</li>
+          <li>Le salarié en forfait jours n'est pas soumis à la durée maximale quotidienne de 10 heures ni à la durée maximale hebdomadaire de 48 heures, mais bénéficie du repos quotidien de 11 heures et du repos hebdomadaire de 35 heures consécutives.</li>
+        </ul>`
+      },
+      {
+        title: "Le travail à temps partiel",
+        content: `<p>Le <b>travail à temps partiel</b> correspond à un temps de travail inférieur à la durée légale de 35 heures hebdomadaires ou à la durée conventionnelle si elle est inférieure (art. L. 3123-1 C. trav.). Son régime, protecteur du salarié, est prévu aux articles L. 3123-1 et suivants.</p>
+        <p><b>Les conditions de mise en place :</b></p>
+        <ul>
+          <li><b>Contrat de travail écrit</b> obligatoire (art. L. 3123-6) mentionnant : la qualification du salarié, la durée hebdomadaire ou mensuelle prévue, la répartition de la durée du travail entre les jours de la semaine ou les semaines du mois, les conditions de modification de cette répartition, les limites des heures complémentaires.</li>
+          <li><b>Durée minimale</b> : 24 heures par semaine (art. L. 3123-27), sauf dérogation conventionnelle (minimum de 16 heures par accord de branche étendu), demande écrite et motivée du salarié pour raisons personnelles, ou contrat d'une durée maximale de 7 jours.</li>
+          <li>L'absence d'écrit fait <b>présumer</b> que le contrat est à temps plein (Cass. soc., 10 octobre 2018) : l'employeur supporte la charge de prouver la durée exacte convenue.</li>
+        </ul>
+        <p><b>Les heures complémentaires :</b></p>
+        <ul>
+          <li>Les heures effectuées au-delà de la durée contractuelle et dans la limite du <b>1/10e</b> de cette durée sont majorées de <b>10 %</b> (art. L. 3123-29).</li>
+          <li>Un accord collectif peut porter cette limite au <b>1/3</b> de la durée contractuelle (art. L. 3123-20). Les heures complémentaires effectuées entre le 1/10e et le 1/3 sont majorées de <b>25 %</b> (art. L. 3123-29).</li>
+          <li>Les heures complémentaires ne peuvent avoir pour effet de porter la durée du travail au niveau de la durée légale ou conventionnelle (art. L. 3123-9).</li>
+          <li>Si le salarié effectue régulièrement des heures complémentaires, la durée contractuelle doit être <b>réévaluée</b> (art. L. 3123-13).</li>
+        </ul>
+        <p><b>Droits du salarié à temps partiel :</b></p>
+        <ul>
+          <li><b>Égalité de traitement</b> avec les salariés à temps plein (art. L. 3123-5) : droits proportionnels (rémunération, congés payés, ancienneté) et droits identiques (formation, promotion, protection sociale).</li>
+          <li><b>Priorité de passage à temps plein</b> : le salarié qui souhaite occuper un emploi à temps plein est prioritaire pour l'attribution d'un emploi correspondant à sa qualification (art. L. 3123-3).</li>
+        </ul>`
+      },
+      {
+        title: "Le repos et les congés",
+        content: `<p>Le droit au repos constitue un <b>droit fondamental</b> du salarié, consacré tant par le droit interne que par le droit européen (directive 2003/88/CE). Le Code du travail organise plusieurs types de repos et de congés.</p>
+        <p><b>Le repos quotidien et hebdomadaire :</b></p>
+        <ul>
+          <li><b>Repos quotidien</b> : tout salarié bénéficie d'un repos quotidien d'une durée minimale de <b>11 heures consécutives</b> (art. L. 3131-1). Des dérogations sont possibles par accord collectif, dans la limite de 9 heures (art. L. 3131-2), ou par décision unilatérale en cas de surcroît exceptionnel d'activité.</li>
+          <li><b>Repos hebdomadaire</b> : d'une durée minimale de <b>24 heures consécutives</b>, auxquelles s'ajoutent les 11 heures de repos quotidien, soit <b>35 heures consécutives</b> (art. L. 3132-2). Le repos hebdomadaire est donné le <b>dimanche</b> (art. L. 3132-3), sous réserve des dérogations prévues par la loi (commerces de détail, zones touristiques, etc.).</li>
+        </ul>
+        <p><b>Les congés payés (art. L. 3141-1 et s.) :</b></p>
+        <ul>
+          <li>Tout salarié a droit à un congé de <b>2,5 jours ouvrables par mois de travail effectif</b>, soit <b>30 jours ouvrables</b> (5 semaines) pour une année complète (art. L. 3141-3).</li>
+          <li><b>Période d'acquisition</b> : du 1er juin au 31 mai de l'année suivante (art. R. 3141-3), sauf convention ou accord collectif fixant une autre période.</li>
+          <li><b>Période de prise</b> : fixée par accord collectif ou, à défaut, par l'employeur après consultation du CSE. Le congé principal (4 semaines minimum) doit être pris entre le 1er mai et le 31 octobre (art. L. 3141-13).</li>
+          <li><b>Indemnité de congés payés</b> : calculée selon la règle la plus favorable entre le <b>maintien du salaire</b> et la <b>règle du 1/10e</b> de la rémunération brute perçue au cours de la période de référence (art. L. 3141-24).</li>
+          <li><b>Jurisprudence européenne récente</b> : la CJUE et la Cour de cassation (Cass. soc., 13 septembre 2023, revirement) ont imposé l'acquisition de congés payés pendant les périodes d'arrêt maladie, mettant fin à la position contraire du droit français. La loi du 22 avril 2024 a intégré cette solution.</li>
+        </ul>
+        <p><b>Les jours fériés (art. L. 3133-1 et s.) :</b></p>
+        <ul>
+          <li>Le Code du travail prévoit <b>11 jours fériés</b> (art. L. 3133-1). Seul le <b>1er Mai</b> est obligatoirement chômé et payé (art. L. 3133-4). Les autres jours fériés sont chômés ou travaillés selon les usages, accords collectifs ou décisions de l'employeur.</li>
+          <li>La <b>journée de solidarité</b> (art. L. 3133-7) : journée supplémentaire de travail non rémunérée au bénéfice de l'autonomie des personnes âgées et handicapées, fixée par accord collectif ou, à défaut, par l'employeur (le lundi de Pentecôte par défaut).</li>
+        </ul>`
       }
     ]
   }

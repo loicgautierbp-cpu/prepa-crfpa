@@ -45,13 +45,12 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="gradient-hero noise-overlay dot-grid pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
-        <div className="blob-1"></div>
-        <div className="blob-2"></div>
+      <section className="bg-gradient-to-br from-[#f5ece4] via-[#fdf2f3] to-[#f5ece4] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-black text-gray-900 leading-[1.1] mb-4">
+          <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 leading-[1.1] mb-4">
             Nous <span className="bg-gradient-to-r from-primary-600 via-violet-500 to-primary-600 bg-clip-text text-transparent">contacter</span>
           </h1>
+          <div className="w-12 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mt-4 mb-6 rounded-full"></div>
           <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
             Un bug, une suggestion ou une question ? N&apos;h&eacute;sitez pas &agrave; nous &eacute;crire.
           </p>

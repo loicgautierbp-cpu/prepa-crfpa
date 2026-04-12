@@ -260,5 +260,348 @@ export const COURS_AFFAIRES = {
         <p>Infraction pénale punie de <b>5 ans d'emprisonnement et 75 000 euros d'amende</b>. Faits constitutifs : achats en vue de revente au-dessous du cours pour retarder la constatation de la cessation des paiements, détournement ou dissimulation d'actifs, tenue de comptabilité fictive ou incomplète, emploi de moyens ruineux pour se procurer des fonds.</p>`
       }
     ]
+  },
+  'affaires-fonds-commerce': {
+    introduction: "Le fonds de commerce, universalité de fait regroupant l'ensemble des éléments mobiliers corporels et incorporels affectés à l'exploitation d'une activité commerciale, constitue un bien meuble incorporel de premier plan en droit des affaires. Sa cession, son nantissement et sa location-gérance obéissent à des règles spécifiques codifiées aux articles L. 141-1 et suivants du Code de commerce.",
+    readTime: 20,
+    sections: [
+      {
+        title: "Les éléments constitutifs du fonds de commerce",
+        content: `<p>Le fonds de commerce est une <b>universalité de fait</b>, c'est-à-dire un ensemble de biens affectés à une finalité commune (l'exploitation commerciale) mais qui ne constitue pas un patrimoine autonome. Il n'est pas défini par le Code de commerce mais par la pratique et la jurisprudence.</p>
+        <p><b>Les éléments incorporels :</b></p>
+        <ul>
+          <li><b>La clientèle et l'achalandage</b> : éléments essentiels sans lesquels il n'y a pas de fonds de commerce. La clientèle est l'ensemble des personnes qui se fournissent habituellement auprès du commerçant ; l'achalandage désigne la clientèle de passage liée à l'emplacement.</li>
+          <li><b>Le nom commercial</b> : appellation sous laquelle le commerçant exerce son activité. Il se distingue du nom de domaine et de la dénomination sociale.</li>
+          <li><b>L'enseigne</b> : signe visible apposé sur la façade de l'établissement commercial pour le distinguer des établissements voisins.</li>
+          <li><b>Le droit au bail</b> : droit du locataire commerçant au renouvellement du bail commercial (statut des baux commerciaux, art. L. 145-1 et s. C. com.). C'est souvent l'élément le plus valorisé du fonds.</li>
+          <li><b>Les droits de propriété intellectuelle</b> : brevets, marques, dessins et modèles, licences exploitées dans le cadre de l'activité.</li>
+          <li><b>Les autorisations administratives</b> : licences de débit de boissons, autorisations d'exploitation (sous réserve qu'elles soient cessibles).</li>
+        </ul>
+        <p><b>Les éléments corporels :</b></p>
+        <ul>
+          <li><b>Le matériel et l'outillage</b> : machines, équipements, mobilier commercial.</li>
+          <li><b>Les marchandises</b> : stock destiné à la vente. Elles sont généralement exclues du nantissement du fonds de commerce.</li>
+        </ul>
+        <p><b>Les éléments exclus :</b></p>
+        <ul>
+          <li>Les <b>immeubles</b> ne font pas partie du fonds de commerce (ils relèvent du droit immobilier).</li>
+          <li>Les <b>créances et dettes</b> ne sont pas transmises avec le fonds (sauf les contrats de travail en application de l'art. L. 1224-1 C. trav. et le bail commercial).</li>
+          <li>Les <b>livres de commerce</b> et la <b>comptabilité</b> sont communiqués mais non cédés.</li>
+        </ul>`
+      },
+      {
+        title: "La clientèle, élément essentiel du fonds de commerce",
+        content: `<p>La <b>clientèle</b> constitue l'élément <b>essentiel et irréductible</b> du fonds de commerce. Sans clientèle, il n'y a pas de fonds de commerce. La jurisprudence exige une clientèle <b>réelle, certaine et personnelle</b> au commerçant.</p>
+        <p><b>Les caractères de la clientèle :</b></p>
+        <ul>
+          <li><b>Réelle</b> : la clientèle doit effectivement exister ; un fonds qui n'a jamais été exploité ou qui a définitivement cessé son activité n'a pas de clientèle (Cass. com., 19 octobre 1999).</li>
+          <li><b>Certaine</b> : elle doit être suffisamment caractérisée et ne pas être purement hypothétique ou potentielle.</li>
+          <li><b>Personnelle</b> : le commerçant doit disposer d'une clientèle qui lui est propre. Cette condition pose des difficultés dans les ensembles commerciaux (centres commerciaux, franchises, concessions).</li>
+        </ul>
+        <p><b>La clientèle dans les réseaux de distribution :</b></p>
+        <ul>
+          <li>La question s'est posée de savoir si le franchisé dispose d'une clientèle propre, distincte de celle de la marque du franchiseur. La Cour de cassation a répondu par l'affirmative dans l'arrêt <i>Trévisan</i> (Cass. 3e civ., 27 mars 2002) : la clientèle nationale attachée à la marque n'exclut pas l'existence d'une clientèle locale liée à l'implantation du franchisé.</li>
+          <li>De même, le locataire-gérant d'un fonds de commerce peut développer une clientèle personnelle distincte de celle attachée au fonds donné en gérance.</li>
+          <li>L'exploitant d'un stand dans un centre commercial dispose d'une clientèle propre malgré l'attractivité de l'enseigne du centre (Cass. 3e civ., 19 mars 2014).</li>
+        </ul>
+        <p><b>La nature juridique de la clientèle :</b></p>
+        <ul>
+          <li>La clientèle n'est pas un droit de propriété sur les clients (la clientèle est libre), mais un <b>droit de ralliement</b> : le commerçant a le droit de faire des actes de commerce pour attirer et retenir sa clientèle.</li>
+          <li>Ce droit est protégé par l'action en <b>concurrence déloyale</b> (art. 1240 C. civ.) contre les comportements parasitaires, le détournement de clientèle, la confusion et le dénigrement.</li>
+          <li>La clientèle civile peut également constituer le support d'un fonds libéral (médecin, avocat), dont le régime juridique est distinct du fonds de commerce.</li>
+        </ul>`
+      },
+      {
+        title: "La cession du fonds de commerce (art. L. 141-1 et s. C. com.)",
+        content: `<p>La <b>cession du fonds de commerce</b> est une opération fréquente soumise à un formalisme protecteur, tant pour l'acquéreur que pour les créanciers du vendeur. Elle est régie par les articles L. 141-1 et suivants du Code de commerce.</p>
+        <p><b>Les mentions obligatoires de l'acte de cession (art. L. 141-1) :</b></p>
+        <ul>
+          <li>Le <b>nom du précédent vendeur</b>, la date et la nature de son acte d'acquisition et le prix de cette acquisition.</li>
+          <li>L'<b>état des privilèges et nantissements</b> grevant le fonds.</li>
+          <li>Le <b>chiffre d'affaires</b> et les <b>bénéfices commerciaux</b> réalisés pendant les trois exercices comptables précédant la vente.</li>
+          <li>Les <b>conditions du bail</b> (date, durée, nom et adresse du bailleur et du cédant).</li>
+          <li>L'omission de ces mentions entraîne la <b>nullité relative</b> de la cession, à condition que l'acquéreur prouve un préjudice (Cass. com., 15 janvier 2002). Le délai pour agir est d'un an à compter de la cession.</li>
+        </ul>
+        <p><b>La publicité de la cession :</b></p>
+        <ul>
+          <li>La cession doit être publiée au <b>BODACC</b> (Bulletin officiel des annonces civiles et commerciales) et dans un <b>journal d'annonces légales</b> (art. L. 141-12).</li>
+          <li>Cette publicité permet aux créanciers du vendeur de former <b>opposition au paiement du prix</b> dans un délai de <b>10 jours</b> (art. L. 141-14). L'opposition a pour effet de bloquer le prix entre les mains de l'acquéreur jusqu'à ce qu'un accord ou une décision judiciaire intervienne.</li>
+        </ul>
+        <p><b>La solidarité fiscale :</b></p>
+        <ul>
+          <li>L'acquéreur du fonds est <b>solidairement responsable</b> avec le vendeur du paiement de l'impôt sur le revenu et des taxes sur le chiffre d'affaires afférents à l'exploitation du fonds (art. 1684 CGI). Cette solidarité est limitée au prix de cession et à la période postérieure au 1er janvier de l'année de la cession.</li>
+        </ul>
+        <p><b>Le privilège du vendeur de fonds de commerce (art. L. 141-5) :</b></p>
+        <p>Le vendeur bénéficie d'un <b>privilège</b> sur les éléments du fonds pour le paiement du prix. Ce privilège doit être inscrit au greffe du tribunal de commerce dans les 15 jours de la vente. Il porte séparément sur les éléments incorporels, le matériel et les marchandises.</p>`
+      },
+      {
+        title: "Le nantissement du fonds de commerce (art. L. 142-1 et s. C. com.)",
+        content: `<p>Le <b>nantissement du fonds de commerce</b> est une sûreté réelle mobilière sans dépossession, permettant au propriétaire d'un fonds de commerce de le donner en garantie à un créancier sans en perdre l'exploitation. Il est régi par les articles L. 142-1 et suivants du Code de commerce.</p>
+        <p><b>Les conditions de constitution :</b></p>
+        <ul>
+          <li><b>Un acte écrit</b> : le nantissement est constitué par acte notarié ou sous seing privé enregistré (art. L. 142-3).</li>
+          <li><b>L'inscription au greffe</b> du tribunal de commerce dans les <b>15 jours</b> de l'acte constitutif (art. L. 142-4). L'inscription prend rang à sa date et produit ses effets pendant 10 ans (renouvelable).</li>
+          <li><b>L'assiette du nantissement</b> : à défaut de désignation expresse, le nantissement porte sur l'enseigne et le nom commercial, le droit au bail, la clientèle et l'achalandage (art. L. 142-2). Les parties peuvent y inclure le matériel et l'outillage, les brevets, licences et marques. Les <b>marchandises</b> sont exclues de l'assiette du nantissement.</li>
+        </ul>
+        <p><b>Les effets du nantissement :</b></p>
+        <ul>
+          <li><b>Droit de préférence</b> : le créancier nanti est payé par préférence sur le prix de vente du fonds. Il prend rang selon la date de son inscription.</li>
+          <li><b>Droit de suite</b> : le créancier nanti peut exercer son droit sur le fonds même si celui-ci a été cédé à un tiers.</li>
+          <li><b>Droit de faire vendre le fonds</b> : en cas de non-paiement, le créancier peut faire ordonner la vente du fonds aux enchères publiques (art. L. 143-1 et s.).</li>
+        </ul>
+        <p><b>La protection du créancier nanti :</b></p>
+        <ul>
+          <li><b>Déplacement du fonds</b> : si le propriétaire déplace le fonds sans consentement du créancier inscrit, les créanciers inscrits peuvent exiger le remboursement anticipé de leurs créances (art. L. 143-1).</li>
+          <li><b>Résiliation du bail</b> : le propriétaire de l'immeuble qui poursuit la résiliation du bail doit notifier sa demande au créancier nanti inscrit (art. L. 143-2), qui peut intervenir dans l'instance en résiliation.</li>
+          <li><b>Surenchère du sixième</b> (art. L. 143-7 et s.) : en cas de cession du fonds, les créanciers inscrits peuvent surenchérir du sixième du prix principal (hors marchandises) dans les 10 jours de la notification de la cession.</li>
+        </ul>
+        <h4>Articulation avec le gage commercial (réforme des sûretés 2021)</h4>
+        <p>L'ordonnance n° 2021-1192 du 15 septembre 2021 portant réforme du droit des sûretés a modernisé le régime du gage sans dépossession. Le nantissement du fonds de commerce conserve toutefois sa spécificité par rapport au gage de droit commun des articles 2333 et suivants du Code civil, notamment en ce qui concerne son assiette et les procédures de réalisation.</p>`
+      },
+      {
+        title: "La location-gérance du fonds de commerce (art. L. 144-1 et s. C. com.)",
+        content: `<p>La <b>location-gérance</b> (ou gérance libre) est le contrat par lequel le propriétaire d'un fonds de commerce concède à un <b>locataire-gérant</b> le droit d'exploiter librement ce fonds à ses risques et périls, moyennant le paiement d'une redevance (art. L. 144-1 C. com.).</p>
+        <p><b>Les conditions de la location-gérance :</b></p>
+        <ul>
+          <li><b>Conditions tenant au bailleur du fonds</b> : le propriétaire du fonds doit avoir exploité le fonds pendant au moins <b>2 ans</b> (art. L. 144-3), sauf dispense accordée par le président du tribunal de commerce. Cette condition d'exploitation préalable a été supprimée par la loi PACTE du 22 mai 2019 pour les personnes physiques et morales n'ayant jamais exploité de fonds.</li>
+          <li><b>Publicité</b> : le contrat de location-gérance doit être publié dans un journal d'annonces légales et au RCS dans les <b>15 jours</b> de sa signature (art. L. 144-6). Jusqu'à la date de publication, le loueur du fonds est <b>solidairement responsable</b> des dettes contractées par le locataire-gérant à l'occasion de l'exploitation du fonds.</li>
+          <li><b>Durée</b> : librement fixée par les parties. La location-gérance n'est pas soumise au statut des baux commerciaux (art. L. 144-2).</li>
+        </ul>
+        <p><b>Les effets de la location-gérance :</b></p>
+        <ul>
+          <li><b>Obligations du locataire-gérant</b> : exploiter le fonds en bon père de famille, maintenir la clientèle, payer la redevance, s'immatriculer au RCS avec mention de sa qualité de locataire-gérant.</li>
+          <li><b>Obligations du bailleur du fonds</b> : garantie d'éviction, obligation de délivrance du fonds avec tous ses éléments, obligation de ne pas rétablir une activité concurrente (obligation de non-concurrence implicite).</li>
+          <li><b>Sort des contrats de travail</b> : l'article L. 1224-1 du Code du travail s'applique lors de la mise en location-gérance et lors de la fin de celle-ci (transfert automatique des contrats de travail).</li>
+        </ul>
+        <p><b>La fin de la location-gérance :</b></p>
+        <ul>
+          <li>À l'expiration du contrat ou en cas de résiliation, les dettes contractées par le locataire-gérant à l'occasion de l'exploitation du fonds deviennent immédiatement <b>exigibles</b> (art. L. 144-7).</li>
+          <li>Le bailleur du fonds est solidairement responsable des dettes du locataire-gérant contractées pendant les <b>6 mois</b> suivant la publication de la fin de la location-gérance au BODACC (art. L. 144-7 al. 2).</li>
+          <li>Le locataire-gérant ne bénéficie pas du droit au renouvellement du bail commercial (art. L. 145-1 exclut la location-gérance du statut des baux commerciaux, sauf convention contraire).</li>
+        </ul>`
+      }
+    ]
+  },
+  'affaires-bail-commercial': {
+    introduction: "Le bail commercial, régi par les articles L. 145-1 et suivants du Code de commerce (statut des baux commerciaux), offre au preneur commerçant une protection considérable, notamment un droit au renouvellement du bail assorti, en cas de refus injustifié du bailleur, d'une indemnité d'éviction. Ce statut d'ordre public constitue un pilier du droit des affaires français.",
+    readTime: 20,
+    sections: [
+      {
+        title: "Le champ d'application du statut des baux commerciaux (art. L. 145-1 et L. 145-2)",
+        content: `<p>Le <b>statut des baux commerciaux</b> s'applique aux baux des immeubles ou locaux dans lesquels un fonds de commerce est exploité (art. L. 145-1 C. com.). Son champ d'application est déterminé par des conditions cumulatives.</p>
+        <p><b>Les conditions d'application :</b></p>
+        <ul>
+          <li><b>Un bail portant sur un immeuble ou un local</b> : le statut s'applique aux locaux principaux et, sous conditions, aux locaux accessoires (art. L. 145-1 al. 2). Les terrains nus ne sont pas soumis au statut, sauf s'ils sont affectés par le preneur à une exploitation industrielle ou commerciale avec l'accord du bailleur.</li>
+          <li><b>L'exploitation d'un fonds de commerce ou artisanal</b> : le preneur doit être propriétaire d'un fonds de commerce exploité dans les lieux loués. L'existence d'une clientèle propre est nécessaire (Cass. 3e civ., 27 mars 2002).</li>
+          <li><b>L'immatriculation au RCS ou au Répertoire des métiers</b> (art. L. 145-1 I, 1°) : cette condition est substantielle ; le défaut d'immatriculation au jour du renouvellement prive le preneur du droit au renouvellement (Cass. 3e civ., 7 mars 2019).</li>
+        </ul>
+        <p><b>Les extensions du statut (art. L. 145-2) :</b></p>
+        <ul>
+          <li>Établissements d'enseignement (sous conditions).</li>
+          <li>Collectivités territoriales et établissements publics pour les locaux à usage de bureaux.</li>
+          <li>Entreprises publiques et sociétés d'économie mixte.</li>
+          <li>Communes pour les immeubles affectés à des services exploités en régie.</li>
+        </ul>
+        <p><b>Les exclusions :</b></p>
+        <ul>
+          <li>Les <b>baux dérogatoires</b> (art. L. 145-5) : d'une durée maximale de <b>3 ans</b> au total, ces baux échappent au statut. À l'issue du bail dérogatoire, si le preneur reste en possession des locaux sans opposition du bailleur, un nouveau bail soumis au statut est réputé conclu (art. L. 145-5 al. 2).</li>
+          <li>Les <b>conventions d'occupation précaire</b> (art. L. 145-5-1) : caractérisées par un motif de précarité objectif (immeuble en cours de vente, zone de préemption, projet de démolition).</li>
+          <li>La <b>location-gérance</b> : le locataire-gérant n'est pas titulaire du bail commercial.</li>
+        </ul>`
+      },
+      {
+        title: "La durée du bail commercial et le droit au renouvellement",
+        content: `<p>La durée constitue un élément essentiel du statut des baux commerciaux. Le législateur garantit au preneur la <b>stabilité</b> de son exploitation par une durée minimale et un droit au renouvellement.</p>
+        <p><b>La durée minimale de 9 ans (art. L. 145-4) :</b></p>
+        <ul>
+          <li>Le bail commercial ne peut être conclu pour une durée inférieure à <b>9 ans</b>. Toute clause fixant une durée moindre est réputée non écrite et le bail est réputé conclu pour 9 ans.</li>
+          <li>Le preneur dispose d'une <b>faculté de résiliation triennale</b> (art. L. 145-4 al. 2) : il peut donner congé à l'expiration de chaque période triennale (3, 6 ou 9 ans), avec un préavis de <b>6 mois</b> délivré par acte extrajudiciaire.</li>
+          <li>Le bailleur ne dispose pas en principe de cette faculté triennale, sauf pour construire, reconstruire, surélever, exécuter des travaux prescrits ou autorisés dans le cadre d'une opération de restauration immobilière, ou réaffecter le local d'habitation accessoire à l'habitation.</li>
+          <li>Les parties peuvent convenir d'une durée <b>supérieure à 9 ans</b>. Les baux de plus de 12 ans doivent être publiés au service de la publicité foncière.</li>
+        </ul>
+        <p><b>Le droit au renouvellement (art. L. 145-8 à L. 145-12) :</b></p>
+        <ul>
+          <li>Le preneur qui remplit les conditions du statut bénéficie d'un <b>droit au renouvellement</b> de son bail. Ce droit est d'ordre public.</li>
+          <li><b>Conditions</b> : être propriétaire du fonds, être immatriculé au RCS, avoir exploité le fonds pendant les <b>3 années précédant</b> la date d'expiration du bail ou de la demande de renouvellement (art. L. 145-8).</li>
+          <li><b>Procédure</b> : le preneur peut demander le renouvellement par acte extrajudiciaire dans les <b>6 mois</b> précédant l'expiration du bail. Le bailleur peut aussi donner congé avec offre de renouvellement ou congé avec refus de renouvellement.</li>
+          <li>À défaut de congé ou de demande de renouvellement, le bail se poursuit par <b>tacite prolongation</b> pour une durée indéterminée (art. L. 145-9).</li>
+        </ul>
+        <p>Le bail renouvelé est un <b>nouveau bail</b>, distinct du bail initial, d'une durée minimale de 9 ans et aux conditions du bail expiré (sauf révision du loyer).</p>`
+      },
+      {
+        title: "Le loyer du bail commercial et sa révision",
+        content: `<p>Le loyer du bail commercial obéit à des règles spécifiques de fixation initiale et de révision, encadrées par le statut dans un souci de <b>protection du preneur</b> contre les augmentations excessives.</p>
+        <p><b>La fixation du loyer initial :</b></p>
+        <ul>
+          <li>Le loyer initial est <b>librement fixé par les parties</b> (art. L. 145-33). Le statut n'impose aucun plafonnement au stade de la conclusion du bail.</li>
+          <li>Les parties peuvent convenir d'un loyer fixe, d'un loyer variable (clause-recettes), ou d'un loyer binaire (fixe + variable).</li>
+          <li>Le <b>pas-de-porte</b> (droit d'entrée) versé au bailleur lors de la conclusion du bail est licite et peut être analysé comme un supplément de loyer ou comme une indemnité compensant les avantages commerciaux procurés par le bail.</li>
+        </ul>
+        <p><b>La révision triennale (art. L. 145-37 et L. 145-38) :</b></p>
+        <ul>
+          <li>Le loyer peut être révisé à la demande de l'une ou l'autre des parties, à l'expiration de chaque <b>période triennale</b> (3, 6, 9 ans).</li>
+          <li>Le loyer révisé est fixé à la <b>valeur locative</b> des locaux, déterminée selon les critères de l'article L. 145-33 : caractéristiques du local, destination des lieux, obligations respectives des parties, facteurs locaux de commercialité, prix couramment pratiqués dans le voisinage.</li>
+          <li>La variation du loyer ne peut excéder la <b>variation de l'indice des loyers commerciaux</b> (ILC) ou de l'indice des loyers des activités tertiaires (ILAT) intervenue depuis la dernière fixation du loyer (art. L. 145-38 al. 3) – règle du plafonnement.</li>
+        </ul>
+        <p><b>Le déplafonnement (art. L. 145-34) :</b></p>
+        <ul>
+          <li>En cas de <b>modification notable des facteurs locaux de commercialité</b> ayant entraîné par elle-même une variation de plus de 10 % de la valeur locative, le loyer peut être déplafonné et fixé à la valeur locative.</li>
+          <li>Le déplafonnement s'applique également lorsque le bail a été conclu pour une <b>durée supérieure à 9 ans</b> ou s'il s'est poursuivi au-delà de <b>12 ans</b> par tacite prolongation (art. L. 145-34 al. 4).</li>
+          <li>En cas de déplafonnement, la <b>loi Pinel</b> du 18 juin 2014 a instauré un mécanisme de <b>lissage</b> : la hausse de loyer ne peut excéder 10 % du loyer acquitté au cours de l'année précédente (art. L. 145-34 al. 4).</li>
+        </ul>`
+      },
+      {
+        title: "Le refus de renouvellement et l'indemnité d'éviction",
+        content: `<p>Le bailleur dispose du droit de refuser le renouvellement du bail commercial, mais ce refus est en principe assorti de l'obligation de verser au preneur une <b>indemnité d'éviction</b> destinée à compenser le préjudice subi du fait de la perte du fonds (art. L. 145-14 C. com.).</p>
+        <p><b>L'indemnité d'éviction (art. L. 145-14) :</b></p>
+        <ul>
+          <li>L'indemnité doit être « égale au préjudice causé par le défaut de renouvellement ». Elle comprend notamment la <b>valeur marchande du fonds de commerce</b> déterminée selon les usages de la profession, augmentée éventuellement des frais de déménagement, de réinstallation, des frais et droits de mutation, et de l'indemnité de licenciement du personnel.</li>
+          <li><b>Indemnité de remplacement</b> : lorsque la perte du fonds entraîne sa disparition (l'éviction empêche le preneur de se réinstaller dans des conditions équivalentes), l'indemnité correspond à la valeur du fonds.</li>
+          <li><b>Indemnité de transfert</b> : lorsque le preneur peut se réinstaller dans des conditions similaires, l'indemnité correspond à la différence entre le loyer du nouveau local et celui de l'ancien, augmentée des frais de déménagement et de réinstallation.</li>
+          <li>Le <b>droit de repentir</b> du bailleur (art. L. 145-58) : dans les 15 jours de la date à laquelle la décision fixant l'indemnité est passée en force de chose jugée, le bailleur peut se rétracter et offrir le renouvellement du bail, sauf si le preneur a déjà quitté les lieux ou s'il a loué ou acheté un autre local.</li>
+        </ul>
+        <p><b>Les motifs de refus sans indemnité (art. L. 145-17) :</b></p>
+        <ul>
+          <li><b>Motif grave et légitime</b> à l'encontre du preneur : manquement aux clauses du bail (défaut de paiement des loyers, changement d'activité non autorisé, sous-location irrégulière, défaut d'entretien). Le bailleur doit avoir préalablement mis en demeure le preneur (sauf gravité particulière).</li>
+          <li><b>Insalubrité ou dangerosité de l'immeuble</b> : lorsque l'immeuble doit être totalement ou partiellement démoli en raison de son état d'insalubrité ou de dangerosité reconnu par l'autorité administrative (art. L. 145-17, 2°).</li>
+        </ul>
+        <p><b>La procédure :</b></p>
+        <p>Le bailleur qui refuse le renouvellement doit notifier son refus par acte extrajudiciaire, au moins <b>6 mois</b> avant l'expiration du bail, en précisant les motifs du refus et en indiquant que le preneur dispose de 2 ans pour saisir le tribunal (art. L. 145-9). Le preneur évincé a le droit de se maintenir dans les lieux jusqu'au paiement de l'indemnité d'éviction (art. L. 145-28).</p>`
+      },
+      {
+        title: "La résiliation et la cession du bail commercial",
+        content: `<p>La <b>résiliation</b> et la <b>cession</b> du bail commercial obéissent à des règles spécifiques qui protègent tant le preneur que le bailleur, dans le cadre du statut d'ordre public des baux commerciaux.</p>
+        <p><b>La résiliation du bail commercial :</b></p>
+        <ul>
+          <li><b>Clause résolutoire</b> (art. L. 145-41) : toute clause insérée dans le bail prévoyant la résiliation de plein droit ne produit effet qu'<b>un mois après un commandement</b> de payer resté infructueux. Le juge peut accorder des <b>délais de grâce</b> et suspendre la réalisation de la clause résolutoire tant que la résiliation n'a pas été constatée par une décision ayant acquis l'autorité de la chose jugée.</li>
+          <li><b>Résiliation judiciaire</b> : en l'absence de clause résolutoire, le bailleur peut demander la résiliation judiciaire du bail pour inexécution par le preneur de ses obligations (art. 1224 et 1227 C. civ.).</li>
+          <li><b>Résiliation triennale par le preneur</b> (art. L. 145-4 al. 2) : congé donné par acte extrajudiciaire 6 mois avant l'expiration de la période triennale en cours.</li>
+          <li><b>Résiliation pour motif de retraite ou d'invalidité</b> (art. L. 145-4 al. 6) : le preneur peut résilier le bail à tout moment, sans attendre la fin d'une période triennale.</li>
+        </ul>
+        <p><b>La cession du bail commercial :</b></p>
+        <ul>
+          <li><b>Cession avec le fonds de commerce</b> : la cession du bail en même temps que le fonds de commerce ne peut être interdite par une clause du bail (art. L. 145-16 al. 1). Toutefois, le bailleur peut stipuler une clause d'<b>agrément</b> conditionnant la cession à son accord préalable, et une clause imposant la participation du bailleur à l'acte de cession.</li>
+          <li><b>Cession isolée du droit au bail</b> (sans le fonds) : elle peut être interdite par une clause du bail. En l'absence d'interdiction, elle est libre mais le bailleur peut exiger un agrément.</li>
+          <li><b>Formalités</b> : la cession du bail doit être signifiée au bailleur par acte extrajudiciaire ou acceptée par lui dans un acte authentique (art. 1690 C. civ.). Le cédant reste garant solidaire du cessionnaire, sauf clause contraire ou acceptation expresse du bailleur.</li>
+        </ul>
+        <p><b>La déspécialisation (art. L. 145-47 et s.) :</b></p>
+        <ul>
+          <li><b>Déspécialisation partielle</b> (art. L. 145-47) : le preneur peut adjoindre à l'activité prévue au bail des activités connexes ou complémentaires, en notifiant son intention au bailleur. Le bailleur peut contester le caractère connexe ou complémentaire devant le tribunal.</li>
+          <li><b>Déspécialisation totale</b> (art. L. 145-48 à L. 145-55) : changement total d'activité, autorisé par le tribunal lorsque l'activité nouvelle est compatible avec la destination, les caractères et la situation de l'immeuble. Le bailleur peut demander une <b>augmentation de loyer</b> ou une <b>indemnité compensatoire</b>.</li>
+        </ul>`
+      }
+    ]
+  },
+  'affaires-concurrence': {
+    introduction: "Le droit de la concurrence, régi en droit interne par le Livre IV du Code de commerce (art. L. 420-1 et s.) et en droit de l'Union européenne par les articles 101 et 102 du TFUE, vise à garantir le libre jeu de la concurrence sur les marchés. Il sanctionne les pratiques anticoncurrentielles (ententes et abus de position dominante), contrôle les opérations de concentration et confie à l'Autorité de la concurrence un rôle central de régulation.",
+    readTime: 20,
+    sections: [
+      {
+        title: "Les ententes anticoncurrentielles (art. L. 420-1 C. com. et art. 101 TFUE)",
+        content: `<p>L'<b>article L. 420-1 du Code de commerce</b> prohibe « les actions concertées, conventions, ententes expresses ou tacites ou coalitions » lorsqu'elles ont pour objet ou peuvent avoir pour effet d'empêcher, de restreindre ou de fausser le jeu de la concurrence sur un marché.</p>
+        <p><b>Les conditions de la prohibition :</b></p>
+        <ul>
+          <li><b>Une concertation entre entreprises</b> : notion autonome englobant les accords de volontés (contrats, conventions), les pratiques concertées (coordination consciente sans accord formel) et les décisions d'associations d'entreprises (syndicats professionnels, ordres).</li>
+          <li><b>Un objet ou un effet anticoncurrentiel</b> : la distinction est essentielle. Les ententes par <b>objet</b> (fixation de prix, répartition de marchés, limitation de production) sont présumées anticoncurrentielles sans qu'il soit nécessaire de démontrer leurs effets (CJUE, 13 juillet 1966, <i>Consten et Grundig</i>). Les ententes par <b>effet</b> nécessitent la démonstration d'un impact réel ou potentiel sur la concurrence.</li>
+        </ul>
+        <p><b>Les pratiques les plus couramment sanctionnées :</b></p>
+        <ul>
+          <li><b>Ententes horizontales</b> (entre concurrents) : fixation concertée des prix, répartition des marchés ou des clients, limitation de la production, ententes sur appels d'offres (<i>bid rigging</i>). Ces pratiques constituent les infractions les plus graves (<i>hard core cartels</i>).</li>
+          <li><b>Ententes verticales</b> (entre opérateurs situés à des niveaux différents de la chaîne) : prix de revente imposés (interdits par principe, sauf RPM justifiés), exclusivités territoriales, clauses de non-concurrence excessives.</li>
+        </ul>
+        <p><b>Les exemptions :</b></p>
+        <ul>
+          <li><b>Exemption individuelle</b> (art. L. 420-4 C. com., art. 101 § 3 TFUE) : quatre conditions cumulatives – progrès économique, part équitable du profit réservée aux utilisateurs, caractère indispensable des restrictions, absence d'élimination de la concurrence.</li>
+          <li><b>Exemptions par catégorie</b> : règlements européens exemptant certaines catégories d'accords verticaux (règlement n° 2022/720), d'accords de spécialisation, de R&D, de transfert de technologie.</li>
+          <li><b>Règle de minimis</b> : les ententes dont l'impact sur le marché est insignifiant ne tombent pas sous le coup de la prohibition (seuils de parts de marché fixés par la communication de minimis de la Commission).</li>
+        </ul>`
+      },
+      {
+        title: "L'abus de position dominante (art. L. 420-2 C. com. et art. 102 TFUE)",
+        content: `<p>L'<b>article L. 420-2 du Code de commerce</b> et l'<b>article 102 TFUE</b> interdisent l'exploitation abusive d'une position dominante sur un marché. À la différence de l'entente, l'abus de position dominante est un comportement <b>unilatéral</b>.</p>
+        <p><b>La notion de position dominante :</b></p>
+        <ul>
+          <li>La position dominante est la « situation de puissance économique détenue par une entreprise qui lui donne le pouvoir de faire obstacle au maintien d'une concurrence effective sur le marché en cause, en lui fournissant la possibilité de comportements indépendants dans une mesure appréciable vis-à-vis de ses concurrents, de ses clients et finalement des consommateurs » (CJCE, 14 février 1978, <i>United Brands</i>).</li>
+          <li>La <b>définition du marché pertinent</b> est un préalable indispensable : marché de produit (substituabilité de la demande et de l'offre) et marché géographique (conditions de concurrence homogènes). La méthode du test SSNIP (<i>Small but Significant Non-transitory Increase in Price</i>) est utilisée pour délimiter le marché.</li>
+          <li>La détention d'une position dominante n'est pas en soi illicite ; seul son <b>exploitation abusive</b> est sanctionnée.</li>
+        </ul>
+        <p><b>Les formes d'abus :</b></p>
+        <ul>
+          <li><b>Abus d'exploitation</b> : pratiques visant à exploiter la position dominante au détriment des partenaires commerciaux ou des consommateurs (prix excessifs, conditions de transaction inéquitables).</li>
+          <li><b>Abus d'éviction</b> : pratiques visant à évincer les concurrents du marché (prix prédateurs, refus de vente discriminatoire, ventes liées, exclusivités abusives, ciseau tarifaire). L'Autorité de la concurrence a sanctionné France Télécom/Orange pour un ciseau tarifaire sur le marché du haut débit (Aut. conc., 18 mars 2013, décision n° 13-D-06).</li>
+          <li><b>Abus de dépendance économique</b> (art. L. 420-2 al. 2 C. com.) : spécificité du droit français. Un partenaire commercial qui se trouve en situation de dépendance économique (absence de solution alternative) ne peut être soumis à des conditions abusives par l'entreprise dominante.</li>
+        </ul>
+        <p><b>Les sanctions :</b></p>
+        <p>L'Autorité de la concurrence peut infliger des <b>sanctions pécuniaires</b> pouvant atteindre 10 % du chiffre d'affaires mondial de l'entreprise (art. L. 464-2 C. com.). Elle peut également prononcer des <b>injonctions</b> (cessation de la pratique, mesures structurelles) et des <b>astreintes</b>.</p>`
+      },
+      {
+        title: "Le contrôle des concentrations",
+        content: `<p>Le <b>contrôle des concentrations</b> est un mécanisme préventif (ex ante) visant à empêcher la création ou le renforcement d'une position dominante susceptible de porter atteinte à la concurrence. Il est exercé en droit français par l'Autorité de la concurrence (art. L. 430-1 et s. C. com.) et en droit européen par la Commission européenne (règlement n° 139/2004).</p>
+        <p><b>La notion de concentration (art. L. 430-1) :</b></p>
+        <ul>
+          <li><b>Fusion</b> entre deux ou plusieurs entreprises antérieurement indépendantes.</li>
+          <li><b>Prise de contrôle</b> exclusif ou conjoint par une ou plusieurs entreprises (acquisition de droits de vote majoritaires, contrats de domination, contrôle de fait).</li>
+          <li><b>Création d'une entreprise commune</b> de plein exercice accomplissant de manière durable toutes les fonctions d'une entité économique autonome.</li>
+        </ul>
+        <p><b>Les seuils de notification (art. L. 430-2) :</b></p>
+        <ul>
+          <li>Seuils de droit commun : chiffre d'affaires total mondial hors taxes supérieur à <b>150 millions d'euros</b> pour l'ensemble des parties, et chiffre d'affaires total hors taxes réalisé en France supérieur à <b>50 millions d'euros</b> pour au moins deux des parties.</li>
+          <li>Seuils réduits pour le commerce de détail : 75 millions d'euros en France pour l'ensemble des parties.</li>
+          <li>La notification est <b>obligatoire</b> et préalable à la réalisation de l'opération (art. L. 430-3). Le non-respect de cette obligation est sanctionné (art. L. 430-8).</li>
+        </ul>
+        <p><b>La procédure d'examen :</b></p>
+        <ul>
+          <li><b>Phase I</b> (25 jours ouvrés) : examen simplifié. L'Autorité autorise l'opération si elle n'est pas de nature à porter atteinte à la concurrence. Elle peut l'autoriser sous conditions (engagements des parties).</li>
+          <li><b>Phase II</b> (65 jours ouvrés, prorogeables) : examen approfondi engagé si l'opération est susceptible de porter atteinte à la concurrence. L'Autorité peut autoriser (avec ou sans engagements), interdire l'opération ou prescrire des mesures correctives.</li>
+          <li><b>Évocation par le ministre</b> (art. L. 430-7-1) : le ministre de l'Économie peut évoquer l'affaire pour des motifs d'intérêt général (développement industriel, compétitivité des entreprises, création d'emplois) et statuer lui-même.</li>
+        </ul>`
+      },
+      {
+        title: "L'Autorité de la concurrence et les sanctions",
+        content: `<p>L'<b>Autorité de la concurrence</b>, autorité administrative indépendante créée par la loi LME du 4 août 2008 (succédant au Conseil de la concurrence), est l'institution centrale du droit français de la concurrence. Elle dispose de pouvoirs d'enquête, de décision et de sanction étendus.</p>
+        <p><b>Organisation et compétences :</b></p>
+        <ul>
+          <li>L'Autorité est composée d'un <b>collège</b> de 17 membres (dont le président) et de <b>services d'instruction</b> dirigés par un rapporteur général (art. L. 461-1 C. com.).</li>
+          <li><b>Compétences consultatives</b> : l'Autorité rend des avis sur les questions de concurrence à la demande du Gouvernement, des commissions parlementaires, des juridictions, des collectivités territoriales ou des organisations professionnelles.</li>
+          <li><b>Compétences contentieuses</b> : elle instruit et sanctionne les pratiques anticoncurrentielles (ententes, abus de position dominante) et contrôle les concentrations.</li>
+        </ul>
+        <p><b>La procédure devant l'Autorité :</b></p>
+        <ul>
+          <li><b>Saisine</b> : par le ministre de l'Économie, les entreprises, les organisations professionnelles, les associations de consommateurs, ou d'<b>office</b> par l'Autorité elle-même (art. L. 462-5).</li>
+          <li><b>Instruction</b> : les services d'instruction disposent de pouvoirs d'enquête étendus (auditions, demandes de communication de documents, visites et saisies autorisées par le JLD – art. L. 450-4).</li>
+          <li><b>Notification de griefs</b> : document formalisant les reproches adressés aux entreprises, ouvrant la phase contradictoire.</li>
+          <li><b>Procédure de transaction</b> (art. L. 464-2 III) : l'entreprise qui ne conteste pas les griefs bénéficie d'une réduction de sanction.</li>
+          <li><b>Programme de clémence</b> (art. L. 464-2 IV) : l'entreprise qui révèle une entente et coopère avec l'Autorité peut bénéficier d'une <b>immunité totale</b> (premier demandeur) ou d'une <b>réduction de sanction</b>.</li>
+        </ul>
+        <p><b>Les sanctions pécuniaires (art. L. 464-2) :</b></p>
+        <ul>
+          <li>Maximum : <b>10 % du chiffre d'affaires mondial hors taxes</b> le plus élevé réalisé au cours d'un des exercices clos depuis l'exercice précédant celui au cours duquel les pratiques ont été mises en oeuvre (3 millions d'euros si le contrevenant n'est pas une entreprise).</li>
+          <li>Les critères de détermination de la sanction : gravité des faits, importance du dommage à l'économie, situation individuelle de l'entreprise, éventuelles circonstances atténuantes ou aggravantes (récidive).</li>
+        </ul>`
+      },
+      {
+        title: "L'articulation entre le droit français et le droit européen de la concurrence",
+        content: `<p>Le droit de la concurrence est caractérisé par une <b>dualité normative</b> entre le droit français (art. L. 420-1 et L. 420-2 C. com.) et le droit de l'Union européenne (art. 101 et 102 TFUE). Leur articulation obéit à des règles précises fixées par le règlement n° 1/2003 du 16 décembre 2002.</p>
+        <p><b>Le champ d'application respectif :</b></p>
+        <ul>
+          <li>Le droit européen s'applique lorsque la pratique est susceptible d'<b>affecter le commerce entre États membres</b> (critère d'applicabilité de l'art. 101 TFUE). Ce critère est interprété largement : une entente portant sur l'ensemble du territoire français est présumée affecter le commerce interétatique.</li>
+          <li>Le droit français s'applique aux pratiques dont les effets sont <b>limités au marché national</b> ou infranational.</li>
+          <li><b>Application parallèle</b> (art. 3 du règlement 1/2003) : les autorités nationales et les juridictions nationales qui appliquent le droit national de la concurrence à des pratiques affectant le commerce entre États membres doivent <b>également appliquer</b> les articles 101 et 102 TFUE.</li>
+        </ul>
+        <p><b>Le principe de primauté :</b></p>
+        <ul>
+          <li>En matière d'ententes, le droit national ne peut pas interdire une pratique qui serait autorisée au titre de l'article 101 TFUE (règle de convergence). Inversement, le droit national peut être <b>plus sévère</b> que le droit européen en matière d'abus de position dominante et de comportements unilatéraux.</li>
+          <li>La spécificité française de l'<b>abus de dépendance économique</b> (art. L. 420-2 al. 2 C. com.) est compatible avec le droit européen qui ne connaît pas cette notion.</li>
+        </ul>
+        <p><b>Le réseau européen de concurrence (REC) :</b></p>
+        <ul>
+          <li>Le règlement 1/2003 a instauré un système de <b>compétences parallèles</b> entre la Commission européenne et les autorités nationales de concurrence (ANC).</li>
+          <li>Les ANC peuvent appliquer directement les articles 101 et 102 TFUE. Un mécanisme de répartition des affaires assure la cohérence du réseau.</li>
+          <li>La directive ECN+ (n° 2019/1) transposée en droit français par l'ordonnance du 26 mai 2021 renforce les pouvoirs et l'indépendance des ANC et harmonise leurs outils procéduraux.</li>
+        </ul>
+        <h4>Le private enforcement</h4>
+        <p>La <b>directive n° 2014/104</b> relative aux actions en dommages et intérêts pour violation du droit de la concurrence, transposée par l'ordonnance du 9 mars 2017, facilite l'indemnisation des victimes de pratiques anticoncurrentielles. Elle instaure une <b>présomption de préjudice</b> en cas d'entente, facilite l'accès aux preuves et prévoit un délai de prescription de <b>5 ans</b> à compter de la connaissance de l'infraction. L'action de groupe en matière de concurrence (art. L. 623-1 C. conso.) permet aux associations de consommateurs d'agir au nom des victimes.</p>`
+      }
+    ]
   }
 };

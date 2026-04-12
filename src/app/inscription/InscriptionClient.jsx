@@ -50,16 +50,9 @@ export default function InscriptionPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f0f4ff] flex items-center justify-center px-4 py-24 relative overflow-hidden">
-      <div className="absolute w-56 h-56 bg-violet-400/[0.07] rounded-full filter blur-[80px] top-[12%] right-[8%]"></div>
-      <div className="absolute w-48 h-48 bg-primary-400/[0.06] rounded-full filter blur-[60px] bottom-[10%] left-[6%]"></div>
-      <div className="absolute w-36 h-36 bg-emerald-300/[0.05] rounded-full filter blur-[50px] top-[55%] right-[50%]"></div>
-      <div className="geo-circle-light w-44 h-44 top-[10%] left-[12%]"></div>
-      <div className="geo-circle-light w-28 h-28 bottom-[15%] right-[10%]"></div>
-      <div className="geo-ring-light w-36 h-36 bottom-[30%] left-[6%]"></div>
-      <div className="geo-ring-light w-24 h-24 top-[25%] right-[5%]"></div>
+    <div className="min-h-screen bg-gradient-to-br from-[#f5ece4] via-[#fdf2f3] to-[#f5ece4] flex items-center justify-center px-4 py-24 relative overflow-hidden">
 
-      <div className="w-full max-w-[440px] bg-white rounded-3xl shadow-xl shadow-primary-900/[0.06] p-8 sm:p-10 relative z-10">
+      <div className="w-full max-w-[440px] glass rounded-3xl shadow-xl shadow-primary-900/[0.06] p-8 sm:p-10 relative z-10">
         <div className="flex justify-center mb-6">
           <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center">
             <svg className="w-9 h-9 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
@@ -68,7 +61,8 @@ export default function InscriptionPage() {
           </div>
         </div>
 
-        <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-2xl font-black text-gray-900 text-center mb-1">Créez votre compte</h1>
+        <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 text-center mb-1">Créez votre compte</h1>
+        <div className="w-12 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mt-4 mb-6 rounded-full"></div>
         <p className="text-sm text-gray-400 text-center mb-8">et commencez votre préparation au CRFPA.</p>
 
         {error && (
@@ -134,7 +128,7 @@ export default function InscriptionPage() {
             )}
           </div>
 
-          <button type="submit" disabled={loading} className="w-full py-3.5 px-6 bg-primary-950 text-white text-sm font-semibold rounded-xl hover:bg-primary-900 transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2">
+          <button type="submit" disabled={loading} className="w-full py-3.5 px-6 bg-primary-600 hover:bg-primary-700 shadow-lg shadow-primary-600/25 hover:scale-[1.02] transition-all text-white text-sm font-semibold rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2">
             {loading ? 'Création en cours...' : 'Créer mon compte'}
           </button>
         </form>

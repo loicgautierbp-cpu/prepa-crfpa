@@ -7,27 +7,26 @@ export const metadata = {
 export default function CGVPage() {
   return (
     <>
-      <section className="gradient-hero noise-overlay dot-grid pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
-        <div className="blob-1"></div>
-        <div className="blob-2"></div>
+      <section className="bg-gradient-to-br from-[#f5ece4] via-[#fdf2f3] to-[#f5ece4] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-black text-gray-900 leading-[1.1] mb-4">
+          <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight mb-4">
             Conditions G&eacute;n&eacute;rales de{' '}<span className="bg-gradient-to-r from-primary-600 via-violet-500 to-primary-600 bg-clip-text text-transparent">Vente</span>
           </h1>
+          <div className="w-12 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mt-4 mb-6 rounded-full"></div>
           <p className="text-lg text-gray-600">Derni&egrave;re mise &agrave; jour : 17 mars 2026</p>
         </div>
       </section>
       <section className="py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 md:p-12 space-y-10">
+          <div className="bg-[#faf6f2] rounded-2xl border border-gray-100 shadow-sm p-8 md:p-12 space-y-10">
             <article>
-              <h2 className="text-xl font-black text-gray-900 mb-3 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-500"></span>Article 1 &ndash; Objet</h2>
+              <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-xl font-black text-gray-900 mb-3 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-500"></span>Article 1 &ndash; Objet</h2>
               <div className="text-sm text-gray-600 leading-relaxed space-y-2">
                 <p>Les CGV r&eacute;gissent les relations entre LP Labs S.A.S. et toute personne acc&eacute;dant &agrave; <strong className="text-gray-900">prepa-crfpa.fr</strong>, plateforme de pr&eacute;paration au CRFPA.</p>
               </div>
             </article>
             <article>
-              <h2 className="text-xl font-black text-gray-900 mb-3 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-500"></span>Article 2 &ndash; Services</h2>
+              <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-xl font-black text-gray-900 mb-3 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-500"></span>Article 2 &ndash; Services</h2>
               <div className="text-sm text-gray-600 leading-relaxed space-y-3">
                 <p>Trois formules :</p>
                 <div className="bg-gray-50 rounded-xl p-4 space-y-3">
@@ -38,25 +37,25 @@ export default function CGVPage() {
               </div>
             </article>
             <article>
-              <h2 className="text-xl font-black text-gray-900 mb-3 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-500"></span>Article 3 &ndash; Tarifs et paiement</h2>
+              <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-xl font-black text-gray-900 mb-3 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-500"></span>Article 3 &ndash; Tarifs et paiement</h2>
               <div className="text-sm text-gray-600 leading-relaxed space-y-2">
                 <p>Tarifs en euros TTC, sans engagement. Paiement mensuel par carte bancaire.</p>
               </div>
             </article>
             <article>
-              <h2 className="text-xl font-black text-gray-900 mb-3 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-500"></span>Article 4 &ndash; R&eacute;tractation</h2>
+              <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-xl font-black text-gray-900 mb-3 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-500"></span>Article 4 &ndash; R&eacute;tractation</h2>
               <div className="text-sm text-gray-600 leading-relaxed space-y-2">
                 <p>D&eacute;lai de 14 jours (art. L221-18 Code de la consommation). Contact : <a href="mailto:support@prepa-crfpa.fr" className="text-primary-600 hover:underline">support@prepa-crfpa.fr</a></p>
               </div>
             </article>
             <article>
-              <h2 className="text-xl font-black text-gray-900 mb-3 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-500"></span>Article 5 &ndash; R&eacute;siliation</h2>
+              <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-xl font-black text-gray-900 mb-3 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-500"></span>Article 5 &ndash; R&eacute;siliation</h2>
               <div className="text-sm text-gray-600 leading-relaxed space-y-2">
                 <p>Sans engagement. R&eacute;siliation effective en fin de p&eacute;riode de facturation.</p>
               </div>
             </article>
             <article>
-              <h2 className="text-xl font-black text-gray-900 mb-3 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-500"></span>Article 6 &ndash; Droit applicable</h2>
+              <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-xl font-black text-gray-900 mb-3 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary-500"></span>Article 6 &ndash; Droit applicable</h2>
               <div className="text-sm text-gray-600 leading-relaxed space-y-2">
                 <p>Droit fran&ccedil;ais. M&eacute;diation de la consommation en cas de litige non r&eacute;solu.</p>
               </div>

@@ -6,7 +6,8 @@ const TIERS = ['gratuit', 'essentiel', 'premium+'];
 const PremiumContext = createContext();
 
 export function PremiumProvider({ children }) {
-  const [tier, setTier] = useState('gratuit');
+  // TODO: remettre 'gratuit' après la phase de test
+  const [tier, setTier] = useState('premium+');
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -14,14 +15,11 @@ export function PremiumProvider({ children }) {
     const oldPremium = localStorage.getItem('prepa-crfpa-premium');
     const savedTier = localStorage.getItem('prepa-crfpa-tier');
 
-    if (savedTier && TIERS.includes(savedTier)) {
-      setTier(savedTier);
-    } else if (oldPremium === 'true') {
-      // Migration : ancien isPremium=true → premium+
-      setTier('premium+');
-      localStorage.setItem('prepa-crfpa-tier', 'premium+');
-    }
-    // Sinon, reste 'gratuit' par défaut
+    // TODO: remettre la logique normale après les tests
+    // Force premium+ pour la phase de test
+    setTier('premium+');
+    localStorage.setItem('prepa-crfpa-tier', 'premium+');
+    localStorage.setItem('prepa-crfpa-premium', 'true');
 
     setIsLoaded(true);
   }, []);
@@ -30,8 +28,8 @@ export function PremiumProvider({ children }) {
   const isEssentiel = tier === 'essentiel' || tier === 'premium+';
   const isPremiumPlus = tier === 'premium+';
 
-  // Rétrocompatibilité
-  const isPremium = isPremiumPlus;
+  // Rétrocompatibilité — isPremium = true dès essentiel
+  const isPremium = isEssentiel;
 
   const setSubscription = (newTier) => {
     if (TIERS.includes(newTier)) {

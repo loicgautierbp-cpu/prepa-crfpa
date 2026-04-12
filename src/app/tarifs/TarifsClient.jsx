@@ -44,13 +44,12 @@ export default function TarifsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="gradient-hero noise-overlay dot-grid pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
-        <div className="blob-1"></div>
-        <div className="blob-2"></div>
+      <section className="bg-gradient-to-br from-[#f5ece4] via-[#fdf2f3] to-[#f5ece4] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-black text-gray-900 leading-[1.1] mb-4">
+          <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight mb-4">
             Des tarifs <span className="tarif-gradient-text">adapt&eacute;s</span> &agrave; chaque &eacute;tudiant
           </h1>
+          <div className="w-12 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mt-4 mb-6 rounded-full"></div>
           <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
             Choisissez la formule qui correspond &agrave; votre rythme de pr&eacute;paration au barreau. <strong className="text-gray-900">Sans engagement</strong>, annulable &agrave; tout moment.
           </p>
@@ -63,7 +62,7 @@ export default function TarifsPage() {
           <div className="grid md:grid-cols-3 gap-6">
 
             {/* FREE */}
-            <div className="pricing-card bg-white rounded-2xl border-2 border-gray-200 p-7">
+            <div className="pricing-card lift bg-white rounded-2xl border-2 border-gray-200 p-7">
               <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-5">
                 <svg className="w-6 h-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
               </div>
@@ -130,7 +129,7 @@ export default function TarifsPage() {
             </div>
 
             {/* ESSENTIEL */}
-            <div className="pricing-card popular bg-white rounded-2xl border-2 border-primary-500 p-7 relative shadow-xl shadow-primary-500/10">
+            <div className="pricing-card popular lift bg-white rounded-2xl border-2 border-primary-500 p-7 relative shadow-xl shadow-primary-500/10">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary-600 text-white text-xs font-bold rounded-full">
                 Le plus populaire
               </div>
@@ -208,7 +207,7 @@ export default function TarifsPage() {
             </div>
 
             {/* PREMIUM+ */}
-            <div className="pricing-card bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl border-2 border-gray-700 p-7 text-white">
+            <div className="pricing-card lift bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl border-2 border-gray-700 p-7 text-white">
               <div className="w-12 h-12 bg-accent-500/20 rounded-xl flex items-center justify-center mb-5">
                 <svg className="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456Z" /></svg>
               </div>
@@ -274,7 +273,7 @@ export default function TarifsPage() {
                 <svg className="w-4 h-4 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" /></svg>
                 <span className="text-sm font-semibold text-primary-700">FAQ Tarifs</span>
               </div>
-              <h2 className="text-2xl font-black text-gray-900">Questions sur les tarifs</h2>
+              <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-2xl font-black text-gray-900">Questions sur les tarifs</h2>
             </div>
             <div className="space-y-4">
               <FaqItem

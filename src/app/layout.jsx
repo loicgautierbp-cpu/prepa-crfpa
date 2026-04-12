@@ -43,7 +43,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <body className={`${inter.className} ${playfair.variable} bg-slate-50 text-gray-900 antialiased`}>
+      <body className={`${inter.className} ${playfair.variable} bg-[#f5f0eb] text-gray-900 antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

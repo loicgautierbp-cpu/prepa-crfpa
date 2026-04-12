@@ -279,5 +279,198 @@ export const COURS_LIBERTES = {
         </ul>`
       }
     ]
+  },
+  'libertes-laicite': {
+    introduction: "La laïcité, principe fondateur de la République française consacré par la loi du 9 décembre 1905 et l'article 1er de la Constitution de 1958, organise la séparation des Églises et de l'État tout en garantissant la liberté religieuse. L'articulation entre ce principe et la liberté de conscience et de religion constitue un enjeu majeur du droit des libertés fondamentales, régulièrement au cœur de la jurisprudence constitutionnelle et conventionnelle.",
+    readTime: 20,
+    sections: [
+      {
+        title: "Le principe de laïcité issu de la loi du 9 décembre 1905",
+        content: `<p>La <b>loi du 9 décembre 1905</b> relative à la séparation des Églises et de l'État constitue le texte fondateur de la laïcité française. Son article 1er dispose que « la République assure la liberté de conscience » et « garantit le libre exercice des cultes sous les seules restrictions édictées dans l'intérêt de l'ordre public ». L'article 2 pose le principe selon lequel « la République ne reconnaît, ne salarie ni ne subventionne aucun culte ».</p>
+        <p><b>Les implications juridiques de la loi de 1905 :</b></p>
+        <ul>
+          <li><b>La liberté de conscience</b> : chaque individu est libre de croire ou de ne pas croire, de pratiquer ou non un culte. Cette liberté est absolue dans son for intérieur et ne connaît de limites que dans ses manifestations extérieures.</li>
+          <li><b>La non-reconnaissance des cultes</b> : l'État ne privilégie aucune religion et ne s'immisce pas dans l'organisation interne des cultes. Il n'existe pas de religion officielle ni de concordat (sauf en Alsace-Moselle, où le régime concordataire de 1801 subsiste en vertu du droit local).</li>
+          <li><b>L'interdiction de subventionner les cultes</b> : les collectivités publiques ne peuvent financer directement les activités cultuelles. Toutefois, la jurisprudence a admis des tempéraments : financement de baux emphytéotiques pour la construction de lieux de culte (CE, 19 juillet 2011, <i>Commune de Trélazé</i>), mise à disposition de locaux communaux pour l'exercice d'un culte à titre temporaire.</li>
+          <li><b>Le régime des associations cultuelles</b> (art. 18 et 19 de la loi de 1905) : les associations ayant pour objet exclusif l'exercice d'un culte bénéficient d'un régime juridique spécifique, modifié par la loi du 24 août 2021 confortant le respect des principes de la République.</li>
+        </ul>
+        <p>Le Conseil constitutionnel a érigé la laïcité en <b>principe à valeur constitutionnelle</b> (CC, 21 février 2013, n° 2012-297 QPC). Le Conseil d'État y voit un principe fondamental reconnu par les lois de la République (CE, Avis, 27 novembre 1989).</p>`
+      },
+      {
+        title: "Le principe de neutralité des services publics",
+        content: `<p>Le principe de <b>neutralité</b> constitue le corollaire de la laïcité dans le fonctionnement des services publics. Il impose que l'État et ses agents s'abstiennent de toute manifestation de leurs convictions religieuses dans l'exercice de leurs fonctions.</p>
+        <p><b>La neutralité des agents publics :</b></p>
+        <ul>
+          <li>Les agents du service public sont soumis à une <b>obligation stricte de neutralité religieuse</b>. Le Conseil d'État a posé ce principe dans l'avis du 3 mai 2000, <i>Mlle Marteaux</i>, confirmé par CE, 15 octobre 2014 : le port de signes religieux par un agent public constitue un manquement à ses obligations professionnelles, quelle que soit la nature du signe.</li>
+          <li>Cette obligation s'applique à <b>tous les agents publics</b>, titulaires et contractuels, y compris les stagiaires et les collaborateurs occasionnels du service public.</li>
+          <li>La <b>loi du 24 août 2021</b> a étendu l'obligation de neutralité aux salariés des organismes de droit privé chargés d'une mission de service public ou d'un contrat de commande publique (art. L. 1321-2-1 C. trav.).</li>
+        </ul>
+        <p><b>La neutralité dans les entreprises privées :</b></p>
+        <ul>
+          <li>Le principe de neutralité ne s'applique pas en tant que tel dans les entreprises privées. Toutefois, l'<b>article L. 1321-2-1 du Code du travail</b> (issu de la loi El Khomri du 8 août 2016) permet au règlement intérieur de contenir une <b>clause de neutralité</b> restreignant la manifestation des convictions religieuses si elle est justifiée par l'exercice d'autres libertés et droits fondamentaux ou par les nécessités du bon fonctionnement de l'entreprise, et proportionnée au but recherché.</li>
+          <li>La CJUE a admis la licéité d'une telle clause dans l'arrêt <i>Achbita</i> (CJUE, 14 mars 2017, C-157/15), tout en exigeant une application générale et indifférenciée.</li>
+        </ul>
+        <h4>Le cas particulier de la crèche Baby Loup</h4>
+        <p>L'arrêt de l'Assemblée plénière de la Cour de cassation du 25 juin 2014, <i>Association Baby Loup</i>, a validé le licenciement d'une salariée voilée d'une crèche associative, en se fondant sur les dispositions du règlement intérieur suffisamment précises et justifiées par la nature de la tâche à accomplir. Cette décision illustre la tension entre liberté religieuse et exigences professionnelles dans le secteur privé.</p>`
+      },
+      {
+        title: "La question des signes religieux dans l'espace public",
+        content: `<p>La réglementation des <b>signes religieux</b> constitue l'un des aspects les plus contentieux du droit de la laïcité, à l'intersection entre liberté religieuse, ordre public et neutralité de l'espace scolaire.</p>
+        <p><b>Les signes religieux à l'école publique :</b></p>
+        <ul>
+          <li>La <b>loi n° 2004-228 du 15 mars 2004</b> interdit « le port de signes ou tenues par lesquels les élèves manifestent ostensiblement une appartenance religieuse » dans les écoles, collèges et lycées publics (art. L. 141-5-1 du Code de l'éducation).</li>
+          <li>Sont visés les signes <b>ostensibles</b> (voile islamique, kippa, grande croix) par opposition aux signes <b>discrets</b> (petite croix, médaille, étoile de David discrète), qui restent autorisés.</li>
+          <li>La procédure disciplinaire doit être précédée d'un <b>dialogue</b> avec l'élève (art. R. 141-2 C. éducation).</li>
+          <li>Le Conseil constitutionnel n'a pas été saisi de cette loi, mais le CE a validé sa conformité conventionnelle (CE, 5 décembre 2007, <i>M. et Mme Ghazal</i>).</li>
+        </ul>
+        <p><b>La dissimulation du visage dans l'espace public :</b></p>
+        <ul>
+          <li>La <b>loi n° 2010-1192 du 11 octobre 2010</b> interdit la dissimulation du visage dans l'espace public. Bien que formulée de manière générale, elle visait principalement le port du voile intégral (niqab, burqa).</li>
+          <li>Le Conseil constitutionnel a validé cette loi tout en émettant une réserve d'interprétation excluant les lieux de culte (CC, 7 octobre 2010, n° 2010-613 DC).</li>
+          <li>La CEDH a confirmé la conventionnalité de cette interdiction dans l'arrêt <i>S.A.S. c. France</i> (CEDH, Gde ch., 1er juillet 2014) en se fondant sur le concept de « vivre ensemble », reconnu comme composante légitime de l'ordre public.</li>
+        </ul>
+        <h4>Les signes religieux dans l'enseignement supérieur</h4>
+        <p>La loi de 2004 ne s'applique pas aux universités. Les étudiants demeurent libres de porter des signes religieux dans les établissements d'enseignement supérieur, sous réserve du respect de l'ordre public et du bon fonctionnement du service (CE, 26 juillet 1996). Des restrictions peuvent toutefois être imposées pour des raisons de sécurité ou d'hygiène dans certaines formations pratiques.</p>`
+      },
+      {
+        title: "La jurisprudence de la CEDH en matière de liberté religieuse",
+        content: `<p>La <b>liberté de pensée, de conscience et de religion</b> est protégée par l'<b>article 9 de la Convention européenne des droits de l'homme</b>. La Cour de Strasbourg a développé une jurisprudence abondante articulant cette liberté avec la marge d'appréciation des États en matière de laïcité.</p>
+        <p><b>Le cadre juridique de l'article 9 CEDH :</b></p>
+        <ul>
+          <li><b>Paragraphe 1</b> : protège le <i>forum internum</i> (liberté de croire, de changer de religion) de manière absolue, et le <i>forum externum</i> (manifestation des croyances par le culte, l'enseignement, les pratiques et l'accomplissement des rites) de manière relative.</li>
+          <li><b>Paragraphe 2</b> : les restrictions à la manifestation de la religion doivent être <b>prévues par la loi</b>, poursuivre un <b>but légitime</b> (sécurité publique, ordre public, santé, morale, droits et libertés d'autrui) et être <b>nécessaires dans une société démocratique</b>.</li>
+        </ul>
+        <p><b>Les arrêts fondamentaux :</b></p>
+        <ul>
+          <li><b>CEDH, 25 mai 1993, <i>Kokkinakis c. Grèce</i></b> : premier arrêt de condamnation sur le fondement de l'article 9. La Cour affirme que la liberté religieuse est « l'un des fondements d'une société démocratique » et inclut la liberté de prosélytisme, sauf s'il est abusif ou coercitif.</li>
+          <li><b>CEDH, Gde ch., 10 novembre 2005, <i>Leyla Şahin c. Turquie</i></b> : la Cour valide l'interdiction du voile islamique dans les universités turques, reconnaissant une <b>large marge d'appréciation</b> aux États en matière de laïcité et de réglementation du port de signes religieux dans les établissements d'enseignement.</li>
+          <li><b>CEDH, Gde ch., 18 mars 2011, <i>Lautsi c. Italie</i></b> : la présence de crucifix dans les salles de classe des écoles publiques italiennes ne viole pas l'article 9 combiné avec l'article 2 du Protocole n° 1. La Cour reconnaît une large marge d'appréciation en matière de tradition culturelle.</li>
+          <li><b>CEDH, 15 janvier 2013, <i>Eweida et autres c. Royaume-Uni</i></b> : arrêt nuancé. La Cour reconnaît le droit de porter une croix au travail mais admet le licenciement d'agents refusant de servir des couples homosexuels pour des motifs religieux.</li>
+        </ul>
+        <p>La jurisprudence de la CEDH se caractérise par une approche <b>casuistique</b>, fondée sur la marge d'appréciation des États, qui varie selon qu'il existe ou non un consensus européen sur la question. Cette marge est particulièrement large en matière de réglementation du port de signes religieux.</p>`
+      },
+      {
+        title: "L'articulation entre liberté religieuse et ordre public",
+        content: `<p>La conciliation entre la <b>liberté religieuse</b> et les exigences de l'<b>ordre public</b> constitue un exercice délicat de proportionnalité qui irrigue l'ensemble du contentieux de la laïcité.</p>
+        <p><b>L'ordre public, fondement des restrictions :</b></p>
+        <ul>
+          <li>L'article 1er de la loi de 1905 prévoit que le libre exercice des cultes est garanti sous les seules restrictions édictées « dans l'intérêt de l'ordre public ». Cette notion recouvre la sécurité publique, la tranquillité publique, la salubrité publique et, depuis l'arrêt <i>S.A.S. c. France</i>, le « vivre ensemble ».</li>
+          <li>Le juge administratif exerce un <b>contrôle de proportionnalité</b> rigoureux entre la mesure de police et la liberté religieuse. Le CE a ainsi annulé des arrêtés municipaux anti-burkini comme portant une atteinte grave et manifestement illégale aux libertés (CE, ord., 26 août 2016, <i>Ligue des droits de l'homme et autres</i>).</li>
+          <li>Le contrôle de proportionnalité s'exerce <b>in concreto</b> : le juge examine les circonstances locales et la réalité des risques de troubles à l'ordre public.</li>
+        </ul>
+        <h4>Les manifestations religieuses dans l'espace public</h4>
+        <p>Les processions et manifestations religieuses sur la voie publique sont soumises au régime de la <b>déclaration préalable</b> (art. L. 211-1 du Code de la sécurité intérieure). Le maire peut les interdire uniquement en cas de menace réelle et circonstanciée à l'ordre public, sous le contrôle du juge administratif.</p>
+        <p><b>La loi du 24 août 2021 confortant le respect des principes de la République :</b></p>
+        <ul>
+          <li>Renforcement du <b>contrôle des associations cultuelles</b> : obligation de déclaration préalable, contrôle des financements étrangers (au-delà de 10 000 euros annuels), certification des comptes pour les associations dont les ressources dépassent un seuil fixé par décret.</li>
+          <li>Extension du <b>contrat d'engagement républicain</b> : les associations sollicitant des subventions publiques doivent souscrire un engagement de respect des principes de la République, dont la laïcité.</li>
+          <li>Lutte contre les <b>certificats de virginité</b> et les <b>mariages forcés</b>, en tant que pratiques portant atteinte à la dignité de la personne humaine.</li>
+          <li>Renforcement de l'<b>instruction obligatoire</b> : restriction de l'instruction en famille à des situations dérogatoires soumises à autorisation préalable (art. L. 131-2 C. éducation).</li>
+        </ul>
+        <p>Cette loi illustre l'évolution du droit français vers un modèle de laïcité plus interventionniste, visant à prévenir le « séparatisme » et à garantir le respect effectif des valeurs républicaines.</p>`
+      }
+    ]
+  },
+  'libertes-etat-urgence': {
+    introduction: "L'état d'urgence, régime d'exception créé par la loi n° 55-385 du 3 avril 1955, permet aux autorités administratives de restreindre certaines libertés fondamentales face à un péril imminent ou une calamité publique. Son utilisation prolongée après les attentats de 2015, puis l'instauration d'un état d'urgence sanitaire en 2020, ont ravivé le débat sur la conciliation entre sécurité et libertés, sous le contrôle du juge et au regard de l'article 15 de la Convention européenne des droits de l'homme.",
+    readTime: 20,
+    sections: [
+      {
+        title: "Le cadre juridique de l'état d'urgence (loi du 3 avril 1955)",
+        content: `<p>La <b>loi n° 55-385 du 3 avril 1955</b>, adoptée dans le contexte de la guerre d'Algérie, constitue le fondement légal de l'état d'urgence en droit français. Elle a été profondément modifiée par la <b>loi n° 2015-1501 du 20 novembre 2015</b> après les attentats du 13 novembre 2015.</p>
+        <p><b>Les conditions de déclenchement :</b></p>
+        <ul>
+          <li>L'état d'urgence peut être déclaré « soit en cas de péril imminent résultant d'atteintes graves à l'ordre public, soit en cas d'événements présentant, par leur nature et leur gravité, le caractère de calamité publique » (art. 1er).</li>
+          <li>Il est <b>déclaré par décret en Conseil des ministres</b>, sur tout ou partie du territoire métropolitain ou des collectivités d'outre-mer (art. 2).</li>
+          <li>Sa <b>prorogation au-delà de 12 jours</b> requiert une loi votée par le Parlement (art. 2), qui fixe la durée définitive. Entre 2015 et 2017, l'état d'urgence a été prorogé six fois par le Parlement.</li>
+        </ul>
+        <p><b>Les pouvoirs conférés aux autorités administratives :</b></p>
+        <ul>
+          <li><b>Le préfet</b> peut interdire la circulation des personnes ou véhicules dans certains lieux et à certaines heures, instituer des zones de protection ou de sécurité, interdire le séjour de certaines personnes dans le département (art. 5).</li>
+          <li><b>Le ministre de l'Intérieur</b> peut prononcer des <b>assignations à résidence</b> à l'encontre de toute personne dont il existe des raisons sérieuses de penser que son comportement constitue une menace pour la sécurité et l'ordre publics (art. 6, modifié en 2015).</li>
+          <li>Le préfet peut ordonner des <b>perquisitions administratives</b> (dites « perquisitions de nuit ») en tout lieu, sauf dans un lieu affecté à l'exercice d'un mandat parlementaire ou à l'activité professionnelle des avocats, magistrats ou journalistes (art. 11).</li>
+          <li>Possibilité de <b>dissoudre des associations ou groupements</b> qui participent, facilitent ou incitent à la commission d'actes portant atteinte à l'ordre public (art. 6-1, créé en 2015).</li>
+        </ul>
+        <p>Le Conseil constitutionnel a validé l'essentiel du dispositif tout en censurant certaines mesures, comme le pouvoir de blocage des sites internet jugé insuffisamment encadré (CC, 19 février 2016, n° 2016-535 QPC).</p>`
+      },
+      {
+        title: "L'état d'urgence sanitaire (loi du 23 mars 2020)",
+        content: `<p>La crise du Covid-19 a conduit à la création d'un <b>état d'urgence sanitaire</b> par la <b>loi n° 2020-290 du 23 mars 2020</b>, inscrit aux articles L. 3131-12 et suivants du Code de la santé publique. Ce régime d'exception, distinct de l'état d'urgence sécuritaire de 1955, a profondément affecté les libertés fondamentales.</p>
+        <p><b>Le régime juridique :</b></p>
+        <ul>
+          <li><b>Déclaration</b> : par décret en Conseil des ministres, sur rapport du ministre chargé de la Santé et au vu des données scientifiques disponibles (art. L. 3131-13 CSP).</li>
+          <li><b>Prorogation</b> : au-delà d'un mois, la prorogation est autorisée par la loi (art. L. 3131-14 CSP).</li>
+          <li><b>Comité scientifique</b> : un comité de scientifiques est réuni pour rendre des avis publics sur les mesures prises (art. L. 3131-19 CSP).</li>
+        </ul>
+        <p><b>Les mesures susceptibles d'être prises par le Premier ministre :</b></p>
+        <ul>
+          <li><b>Restreindre ou interdire la circulation</b> des personnes et des véhicules, ainsi que l'accès aux moyens de transport collectif (confinement).</li>
+          <li><b>Interdire aux personnes de sortir de leur domicile</b>, sous réserve de déplacements strictement indispensables (attestation de déplacement dérogatoire).</li>
+          <li><b>Ordonner la fermeture</b> provisoire d'établissements recevant du public et de lieux de réunion.</li>
+          <li><b>Limiter ou interdire les rassemblements</b> sur la voie publique et dans les lieux ouverts au public.</li>
+          <li>Ordonner la <b>mise en quarantaine</b> et les mesures de placement et de maintien en <b>isolement</b> des personnes affectées.</li>
+          <li>Ordonner la <b>réquisition</b> de tous biens et services nécessaires.</li>
+        </ul>
+        <p>Le Conseil constitutionnel a validé l'essentiel du dispositif (CC, 11 mai 2020, n° 2020-800 DC) tout en censurant les dispositions relatives aux mesures d'isolement et de quarantaine jugées insuffisamment encadrées par le juge judiciaire, gardien de la liberté individuelle au sens de l'article 66 de la Constitution.</p>`
+      },
+      {
+        title: "Les mesures restrictives de libertés en période d'état d'urgence",
+        content: `<p>Les régimes d'état d'urgence autorisent des <b>restrictions considérables aux libertés fondamentales</b> qui, en temps normal, seraient jugées disproportionnées. L'inventaire de ces atteintes permet de mesurer l'ampleur du pouvoir d'exception.</p>
+        <p><b>Les libertés affectées par l'état d'urgence sécuritaire :</b></p>
+        <ul>
+          <li><b>Liberté d'aller et venir</b> : les assignations à résidence et les interdictions de circuler restreignent directement la liberté de mouvement. L'astreinte à domicile peut être assortie d'une obligation de pointage (jusqu'à trois fois par jour) et de remise du passeport.</li>
+          <li><b>Inviolabilité du domicile</b> : les perquisitions administratives de jour et de nuit s'effectuent sans autorisation préalable du juge judiciaire, contrairement aux perquisitions de droit commun (art. 56 et s. CPP).</li>
+          <li><b>Liberté de réunion et de manifestation</b> : possibilité d'interdire les rassemblements, les cortèges et les réunions de nature à provoquer ou entretenir le désordre.</li>
+          <li><b>Liberté d'association</b> : pouvoir de dissolution administrative des associations et groupements.</li>
+        </ul>
+        <p><b>Les libertés affectées par l'état d'urgence sanitaire :</b></p>
+        <ul>
+          <li><b>Liberté d'aller et venir</b> : les confinements de mars-mai 2020 et d'octobre-décembre 2020 ont constitué des restrictions d'une ampleur inédite, interdisant à l'ensemble de la population de quitter son domicile sauf motif impérieux.</li>
+          <li><b>Liberté de culte</b> : l'interdiction des rassemblements dans les lieux de culte a été partiellement censurée par le CE (CE, ord., 18 mai 2020, <i>Association Civitas</i>), qui a ordonné au Gouvernement de prendre des mesures moins restrictives.</li>
+          <li><b>Liberté d'entreprendre</b> : fermeture administrative des commerces « non essentiels », des restaurants, des lieux culturels et sportifs.</li>
+          <li><b>Droit au respect de la vie privée</b> : mise en place de systèmes de traçage numérique (application StopCovid/TousAntiCovid), passe sanitaire puis vaccinal.</li>
+        </ul>
+        <p>Le <b>passe vaccinal</b> (loi du 22 janvier 2022) a fait l'objet d'un contrôle de constitutionnalité : le Conseil constitutionnel l'a validé tout en censurant la possibilité de vérification de l'identité par les exploitants des établissements (CC, 21 janvier 2022, n° 2022-835 DC).</p>`
+      },
+      {
+        title: "Le contrôle juridictionnel de l'état d'urgence",
+        content: `<p>Le <b>contrôle juridictionnel</b> des mesures prises en période d'état d'urgence constitue la garantie essentielle contre l'arbitraire du pouvoir d'exception. Ce contrôle est assuré par le juge administratif, le juge constitutionnel et, dans une moindre mesure, le juge judiciaire.</p>
+        <p><b>Le contrôle du juge administratif :</b></p>
+        <ul>
+          <li><b>Le référé-liberté</b> (art. L. 521-2 CJA) : le juge des référés peut ordonner toute mesure nécessaire à la sauvegarde d'une liberté fondamentale à laquelle une autorité administrative aurait porté une atteinte grave et manifestement illégale, dans un délai de 48 heures. Ce recours a été massivement utilisé pendant les états d'urgence.</li>
+          <li><b>Le référé-suspension</b> (art. L. 521-1 CJA) : suspension de l'exécution d'une décision administrative en cas d'urgence et de moyen propre à créer un doute sérieux sur la légalité.</li>
+          <li><b>Le recours pour excès de pouvoir</b> : contrôle de légalité a posteriori des mesures individuelles (assignations à résidence) et réglementaires (décrets, arrêtés préfectoraux). Le CE exerce un <b>contrôle de proportionnalité</b> renforcé sur ces mesures.</li>
+        </ul>
+        <p><b>Le contrôle du Conseil constitutionnel :</b></p>
+        <ul>
+          <li>Par la <b>QPC</b> (art. 61-1 de la Constitution), le Conseil constitutionnel a été saisi à plusieurs reprises de la conformité aux droits et libertés constitutionnels des dispositions de la loi de 1955 et des lois de prorogation.</li>
+          <li>Le CC a censuré le régime des perquisitions informatiques (CC, 19 février 2016, n° 2016-536 QPC), l'absence de voies de recours effectives contre certaines mesures, et les assignations à résidence d'une durée excessive portant atteinte disproportionnée à la liberté d'aller et venir (CC, 16 mars 2017, n° 2017-624 QPC).</li>
+          <li>Le CC a toutefois validé l'essentiel des mesures en relevant leur caractère <b>temporaire</b> et <b>proportionné</b> au regard des circonstances exceptionnelles.</li>
+        </ul>
+        <h4>Le rôle du juge judiciaire</h4>
+        <p>L'article 66 de la Constitution confie au juge judiciaire la garde de la liberté individuelle. Toutefois, le contentieux de l'état d'urgence relève principalement du juge administratif, le TC ayant confirmé la compétence administrative pour le contentieux des mesures de police administrative (TC, 12 mai 1997, <i>Préfet de police de Paris</i>). Le juge judiciaire intervient néanmoins en matière de quarantaine et d'isolement dans le cadre de l'état d'urgence sanitaire (JLD saisi dans un délai de 72 heures).</p>`
+      },
+      {
+        title: "L'article 15 de la CEDH et la clause dérogatoire en cas d'urgence",
+        content: `<p>L'<b>article 15 de la Convention européenne des droits de l'homme</b> prévoit la possibilité pour les États de déroger à certaines obligations conventionnelles « en cas de guerre ou en cas d'autre danger public menaçant la vie de la nation ». Ce mécanisme encadre les régimes d'exception au plan européen.</p>
+        <p><b>Les conditions de la dérogation :</b></p>
+        <ul>
+          <li><b>Condition de fond</b> : existence d'un « danger public menaçant la vie de la nation », défini par la Cour comme « une situation de crise ou de danger exceptionnel et imminent qui affecte l'ensemble de la population et constitue une menace pour la vie organisée de la communauté composant l'État » (CEDH, 1er juillet 1961, <i>Lawless c. Irlande</i>).</li>
+          <li><b>Stricte mesure des exigences de la situation</b> : les mesures dérogatoires doivent être strictement proportionnées à ce qu'exige la situation, et ne peuvent être inconciliables avec les autres obligations de droit international.</li>
+          <li><b>Obligation de notification</b> : l'État doit informer le Secrétaire général du Conseil de l'Europe des mesures prises et des motifs qui les ont inspirées (art. 15 § 3). La France a notifié des dérogations en 2015 (attentats) et en 2020 (pandémie).</li>
+        </ul>
+        <p><b>Les droits indérogeables :</b></p>
+        <ul>
+          <li><b>Article 2</b> : droit à la vie (sauf décès résultant d'actes licites de guerre).</li>
+          <li><b>Article 3</b> : interdiction de la torture et des traitements inhumains ou dégradants.</li>
+          <li><b>Article 4 § 1</b> : interdiction de l'esclavage et de la servitude.</li>
+          <li><b>Article 7</b> : pas de peine sans loi (principe de légalité pénale).</li>
+          <li>Auxquels s'ajoutent les Protocoles n° 6 et n° 13 (abolition de la peine de mort) et le Protocole n° 7, art. 4 (non bis in idem).</li>
+        </ul>
+        <h4>La marge d'appréciation des États</h4>
+        <p>La CEDH reconnaît aux États une <b>large marge d'appréciation</b> tant dans la détermination de l'existence d'un danger public que dans le choix des mesures nécessaires pour y faire face. Toutefois, cette marge n'est pas illimitée : la Cour exerce un contrôle de la nécessité et de la proportionnalité des mesures (CEDH, Gde ch., 19 février 2009, <i>A. et autres c. Royaume-Uni</i>, censurant la détention indéfinie de suspects terroristes étrangers). La Cour vérifie également l'existence de <b>garanties adéquates contre les abus</b>, notamment un contrôle juridictionnel effectif des mesures individuelles.</p>
+        <p>La question de la conventionnalité des mesures françaises prises pendant les états d'urgence successifs reste largement ouverte devant la Cour de Strasbourg, plusieurs requêtes étant pendantes.</p>`
+      }
+    ]
   }
 };

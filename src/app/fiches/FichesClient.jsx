@@ -167,7 +167,7 @@ function FicheCard({ fiche, index, onOpen, premiumUser, user, onLoginRequired, o
 
   return (
     <article
-      className="group bg-white rounded-2xl border border-gray-200 overflow-hidden cursor-pointer hover:shadow-lg hover:shadow-gray-200/60 hover:border-gray-300 transition-all duration-300"
+      className="group lift bg-white rounded-2xl border border-gray-200 overflow-hidden cursor-pointer hover:shadow-lg hover:shadow-gray-200/60 hover:border-gray-300 transition-all duration-300"
       style={{ animationDelay: `${Math.min(index * 0.04, 0.4)}s` }}
       onClick={() => onOpen(fiche)}
     >
@@ -385,7 +385,7 @@ function FicheModal({ fiche, onClose, premiumUser, user, onLoginRequired, onUpgr
 
           {/* Body */}
           <div className="px-6 md:px-8 py-6" id="fiche-modal-content">
-            <h2 className="text-2xl font-black text-gray-900 mb-6">{fiche.title}</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-2xl font-black text-gray-900 tracking-tight mb-6">{fiche.title}</h2>
             <div
               className="prose prose-gray max-w-none text-gray-700 leading-relaxed"
               dangerouslySetInnerHTML={{ __html: fiche.content }}
@@ -443,6 +443,10 @@ function FicheModal({ fiche, onClose, premiumUser, user, onLoginRequired, onUpgr
 /* ================================================================
    MAIN PAGE
    ================================================================ */
+const EXCLUDED_SUBJECTS = ['synthese', 'grand-oral', 'anglais'];
+const MATIERE_SUBJECTS = SUBJECTS.filter(s => !EXCLUDED_SUBJECTS.includes(s.id));
+const MATIERE_FICHES = FICHES_DATA.filter(f => !EXCLUDED_SUBJECTS.includes(f.subject));
+
 export default function FichesPage() {
   const { isEssentiel } = usePremium();
   const { user } = useAuth();
@@ -455,8 +459,8 @@ export default function FichesPage() {
   /* ---------- Filtering ---------- */
   const filteredFiches = (() => {
     let fiches = currentSubject === 'all'
-      ? FICHES_DATA
-      : FICHES_DATA.filter(f => f.subject === currentSubject);
+      ? MATIERE_FICHES
+      : MATIERE_FICHES.filter(f => f.subject === currentSubject);
     if (search) {
       const q = search.toLowerCase();
       fiches = fiches.filter(f =>
@@ -486,27 +490,26 @@ export default function FichesPage() {
   return (
     <>
       {/* ====== HERO ====== */}
-      <section className="gradient-hero pt-28 pb-14 md:pt-36 md:pb-20 relative overflow-hidden">
-        <div className="absolute w-[250px] h-[250px] bg-violet-300/10 rounded-full blur-[80px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <section className="bg-gradient-to-br from-[#f5ece4] via-[#fdf2f3] to-[#f5ece4] pt-28 pb-14 md:pt-36 md:pb-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Left text */}
+          <div className="max-w-3xl mx-auto text-center">
             <div>
-              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full border border-primary-200 mb-6">
+              <div className="inline-flex items-center gap-2 bg-accent-500/10 backdrop-blur px-4 py-2 rounded-full border border-accent-300 mb-6">
                 <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-500" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500" />
                 </span>
-                <span className="text-sm font-semibold text-primary-700">{FICHES_DATA.length} fiches disponibles</span>
+                <span className="text-sm font-semibold text-accent-700">{FICHES_DATA.length} fiches disponibles</span>
               </div>
-              <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-black text-gray-900 leading-[1.1] mb-5">
+              <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight mb-1">
                 Fiches et{' '}
-                <span className="bg-gradient-to-r from-primary-600 via-violet-600 to-primary-600 bg-clip-text text-transparent">
+                <span className="fiches-gradient-text">
                   cours complets
                 </span>{' '}
                 en un clic
               </h1>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-xl">
+              <div className="w-12 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mt-4 mb-6 rounded-full"></div>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8 max-w-xl mx-auto">
                 Revisez efficacement avec des <strong className="text-gray-900">fiches de revision</strong> synthetiques et des{' '}
                 <strong className="text-gray-900">cours detailles</strong> couvrant le{' '}
                 <strong className="text-gray-900">programme complet</strong> du CRFPA. Chaque fiche est{' '}
@@ -514,7 +517,7 @@ export default function FichesPage() {
               </p>
 
               {/* Stats row */}
-              <div className="flex flex-wrap items-center gap-5 sm:gap-6">
+              <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 bg-primary-100 rounded-xl flex items-center justify-center">
                     <svg className="w-5 h-5 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -534,7 +537,7 @@ export default function FichesPage() {
                     </svg>
                   </div>
                   <div>
-                    <div className="text-xl font-black text-gray-900">{SUBJECTS.length}</div>
+                    <div className="text-xl font-black text-gray-900">{MATIERE_SUBJECTS.length}</div>
                     <div className="text-xs font-medium text-gray-500">Mati&egrave;res couvertes</div>
                   </div>
                 </div>
@@ -552,9 +555,6 @@ export default function FichesPage() {
                 </div>
               </div>
             </div>
-
-            {/* Right: floating cards (decorative, desktop only) */}
-            <FloatingSubjectCards />
           </div>
         </div>
       </section>
@@ -592,11 +592,11 @@ export default function FichesPage() {
                 </svg>
                 Toutes
                 <span className={`text-xs px-2 py-0.5 rounded-full ${currentSubject === 'all' ? 'bg-white/20' : 'text-gray-400'}`}>
-                  {FICHES_DATA.length}
+                  {MATIERE_FICHES.length}
                 </span>
               </button>
-              {SUBJECTS.map((sub) => {
-                const count = FICHES_DATA.filter(f => f.subject === sub.id).length;
+              {MATIERE_SUBJECTS.map((sub) => {
+                const count = MATIERE_FICHES.filter(f => f.subject === sub.id).length;
                 const isActive = currentSubject === sub.id;
                 const iconPath = SUBJECT_ICONS[sub.id]?.path || '';
                 return (
@@ -658,7 +658,7 @@ export default function FichesPage() {
                       </svg>
                     </div>
                     <div>
-                      <h2 className="text-lg font-bold text-gray-900">{sub.name}</h2>
+                      <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-lg font-bold text-gray-900">{sub.name}</h2>
                       <p className="text-xs text-gray-500">{subFiches.length} fiches</p>
                     </div>
                   </div>

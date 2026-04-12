@@ -19,32 +19,25 @@ function normalizeUser(supabaseUser) {
 }
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // TODO: remettre null après la phase de test
+  const [user, setUser] = useState({ displayName: 'Testeur', email: 'test@prepa-crfpa.fr' });
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    // Si Supabase n'est pas configuré (clés manquantes), on skip
-    if (!supabase) {
-      setLoading(false);
-      return;
-    }
-
-    // Récupérer la session initiale
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(normalizeUser(session?.user ?? null));
-      setLoading(false);
-    });
-
-    // Écouter les changements d'état auth
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(normalizeUser(session?.user ?? null));
-        setLoading(false);
-      }
-    );
-
-    return () => subscription.unsubscribe();
-  }, []);
+  // TODO: remettre le useEffect Supabase après la phase de test
+  // useEffect(() => {
+  //   if (!supabase) { setLoading(false); return; }
+  //   supabase.auth.getSession().then(({ data: { session } }) => {
+  //     setUser(normalizeUser(session?.user ?? null));
+  //     setLoading(false);
+  //   });
+  //   const { data: { subscription } } = supabase.auth.onAuthStateChange(
+  //     (_event, session) => {
+  //       setUser(normalizeUser(session?.user ?? null));
+  //       setLoading(false);
+  //     }
+  //   );
+  //   return () => subscription.unsubscribe();
+  // }, []);
 
   const signUp = async (name, email, password) => {
     if (!supabase) throw new Error('Supabase non configuré');
