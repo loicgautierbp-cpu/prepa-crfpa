@@ -159,7 +159,7 @@ export default function TarifsPage() {
               ) : (
                 <button
                   onClick={() => setSubscription('essentiel')}
-                  className="block w-full py-3 text-center bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-colors mb-5"
+                  className="block w-full py-3 text-center bg-[#7b1636] text-white font-bold rounded-xl hover:bg-[#5a0f27] transition-colors mb-5"
                 >
                   Activer Essentiel (Simulation)
                 </button>

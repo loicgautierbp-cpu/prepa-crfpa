@@ -49,6 +49,16 @@ html { scroll-behavior: smooth; }
 .lift { transition: all 0.2s ease; }
 .lift:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
 
+/* ===== BORDEAUX ACCENT ===== */
+.btn-primary {
+  background-color: #7b1636;
+  color: white;
+  transition: all 0.2s ease;
+}
+.btn-primary:hover {
+  background-color: #5a0f27;
+}
+
 /* ===== FAQ ACCORDION ===== */
 .faq-answer {
   max-height: 0;

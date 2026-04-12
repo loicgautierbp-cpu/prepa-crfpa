@@ -24,9 +24,28 @@ export default function HomePage() {
     <div className="bg-[#eceef1]">
 
       {/* ========== HERO ========== */}
-      <section className="pt-24 pb-16 md:pt-32 md:pb-24">
+      <section className="relative pt-24 pb-16 md:pt-32 md:pb-24">
+        {/* Decorative legal icons */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.03]">
+          {/* Scales of justice - top right */}
+          <svg className="absolute top-20 right-[10%] w-64 h-64 text-slate-900" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0 0 12 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 0 1-2.031.352 5.988 5.988 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971Zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0 2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 0 1-2.031.352 5.989 5.989 0 0 1-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971Z"/>
+          </svg>
+          {/* Gavel - bottom left */}
+          <svg className="absolute bottom-32 left-[5%] w-48 h-48 text-slate-900 rotate-12" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/>
+          </svg>
+          {/* Book - center left */}
+          <svg className="absolute top-1/3 left-[15%] w-40 h-40 text-slate-900 -rotate-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>
+          </svg>
+          {/* Document - top left */}
+          <svg className="absolute top-16 left-[30%] w-32 h-32 text-slate-900 rotate-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/>
+          </svg>
+        </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-sm font-medium text-slate-600 mb-8">
+          <div className="inline-flex items-center gap-2 bg-[#7b1636]/10 border border-[#7b1636]/20 rounded-full px-4 py-1.5 text-sm font-medium text-[#7b1636] mb-8">
             Examen du Barreau 2025
           </div>
           <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-5xl md:text-7xl tracking-tight text-slate-900 mb-6">
@@ -36,7 +55,7 @@ export default function HomePage() {
             Entraînez-vous aux épreuves écrites et orales avec des exercices corrigés par IA, des fiches de cours et un suivi de progression.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Link href="/entrainement-ecrits" className="px-8 py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-colors text-center">
+            <Link href="/entrainement-ecrits" className="px-8 py-4 bg-[#7b1636] text-white font-bold rounded-xl hover:bg-[#5a0f27] transition-colors text-center">
               Commencer l&apos;entraînement
             </Link>
             <Link href="/programme" className="px-8 py-4 bg-white border-2 border-slate-200 text-slate-700 font-bold rounded-xl hover:border-slate-300 transition-colors text-center">
@@ -102,7 +121,7 @@ export default function HomePage() {
               },
             ].map((feature, i) => (
               <Link key={i} href={feature.href} className="bg-white rounded-xl border border-slate-200 p-6 hover:shadow-md transition-all group">
-                <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center mb-4 text-slate-600">
+                <div className="w-12 h-12 bg-[#7b1636]/10 rounded-xl flex items-center justify-center mb-4 text-[#7b1636]">
                   {feature.icon}
                 </div>
                 <h3 className="font-semibold text-slate-900 mb-2">{feature.title}</h3>
@@ -150,7 +169,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/specialite"
-            className="block bg-slate-900 rounded-xl px-7 py-5 text-center hover:bg-black transition-colors"
+            className="block bg-slate-900 border-l-4 border-[#7b1636] rounded-xl px-7 py-5 text-center hover:bg-black transition-colors"
           >
             <p className="font-semibold text-white mb-1">Pas encore sûr de votre spécialité ?</p>
             <p className="text-sm text-slate-400">Quiz gratuit — Découvrez en 3 min la spécialité faite pour vous</p>
@@ -187,7 +206,7 @@ export default function HomePage() {
       <FaqSection />
 
       {/* ========== CTA FINAL ========== */}
-      <section className="py-20 md:py-24 bg-slate-900">
+      <section className="py-20 md:py-24 bg-[#2d0a14]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-3xl md:text-4xl text-white mb-4">
             Prêt à réussir le barreau ?

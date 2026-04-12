@@ -50,7 +50,7 @@ export default function Header() {
                 href={link.href}
                 className={`text-sm transition-colors ${
                   isActive(link.href)
-                    ? 'text-slate-900 font-semibold'
+                    ? 'text-[#7b1636] font-semibold'
                     : 'text-slate-600 font-medium hover:text-slate-900'
                 }`}
               >
@@ -69,7 +69,7 @@ export default function Header() {
                     </div>
                     <Link
                       href="/dashboard"
-                      className="px-4 py-2 bg-slate-900 text-white text-sm font-semibold rounded-xl hover:bg-black transition-colors"
+                      className="px-4 py-2 bg-[#7b1636] text-white text-sm font-semibold rounded-xl hover:bg-[#5a0f27] transition-colors"
                     >
                       Mon tableau de bord
                     </Link>
@@ -88,7 +88,7 @@ export default function Header() {
                     <Link href="/connexion" className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
                       Connexion
                     </Link>
-                    <Link href="/inscription" className="px-5 py-2 bg-slate-900 text-white text-sm font-semibold rounded-xl hover:bg-black transition-colors">
+                    <Link href="/inscription" className="px-5 py-2 bg-[#7b1636] text-white text-sm font-semibold rounded-xl hover:bg-[#5a0f27] transition-colors">
                       Inscription
                     </Link>
                   </div>
@@ -116,7 +116,7 @@ export default function Header() {
               href={link.href}
               onClick={() => setMenuOpen(false)}
               className={`block py-3 text-sm font-medium ${
-                isActive(link.href) ? 'text-slate-900 font-semibold' : 'text-slate-600 hover:text-slate-900'
+                isActive(link.href) ? 'text-[#7b1636] font-semibold' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               {link.label}
@@ -132,7 +132,7 @@ export default function Header() {
                     </div>
                     <span className="text-sm font-medium text-slate-700">{user.displayName || user.email}</span>
                   </div>
-                  <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="block mt-1 px-5 py-2.5 bg-slate-900 text-white text-sm font-semibold rounded-xl text-center hover:bg-black transition-colors">
+                  <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="block mt-1 px-5 py-2.5 bg-[#7b1636] text-white text-sm font-semibold rounded-xl text-center hover:bg-[#5a0f27] transition-colors">
                     Mon tableau de bord
                   </Link>
                   <button onClick={() => { handleLogout(); setMenuOpen(false); }} className="block w-full mt-2 px-5 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 rounded-xl text-center transition-colors">
@@ -144,7 +144,7 @@ export default function Header() {
                   <Link href="/connexion" onClick={() => setMenuOpen(false)} className="block mt-2 px-5 py-2.5 text-sm font-semibold text-slate-700 text-center border border-slate-200 rounded-xl hover:border-slate-300 transition-colors">
                     Connexion
                   </Link>
-                  <Link href="/inscription" onClick={() => setMenuOpen(false)} className="block mt-2 px-5 py-2.5 bg-slate-900 text-white text-sm font-semibold rounded-xl text-center hover:bg-black transition-colors">
+                  <Link href="/inscription" onClick={() => setMenuOpen(false)} className="block mt-2 px-5 py-2.5 bg-[#7b1636] text-white text-sm font-semibold rounded-xl text-center hover:bg-[#5a0f27] transition-colors">
                     Inscription
                   </Link>
                 </>

@@ -128,7 +128,7 @@ export default function InscriptionPage() {
             )}
           </div>
 
-          <button type="submit" disabled={loading} className="w-full py-3.5 px-6 bg-slate-900 hover:bg-black hover:scale-[1.02] transition-all text-white text-sm font-semibold rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2">
+          <button type="submit" disabled={loading} className="w-full py-3.5 px-6 bg-[#7b1636] hover:bg-[#5a0f27] hover:scale-[1.02] transition-all text-white text-sm font-semibold rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2">
             {loading ? 'Création en cours...' : 'Créer mon compte'}
           </button>
         </form>
