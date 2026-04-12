@@ -25,18 +25,18 @@ const ICONS = [
 
 // 12 positions réparties en grille 4x3
 const POSITIONS = [
-  { top: '8%', left: '5%' },
-  { top: '10%', left: '30%' },
-  { top: '6%', right: '25%' },
-  { top: '12%', right: '5%' },
-  { top: '40%', left: '3%' },
-  { top: '38%', left: '22%' },
-  { top: '42%', right: '20%' },
-  { top: '35%', right: '3%' },
-  { bottom: '20%', left: '6%' },
-  { bottom: '25%', left: '28%' },
-  { bottom: '18%', right: '22%' },
-  { bottom: '22%', right: '4%' },
+  { top: '8%', left: '2%' },
+  { top: '10%', left: '8%' },
+  { top: '6%', right: '2%' },
+  { top: '12%', right: '8%' },
+  { top: '40%', left: '1%' },
+  { top: '38%', left: '7%' },
+  { top: '42%', right: '1%' },
+  { top: '35%', right: '7%' },
+  { bottom: '15%', left: '2%' },
+  { bottom: '20%', left: '9%' },
+  { bottom: '12%', right: '2%' },
+  { bottom: '18%', right: '9%' },
 ];
 
 const SIZES = ['w-12 h-12', 'w-14 h-14', 'w-16 h-16', 'w-18 h-18', 'w-20 h-20', 'w-24 h-24'];
