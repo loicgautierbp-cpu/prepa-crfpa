@@ -102,8 +102,8 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                title: 'Exercices corrigés par IA',
-                description: 'Cas pratiques, dissertations et consultations générés et corrigés automatiquement avec références aux articles de loi.',
+                title: 'Exercices corrigés par notre IA',
+                description: 'Cas pratiques, dissertations et consultations générés et corrigés automatiquement par notre IA avec références aux articles de loi.',
                 href: '/entrainement-ecrits',
                 color: 'bg-[#b91c1c]/10 text-[#b91c1c]',
                 icon: (
