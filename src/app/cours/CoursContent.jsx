@@ -101,7 +101,7 @@ export default function CoursContent() {
           </div>
           <h1 className="text-2xl font-black text-gray-900 mb-3">Cours introuvable</h1>
           <p className="text-gray-500 mb-8">Le cours demande n&apos;existe pas.</p>
-          <Link href="/fiches" className="inline-flex px-6 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-colors">
+          <Link href="/fiches" className="inline-flex px-6 py-3 bg-[#b91c1c] text-white font-bold rounded-xl hover:bg-[#991b1b] transition-colors">
             Retour aux fiches
           </Link>
         </div>
@@ -122,7 +122,7 @@ export default function CoursContent() {
           <h1 className="text-2xl font-black text-gray-900 mb-3">Connexion requise</h1>
           <p className="text-gray-500 mb-8">Connectez-vous pour accéder aux cours détaillés.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/connexion" className="px-6 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-colors">
+            <Link href="/connexion" className="px-6 py-3 bg-[#b91c1c] text-white font-bold rounded-xl hover:bg-[#991b1b] transition-colors">
               Se connecter
             </Link>
             <Link href="/fiches" className="px-6 py-3 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-200 hover:border-slate-300 transition-colors">
@@ -147,7 +147,7 @@ export default function CoursContent() {
           <h1 className="text-2xl font-black text-gray-900 mb-3">Contenu réservé aux membres Essentiel</h1>
           <p className="text-gray-500 mb-8">Les cours détaillés sont accessibles à partir de la formule Essentiel. Profitez d&apos;explications approfondies pour chaque sujet.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/tarifs" className="px-6 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-colors">
+            <Link href="/tarifs" className="px-6 py-3 bg-[#b91c1c] text-white font-bold rounded-xl hover:bg-[#991b1b] transition-colors">
               Voir les offres
             </Link>
             <Link href="/fiches" className="px-6 py-3 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-200 hover:border-slate-300 transition-colors">
@@ -184,7 +184,7 @@ export default function CoursContent() {
           </div>
           <h1 className="text-2xl font-black text-gray-900 mb-3">Cours bientot disponible</h1>
           <p className="text-gray-500 mb-8">Le cours detaille pour &laquo; {fiche.title} &raquo; est en cours de redaction. Revenez bientot !</p>
-          <Link href="/fiches" className="inline-flex px-6 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-colors">
+          <Link href="/fiches" className="inline-flex px-6 py-3 bg-[#b91c1c] text-white font-bold rounded-xl hover:bg-[#991b1b] transition-colors">
             Retour aux fiches
           </Link>
         </div>
@@ -204,7 +204,7 @@ export default function CoursContent() {
       </div>
 
       {/* ====== HERO ====== */}
-      <section className="relative pt-4 pb-5 md:pt-6 md:pb-6 overflow-hidden" style={{ background: 'linear-gradient(135deg, #6b1515 0%, #991b1b 40%, #8f173b 70%, #ab1842 100%)' }}>
+      <section className="relative pt-4 pb-5 md:pt-6 md:pb-6 overflow-hidden" style={{ background: 'linear-gradient(135deg, #450a0a 0%, #7f1d1d 40%, #991b1b 70%, #b91c1c 100%)' }}>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Breadcrumb */}

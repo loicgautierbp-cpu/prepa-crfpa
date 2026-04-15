@@ -43,7 +43,7 @@ export default function BlogPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-[#eceef1] pt-28 pb-14 md:pt-36 md:pb-20 relative overflow-hidden">
+      <section className="bg-[#fef2f2] pt-28 pb-14 md:pt-36 md:pb-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-slate-200 mb-6">
@@ -63,7 +63,7 @@ export default function BlogPage() {
             {/* Stats row */}
             <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
               <div className="blog-stat flex items-center gap-3">
-                <div className="w-11 h-11 bg-slate-100 rounded-xl flex items-center justify-center">
+                <div className="w-11 h-11 bg-[#b91c1c]/10 rounded-xl flex items-center justify-center">
                   <svg className="w-5 h-5 text-[#991b1b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6V7.5Z" /></svg>
                 </div>
                 <div>
@@ -104,7 +104,7 @@ export default function BlogPage() {
               onClick={() => setCurrentFilter('all')}
               className={`cat-btn px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
                 currentFilter === 'all'
-                  ? 'bg-slate-900 text-white'
+                  ? 'bg-[#b91c1c] text-white'
                   : 'bg-white text-gray-700 border border-gray-200'
               }`}
             >
@@ -116,7 +116,7 @@ export default function BlogPage() {
                 onClick={() => setCurrentFilter(cat)}
                 className={`cat-btn px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
                   currentFilter === cat
-                    ? 'bg-slate-900 text-white'
+                    ? 'bg-[#b91c1c] text-white'
                     : 'bg-white text-gray-700 border border-gray-200'
                 }`}
               >

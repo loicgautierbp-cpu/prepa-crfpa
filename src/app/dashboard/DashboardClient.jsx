@@ -280,7 +280,7 @@ export default function DashboardPage() {
   return (
     <>
       {/* ===== HERO ===== */}
-      <section className="bg-[#eceef1] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
+      <section className="bg-[#fef2f2] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 leading-[1.1] mb-4">
             {user.displayName ? (
@@ -302,7 +302,7 @@ export default function DashboardPage() {
         {/* ===== ACTIONS RAPIDES ===== */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
           <Link href="/qcm" className="group flex items-center gap-4 p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md hover:-translate-y-[2px] transition-all">
-            <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-slate-200 transition-colors">
+            <div className="w-12 h-12 bg-[#b91c1c]/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#b91c1c]/20 transition-colors">
               <svg className="w-6 h-6 text-[#991b1b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
             </div>
             <div className="flex-1 min-w-0">
@@ -469,7 +469,7 @@ export default function DashboardPage() {
                       { key: 'examen', label: 'Examens', count: data.examCount },
                     ].map(f => (
                       <button key={f.key} onClick={() => setHistoryFilter(f.key)}
-                        className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${historyFilter === f.key ? 'bg-slate-900 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                        className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${historyFilter === f.key ? 'bg-[#b91c1c] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                       >
                         {f.label} ({f.count})
                       </button>
@@ -756,7 +756,7 @@ function EmptyState({ title, description, ctaHref, ctaLabel }) {
       </div>
       <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
       <p className="text-sm text-gray-500 mb-5">{description}</p>
-      {ctaHref && <Link href={ctaHref} className="inline-flex px-5 py-2.5 bg-slate-900 text-white text-sm font-semibold rounded-xl hover:bg-black transition-colors">{ctaLabel || 'Commencer maintenant'}</Link>}
+      {ctaHref && <Link href={ctaHref} className="inline-flex px-5 py-2.5 bg-[#b91c1c] text-white text-sm font-semibold rounded-xl hover:bg-[#991b1b] transition-colors">{ctaLabel || 'Commencer maintenant'}</Link>}
     </div>
   );
 }
@@ -778,12 +778,12 @@ function PremiumLock({ title, description }) {
       </div>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center bg-white/95 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-lg p-8 max-w-sm mx-4">
-          <div className="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <div className="w-14 h-14 bg-[#b91c1c]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <svg className="w-7 h-7 text-[#991b1b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
           </div>
           <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
           <p className="text-sm text-gray-500 mb-5">{description}</p>
-          <Link href="/tarifs" className="inline-flex px-6 py-2.5 bg-slate-900 text-white text-sm font-semibold rounded-xl hover:bg-black transition-colors">Passer au Premium+</Link>
+          <Link href="/tarifs" className="inline-flex px-6 py-2.5 bg-[#b91c1c] text-white text-sm font-semibold rounded-xl hover:bg-[#991b1b] transition-colors">Passer au Premium+</Link>
         </div>
       </div>
     </div>

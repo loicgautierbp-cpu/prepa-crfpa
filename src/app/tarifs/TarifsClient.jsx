@@ -44,7 +44,7 @@ export default function TarifsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-[#eceef1] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
+      <section className="bg-[#fef2f2] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight mb-4">
             Des tarifs <span className="tarif-gradient-text">adapt&eacute;s</span> &agrave; chaque &eacute;tudiant
@@ -130,10 +130,10 @@ export default function TarifsPage() {
 
             {/* ESSENTIEL */}
             <div className="pricing-card popular lift bg-white rounded-2xl border-2 border-[#991b1b] p-7 relative shadow-sm">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-slate-900 text-white text-xs font-bold rounded-full">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#b91c1c] text-white text-xs font-bold rounded-full">
                 Le plus populaire
               </div>
-              <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center mb-5">
+              <div className="w-12 h-12 bg-[#b91c1c]/10 rounded-xl flex items-center justify-center mb-5">
                 <svg className="w-6 h-6 text-[#991b1b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
               </div>
               <div className="mb-5">
@@ -269,7 +269,7 @@ export default function TarifsPage() {
           {/* FAQ Tarifs */}
           <div className="mt-20 max-w-3xl mx-auto">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-200 mb-4">
+              <div className="inline-flex items-center gap-2 bg-[#fef2f2] px-4 py-2 rounded-full border border-red-100 mb-4">
                 <svg className="w-4 h-4 text-[#991b1b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" /></svg>
                 <span className="text-sm font-semibold text-slate-700">FAQ Tarifs</span>
               </div>

@@ -45,7 +45,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-[#eceef1] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
+      <section className="bg-[#fef2f2] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 leading-[1.1] mb-4">
             Nous <span className="text-[#991b1b]">contacter</span>
@@ -81,7 +81,7 @@ export default function ContactPage() {
                 </button>
                 <Link
                   href="/"
-                  className="px-6 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-colors"
+                  className="px-6 py-3 bg-[#b91c1c] text-white font-bold rounded-xl hover:bg-[#991b1b] transition-colors"
                 >
                   Retour &agrave; l&apos;accueil
                 </Link>
@@ -161,7 +161,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={sending}
-                className="w-full py-3.5 bg-slate-900 text-white font-bold rounded-xl hover:bg-black transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-3.5 bg-[#b91c1c] text-white font-bold rounded-xl hover:bg-[#991b1b] transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {sending ? (
                   <>

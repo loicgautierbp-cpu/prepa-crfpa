@@ -65,7 +65,7 @@ export default function OrauxClient() {
               {EPREUVES.map((ep) => (
                 <button key={ep.id} onClick={() => setActiveEpreuve(ep.id)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                    activeEpreuve === ep.id ? 'bg-slate-900 text-white' : 'text-gray-500 hover:bg-gray-100'
+                    activeEpreuve === ep.id ? 'bg-[#b91c1c] text-white' : 'text-gray-500 hover:bg-gray-100'
                   }`}>
                   {ep.shortLabel}
                 </button>
@@ -84,7 +84,7 @@ export default function OrauxClient() {
   }
 
   return (
-    <div className="min-h-screen bg-[#eceef1]">
+    <div className="min-h-screen bg-[#fef2f2]">
       <section className="pt-12 pb-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <div className="inline-flex items-center gap-2 bg-accent-500/10 text-accent-600 border border-accent-200 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">

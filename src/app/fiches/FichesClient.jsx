@@ -490,7 +490,7 @@ export default function FichesPage() {
   return (
     <>
       {/* ====== HERO ====== */}
-      <section className="bg-[#eceef1] pt-28 pb-14 md:pt-36 md:pb-20 relative overflow-hidden">
+      <section className="bg-[#fef2f2] pt-28 pb-14 md:pt-36 md:pb-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <div>
@@ -519,7 +519,7 @@ export default function FichesPage() {
               {/* Stats row */}
               <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 bg-slate-100 rounded-xl flex items-center justify-center">
+                  <div className="w-11 h-11 bg-[#b91c1c]/10 rounded-xl flex items-center justify-center">
                     <svg className="w-5 h-5 text-[#991b1b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                     </svg>
@@ -583,7 +583,7 @@ export default function FichesPage() {
                 onClick={() => setCurrentSubject('all')}
                 className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
                   currentSubject === 'all'
-                    ? 'bg-slate-900 text-white shadow-sm'
+                    ? 'bg-[#b91c1c] text-white shadow-sm'
                     : 'bg-white text-gray-700 border border-gray-200 hover:border-gray-300'
                 }`}
               >
@@ -605,7 +605,7 @@ export default function FichesPage() {
                     onClick={() => setCurrentSubject(sub.id)}
                     className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
                       isActive
-                        ? 'bg-slate-900 text-white shadow-sm'
+                        ? 'bg-[#b91c1c] text-white shadow-sm'
                         : 'bg-white text-gray-700 border border-gray-200 hover:border-gray-300'
                     }`}
                   >

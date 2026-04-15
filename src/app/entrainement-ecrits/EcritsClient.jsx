@@ -103,7 +103,7 @@ export default function EcritsClient() {
                   onClick={() => setActiveEpreuve(ep.id)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     activeEpreuve === ep.id
-                      ? 'bg-slate-900 text-white'
+                      ? 'bg-[#b91c1c] text-white'
                       : 'text-gray-500 hover:bg-gray-100'
                   }`}
                 >
@@ -129,7 +129,7 @@ export default function EcritsClient() {
 
   // ----- Vue d'accueil : sélection de l'épreuve -----
   return (
-    <div className="min-h-screen bg-[#eceef1]">
+    <div className="min-h-screen bg-[#fef2f2]">
       {/* Hero compact */}
       <section className="pt-12 pb-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
