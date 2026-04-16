@@ -23,7 +23,7 @@ export default function sitemap() {
     url: `${baseUrl}/blog/${article.slug}`,
     lastModified: new Date(article.date),
     changeFrequency: 'monthly',
-    priority: 0.6,
+    priority: 0.8,
   }));
 
   return [...staticRoutes, ...blogRoutes];
