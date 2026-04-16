@@ -1,7 +1,9 @@
+import { BLOG_ARTICLES } from '@/data/blog';
+
 export default function sitemap() {
   const baseUrl = 'https://prepa-crfpa.fr';
 
-  return [
+  const staticRoutes = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
     { url: `${baseUrl}/qcm`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/fiches`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
@@ -16,4 +18,13 @@ export default function sitemap() {
     { url: `${baseUrl}/cgv`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: `${baseUrl}/cgu`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
   ];
+
+  const blogRoutes = BLOG_ARTICLES.map((article) => ({
+    url: `${baseUrl}/blog/${article.slug}`,
+    lastModified: new Date(article.date),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...blogRoutes];
 }

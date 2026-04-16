@@ -105,6 +105,46 @@ html { scroll-behavior: smooth; }
 .blog-card { transition: all 0.2s ease; }
 .blog-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
 
+/* ===== BLOG ARTICLE CONTENT ===== */
+.blog-content { color: #334155; font-size: 1.05rem; line-height: 1.75; }
+.blog-content p.lead { font-size: 1.2rem; line-height: 1.7; color: #475569; margin-bottom: 2rem; font-weight: 400; }
+.blog-content p { margin-bottom: 1.25rem; }
+.blog-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.blog-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+.blog-content ul, .blog-content ol { margin: 1rem 0 1.5rem 0; padding-left: 1.5rem; }
+.blog-content ul { list-style-type: disc; }
+.blog-content ol { list-style-type: decimal; }
+.blog-content li { margin-bottom: 0.5rem; }
+.blog-content li::marker { color: #991b1b; }
+.blog-content strong, .blog-content b { color: #0f172a; font-weight: 600; }
+.blog-content em, .blog-content i { color: #475569; }
+.blog-content a { color: #991b1b; text-decoration: underline; text-decoration-color: rgba(153,27,27,0.3); text-underline-offset: 3px; }
+.blog-content a:hover { text-decoration-color: #991b1b; }
+.blog-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+.blog-content th { background: #fef2f2; color: #0f172a; text-align: left; padding: 0.75rem 1rem; border-bottom: 2px solid #fecaca; font-weight: 700; }
+.blog-content td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; }
+.blog-content blockquote { border-left: 4px solid #991b1b; padding-left: 1rem; margin: 1.5rem 0; color: #475569; font-style: italic; }
+.blog-content code { background: #f1f5f9; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.9em; color: #991b1b; }
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
 /* ===== QCM OPTIONS ===== */
 .progress-bar { transition: width 0.5s ease; }
 .quiz-option-btn { transition: all 0.2s ease; }
