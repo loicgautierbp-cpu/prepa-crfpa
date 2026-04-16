@@ -490,7 +490,7 @@ export default function FichesPage() {
   return (
     <>
       {/* ====== HERO ====== */}
-      <section className="bg-[#fef2f2] pt-28 pb-14 md:pt-36 md:pb-20 relative overflow-hidden">
+      <section className="bg-[#fef2f2] pt-14 pb-10 md:pt-20 md:pb-14 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <div>

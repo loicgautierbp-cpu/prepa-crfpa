@@ -44,7 +44,7 @@ export default function TarifsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-[#fef2f2] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
+      <section className="bg-[#fef2f2] pt-14 pb-8 md:pt-20 md:pb-12 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight mb-4">
             Des tarifs <span className="tarif-gradient-text">adapt&eacute;s</span> &agrave; chaque &eacute;tudiant
