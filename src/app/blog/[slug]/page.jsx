@@ -16,8 +16,9 @@ export function generateStaticParams() {
   return BLOG_ARTICLES.map((a) => ({ slug: a.slug }));
 }
 
-export function generateMetadata({ params }) {
-  const article = BLOG_ARTICLES.find((a) => a.slug === params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const article = BLOG_ARTICLES.find((a) => a.slug === slug);
   if (!article) {
     return { title: 'Article introuvable - Prépa CRFPA' };
   }
@@ -45,8 +46,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function BlogArticlePage({ params }) {
-  const article = BLOG_ARTICLES.find((a) => a.slug === params.slug);
+export default async function BlogArticlePage({ params }) {
+  const { slug } = await params;
+  const article = BLOG_ARTICLES.find((a) => a.slug === slug);
   if (!article) notFound();
 
   const formattedDate = new Date(article.date).toLocaleDateString('fr-FR', {
