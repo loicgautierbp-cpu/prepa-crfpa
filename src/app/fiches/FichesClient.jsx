@@ -252,13 +252,21 @@ function FicheModal({ fiche, onClose, premiumUser, user, onLoginRequired, onUpgr
       const html2pdf = mod.default || mod;
 
       const pdfHexColors = {
-        indigo:  { bg: '#fef2f2', accent: '#c92150', accentDark: '#8f173b', accentDeep: '#6b1515', badge: '#fce7ea', badgeText: '#8f173b', light: '#facdd4', lighter: '#fce7ea' },
-        primary: { bg: '#fef2f2', accent: '#c92150', accentDark: '#8f173b', accentDeep: '#6b1515', badge: '#fce7ea', badgeText: '#8f173b', light: '#facdd4', lighter: '#fce7ea' },
+        indigo:  { bg: '#eef2ff', accent: '#4f46e5', accentDark: '#3730a3', accentDeep: '#1e1b4b', badge: '#e0e7ff', badgeText: '#3730a3', light: '#c7d2fe', lighter: '#e0e7ff' },
+        primary: { bg: '#fef2f2', accent: '#b91c1c', accentDark: '#991b1b', accentDeep: '#7f1d1d', badge: '#fee2e2', badgeText: '#991b1b', light: '#fecaca', lighter: '#fee2e2' },
         emerald: { bg: '#ecfdf5', accent: '#059669', accentDark: '#065f46', accentDeep: '#022c22', badge: '#d1fae5', badgeText: '#065f46', light: '#a7f3d0', lighter: '#d1fae5' },
-        violet:  { bg: '#fef2f2', accent: '#7c3aed', accentDark: '#b91c1c', accentDeep: '#6b1515', badge: '#fca5a5', badgeText: '#b91c1c', light: '#ddd6fe', lighter: '#fca5a5' },
+        violet:  { bg: '#f5f3ff', accent: '#7c3aed', accentDark: '#5b21b6', accentDeep: '#2e1065', badge: '#ede9fe', badgeText: '#5b21b6', light: '#ddd6fe', lighter: '#ede9fe' },
         cyan:    { bg: '#ecfeff', accent: '#0891b2', accentDark: '#155e75', accentDeep: '#083344', badge: '#cffafe', badgeText: '#155e75', light: '#a5f3fc', lighter: '#cffafe' },
         amber:   { bg: '#fffbeb', accent: '#d97706', accentDark: '#92400e', accentDeep: '#451a03', badge: '#fef3c7', badgeText: '#92400e', light: '#fde68a', lighter: '#fef3c7' },
         rose:    { bg: '#fff1f2', accent: '#e11d48', accentDark: '#9f1239', accentDeep: '#4c0519', badge: '#ffe4e6', badgeText: '#9f1239', light: '#fecdd3', lighter: '#ffe4e6' },
+        teal:    { bg: '#f0fdfa', accent: '#0d9488', accentDark: '#115e59', accentDeep: '#042f2c', badge: '#ccfbf1', badgeText: '#115e59', light: '#99f6e4', lighter: '#ccfbf1' },
+        sky:     { bg: '#f0f9ff', accent: '#0284c7', accentDark: '#075985', accentDeep: '#082f49', badge: '#e0f2fe', badgeText: '#075985', light: '#bae6fd', lighter: '#e0f2fe' },
+        lime:    { bg: '#f7fee7', accent: '#65a30d', accentDark: '#3f6212', accentDeep: '#1a2e05', badge: '#ecfccb', badgeText: '#3f6212', light: '#d9f99d', lighter: '#ecfccb' },
+        orange:  { bg: '#fff7ed', accent: '#ea580c', accentDark: '#9a3412', accentDeep: '#431407', badge: '#ffedd5', badgeText: '#9a3412', light: '#fed7aa', lighter: '#ffedd5' },
+        yellow:  { bg: '#fefce8', accent: '#ca8a04', accentDark: '#854d0e', accentDeep: '#422006', badge: '#fef9c3', badgeText: '#854d0e', light: '#fef08a', lighter: '#fef9c3' },
+        slate:   { bg: '#f8fafc', accent: '#475569', accentDark: '#1e293b', accentDeep: '#0f172a', badge: '#e2e8f0', badgeText: '#1e293b', light: '#cbd5e1', lighter: '#e2e8f0' },
+        purple:  { bg: '#faf5ff', accent: '#9333ea', accentDark: '#6b21a8', accentDeep: '#3b0764', badge: '#f3e8ff', badgeText: '#6b21a8', light: '#e9d5ff', lighter: '#f3e8ff' },
+        red:     { bg: '#fef2f2', accent: '#dc2626', accentDark: '#991b1b', accentDeep: '#7f1d1d', badge: '#fee2e2', badgeText: '#991b1b', light: '#fecaca', lighter: '#fee2e2' },
       };
       const c = pdfHexColors[subject?.color] || pdfHexColors.primary;
 
