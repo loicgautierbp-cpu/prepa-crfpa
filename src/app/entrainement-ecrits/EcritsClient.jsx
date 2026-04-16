@@ -20,6 +20,7 @@ const EPREUVES = [
       </svg>
     ),
     tags: ['Analyse de dossier', 'Plan détaillé', 'Rédaction complète'],
+    color: { border: 'border-t-violet-500', iconBg: 'bg-violet-100', iconText: 'text-violet-600', tagBg: 'bg-violet-50', tagBorder: 'border-violet-100', tagText: 'text-violet-700', coeffBg: 'bg-violet-100 text-violet-700' },
   },
   {
     id: 'obligations',
@@ -34,6 +35,7 @@ const EPREUVES = [
       </svg>
     ),
     tags: ['Contrats', 'Responsabilité civile', 'Régime général'],
+    color: { border: 'border-t-emerald-500', iconBg: 'bg-emerald-100', iconText: 'text-emerald-600', tagBg: 'bg-emerald-50', tagBorder: 'border-emerald-100', tagText: 'text-emerald-700', coeffBg: 'bg-emerald-100 text-emerald-700' },
   },
   {
     id: 'specialite',
@@ -48,6 +50,7 @@ const EPREUVES = [
       </svg>
     ),
     tags: ['7 matières', 'Cas pratique', 'Dissertation'],
+    color: { border: 'border-t-amber-500', iconBg: 'bg-amber-100', iconText: 'text-amber-600', tagBg: 'bg-amber-50', tagBorder: 'border-amber-100', tagText: 'text-amber-700', coeffBg: 'bg-amber-100 text-amber-700' },
   },
   {
     id: 'procedure',
@@ -62,6 +65,7 @@ const EPREUVES = [
       </svg>
     ),
     tags: ['Proc. civile', 'Proc. pénale', 'Proc. admin.'],
+    color: { border: 'border-t-sky-500', iconBg: 'bg-sky-100', iconText: 'text-sky-600', tagBg: 'bg-sky-50', tagBorder: 'border-sky-100', tagText: 'text-sky-700', coeffBg: 'bg-sky-100 text-sky-700' },
   },
 ];
 
@@ -157,41 +161,38 @@ export default function EcritsClient() {
             <button
               key={epreuve.id}
               onClick={() => setActiveEpreuve(epreuve.id)}
-              className="lift group relative bg-white rounded-xl border border-gray-200 p-6 sm:p-7 text-left transition-all hover:border-slate-300 hover:shadow-md"
+              className={`lift group relative bg-white rounded-2xl border border-slate-200 border-t-4 ${epreuve.color.border} p-6 sm:p-7 text-left transition-all hover:shadow-lg`}
             >
-              {/* Accent top border */}
-              <div className="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-slate-300 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
-
               <div className="flex items-start gap-5">
                 {/* Icon */}
-                <div className="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-[#991b1b] shrink-0 group-hover:bg-slate-100 transition-colors">
+                <div className={`w-14 h-14 ${epreuve.color.iconBg} rounded-xl flex items-center justify-center ${epreuve.color.iconText} shrink-0 transition-transform group-hover:scale-105`}>
                   {epreuve.icon}
                 </div>
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-3 mb-1.5">
-                    <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-lg font-bold text-gray-900 group-hover:text-slate-900 transition-colors">
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-lg font-bold text-slate-900">
                       {epreuve.label}
                     </h2>
                     <div className="flex items-center gap-2">
-                      <span className="px-2.5 py-0.5 bg-gray-100 text-gray-600 text-xs font-semibold rounded-full">
+                      <span className="px-2.5 py-0.5 bg-slate-100 text-slate-700 text-xs font-semibold rounded-full">
                         {epreuve.duree}
                       </span>
-                      <span className="px-2.5 py-0.5 bg-slate-50 text-slate-700 text-xs font-bold rounded-full">
+                      <span className={`px-2.5 py-0.5 ${epreuve.color.coeffBg} text-xs font-bold rounded-full`}>
                         Coeff. {epreuve.coeff}
                       </span>
                     </div>
                   </div>
 
-                  <p className="text-sm text-gray-500 mb-3 leading-relaxed">
+                  <p className="text-sm text-slate-500 mb-3 leading-relaxed">
                     {epreuve.description}
                   </p>
 
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2">
                     {epreuve.tags.map((tag) => (
-                      <span key={tag} className="px-2.5 py-1 bg-gray-50 border border-gray-100 text-xs font-medium text-gray-500 rounded-lg">
+                      <span key={tag} className={`px-2.5 py-1 ${epreuve.color.tagBg} border ${epreuve.color.tagBorder} text-xs font-medium ${epreuve.color.tagText} rounded-lg`}>
                         {tag}
                       </span>
                     ))}
@@ -200,7 +201,7 @@ export default function EcritsClient() {
 
                 {/* Arrow */}
                 <div className="shrink-0 self-center">
-                  <svg className="w-5 h-5 text-gray-300 group-hover:text-[#991b1b] group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <svg className={`w-5 h-5 text-slate-300 group-hover:${epreuve.color.iconText} group-hover:translate-x-1 transition-all`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                   </svg>
                 </div>
