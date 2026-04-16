@@ -12,22 +12,29 @@ const ICONS = [
   <path key="marteau" strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />,
 ];
 
-// Grille régulière 6 colonnes x 5 rangées = 30 positions
+// Pseudo-random deterministic offset (-4% à +4%) pour un look naturel
+function jitter(seed) {
+  const n = Math.sin(seed * 9301 + 49297) * 10000;
+  return (n - Math.floor(n)) * 8 - 4; // -4 à +4
+}
+
+// Grille régulière 6 colonnes x 5 rangées = 30 positions avec léger décalage aléatoire
 const GRID = [];
 for (let row = 0; row < 5; row++) {
   for (let col = 0; col < 6; col++) {
+    const i = row * 6 + col;
     GRID.push({
-      top: `${8 + row * 20}%`,
-      left: `${3 + col * 18}%`,
+      top: `${8 + row * 20 + jitter(i * 2)}%`,
+      left: `${3 + col * 18 + jitter(i * 2 + 1)}%`,
     });
   }
 }
 
-// Tailles variées mais petites
-const SIZES = ['w-8 h-8', 'w-10 h-10', 'w-12 h-12', 'w-14 h-14'];
+// Tailles plus petites
+const SIZES = ['w-6 h-6', 'w-7 h-7', 'w-8 h-8', 'w-9 h-9', 'w-10 h-10'];
 
-// Rotations légères
-const ROTATIONS = ['-6deg', '-3deg', '0deg', '3deg', '6deg', '10deg', '-10deg', '15deg'];
+// Rotations variées pour un aspect plus aléatoire
+const ROTATIONS = ['-18deg', '-12deg', '-6deg', '-3deg', '0deg', '4deg', '8deg', '14deg', '20deg', '-25deg'];
 
 export default function FloatingIcons() {
   return (
