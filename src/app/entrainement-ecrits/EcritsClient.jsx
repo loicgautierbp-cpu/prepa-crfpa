@@ -20,7 +20,7 @@ const EPREUVES = [
       </svg>
     ),
     tags: ['Analyse de dossier', 'Plan détaillé', 'Rédaction complète'],
-    color: { border: 'border-t-violet-500', iconBg: 'bg-violet-100', iconText: 'text-violet-600', tagBg: 'bg-violet-50', tagBorder: 'border-violet-100', tagText: 'text-violet-700', coeffBg: 'bg-violet-100 text-violet-700' },
+    color: { border: 'border-t-violet-300', iconBg: 'bg-violet-50', iconText: 'text-violet-500', tagBg: 'bg-slate-50', tagBorder: 'border-slate-100', tagText: 'text-slate-600', coeffBg: 'bg-violet-50 text-violet-600' },
   },
   {
     id: 'obligations',
@@ -35,7 +35,7 @@ const EPREUVES = [
       </svg>
     ),
     tags: ['Contrats', 'Responsabilité civile', 'Régime général'],
-    color: { border: 'border-t-emerald-500', iconBg: 'bg-emerald-100', iconText: 'text-emerald-600', tagBg: 'bg-emerald-50', tagBorder: 'border-emerald-100', tagText: 'text-emerald-700', coeffBg: 'bg-emerald-100 text-emerald-700' },
+    color: { border: 'border-t-emerald-300', iconBg: 'bg-emerald-50', iconText: 'text-emerald-500', tagBg: 'bg-slate-50', tagBorder: 'border-slate-100', tagText: 'text-slate-600', coeffBg: 'bg-emerald-50 text-emerald-600' },
   },
   {
     id: 'specialite',
@@ -50,7 +50,7 @@ const EPREUVES = [
       </svg>
     ),
     tags: ['7 matières', 'Cas pratique', 'Dissertation'],
-    color: { border: 'border-t-amber-500', iconBg: 'bg-amber-100', iconText: 'text-amber-600', tagBg: 'bg-amber-50', tagBorder: 'border-amber-100', tagText: 'text-amber-700', coeffBg: 'bg-amber-100 text-amber-700' },
+    color: { border: 'border-t-amber-300', iconBg: 'bg-amber-50', iconText: 'text-amber-600', tagBg: 'bg-slate-50', tagBorder: 'border-slate-100', tagText: 'text-slate-600', coeffBg: 'bg-amber-50 text-amber-600' },
   },
   {
     id: 'procedure',
@@ -65,7 +65,7 @@ const EPREUVES = [
       </svg>
     ),
     tags: ['Proc. civile', 'Proc. pénale', 'Proc. admin.'],
-    color: { border: 'border-t-sky-500', iconBg: 'bg-sky-100', iconText: 'text-sky-600', tagBg: 'bg-sky-50', tagBorder: 'border-sky-100', tagText: 'text-sky-700', coeffBg: 'bg-sky-100 text-sky-700' },
+    color: { border: 'border-t-sky-300', iconBg: 'bg-sky-50', iconText: 'text-sky-500', tagBg: 'bg-slate-50', tagBorder: 'border-slate-100', tagText: 'text-slate-600', coeffBg: 'bg-sky-50 text-sky-600' },
   },
 ];
 
