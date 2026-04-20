@@ -1,12 +1,10 @@
 'use client';
-import { useState, Suspense, lazy } from 'react';
-
-const GrandOralClient = lazy(() => import('./GrandOralClient'));
-const AnglaisClient = lazy(() => import('./AnglaisClient'));
+import Link from 'next/link';
 
 const EPREUVES = [
   {
     id: 'grand-oral',
+    href: '/entrainement-oraux/grand-oral',
     label: 'Grand oral',
     shortLabel: 'Grand oral',
     duree: '45 min + 1h prépa',
@@ -22,6 +20,7 @@ const EPREUVES = [
   },
   {
     id: 'anglais',
+    href: '/entrainement-oraux/anglais',
     label: 'Anglais juridique',
     shortLabel: 'Anglais',
     duree: 'Variable',
@@ -37,54 +36,7 @@ const EPREUVES = [
   },
 ];
 
-function LoadingFallback() {
-  return (
-    <div className="flex items-center justify-center py-20">
-      <div className="text-center">
-        <div className="w-10 h-10 border-3 border-slate-200 border-t-slate-600 rounded-full animate-spin mx-auto mb-4"></div>
-        <p className="text-sm text-gray-500">Chargement...</p>
-      </div>
-    </div>
-  );
-}
-
 export default function OrauxClient() {
-  const [activeEpreuve, setActiveEpreuve] = useState(null);
-
-  if (activeEpreuve) {
-    return (
-      <div className="min-h-screen bg-white">
-        <div className="sticky top-[64px] z-40 bg-white border-b border-gray-200">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
-            <button onClick={() => setActiveEpreuve(null)}
-              className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-[#991b1b] transition-colors">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-              </svg>
-              Toutes les épreuves
-            </button>
-            <div className="flex items-center gap-3">
-              {EPREUVES.map((ep) => (
-                <button key={ep.id} onClick={() => setActiveEpreuve(ep.id)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                    activeEpreuve === ep.id ? 'bg-[#b91c1c] text-white' : 'text-gray-500 hover:bg-gray-100'
-                  }`}>
-                  {ep.shortLabel}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6">
-          <Suspense fallback={<LoadingFallback />}>
-            {activeEpreuve === 'grand-oral' && <GrandOralClient embedded />}
-            {activeEpreuve === 'anglais' && <AnglaisClient embedded />}
-          </Suspense>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-[#fef2f2]">
       <section className="pt-12 pb-8">
@@ -109,10 +61,10 @@ export default function OrauxClient() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
         <div className="grid gap-5">
           {EPREUVES.map((epreuve) => (
-            <button
+            <Link
               key={epreuve.id}
-              onClick={() => setActiveEpreuve(epreuve.id)}
-              className={`lift group relative bg-white rounded-2xl border border-slate-200 border-t-4 ${epreuve.color.border} p-6 sm:p-7 text-left transition-all hover:shadow-lg`}
+              href={epreuve.href}
+              className={`lift group relative bg-white rounded-2xl border border-slate-200 border-t-4 ${epreuve.color.border} p-6 sm:p-7 text-left transition-all hover:shadow-lg block`}
             >
               <div className="flex items-start gap-5">
                 <div className={`w-14 h-14 ${epreuve.color.iconBg} rounded-xl flex items-center justify-center ${epreuve.color.iconText} shrink-0 transition-transform group-hover:scale-105`}>
@@ -139,7 +91,7 @@ export default function OrauxClient() {
                   </svg>
                 </div>
               </div>
-            </button>
+            </Link>
           ))}
         </div>
 

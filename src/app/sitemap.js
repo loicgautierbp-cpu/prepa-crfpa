@@ -12,6 +12,17 @@ export default function sitemap() {
     { url: `${baseUrl}/programme`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/tarifs`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
+    // Épreuves écrites
+    { url: `${baseUrl}/entrainement-ecrits`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/synthese`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/entrainement-ecrits/obligations`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/entrainement-specialite`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/entrainement-procedure`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    // Épreuves orales
+    { url: `${baseUrl}/entrainement-oraux`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/entrainement-oraux/grand-oral`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/entrainement-oraux/anglais`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+    // Pages support
     { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.5 },
     { url: `${baseUrl}/inscription`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.6 },
     { url: `${baseUrl}/connexion`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.4 },

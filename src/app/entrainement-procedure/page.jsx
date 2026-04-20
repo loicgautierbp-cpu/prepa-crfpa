@@ -2,9 +2,26 @@ import { Suspense } from 'react';
 import ProcedureClient from './ProcedureClient';
 
 export const metadata = {
-  title: "Entraînement Procédure",
-  description: "Entraînez-vous à l'épreuve de procédure du CRFPA avec des cas pratiques et consultations corrigés.",
+  title: "Épreuve de procédure CRFPA - Civile, pénale, administrative",
+  description:
+    "Entraînez-vous à l'épreuve de procédure du CRFPA (coeff. 2) : procédure civile, pénale et administrative. Cas pratiques et consultations juridiques corrigés par IA.",
+  keywords: [
+    'épreuve procédure CRFPA',
+    'procédure civile CRFPA',
+    'procédure pénale CRFPA',
+    'procédure administrative CRFPA',
+    'cas pratique procédure barreau',
+    'consultation juridique procédure',
+    'examen CRFPA procédure',
+  ],
   alternates: { canonical: '/entrainement-procedure' },
+  openGraph: {
+    title: "Épreuve de procédure CRFPA - Civile, pénale, administrative",
+    description:
+      "Cas pratiques et consultations sur les 3 procédures du CRFPA avec correction IA.",
+    url: 'https://prepa-crfpa.fr/entrainement-procedure',
+    type: 'website',
+  },
 };
 
 export default function ProcedurePage() {
