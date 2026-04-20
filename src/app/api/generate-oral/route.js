@@ -1,27 +1,11 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { generateWithFallback, parseGeminiJson } from '@/utils/gemini';
 
 const CRFPA_CONTEXT = "Le CRFPA est l'examen national d'accès à la profession d'avocat en France. Le grand oral porte sur les libertés et droits fondamentaux (coefficient 4). L'épreuve consiste en 1h de préparation + 15 min d'exposé + 30 min d'échange avec le jury.";
 
 export async function POST(request) {
   try {
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      return Response.json({ error: 'Clé API Gemini non configurée' }, { status: 500 });
-    }
-
     const body = await request.json();
     const { mode } = body;
-
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({
-      model: 'gemini-2.5-flash',
-      generationConfig: {
-        responseMimeType: 'application/json',
-        temperature: 0.8,
-        topP: 0.95,
-        maxOutputTokens: 16384,
-      },
-    });
 
     let prompt;
 
@@ -198,24 +182,13 @@ JUSTE le JSON.`;
       return Response.json({ error: 'Mode invalide' }, { status: 400 });
     }
 
-    const result = await model.generateContent(prompt);
-    const text = result.response.text();
-
-    let data;
-    try {
-      data = JSON.parse(text);
-    } catch {
-      const jsonMatch = text.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
-        data = JSON.parse(jsonMatch[0]);
-      } else {
-        return Response.json({ error: 'Réponse IA invalide' }, { status: 500 });
-      }
-    }
-
+    const { text } = await generateWithFallback(prompt);
+    const data = parseGeminiJson(text);
     return Response.json({ result: data, mode });
   } catch (error) {
     console.error('Erreur génération oral:', error);
-    return Response.json({ error: 'Erreur lors de la génération' }, { status: 500 });
+    const status = error.status || 500;
+    const message = error.userMessage || 'Erreur lors de la génération';
+    return Response.json({ error: message }, { status });
   }
 }

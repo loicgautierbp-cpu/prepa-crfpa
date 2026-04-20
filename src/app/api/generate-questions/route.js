@@ -1,5 +1,5 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import { buildQCMPrompt, buildExamenPrompt } from '@/utils/prompts';
+import { generateWithFallback, parseGeminiJson } from '@/utils/gemini';
 
 const VALID_SUBJECTS = ['libertes', 'civil', 'affaires', 'social', 'penal', 'administratif', 'fiscal', 'international', 'proc-civile', 'proc-penale', 'proc-admin', 'synthese', 'grand-oral', 'anglais'];
 const VALID_MODES = ['qcm', 'examen'];
@@ -15,43 +15,24 @@ function shuffleArray(array) {
 }
 
 export async function POST(request) {
-  // Check API key
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
-    return Response.json(
-      { error: 'Clé API Gemini non configurée' },
-      { status: 503 }
-    );
-  }
-
-  // Parse body
   let body;
   try {
     body = await request.json();
   } catch {
-    return Response.json(
-      { error: 'Body JSON invalide' },
-      { status: 400 }
-    );
+    return Response.json({ error: 'Body JSON invalide' }, { status: 400 });
   }
 
   const { subject, subjectName, count, mode = 'qcm', ficheTopic = null } = body;
 
-  // Validate params
   if (subject && !VALID_SUBJECTS.includes(subject)) {
     return Response.json(
       { error: `Matière invalide. Valeurs acceptées : ${VALID_SUBJECTS.join(', ')}` },
       { status: 400 }
     );
   }
-
   if (!subject && !ficheTopic) {
-    return Response.json(
-      { error: 'Veuillez indiquer une matière ou un sujet précis' },
-      { status: 400 }
-    );
+    return Response.json({ error: 'Veuillez indiquer une matière ou un sujet précis' }, { status: 400 });
   }
-
   if (!VALID_MODES.includes(mode)) {
     return Response.json(
       { error: `Mode invalide. Valeurs acceptées : ${VALID_MODES.join(', ')}` },
@@ -62,53 +43,16 @@ export async function POST(request) {
   const questionCount = Math.max(1, Math.min(50, parseInt(count) || 10));
   const resolvedSubjectName = subjectName || subject || ficheTopic;
 
-  // Build prompt
-  let prompt;
-  if (mode === 'examen') {
-    prompt = buildExamenPrompt(subject, resolvedSubjectName, questionCount, ficheTopic);
-  } else {
-    prompt = buildQCMPrompt(subject, resolvedSubjectName, questionCount, ficheTopic);
-  }
+  const prompt = mode === 'examen'
+    ? buildExamenPrompt(subject, resolvedSubjectName, questionCount, ficheTopic)
+    : buildQCMPrompt(subject, resolvedSubjectName, questionCount, ficheTopic);
 
-  // Call Gemini
   try {
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+    const { text } = await generateWithFallback(prompt);
+    const questions = parseGeminiJson(text, { expectArray: true });
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
-
-    // Parse JSON from response
-    let questions;
-    try {
-      questions = JSON.parse(text);
-    } catch {
-      // Try to extract JSON array from the response
-      const match = text.match(/\[[\s\S]*\]/);
-      if (match) {
-        try {
-          questions = JSON.parse(match[0]);
-        } catch {
-          return Response.json(
-            { error: 'Impossible de parser la réponse de Gemini' },
-            { status: 500 }
-          );
-        }
-      } else {
-        return Response.json(
-          { error: 'Réponse de Gemini invalide (pas de JSON trouvé)' },
-          { status: 500 }
-        );
-      }
-    }
-
-    // Validate and normalize questions
     if (!Array.isArray(questions)) {
-      return Response.json(
-        { error: 'La réponse n\'est pas un tableau' },
-        { status: 500 }
-      );
+      return Response.json({ error: 'La réponse n\u2019est pas un tableau' }, { status: 500 });
     }
 
     const validQuestions = questions
@@ -127,22 +71,18 @@ export async function POST(request) {
           text: o.text,
           correct: o.correct === true,
         }))),
-        explanation: q.explanation || 'Pas d\'explication disponible.',
+        explanation: q.explanation || 'Pas d\u2019explication disponible.',
       }));
 
     if (validQuestions.length === 0) {
-      return Response.json(
-        { error: 'Aucune question valide générée' },
-        { status: 500 }
-      );
+      return Response.json({ error: 'Aucune question valide générée' }, { status: 500 });
     }
 
     return Response.json({ questions: validQuestions });
   } catch (err) {
     console.error('[Gemini API Error]', err);
-    return Response.json(
-      { error: 'Erreur lors de l\'appel à Gemini: ' + (err.message || 'Erreur inconnue') },
-      { status: 500 }
-    );
+    const status = err.status || 500;
+    const message = err.userMessage || 'Erreur lors de la génération';
+    return Response.json({ error: message }, { status });
   }
 }
