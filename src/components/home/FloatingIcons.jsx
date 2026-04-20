@@ -49,7 +49,7 @@ export default function FloatingIcons() {
         return (
           <svg
             key={i}
-            className={`hidden md:block absolute ${size} text-[#b91c1c]/[0.14]`}
+            className={`absolute ${size} text-[#b91c1c]/[0.14]`}
             style={{
               top: pos.top,
               left: pos.left,
