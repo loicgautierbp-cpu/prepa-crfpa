@@ -12,59 +12,105 @@ const ICONS = [
   <path key="marteau" strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />,
 ];
 
-// Pseudo-random deterministic offset (-4% à +4%) pour un look naturel
-function jitter(seed) {
+// Pseudo-random deterministic offset pour un look naturel
+function jitter(seed, amplitude = 4) {
   const n = Math.sin(seed * 9301 + 49297) * 10000;
-  return (n - Math.floor(n)) * 8 - 4; // -4 à +4
+  return (n - Math.floor(n)) * (amplitude * 2) - amplitude;
 }
 
-// Grille régulière 6 colonnes x 5 rangées = 30 positions avec léger décalage aléatoire
-const GRID = [];
+// ---------- Grille DESKTOP : 6 colonnes × 5 rangées = 30 icônes ----------
+const GRID_DESKTOP = [];
 for (let row = 0; row < 5; row++) {
   for (let col = 0; col < 6; col++) {
     const i = row * 6 + col;
-    GRID.push({
+    GRID_DESKTOP.push({
       top: `${8 + row * 20 + jitter(i * 2)}%`,
       left: `${3 + col * 18 + jitter(i * 2 + 1)}%`,
     });
   }
 }
 
-// Tailles plus petites
-const SIZES = ['w-6 h-6', 'w-7 h-7', 'w-8 h-8', 'w-9 h-9', 'w-10 h-10'];
+// ---------- Grille MOBILE : 3 colonnes × 6 rangées = 18 icônes, bien espacées ----------
+const GRID_MOBILE = [];
+for (let row = 0; row < 6; row++) {
+  for (let col = 0; col < 3; col++) {
+    const i = row * 3 + col;
+    // Offset alterné : colonnes décalées 1 ligne sur 2 (quinconce) pour une répartition plus homogène
+    const stagger = row % 2 === 0 ? 0 : 16;
+    GRID_MOBILE.push({
+      top: `${6 + row * 16 + jitter(i * 3 + 100, 2)}%`,
+      left: `${8 + col * 32 + stagger + jitter(i * 3 + 101, 2)}%`,
+    });
+  }
+}
 
-// Rotations variées pour un aspect plus aléatoire
+// Tailles
+const SIZES_DESKTOP = ['w-6 h-6', 'w-7 h-7', 'w-8 h-8', 'w-9 h-9', 'w-10 h-10'];
+const SIZES_MOBILE = ['w-5 h-5', 'w-6 h-6', 'w-7 h-7']; // un peu plus petites sur mobile
+
+// Rotations variées
 const ROTATIONS = ['-18deg', '-12deg', '-6deg', '-3deg', '0deg', '4deg', '8deg', '14deg', '20deg', '-25deg'];
 
 export default function FloatingIcons() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {GRID.map((pos, i) => {
-        const icon = ICONS[i % ICONS.length];
-        const size = SIZES[i % SIZES.length];
-        const rotation = ROTATIONS[i % ROTATIONS.length];
-        // Chaque icône a une durée et un délai unique pour un mouvement lent et déphasé
-        const duration = 20 + (i * 3) % 15; // 20-35s
-        const delay = (i * 2.7) % 12; // déphasage
-        return (
-          <svg
-            key={i}
-            className={`absolute ${size} text-[#b91c1c]/[0.14]`}
-            style={{
-              top: pos.top,
-              left: pos.left,
-              transform: `rotate(${rotation})`,
-              animation: `gentle ${duration}s ease-in-out infinite ${delay}s`,
-            }}
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="0.6"
-          >
-            {icon}
-          </svg>
-        );
-      })}
+      {/* Version MOBILE : grille 3×6 plus aérée, opacité plus faible */}
+      <div className="md:hidden absolute inset-0">
+        {GRID_MOBILE.map((pos, i) => {
+          const icon = ICONS[i % ICONS.length];
+          const size = SIZES_MOBILE[i % SIZES_MOBILE.length];
+          const rotation = ROTATIONS[i % ROTATIONS.length];
+          const duration = 20 + (i * 3) % 15;
+          const delay = (i * 2.7) % 12;
+          return (
+            <svg
+              key={`m-${i}`}
+              className={`absolute ${size} text-[#b91c1c]/[0.09]`}
+              style={{
+                top: pos.top,
+                left: pos.left,
+                transform: `rotate(${rotation})`,
+                animation: `gentle ${duration}s ease-in-out infinite ${delay}s`,
+              }}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="0.6"
+            >
+              {icon}
+            </svg>
+          );
+        })}
+      </div>
+
+      {/* Version DESKTOP : grille 6×5 */}
+      <div className="hidden md:block absolute inset-0">
+        {GRID_DESKTOP.map((pos, i) => {
+          const icon = ICONS[i % ICONS.length];
+          const size = SIZES_DESKTOP[i % SIZES_DESKTOP.length];
+          const rotation = ROTATIONS[i % ROTATIONS.length];
+          const duration = 20 + (i * 3) % 15;
+          const delay = (i * 2.7) % 12;
+          return (
+            <svg
+              key={`d-${i}`}
+              className={`absolute ${size} text-[#b91c1c]/[0.14]`}
+              style={{
+                top: pos.top,
+                left: pos.left,
+                transform: `rotate(${rotation})`,
+                animation: `gentle ${duration}s ease-in-out infinite ${delay}s`,
+              }}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="0.6"
+            >
+              {icon}
+            </svg>
+          );
+        })}
+      </div>
     </div>
   );
 }
