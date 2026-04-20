@@ -106,7 +106,7 @@ export default function AnglaisClient({ embedded = false }) {
   };
 
   return (
-    <div className={embedded ? '' : 'min-h-screen bg-gray-50/80'}>
+    <div className={embedded ? '' : 'min-h-screen bg-[#fef2f2]'}>
       <div className={embedded ? 'max-w-4xl mx-auto' : 'max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12'}>
 
         <div className="mb-8">

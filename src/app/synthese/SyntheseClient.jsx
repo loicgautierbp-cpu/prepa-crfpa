@@ -1022,7 +1022,7 @@ export default function SyntheseClient({ embedded = false }) {
   }
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-white via-[#fef2f2] to-[#fee2e2]">
+    <section className="min-h-screen bg-[#fef2f2]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-14 pb-12 md:pt-20 md:pb-16">
         {/* Header */}
         <div className="text-center mb-10">
