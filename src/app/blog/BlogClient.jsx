@@ -41,7 +41,7 @@ export default function BlogPage() {
               Guides pratiques, <strong className="text-gray-900">conseils m&eacute;thodologiques</strong> et actualit&eacute;s pour maximiser vos chances de r&eacute;ussite &agrave; l&rsquo;<strong className="text-gray-900">examen du barreau</strong>.
             </p>
             {/* Stats row */}
-            <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6 mb-8">
+            <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
               <div className="blog-stat flex items-center gap-3">
                 <div className="w-11 h-11 bg-[#b91c1c]/10 rounded-xl flex items-center justify-center">
                   <svg className="w-5 h-5 text-[#991b1b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6V7.5Z" /></svg>
@@ -73,45 +73,6 @@ export default function BlogPage() {
               </div>
             </div>
 
-            {/* Cartes catégories */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
-              <div className="bg-white rounded-2xl border border-purple-100 shadow-sm p-4 flex items-center gap-3">
-                <div className="w-9 h-9 bg-purple-100 rounded-xl flex items-center justify-center shrink-0">
-                  <svg className="w-4 h-4 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" /></svg>
-                </div>
-                <div className="text-left">
-                  <div className="text-xs font-bold text-purple-700">M&eacute;thodologie</div>
-                  <div className="text-[10px] text-gray-400">Conseils pratiques</div>
-                </div>
-              </div>
-              <div className="bg-white rounded-2xl border border-green-100 shadow-sm p-4 flex items-center gap-3">
-                <div className="w-9 h-9 bg-green-100 rounded-xl flex items-center justify-center shrink-0">
-                  <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
-                </div>
-                <div className="text-left">
-                  <div className="text-xs font-bold text-green-700">Conseils</div>
-                  <div className="text-[10px] text-gray-400">R&eacute;visions</div>
-                </div>
-              </div>
-              <div className="bg-white rounded-2xl border border-pink-100 shadow-sm p-4 flex items-center gap-3">
-                <div className="w-9 h-9 bg-pink-100 rounded-xl flex items-center justify-center shrink-0">
-                  <svg className="w-4 h-4 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" /></svg>
-                </div>
-                <div className="text-left">
-                  <div className="text-xs font-bold text-pink-700">Bien-&ecirc;tre</div>
-                  <div className="text-[10px] text-gray-400">Stress &amp; sant&eacute;</div>
-                </div>
-              </div>
-              <div className="bg-white rounded-2xl border border-amber-100 shadow-sm p-4 flex items-center gap-3">
-                <div className="w-9 h-9 bg-amber-100 rounded-xl flex items-center justify-center shrink-0">
-                  <svg className="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6V7.5Z" /></svg>
-                </div>
-                <div className="text-left">
-                  <div className="text-xs font-bold text-amber-700">Actualit&eacute;s</div>
-                  <div className="text-[10px] text-gray-400">R&eacute;forme CRFPA</div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
