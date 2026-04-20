@@ -148,7 +148,7 @@ function ExerciceDetail({ exercice, onBack }) {
           <span className="text-sm text-gray-400">•</span>
           <span className="text-sm text-gray-500">{exercice.documents.length} documents</span>
           {exercice.premium && (
-            <span className="px-2 py-0.5 bg-accent-500/10 text-accent-600 text-xs font-semibold rounded-full">Premium</span>
+            <span className="px-2 py-0.5 bg-[#b91c1c]/10 text-[#991b1b] text-xs font-semibold rounded-full">Premium</span>
           )}
         </div>
         <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-2xl font-bold text-gray-900 mb-4">
@@ -938,20 +938,41 @@ function ExercicesTab() {
         <h3 className="font-bold text-gray-900 mb-1">Entraînement interactif</h3>
         <p className="text-sm text-gray-500 mb-4">Exercices uniques générés à chaque session pour un entraînement toujours renouvelé.</p>
         <div className="grid sm:grid-cols-3 gap-4">
-          <button onClick={() => setActiveSection('analyse')} className="bg-white rounded-xl border border-gray-200 p-5 text-left shadow-sm hover:shadow-md transition-shadow group">
-            <span className="text-2xl mb-3 block">🔍</span>
-            <h4 className="font-bold text-gray-900 mb-1 group-hover:text-[#b91c1c] transition-colors">Analyse du dossier</h4>
-            <p className="text-xs text-gray-500">Identifiez les idées principales et contradictions</p>
+          <button
+            onClick={() => setActiveSection('analyse')}
+            className="bg-white rounded-2xl border border-slate-200 border-t-4 border-t-emerald-300 p-5 text-left shadow-sm hover:shadow-lg transition-all group"
+          >
+            <div className="w-11 h-11 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-500 mb-3 group-hover:scale-105 transition-transform">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
+            </div>
+            <h4 className="font-bold text-slate-900 mb-1">Analyse du dossier</h4>
+            <p className="text-xs text-slate-500 leading-relaxed">Identifiez les idées principales et contradictions</p>
           </button>
-          <button onClick={() => setActiveSection('plan')} className="bg-white rounded-xl border border-gray-200 p-5 text-left shadow-sm hover:shadow-md transition-shadow group">
-            <span className="text-2xl mb-3 block">📐</span>
-            <h4 className="font-bold text-gray-900 mb-1 group-hover:text-[#b91c1c] transition-colors">Élaboration du plan</h4>
-            <p className="text-xs text-gray-500">Construisez un plan I/A/B - II/A/B</p>
+          <button
+            onClick={() => setActiveSection('plan')}
+            className="bg-white rounded-2xl border border-slate-200 border-t-4 border-t-amber-300 p-5 text-left shadow-sm hover:shadow-lg transition-all group"
+          >
+            <div className="w-11 h-11 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-3 group-hover:scale-105 transition-transform">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+              </svg>
+            </div>
+            <h4 className="font-bold text-slate-900 mb-1">Élaboration du plan</h4>
+            <p className="text-xs text-slate-500 leading-relaxed">Construisez un plan I/A/B — II/A/B</p>
           </button>
-          <button onClick={() => setActiveSection('redaction')} className="bg-white rounded-xl border border-gray-200 p-5 text-left shadow-sm hover:shadow-md transition-shadow group">
-            <span className="text-2xl mb-3 block">✍️</span>
-            <h4 className="font-bold text-gray-900 mb-1 group-hover:text-[#b91c1c] transition-colors">Rédaction complète</h4>
-            <p className="text-xs text-gray-500">Exercice complet avec dossier et correction</p>
+          <button
+            onClick={() => setActiveSection('redaction')}
+            className="bg-white rounded-2xl border border-slate-200 border-t-4 border-t-sky-300 p-5 text-left shadow-sm hover:shadow-lg transition-all group"
+          >
+            <div className="w-11 h-11 bg-sky-50 rounded-xl flex items-center justify-center text-sky-500 mb-3 group-hover:scale-105 transition-transform">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+              </svg>
+            </div>
+            <h4 className="font-bold text-slate-900 mb-1">Rédaction complète</h4>
+            <p className="text-xs text-slate-500 leading-relaxed">Exercice complet avec dossier et correction</p>
           </button>
         </div>
       </div>
@@ -987,7 +1008,7 @@ export default function SyntheseClient({ embedded = false }) {
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${
                 activeTab === tab.id
-                  ? 'bg-white text-gray-900 shadow-sm'
+                  ? 'bg-white text-[#991b1b] shadow-sm'
                   : 'text-gray-500 hover:text-gray-700'
               }`}
             >
@@ -1025,7 +1046,7 @@ export default function SyntheseClient({ embedded = false }) {
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${
                 activeTab === tab.id
-                  ? 'bg-white text-gray-900 shadow-sm'
+                  ? 'bg-white text-[#991b1b] shadow-sm'
                   : 'text-gray-500 hover:text-gray-700'
               }`}
             >
