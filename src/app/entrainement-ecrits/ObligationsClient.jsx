@@ -61,9 +61,31 @@ export default function ObligationsClient({ embedded = false }) {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadedFileName, setUploadedFileName] = useState(null);
 
-  const handleSelectType = (type) => {
+  const handleStartExercise = async (type) => {
+    // TODO: remettre après les tests
+    // if (!user) { setShowLogin(true); return; }
     setSelectedType(type);
-    setStep('exercise');
+    setIsGenerating(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/generate-specialite', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mode: 'generate', specialite: 'obligations', type }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Erreur lors de la génération');
+      setSubject(data.result);
+      setStep('exercise');
+      reset();
+      start();
+      setTimerStarted(true);
+    } catch (err) {
+      setError(err.message);
+      setSelectedType(null);
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const handleBack = () => {
@@ -98,30 +120,6 @@ export default function ObligationsClient({ embedded = false }) {
     setUploadedFileName(null);
     setIsUploading(false);
     if (timerStarted) { stop(); reset(); setTimerStarted(false); }
-  };
-
-  const handleGenerate = async () => {
-    // TODO: remettre après les tests
-    // if (!user) { setShowLogin(true); return; }
-    setIsGenerating(true);
-    setError(null);
-    try {
-      const res = await fetch('/api/generate-specialite', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ mode: 'generate', specialite: 'obligations', type: selectedType }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Erreur lors de la génération');
-      setSubject(data.result);
-      reset();
-      start();
-      setTimerStarted(true);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setIsGenerating(false);
-    }
   };
 
   const handleSubmit = async () => {
@@ -231,21 +229,49 @@ export default function ObligationsClient({ embedded = false }) {
 
         {/* Step: Type selection */}
         {step === 'type' && (
-          <div className="grid sm:grid-cols-2 gap-4">
-            {EXERCISE_TYPES.map((type) => (
-              <button
-                key={type.id}
-                onClick={() => handleSelectType(type.id)}
-                className={`group bg-white rounded-2xl border border-slate-200 border-t-4 ${type.color.border} p-6 text-left hover:shadow-lg transition-all`}
-              >
-                <div className={`w-12 h-12 ${type.color.iconBg} rounded-xl flex items-center justify-center ${type.color.iconText} mb-4 transition-transform group-hover:scale-105`}>
-                  {type.icon}
-                </div>
-                <h3 className="font-bold text-slate-900 mb-2">{type.label}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{type.description}</p>
-              </button>
-            ))}
-          </div>
+          <>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {EXERCISE_TYPES.map((type) => {
+                const isLoading = isGenerating && selectedType === type.id;
+                const isDisabled = isGenerating && selectedType !== type.id;
+                return (
+                  <div
+                    key={type.id}
+                    className={`group bg-white rounded-2xl border border-slate-200 border-t-4 ${type.color.border} p-6 flex flex-col transition-all hover:shadow-lg ${isDisabled ? 'opacity-50' : ''}`}
+                  >
+                    <div className={`w-12 h-12 ${type.color.iconBg} rounded-xl flex items-center justify-center ${type.color.iconText} mb-4 transition-transform group-hover:scale-105`}>
+                      {type.icon}
+                    </div>
+                    <h3 className="font-bold text-slate-900 mb-2">{type.label}</h3>
+                    <p className="text-sm text-slate-500 leading-relaxed mb-5 flex-1">{type.description}</p>
+                    <button
+                      onClick={() => handleStartExercise(type.id)}
+                      disabled={isGenerating}
+                      className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-[#b91c1c] text-white text-sm font-semibold rounded-xl hover:bg-[#991b1b] transition-colors disabled:opacity-60 disabled:cursor-wait"
+                    >
+                      {isLoading ? (
+                        <>
+                          <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                          </svg>
+                          Génération...
+                        </>
+                      ) : (
+                        <>
+                          Commencer l&apos;entraînement
+                          <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                          </svg>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+            {error && <p className="text-red-500 text-sm mt-4 text-center">{error}</p>}
+          </>
         )}
 
         {/* Step: Exercise */}
@@ -262,33 +288,7 @@ export default function ObligationsClient({ embedded = false }) {
               </div>
             )}
 
-            {/* Generate or display subject */}
-            {!subject ? (
-              <div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  {selectedType === 'cas-pratique' ? 'Cas pratique' : selectedType === 'consultation' ? 'Consultation juridique' : 'Dissertation'} — Droit des obligations
-                </h3>
-                <p className="text-sm text-gray-500 mb-6">
-                  Un exercice sera généré sur le thème du droit des obligations (contrats, responsabilité, régime général).
-                </p>
-                <button
-                  onClick={handleGenerate}
-                  disabled={isGenerating}
-                  className="px-6 py-3 bg-[#b91c1c] text-white font-semibold rounded-xl hover:bg-[#991b1b] transition-colors disabled:opacity-50"
-                >
-                  {isGenerating ? (
-                    <span className="flex items-center gap-2">
-                      <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
-                      </svg>
-                      Génération en cours...
-                    </span>
-                  ) : 'Générer un exercice'}
-                </button>
-                {error && <p className="text-red-500 text-sm mt-4">{error}</p>}
-              </div>
-            ) : (
+            {subject && (
               <>
                 {/* Subject display */}
                 <div className="bg-white rounded-xl border border-gray-200 p-6">
