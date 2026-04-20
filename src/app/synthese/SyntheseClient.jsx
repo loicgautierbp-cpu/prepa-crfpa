@@ -1074,49 +1074,200 @@ function ExercicesTab() {
     );
   }
 
+  const EXERCISES = [
+    {
+      id: 'analyse',
+      label: 'Analyse du dossier',
+      tagline: 'Première étape essentielle',
+      description: 'Un dossier documentaire vous est soumis. Identifiez les idées directrices, les contradictions et les documents clés à exploiter.',
+      duree: '45 min',
+      difficulty: 'Guidée',
+      tags: ['Idées directrices', 'Contradictions', 'Documents clés'],
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+        </svg>
+      ),
+      color: {
+        border: 'border-t-emerald-400',
+        iconBg: 'bg-emerald-50',
+        iconText: 'text-emerald-600',
+        tagBg: 'bg-emerald-50',
+        tagText: 'text-emerald-700',
+        tagBorder: 'border-emerald-100',
+        badgeBg: 'bg-emerald-100 text-emerald-700',
+      },
+    },
+    {
+      id: 'plan',
+      label: 'Élaboration du plan',
+      tagline: 'Fondation de la note',
+      description: 'À partir d\u2019un sujet et de son dossier, proposez un plan I/A/B — II/A/B, puis comparez votre structure avec la correction détaillée.',
+      duree: '1h15',
+      difficulty: 'Structurée',
+      tags: ['Plan I/A/B — II/A/B', 'Problématique', 'Annonce de plan'],
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+        </svg>
+      ),
+      color: {
+        border: 'border-t-amber-400',
+        iconBg: 'bg-amber-50',
+        iconText: 'text-amber-700',
+        tagBg: 'bg-amber-50',
+        tagText: 'text-amber-800',
+        tagBorder: 'border-amber-100',
+        badgeBg: 'bg-amber-100 text-amber-800',
+      },
+    },
+    {
+      id: 'redaction',
+      label: 'Rédaction complète',
+      tagline: 'Entraînement en conditions réelles',
+      description: 'Exercice complet avec dossier détaillé, consigne et correction. Rédigez votre note de synthèse et recevez un feedback IA structuré sur 20.',
+      duree: '5 heures',
+      difficulty: 'Complète',
+      tags: ['Dossier complet', 'Rédaction intégrale', 'Feedback IA sur 20'],
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+          <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+        </svg>
+      ),
+      color: {
+        border: 'border-t-sky-400',
+        iconBg: 'bg-sky-50',
+        iconText: 'text-sky-600',
+        tagBg: 'bg-sky-50',
+        tagText: 'text-sky-700',
+        tagBorder: 'border-sky-100',
+        badgeBg: 'bg-sky-100 text-sky-700',
+      },
+    },
+  ];
+
+  const KEY_TOPICS = [
+    'Dossier documentaire',
+    'Problématisation',
+    'Plan dialectique',
+    'Reformulation',
+    'Introduction synthétique',
+    'Annonce du plan',
+  ];
+
   return (
     <div className="space-y-8">
       {/* AI Exercises */}
       <div>
-        <h3 className="font-bold text-gray-900 mb-1">Entraînement interactif</h3>
-        <p className="text-sm text-gray-500 mb-4">Exercices uniques générés à chaque session pour un entraînement toujours renouvelé.</p>
+        <div className="mb-5">
+          <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-2xl font-bold text-gray-900 mb-1">
+            Entraînement <span className="home-gradient-text">interactif</span>
+          </h3>
+          <p className="text-sm text-gray-500">Trois modules progressifs. Sujets générés à chaque session pour un entraînement toujours renouvelé.</p>
+        </div>
         <div className="grid sm:grid-cols-3 gap-4">
-          <button
-            onClick={() => setActiveSection('analyse')}
-            className="bg-white rounded-2xl border border-slate-200 border-t-4 border-t-emerald-300 p-5 text-left shadow-sm hover:shadow-lg transition-all group"
-          >
-            <div className="w-11 h-11 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-500 mb-3 group-hover:scale-105 transition-transform">
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+          {EXERCISES.map((ex) => (
+            <button
+              key={ex.id}
+              onClick={() => setActiveSection(ex.id)}
+              className={`relative bg-white rounded-2xl border border-slate-200 border-t-4 ${ex.color.border} p-5 text-left shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group flex flex-col`}
+            >
+              {/* Difficulty badge */}
+              <div className={`absolute top-4 right-4 ${ex.color.badgeBg} text-[10px] font-bold uppercase tracking-wide px-2 py-1 rounded-full`}>
+                {ex.difficulty}
+              </div>
+
+              {/* Icon */}
+              <div className={`w-11 h-11 ${ex.color.iconBg} ${ex.color.iconText} rounded-xl flex items-center justify-center mb-3 group-hover:scale-105 transition-transform`}>
+                {ex.icon}
+              </div>
+
+              {/* Tagline */}
+              <div className={`${ex.color.iconText} text-[10px] font-bold uppercase tracking-wider mb-1`}>
+                {ex.tagline}
+              </div>
+
+              {/* Title */}
+              <h4 style={{ fontFamily: 'var(--font-display)' }} className="text-lg font-bold text-slate-900 mb-2 leading-tight">
+                {ex.label}
+              </h4>
+
+              {/* Description */}
+              <p className="text-xs text-slate-500 leading-relaxed mb-3">
+                {ex.description}
+              </p>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {ex.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className={`text-[10px] font-medium ${ex.color.tagBg} ${ex.color.tagText} border ${ex.color.tagBorder} px-2 py-0.5 rounded-md`}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Meta row */}
+              <div className="flex items-center justify-between text-[11px] text-slate-500 pt-3 border-t border-slate-100 mt-auto">
+                <span className="inline-flex items-center gap-1">
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                  {ex.duree}
+                </span>
+                <span className="inline-flex items-center gap-1 font-semibold text-slate-700 group-hover:text-[#991b1b] transition-colors">
+                  Commencer
+                  <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                </span>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Key topics */}
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+        <div className="flex items-center gap-2 mb-4">
+          <div className="w-8 h-8 bg-[#fef2f2] rounded-lg flex items-center justify-center text-[#991b1b]">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+            </svg>
+          </div>
+          <h4 className="font-bold text-slate-900">Compétences travaillées</h4>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {KEY_TOPICS.map((topic) => (
+            <span
+              key={topic}
+              className="inline-flex items-center gap-1.5 bg-slate-50 text-slate-700 border border-slate-200 text-xs font-medium px-3 py-1.5 rounded-full"
+            >
+              <svg className="w-3 h-3 text-[#991b1b]" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
               </svg>
-            </div>
-            <h4 className="font-bold text-slate-900 mb-1">Analyse du dossier</h4>
-            <p className="text-xs text-slate-500 leading-relaxed">Identifiez les idées principales et contradictions</p>
-          </button>
-          <button
-            onClick={() => setActiveSection('plan')}
-            className="bg-white rounded-2xl border border-slate-200 border-t-4 border-t-amber-300 p-5 text-left shadow-sm hover:shadow-lg transition-all group"
-          >
-            <div className="w-11 h-11 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-3 group-hover:scale-105 transition-transform">
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
-              </svg>
-            </div>
-            <h4 className="font-bold text-slate-900 mb-1">Élaboration du plan</h4>
-            <p className="text-xs text-slate-500 leading-relaxed">Construisez un plan I/A/B — II/A/B</p>
-          </button>
-          <button
-            onClick={() => setActiveSection('redaction')}
-            className="bg-white rounded-2xl border border-slate-200 border-t-4 border-t-sky-300 p-5 text-left shadow-sm hover:shadow-lg transition-all group"
-          >
-            <div className="w-11 h-11 bg-sky-50 rounded-xl flex items-center justify-center text-sky-500 mb-3 group-hover:scale-105 transition-transform">
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
-              </svg>
-            </div>
-            <h4 className="font-bold text-slate-900 mb-1">Rédaction complète</h4>
-            <p className="text-xs text-slate-500 leading-relaxed">Exercice complet avec dossier et correction</p>
-          </button>
+              {topic}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Tip box */}
+      <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
+        <div className="flex items-start gap-3">
+          <div className="w-9 h-9 bg-amber-100 text-amber-700 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+            </svg>
+          </div>
+          <div>
+            <h5 className="font-bold text-amber-900 mb-1 text-sm">Conseil d&apos;entraînement</h5>
+            <p className="text-sm text-amber-800 leading-relaxed">
+              Commencez par le module <strong>Analyse</strong> pour maîtriser la lecture du dossier, puis passez au <strong>Plan</strong> pour structurer votre pensée, avant de vous lancer dans la <strong>Rédaction complète</strong> en conditions réelles.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -1169,16 +1320,40 @@ export default function SyntheseClient({ embedded = false }) {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-14 pb-12 md:pt-20 md:pb-16">
         {/* Header */}
         <div className="text-center mb-10">
-          <span className="inline-flex items-center gap-2 bg-[#b91c1c]/10 text-[#991b1b] border border-[#b91c1c]/20 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-            Épreuve reine — Coeff. 3
-          </span>
+          <div className="inline-flex items-center gap-2 bg-accent-500/10 text-accent-600 border border-accent-200 px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+            </svg>
+            Épreuve reine d&apos;admissibilité — Coefficient 3
+          </div>
           <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-3">
             Note de <span className="home-gradient-text">synthèse</span>
           </h1>
           <div className="w-12 h-1 bg-[#991b1b] mx-auto mt-4 mb-6 rounded-full"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto mb-6">
             Entraînez-vous avec des dossiers complets reproduisant les conditions réelles de l&apos;examen du CRFPA. Méthodologie complète en annexe.
           </p>
+          {/* Stats row */}
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5">
+            <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-sm">
+              <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              <span className="font-semibold text-slate-700">5 heures</span>
+            </div>
+            <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-sm">
+              <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
+              </svg>
+              <span className="font-semibold text-slate-700">Coefficient 3</span>
+            </div>
+            <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-sm">
+              <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+              </svg>
+              <span className="font-semibold text-slate-700">Dossier documentaire</span>
+            </div>
+          </div>
         </div>
 
         {/* Tabs */}

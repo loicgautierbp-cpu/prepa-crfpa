@@ -15,23 +15,58 @@ const EXERCISE_TYPES = [
   {
     id: 'cas-pratique',
     label: 'Cas pratique',
-    description: 'Résolvez un cas concret en mobilisant vos connaissances juridiques. Qualification des faits, identification des règles applicables et raisonnement par syllogisme.',
+    tagline: 'Le plus fréquent à l\'examen',
+    description: 'Résolvez un cas concret en mobilisant vos connaissances juridiques. Qualification des faits, règles applicables, raisonnement par syllogisme.',
+    duree: '3h',
+    difficulty: 'Classique',
+    tags: ['Qualification', 'Syllogisme', 'Méthode IRAC'],
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
       </svg>
     ),
+    color: {
+      border: 'border-t-emerald-300',
+      iconBg: 'bg-emerald-50',
+      iconText: 'text-emerald-500',
+      tagBg: 'bg-emerald-50/60',
+      tagText: 'text-emerald-700',
+      tagBorder: 'border-emerald-100',
+      badgeBg: 'bg-emerald-100 text-emerald-700',
+    },
   },
   {
     id: 'dissertation',
     label: 'Dissertation juridique',
-    description: 'Construisez une argumentation structurée autour d\'une problématique juridique. Introduction, plan en deux parties, et conclusion.',
+    tagline: 'Argumentation structurée',
+    description: 'Construisez une argumentation structurée autour d\'une problématique juridique. Introduction, plan en deux parties, conclusion.',
+    duree: '3h',
+    difficulty: 'Exigeant',
+    tags: ['Plan en 2 parties', 'Problématique', 'Accroche'],
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
       </svg>
     ),
+    color: {
+      border: 'border-t-amber-300',
+      iconBg: 'bg-amber-50',
+      iconText: 'text-amber-600',
+      tagBg: 'bg-amber-50/60',
+      tagText: 'text-amber-700',
+      tagBorder: 'border-amber-100',
+      badgeBg: 'bg-amber-100 text-amber-700',
+    },
   },
+];
+
+const KEY_TOPICS_SPEC = [
+  '7 matières au choix',
+  'Programme CRFPA complet',
+  'Jurisprudence récente',
+  'Textes applicables',
+  'Cas transversaux',
+  'Correction détaillée',
 ];
 
 export default function SpecialiteClient({ embedded = false }) {
@@ -197,7 +232,7 @@ export default function SpecialiteClient({ embedded = false }) {
       <div className={embedded ? 'max-w-4xl mx-auto' : 'max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12'}>
 
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-10">
           {embedded && step === 'specialite' ? (
             <>
               <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
@@ -205,20 +240,69 @@ export default function SpecialiteClient({ embedded = false }) {
               </h2>
               <p className="text-sm text-gray-500">3 heures — Coefficient 2 — Choisissez parmi 7 matières</p>
             </>
+          ) : step === 'specialite' && !embedded ? (
+            <div className="text-center max-w-3xl mx-auto">
+              <div className="inline-flex items-center gap-2 bg-accent-500/10 text-accent-600 border border-accent-200 px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+                </svg>
+                Épreuve d&apos;admissibilité — Matière au choix
+              </div>
+              <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-3">
+                Épreuve de <span className="home-gradient-text">spécialité</span>
+              </h1>
+              <div className="w-12 h-1 bg-[#991b1b] mx-auto mt-4 mb-6 rounded-full"></div>
+              <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base mb-6">
+                Choisissez votre matière de spécialité parmi les 7 proposées au CRFPA, puis entraînez-vous avec des sujets générés et corrigés par IA.
+              </p>
+              {/* Stats row */}
+              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5">
+                <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-sm">
+                  <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                  <span className="font-semibold text-slate-700">3 heures</span>
+                </div>
+                <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-sm">
+                  <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
+                  </svg>
+                  <span className="font-semibold text-slate-700">Coefficient 2</span>
+                </div>
+                <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-sm">
+                  <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3" />
+                  </svg>
+                  <span className="font-semibold text-slate-700">7 matières au choix</span>
+                </div>
+              </div>
+            </div>
+          ) : step === 'type' && !embedded ? (
+            <div className="text-center max-w-3xl mx-auto">
+              <div className="inline-flex items-center gap-2 bg-accent-500/10 text-accent-600 border border-accent-200 px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                </svg>
+                {selectedSpecialite?.name} — Type d&apos;exercice
+              </div>
+              <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-3">
+                <span className="home-gradient-text">{selectedSpecialite?.name}</span>
+              </h1>
+              <div className="w-12 h-1 bg-[#991b1b] mx-auto mt-4 mb-6 rounded-full"></div>
+              <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base mb-2">
+                Choisissez le type d&apos;exercice pour vous entraîner en conditions réelles.
+              </p>
+            </div>
           ) : (
             <>
               <h1
                 style={{ fontFamily: 'var(--font-display)' }}
                 className="text-3xl sm:text-4xl font-black text-gray-900 mb-2"
               >
-                {step === 'specialite' && "Épreuve de spécialité"}
-                {step === 'type' && selectedSpecialite?.name}
                 {step === 'exercise' && selectedSpecialite?.name}
                 {step === 'correction' && "Correction"}
               </h1>
               <p className="text-gray-500 text-sm sm:text-base">
-                {step === 'specialite' && "Choisissez votre matière de spécialité parmi les 7 proposées au CRFPA."}
-                {step === 'type' && "Choisissez le type d'exercice pour vous entraîner."}
                 {step === 'exercise' && (
                   selectedType === 'cas-pratique'
                     ? "Cas pratique — 3 heures — Coefficient 2"
@@ -280,23 +364,121 @@ export default function SpecialiteClient({ embedded = false }) {
             Step 2: Choose Exercise Type
             ============================================================ */}
         {step === 'type' && (
-          <div className="grid sm:grid-cols-2 gap-4">
-            {EXERCISE_TYPES.map((exType) => (
-              <button
-                key={exType.id}
-                onClick={() => handleSelectType(exType.id)}
-                className="group bg-white rounded-xl border border-gray-200 p-6 text-left hover:border-primary-300 hover:shadow-md transition-all"
-              >
-                <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-4 text-primary-600 group-hover:bg-primary-200 transition-colors">
-                  {exType.icon}
+          <>
+            <div className="grid sm:grid-cols-2 gap-5">
+              {EXERCISE_TYPES.map((exType) => (
+                <div
+                  key={exType.id}
+                  className={`lift group relative bg-white rounded-2xl border border-slate-200 border-t-4 ${exType.color.border} p-6 flex flex-col transition-all hover:shadow-xl`}
+                >
+                  {/* Badge difficulté */}
+                  <span className={`absolute top-5 right-5 px-2.5 py-1 ${exType.color.badgeBg} text-[11px] font-bold rounded-full`}>
+                    {exType.difficulty}
+                  </span>
+
+                  {/* Icon */}
+                  <div className={`w-14 h-14 ${exType.color.iconBg} rounded-xl flex items-center justify-center ${exType.color.iconText} mb-4 transition-transform group-hover:scale-105`}>
+                    {exType.icon}
+                  </div>
+
+                  {/* Tagline */}
+                  <p className={`text-xs font-semibold uppercase tracking-wider ${exType.color.iconText} mb-1`}>
+                    {exType.tagline}
+                  </p>
+
+                  {/* Title */}
+                  <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-lg font-bold text-slate-900 mb-2">
+                    {exType.label}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-sm text-slate-500 leading-relaxed mb-4 flex-1">
+                    {exType.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {exType.tags.map((tag) => (
+                      <span key={tag} className={`px-2 py-0.5 ${exType.color.tagBg} border ${exType.color.tagBorder} text-[11px] font-medium ${exType.color.tagText} rounded-md`}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Meta */}
+                  <div className="flex items-center gap-3 text-xs text-slate-400 mb-4 pb-4 border-b border-slate-100">
+                    <span className="inline-flex items-center gap-1">
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                      </svg>
+                      {exType.duree}
+                    </span>
+                    <span className="w-1 h-1 rounded-full bg-slate-300"></span>
+                    <span className="inline-flex items-center gap-1">
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
+                      </svg>
+                      Correction IA sur 20
+                    </span>
+                  </div>
+
+                  {/* CTA */}
+                  <button
+                    onClick={() => handleSelectType(exType.id)}
+                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#b91c1c] text-white text-sm font-semibold rounded-xl hover:bg-[#991b1b] transition-colors shadow-sm shadow-[#b91c1c]/20"
+                  >
+                    Commencer l&apos;entraînement
+                    <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                  </button>
                 </div>
-                <h3 className="font-bold text-gray-900 text-lg mb-2 group-hover:text-primary-700 transition-colors">
-                  {exType.label}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{exType.description}</p>
-              </button>
-            ))}
-          </div>
+              ))}
+            </div>
+
+            {/* Thèmes couverts */}
+            {!embedded && (
+              <div className="mt-12 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 bg-[#b91c1c]/10 text-[#b91c1c] rounded-xl flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-lg font-bold text-slate-900">
+                      Couverture du programme
+                    </h3>
+                    <p className="text-xs text-slate-500">Les sujets générés couvrent l&apos;ensemble du programme CRFPA</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {KEY_TOPICS_SPEC.map((topic) => (
+                    <span key={topic} className="px-3 py-1.5 bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700 rounded-lg">
+                      {topic}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Conseil */}
+            {!embedded && (
+              <div className="mt-6 bg-amber-50/60 border border-amber-200/60 rounded-xl p-5">
+                <div className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                  </svg>
+                  <div>
+                    <p className="text-sm font-semibold text-amber-800 mb-1">Conseil d&apos;entraînement</p>
+                    <p className="text-sm text-amber-700 leading-relaxed">
+                      Le cas pratique est l&apos;exercice le plus fréquent au CRFPA. Maîtrisez la méthode IRAC et entraînez-vous à qualifier rapidement les faits. Alternez cas pratique et dissertation pour couvrir toutes les compétences attendues.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </>
         )}
 
         {/* ============================================================
