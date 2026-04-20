@@ -55,10 +55,36 @@ export default function HomePage() {
                   Découvrir le programme
                 </Link>
               </div>
-              <div className="flex flex-wrap gap-6 text-sm text-slate-500">
-                <span className="flex items-center gap-1.5"><CheckIcon />7 jours gratuits</span>
-                <span className="flex items-center gap-1.5"><CheckIcon />Sans engagement</span>
-                <span className="flex items-center gap-1.5"><CheckIcon />Accès illimité</span>
+              <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-2xl px-4 py-3 shadow-sm">
+                {/* Avatars */}
+                <div className="flex -space-x-2">
+                  {[
+                    { letter: 'M', bg: 'from-indigo-500 to-violet-500' },
+                    { letter: 'S', bg: 'from-violet-500 to-purple-500' },
+                    { letter: 'L', bg: 'from-purple-500 to-fuchsia-500' },
+                    { letter: 'A', bg: 'from-teal-500 to-cyan-500' },
+                  ].map((a) => (
+                    <div
+                      key={a.letter}
+                      className={`w-9 h-9 rounded-full bg-gradient-to-br ${a.bg} border-2 border-white flex items-center justify-center text-white text-xs font-bold shadow-sm`}
+                    >
+                      {a.letter}
+                    </div>
+                  ))}
+                </div>
+                {/* Stars + text */}
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-0.5 text-amber-400 mb-0.5">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <svg key={i} className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.961a1 1 0 00.95.69h4.164c.969 0 1.371 1.24.588 1.81l-3.37 2.449a1 1 0 00-.363 1.118l1.285 3.96c.3.922-.755 1.688-1.54 1.118l-3.37-2.448a1 1 0 00-1.176 0l-3.37 2.448c-.784.57-1.838-.196-1.539-1.118l1.285-3.96a1 1 0 00-.363-1.118L2.05 9.388c-.783-.57-.38-1.81.588-1.81h4.164a1 1 0 00.95-.69l1.286-3.961z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="text-sm text-slate-600">
+                    Rejoignez <strong className="text-slate-900">+1 500</strong> étudiants
+                  </p>
+                </div>
               </div>
             </div>
             {/* Right: Question du jour */}
