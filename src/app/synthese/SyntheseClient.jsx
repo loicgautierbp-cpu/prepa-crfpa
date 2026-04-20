@@ -12,8 +12,8 @@ import { useGeminiSynthese } from '@/hooks/useGeminiSynthese';
 import { SYNTHESE_THEMES } from '@/utils/prompts';
 
 const TABS = [
-  { id: 'methodologie', label: 'Méthodologie' },
   { id: 'exercices', label: 'Exercices pratiques' },
+  { id: 'methodologie', label: 'Méthodologie (annexe)' },
 ];
 
 const DOC_TYPE_ICONS = {
@@ -43,8 +43,8 @@ function MethodologieTab() {
       {/* Introduction */}
       <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
         <div className="flex items-start gap-4">
-          <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center shrink-0">
-            <svg className="w-6 h-6 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+          <div className="w-12 h-12 bg-[#b91c1c]/10 rounded-xl flex items-center justify-center shrink-0">
+            <svg className="w-6 h-6 text-[#b91c1c]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
             </svg>
           </div>
@@ -65,7 +65,7 @@ function MethodologieTab() {
               className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-gray-50 transition-colors"
             >
               <div className="flex items-center gap-3">
-                <span className="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center text-sm font-bold text-primary-700">
+                <span className="w-8 h-8 bg-[#b91c1c]/10 rounded-lg flex items-center justify-center text-sm font-bold text-[#991b1b]">
                   {idx + 1}
                 </span>
                 <span className="font-semibold text-gray-900">{section.title}</span>
@@ -80,7 +80,7 @@ function MethodologieTab() {
             {openSection === idx && (
               <div className="px-6 pb-6 border-t border-gray-100">
                 <div
-                  className="prose prose-sm max-w-none mt-4 text-gray-700 [&_h4]:text-base [&_h4]:font-bold [&_h4]:text-gray-900 [&_h4]:mt-5 [&_h4]:mb-2 [&_ul]:space-y-1.5 [&_li]:leading-relaxed [&_b]:text-gray-900 [&_.fiche-key-point]:bg-primary-50 [&_.fiche-key-point]:border-l-4 [&_.fiche-key-point]:border-primary-500 [&_.fiche-key-point]:p-4 [&_.fiche-key-point]:rounded-r-lg [&_.fiche-key-point]:mt-4 [&_.fiche-key-point]:text-sm [&_.fiche-key-point]:font-medium [&_.fiche-key-point]:text-primary-800"
+                  className="prose prose-sm max-w-none mt-4 text-gray-700 [&_h4]:text-base [&_h4]:font-bold [&_h4]:text-gray-900 [&_h4]:mt-5 [&_h4]:mb-2 [&_ul]:space-y-1.5 [&_li]:leading-relaxed [&_b]:text-gray-900 [&_.fiche-key-point]:bg-[#fef2f2] [&_.fiche-key-point]:border-l-4 [&_.fiche-key-point]:border-[#b91c1c] [&_.fiche-key-point]:p-4 [&_.fiche-key-point]:rounded-r-lg [&_.fiche-key-point]:mt-4 [&_.fiche-key-point]:text-sm [&_.fiche-key-point]:font-medium [&_.fiche-key-point]:text-[#7f1d1d]"
                   dangerouslySetInnerHTML={{ __html: section.content }}
                 />
               </div>
@@ -132,7 +132,7 @@ function ExerciceDetail({ exercice, onBack }) {
   return (
     <div className="space-y-6">
       {/* Back + Header */}
-      <button onClick={onBack} className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary-600 transition-colors">
+      <button onClick={onBack} className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-[#b91c1c] transition-colors">
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
         </svg>
@@ -174,7 +174,7 @@ function ExerciceDetail({ exercice, onBack }) {
         <div className="flex items-center gap-2">
           <button
             onClick={handleStartTimer}
-            className="px-4 py-2 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors"
+            className="px-4 py-2 bg-[#b91c1c] text-white text-sm font-semibold rounded-lg hover:bg-[#991b1b] transition-colors"
           >
             {!timerActive ? 'Démarrer' : isRunning ? 'Pause' : 'Reprendre'}
           </button>
@@ -237,7 +237,7 @@ function ExerciceDetail({ exercice, onBack }) {
             <p className="text-gray-500 mb-4">La correction est masquée pour vous permettre de travailler en conditions réelles.</p>
             <button
               onClick={handleShowCorrection}
-              className="px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/20"
+              className="px-6 py-3 bg-[#b91c1c] text-white font-semibold rounded-xl hover:bg-[#991b1b] transition-colors shadow-lg shadow-[#b91c1c]/20"
             >
               {exercice.premium && !isPremium ? '🔒 Correction Premium' : 'Voir la correction'}
             </button>
@@ -245,7 +245,7 @@ function ExerciceDetail({ exercice, onBack }) {
         ) : (
           <div className="p-6 space-y-6">
             <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-              <svg className="w-5 h-5 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+              <svg className="w-5 h-5 text-[#b91c1c]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
               Correction détaillée
@@ -291,8 +291,8 @@ function ExerciceDetail({ exercice, onBack }) {
             </div>
 
             {/* Commentaire */}
-            <div className="bg-primary-50 border-l-4 border-primary-500 rounded-r-lg p-4">
-              <p className="text-sm font-medium text-primary-800">{exercice.correction.commentaire}</p>
+            <div className="bg-[#fef2f2] border-l-4 border-[#b91c1c] rounded-r-lg p-4">
+              <p className="text-sm font-medium text-[#7f1d1d]">{exercice.correction.commentaire}</p>
             </div>
           </div>
         )}
@@ -450,7 +450,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
       {!result && (
         <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
           <div className="flex items-start gap-4 mb-5">
-            <div className="w-11 h-11 bg-primary-100 rounded-xl flex items-center justify-center shrink-0 text-lg">{icon}</div>
+            <div className="w-11 h-11 bg-[#b91c1c]/10 rounded-xl flex items-center justify-center shrink-0 text-lg">{icon}</div>
             <div>
               <h3 className="font-bold text-gray-900 mb-1">{title}</h3>
               <p className="text-sm text-gray-500">{description}</p>
@@ -460,7 +460,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
             <select
               value={selectedTheme}
               onChange={(e) => setSelectedTheme(e.target.value)}
-              className="flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 focus:outline-none focus:border-primary-300"
+              className="flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 focus:outline-none focus:border-[#b91c1c]/40"
             >
               <option value="">Thème aléatoire</option>
               {SYNTHESE_THEMES.map((t) => (
@@ -470,7 +470,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
             <button
               onClick={handleGenerate}
               disabled={isGenerating}
-              className="px-6 py-2.5 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-wait"
+              className="px-6 py-2.5 bg-[#b91c1c] text-white font-semibold rounded-lg hover:bg-[#991b1b] transition-colors disabled:opacity-50 disabled:cursor-wait"
             >
               {isGenerating ? 'Génération en cours...' : 'Générer'}
             </button>
@@ -478,7 +478,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
           {isGenerating && (
             <div className="mt-4">
               <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-primary-500 rounded-full loading-progress" />
+                <div className="h-full bg-[#fef2f2]0 rounded-full loading-progress" />
               </div>
               <p className="text-xs text-gray-400 mt-2">Génération de votre exercice en cours, veuillez patienter...</p>
             </div>
@@ -492,7 +492,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="font-bold text-gray-900">{result.sujet || result.theme}</h3>
-            <button onClick={() => { reset(); setShowCorrection(false); setOpenDoc(null); setSubmitted(false); setScore(null); setUserIdees(''); setUserContradictions(''); setUserDocsCles(''); setUserIntro(''); setUserPartie1(''); setUserPartie2(''); setUserConclusion(''); setRedactionMode(null); setUploadedFileName(null); setIsUploading(false); }} className="text-sm text-primary-600 font-medium hover:underline">
+            <button onClick={() => { reset(); setShowCorrection(false); setOpenDoc(null); setSubmitted(false); setScore(null); setUserIdees(''); setUserContradictions(''); setUserDocsCles(''); setUserIntro(''); setUserPartie1(''); setUserPartie2(''); setUserConclusion(''); setRedactionMode(null); setUploadedFileName(null); setIsUploading(false); }} className="text-sm text-[#b91c1c] font-medium hover:underline">
               Nouvel exercice
             </button>
           </div>
@@ -551,7 +551,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
                   value={userIdees}
                   onChange={(e) => setUserIdees(e.target.value)}
                   placeholder="Listez les idées principales que vous avez identifiées dans le dossier..."
-                  className="w-full h-28 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-500/15 resize-y"
+                  className="w-full h-28 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#b91c1c]/40 focus:ring-2 focus:ring-[#b91c1c]/15 resize-y"
                 />
               </div>
               <div>
@@ -560,7 +560,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
                   value={userContradictions}
                   onChange={(e) => setUserContradictions(e.target.value)}
                   placeholder="Identifiez les contradictions ou tensions entre les documents..."
-                  className="w-full h-24 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-500/15 resize-y"
+                  className="w-full h-24 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#b91c1c]/40 focus:ring-2 focus:ring-[#b91c1c]/15 resize-y"
                 />
               </div>
               <div>
@@ -569,13 +569,13 @@ function AIExerciseSection({ mode, title, description, icon }) {
                   value={userDocsCles}
                   onChange={(e) => setUserDocsCles(e.target.value)}
                   placeholder="Quels documents sont centraux dans ce dossier et pourquoi ?..."
-                  className="w-full h-24 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-500/15 resize-y"
+                  className="w-full h-24 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#b91c1c]/40 focus:ring-2 focus:ring-[#b91c1c]/15 resize-y"
                 />
               </div>
               <button
                 onClick={handleSubmitAnalyse}
                 disabled={!userIdees.trim() && !userContradictions.trim() && !userDocsCles.trim()}
-                className="w-full px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/20 disabled:opacity-40 disabled:cursor-not-allowed"
+                className="w-full px-6 py-3 bg-[#b91c1c] text-white font-semibold rounded-xl hover:bg-[#991b1b] transition-colors shadow-lg shadow-[#b91c1c]/20 disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Soumettre mon analyse
               </button>
@@ -615,7 +615,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
               <h4 className="text-sm font-semibold text-gray-700 mb-2">Votre plan</h4>
               <textarea
                 placeholder="Rédigez votre plan ici (I. / A. / B. — II. / A. / B.)..."
-                className="w-full h-40 px-4 py-3 bg-white border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-500/15 resize-y"
+                className="w-full h-40 px-4 py-3 bg-white border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#b91c1c]/40 focus:ring-2 focus:ring-[#b91c1c]/15 resize-y"
               />
             </div>
           )}
@@ -627,7 +627,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
               <div className="grid sm:grid-cols-2 gap-3 mt-4">
                 <button
                   onClick={() => setRedactionMode('rediger')}
-                  className="p-4 border-2 border-gray-200 rounded-xl text-left hover:border-primary-300 hover:bg-primary-50/30 transition-all"
+                  className="p-4 border-2 border-gray-200 rounded-xl text-left hover:border-[#b91c1c]/40 hover:bg-[#fef2f2]/30 transition-all"
                 >
                   <span className="text-lg block mb-1">✍️</span>
                   <span className="font-semibold text-gray-900 block text-sm">Rédiger puis corriger</span>
@@ -635,7 +635,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
                 </button>
                 <button
                   onClick={() => { setRedactionMode('corriger'); handleShowCorrection(); }}
-                  className="p-4 border-2 border-gray-200 rounded-xl text-left hover:border-primary-300 hover:bg-primary-50/30 transition-all"
+                  className="p-4 border-2 border-gray-200 rounded-xl text-left hover:border-[#b91c1c]/40 hover:bg-[#fef2f2]/30 transition-all"
                 >
                   <span className="text-lg block mb-1">📋</span>
                   <span className="font-semibold text-gray-900 block text-sm">Voir la correction directement</span>
@@ -704,7 +704,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
                   value={userIntro}
                   onChange={(e) => setUserIntro(e.target.value)}
                   placeholder="Accroche, présentation du sujet, problématique, annonce du plan..."
-                  className="w-full h-32 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-500/15 resize-y"
+                  className="w-full h-32 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#b91c1c]/40 focus:ring-2 focus:ring-[#b91c1c]/15 resize-y"
                 />
               </div>
               <div>
@@ -713,7 +713,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
                   value={userPartie1}
                   onChange={(e) => setUserPartie1(e.target.value)}
                   placeholder="Développement de la première partie (A. et B.) avec références aux documents..."
-                  className="w-full h-48 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-500/15 resize-y"
+                  className="w-full h-48 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#b91c1c]/40 focus:ring-2 focus:ring-[#b91c1c]/15 resize-y"
                 />
               </div>
               <div>
@@ -722,7 +722,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
                   value={userPartie2}
                   onChange={(e) => setUserPartie2(e.target.value)}
                   placeholder="Développement de la deuxième partie (A. et B.) avec références aux documents..."
-                  className="w-full h-48 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-500/15 resize-y"
+                  className="w-full h-48 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#b91c1c]/40 focus:ring-2 focus:ring-[#b91c1c]/15 resize-y"
                 />
               </div>
               <div>
@@ -731,13 +731,13 @@ function AIExerciseSection({ mode, title, description, icon }) {
                   value={userConclusion}
                   onChange={(e) => setUserConclusion(e.target.value)}
                   placeholder="Synthèse des enseignements du dossier, ouverture éventuelle..."
-                  className="w-full h-24 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-500/15 resize-y"
+                  className="w-full h-24 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#b91c1c]/40 focus:ring-2 focus:ring-[#b91c1c]/15 resize-y"
                 />
               </div>
               <button
                 onClick={handleShowCorrection}
                 disabled={!userIntro.trim() && !userPartie1.trim()}
-                className="w-full px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/20 disabled:opacity-40 disabled:cursor-not-allowed"
+                className="w-full px-6 py-3 bg-[#b91c1c] text-white font-semibold rounded-xl hover:bg-[#991b1b] transition-colors shadow-lg shadow-[#b91c1c]/20 disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 {!isPremium ? '🔒 Soumettre et voir la correction (Premium)' : 'Soumettre et voir la correction'}
               </button>
@@ -749,7 +749,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
             <div className="text-center py-4">
               <button
                 onClick={handleShowCorrection}
-                className="px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/20"
+                className="px-6 py-3 bg-[#b91c1c] text-white font-semibold rounded-xl hover:bg-[#991b1b] transition-colors shadow-lg shadow-[#b91c1c]/20"
               >
                 {!isPremium ? '🔒 Correction (Premium)' : 'Voir la correction'}
               </button>
@@ -761,7 +761,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
             <div className="text-center py-4">
               <button
                 onClick={handleShowCorrection}
-                className="px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/20"
+                className="px-6 py-3 bg-[#b91c1c] text-white font-semibold rounded-xl hover:bg-[#991b1b] transition-colors shadow-lg shadow-[#b91c1c]/20"
               >
                 {!isPremium ? '🔒 Correction (Premium)' : 'Voir le plan type'}
               </button>
@@ -772,7 +772,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
           {showCorrection && (
             <div className="bg-white rounded-xl border border-gray-200 p-6 space-y-5 shadow-sm">
               <h4 className="font-bold text-gray-900 flex items-center gap-2">
-                <svg className="w-5 h-5 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <svg className="w-5 h-5 text-[#b91c1c]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
                 Correction
@@ -825,8 +825,8 @@ function AIExerciseSection({ mode, title, description, icon }) {
                     <div className="bg-gray-50 rounded-lg p-4 border border-gray-200 text-sm text-gray-700 leading-relaxed [&_b]:text-gray-900" dangerouslySetInnerHTML={{ __html: result.planType }} />
                   </div>
                   {result.justification && (
-                    <div className="bg-primary-50 border-l-4 border-primary-500 rounded-r-lg p-4">
-                      <p className="text-sm font-medium text-primary-800">{result.justification}</p>
+                    <div className="bg-[#fef2f2] border-l-4 border-[#b91c1c] rounded-r-lg p-4">
+                      <p className="text-sm font-medium text-[#7f1d1d]">{result.justification}</p>
                     </div>
                   )}
                   {result.erreursFrequentes && (
@@ -875,8 +875,8 @@ function AIExerciseSection({ mode, title, description, icon }) {
                     </ul>
                   </div>
                   {result.correction.commentaire && (
-                    <div className="bg-primary-50 border-l-4 border-primary-500 rounded-r-lg p-4">
-                      <p className="text-sm font-medium text-primary-800">{result.correction.commentaire}</p>
+                    <div className="bg-[#fef2f2] border-l-4 border-[#b91c1c] rounded-r-lg p-4">
+                      <p className="text-sm font-medium text-[#7f1d1d]">{result.correction.commentaire}</p>
                     </div>
                   )}
                 </>
@@ -922,7 +922,7 @@ function ExercicesTab() {
     const s = sections[activeSection];
     return (
       <div className="space-y-4">
-        <button onClick={() => setActiveSection(null)} className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary-600 transition-colors">
+        <button onClick={() => setActiveSection(null)} className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-[#b91c1c] transition-colors">
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" /></svg>
           Retour
         </button>
@@ -940,17 +940,17 @@ function ExercicesTab() {
         <div className="grid sm:grid-cols-3 gap-4">
           <button onClick={() => setActiveSection('analyse')} className="bg-white rounded-xl border border-gray-200 p-5 text-left shadow-sm hover:shadow-md transition-shadow group">
             <span className="text-2xl mb-3 block">🔍</span>
-            <h4 className="font-bold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors">Analyse du dossier</h4>
+            <h4 className="font-bold text-gray-900 mb-1 group-hover:text-[#b91c1c] transition-colors">Analyse du dossier</h4>
             <p className="text-xs text-gray-500">Identifiez les idées principales et contradictions</p>
           </button>
           <button onClick={() => setActiveSection('plan')} className="bg-white rounded-xl border border-gray-200 p-5 text-left shadow-sm hover:shadow-md transition-shadow group">
             <span className="text-2xl mb-3 block">📐</span>
-            <h4 className="font-bold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors">Élaboration du plan</h4>
+            <h4 className="font-bold text-gray-900 mb-1 group-hover:text-[#b91c1c] transition-colors">Élaboration du plan</h4>
             <p className="text-xs text-gray-500">Construisez un plan I/A/B - II/A/B</p>
           </button>
           <button onClick={() => setActiveSection('redaction')} className="bg-white rounded-xl border border-gray-200 p-5 text-left shadow-sm hover:shadow-md transition-shadow group">
             <span className="text-2xl mb-3 block">✍️</span>
-            <h4 className="font-bold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors">Rédaction complète</h4>
+            <h4 className="font-bold text-gray-900 mb-1 group-hover:text-[#b91c1c] transition-colors">Rédaction complète</h4>
             <p className="text-xs text-gray-500">Exercice complet avec dossier et correction</p>
           </button>
         </div>
@@ -966,7 +966,7 @@ function ExercicesTab() {
    Main Component
    ============================================================ */
 export default function SyntheseClient({ embedded = false }) {
-  const [activeTab, setActiveTab] = useState('methodologie');
+  const [activeTab, setActiveTab] = useState('exercices');
 
   if (embedded) {
     return (
@@ -1001,19 +1001,19 @@ export default function SyntheseClient({ embedded = false }) {
   }
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-[#f5ece4] via-[#fef2f2] to-[#f5ece4]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+    <section className="min-h-screen bg-[#fef2f2]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-14 pb-12 md:pt-20 md:pb-16">
         {/* Header */}
         <div className="text-center mb-10">
-          <span className="inline-flex items-center gap-2 bg-accent-500/10 text-accent-600 border border-accent-200 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-flex items-center gap-2 bg-[#b91c1c]/10 text-[#991b1b] border border-[#b91c1c]/20 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
             Épreuve reine — Coeff. 3
           </span>
           <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-3">
             Note de <span className="home-gradient-text">synthèse</span>
           </h1>
-          <div className="w-16 h-0.5 bg-accent-500 mx-auto mt-4 mb-4"></div>
+          <div className="w-12 h-1 bg-[#991b1b] mx-auto mt-4 mb-6 rounded-full"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Maîtrisez la méthodologie et entraînez-vous avec des dossiers complets reproduisant les conditions réelles de l&apos;examen du CRFPA.
+            Entraînez-vous avec des dossiers complets reproduisant les conditions réelles de l&apos;examen du CRFPA. Méthodologie complète en annexe.
           </p>
         </div>
 
