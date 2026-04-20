@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { usePremium } from '@/contexts/PremiumContext';
 import { useTimer } from '@/hooks/useTimer';
+import GenerationLoader from '@/components/ui/GenerationLoader';
 
 const THEMES = [
   'Liberté d\'expression et ses limites',
@@ -460,13 +461,19 @@ export default function GrandOralClient({ embedded = false }) {
         {/* Exercise: Exposé */}
         {step === 'exercise' && selectedType === 'expose' && (
           <div className="space-y-6">
-            {!sujet ? (
+            {!sujet && isGenerating ? (
+              <GenerationLoader
+                title="Génération de votre sujet de grand oral"
+                subtitle="Libertés et droits fondamentaux · Sujet d'exposé"
+                accent="#b91c1c"
+              />
+            ) : !sujet ? (
               <div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Tirage au sort du sujet</h3>
                 <p className="text-sm text-gray-500 mb-6">Un sujet portant sur les libertés fondamentales sera tiré au sort. Vous aurez 1 heure pour préparer votre exposé.</p>
-                <button onClick={handleGenerate} disabled={isGenerating}
-                  className="px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors disabled:opacity-50 shadow-lg shadow-primary-600/25">
-                  {isGenerating ? 'Tirage en cours...' : 'Tirer un sujet'}
+                <button onClick={handleGenerate}
+                  className="px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/25">
+                  Tirer un sujet
                 </button>
                 {error && <p className="text-red-500 text-sm mt-4">{error}</p>}
               </div>
@@ -531,13 +538,19 @@ export default function GrandOralClient({ embedded = false }) {
         {/* Exercise: Questions du jury */}
         {step === 'exercise' && selectedType === 'questions' && (
           <div className="space-y-6">
-            {!juryQuestions ? (
+            {!juryQuestions && isGenerating ? (
+              <GenerationLoader
+                title="Préparation du jury"
+                subtitle="7 questions de déontologie, libertés et actualité"
+                accent="#b91c1c"
+              />
+            ) : !juryQuestions ? (
               <div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Simulation d&apos;entretien avec le jury</h3>
                 <p className="text-sm text-gray-500 mb-6">Le jury vous posera 6 à 8 questions sur les libertés fondamentales, la déontologie et l&apos;actualité juridique.</p>
-                <button onClick={handleGenerate} disabled={isGenerating}
-                  className="px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors disabled:opacity-50 shadow-lg shadow-primary-600/25">
-                  {isGenerating ? 'Génération...' : 'Commencer l\'entretien'}
+                <button onClick={handleGenerate}
+                  className="px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/25">
+                  Commencer l&apos;entretien
                 </button>
                 {error && <p className="text-red-500 text-sm mt-4">{error}</p>}
               </div>

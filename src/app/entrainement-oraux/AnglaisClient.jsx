@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useTimer } from '@/hooks/useTimer';
+import GenerationLoader from '@/components/ui/GenerationLoader';
 
 const EXERCISE_TYPES = [
   {
@@ -365,13 +366,21 @@ export default function AnglaisClient({ embedded = false }) {
 
         {step === 'exercise' && (
           <div className="space-y-6">
-            {!exercise ? (
+            {!exercise && isGenerating ? (
+              <GenerationLoader
+                title="Génération de votre exercice d'anglais"
+                subtitle={selectedType === 'comprehension'
+                  ? "Anglais juridique · Compréhension"
+                  : "Anglais juridique · Expression écrite"}
+                accent="#b91c1c"
+              />
+            ) : !exercise ? (
               <div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{selectedType === 'comprehension' ? 'Reading Comprehension' : 'Translation & Writing'}</h3>
                 <p className="text-sm text-gray-500 mb-6">An exercise will be generated on a legal English topic.</p>
-                <button onClick={handleGenerate} disabled={isGenerating}
-                  className="px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors disabled:opacity-50 shadow-lg shadow-primary-600/25">
-                  {isGenerating ? 'Generating...' : 'Generate exercise'}
+                <button onClick={handleGenerate}
+                  className="px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors shadow-lg shadow-primary-600/25">
+                  Generate exercise
                 </button>
                 {error && <p className="text-red-500 text-sm mt-4">{error}</p>}
               </div>

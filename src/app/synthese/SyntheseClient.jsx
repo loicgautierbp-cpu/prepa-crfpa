@@ -7,6 +7,7 @@ import { COURS_SYNTHESE } from '@/data/cours/synthese';
 import { SYNTHESE_EXERCICES } from '@/data/synthese-exercices';
 import LoginRequiredModal from '@/components/ui/LoginRequiredModal';
 import UpgradeModal from '@/components/ui/UpgradeModal';
+import GenerationLoader from '@/components/ui/GenerationLoader';
 import { useTimer } from '@/hooks/useTimer';
 import { useGeminiSynthese } from '@/hooks/useGeminiSynthese';
 import { SYNTHESE_THEMES } from '@/utils/prompts';
@@ -595,7 +596,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
   return (
     <div className="space-y-4">
       {/* Generate controls */}
-      {!result && (
+      {!result && !isGenerating && (
         <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
           <div className="flex items-start gap-4 mb-5">
             <div className="w-11 h-11 bg-[#b91c1c]/10 rounded-xl flex items-center justify-center shrink-0 text-lg">{icon}</div>
@@ -612,22 +613,22 @@ function AIExerciseSection({ mode, title, description, icon }) {
             />
             <button
               onClick={handleGenerate}
-              disabled={isGenerating}
-              className="px-6 py-2.5 bg-[#b91c1c] text-white font-semibold rounded-lg hover:bg-[#991b1b] transition-colors disabled:opacity-50 disabled:cursor-wait shrink-0"
+              className="px-6 py-2.5 bg-[#b91c1c] text-white font-semibold rounded-lg hover:bg-[#991b1b] transition-colors shrink-0"
             >
-              {isGenerating ? 'Génération en cours...' : 'Générer'}
+              Générer
             </button>
           </div>
-          {isGenerating && (
-            <div className="mt-4">
-              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-[#fef2f2]0 rounded-full loading-progress" />
-              </div>
-              <p className="text-xs text-gray-400 mt-2">Génération de votre exercice en cours, veuillez patienter...</p>
-            </div>
-          )}
           {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
         </div>
+      )}
+
+      {/* Loader IA pendant la génération */}
+      {!result && isGenerating && (
+        <GenerationLoader
+          title={title}
+          subtitle={`Note de synthèse · ${selectedTheme || 'Thème aléatoire'}`}
+          accent="#b91c1c"
+        />
       )}
 
       {/* Result display */}

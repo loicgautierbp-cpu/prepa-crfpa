@@ -187,6 +187,39 @@ html { scroll-behavior: smooth; }
   100% { transform: translateX(350%); }
 }
 
+/* ===== GENERATION LOADER (exercices IA) ===== */
+.gen-spin { animation: genSpin 1.6s linear infinite; transform-origin: 50% 50%; }
+@keyframes genSpin {
+  to { transform: rotate(360deg); }
+}
+
+.gen-pulse { animation: genPulse 2.2s ease-in-out infinite; }
+@keyframes genPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.08); opacity: 0.85; }
+}
+
+.gen-dot { display: inline-block; animation: genDot 1.2s ease-in-out infinite; }
+.gen-dot-1 { animation-delay: 0s; }
+.gen-dot-2 { animation-delay: 0.15s; }
+.gen-dot-3 { animation-delay: 0.3s; }
+@keyframes genDot {
+  0%, 80%, 100% { transform: translateY(0);   opacity: 0.4; }
+  40%           { transform: translateY(-4px); opacity: 1;   }
+}
+
+.gen-step-fade { animation: genStepFade 0.5s ease-out; }
+@keyframes genStepFade {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+.gen-bar { width: 40%; animation: genBar 1.8s ease-in-out infinite; }
+@keyframes genBar {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(350%);  }
+}
+
 /* ===== TIP FADE ===== */
 .tip-fade { animation: tipFadeIn 0.4s ease-out; }
 @keyframes tipFadeIn {

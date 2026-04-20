@@ -7,6 +7,7 @@ import { usePremium } from '@/contexts/PremiumContext';
 import { useTimer } from '@/hooks/useTimer';
 import LoginRequiredModal from '@/components/ui/LoginRequiredModal';
 import UpgradeModal from '@/components/ui/UpgradeModal';
+import GenerationLoader from '@/components/ui/GenerationLoader';
 
 const PROCEDURES = ['proc-civile', 'proc-penale', 'proc-admin'];
 const procedures = SUBJECTS.filter(s => PROCEDURES.includes(s.id));
@@ -529,14 +530,18 @@ export default function ProcedureClient({ embedded = false }) {
             ============================================================ */}
         {step === 'exercise' && (
           <div className="space-y-6">
-            {/* Generate button (before subject is generated) */}
-            {!subject && (
+            {/* Loader IA pendant la génération */}
+            {!subject && isGenerating && (
+              <GenerationLoader
+                title={selectedType === 'cas-pratique' ? 'Génération de votre cas pratique' : 'Génération de votre consultation'}
+                subtitle={`${selectedProcedure?.name} · ${selectedType === 'cas-pratique' ? 'Cas pratique' : 'Consultation'}`}
+                accent="#b91c1c"
+              />
+            )}
+
+            {/* Fallback si la génération échoue ou pas encore lancée */}
+            {!subject && !isGenerating && (
               <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm text-center">
-                <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456Z" />
-                  </svg>
-                </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">
                   {selectedType === 'cas-pratique' ? 'Générer un cas pratique' : 'Générer une consultation'}
                 </h3>
@@ -545,19 +550,10 @@ export default function ProcedureClient({ embedded = false }) {
                 </p>
                 <button
                   onClick={handleGenerate}
-                  disabled={isGenerating}
-                  className="px-8 py-3 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 transition-colors shadow-lg shadow-accent-500/20 disabled:opacity-50 disabled:cursor-wait"
+                  className="px-8 py-3 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 transition-colors shadow-lg shadow-accent-500/20"
                 >
-                  {isGenerating ? 'Génération en cours...' : 'Générer un sujet'}
+                  Générer un sujet
                 </button>
-                {isGenerating && (
-                  <div className="mt-4 max-w-xs mx-auto">
-                    <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                      <div className="h-full bg-primary-500 rounded-full loading-progress" />
-                    </div>
-                    <p className="text-xs text-gray-400 mt-2">Création de votre sujet en cours...</p>
-                  </div>
-                )}
                 {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
               </div>
             )}

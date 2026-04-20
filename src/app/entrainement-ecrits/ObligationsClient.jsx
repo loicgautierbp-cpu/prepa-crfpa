@@ -5,6 +5,7 @@ import { usePremium } from '@/contexts/PremiumContext';
 import { useTimer } from '@/hooks/useTimer';
 import LoginRequiredModal from '@/components/ui/LoginRequiredModal';
 import UpgradeModal from '@/components/ui/UpgradeModal';
+import GenerationLoader from '@/components/ui/GenerationLoader';
 
 const EXERCISE_TYPES = [
   {
@@ -112,6 +113,7 @@ export default function ObligationsClient({ embedded = false }) {
     setSelectedType(type);
     setIsGenerating(true);
     setError(null);
+    setStep('exercise');
     try {
       const res = await fetch('/api/generate-specialite', {
         method: 'POST',
@@ -121,12 +123,12 @@ export default function ObligationsClient({ embedded = false }) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Erreur lors de la génération');
       setSubject(data.result);
-      setStep('exercise');
       reset();
       start();
       setTimerStarted(true);
     } catch (err) {
       setError(err.message);
+      setStep('type');
       setSelectedType(null);
     } finally {
       setIsGenerating(false);
@@ -456,6 +458,14 @@ export default function ObligationsClient({ embedded = false }) {
                 <span className="font-mono text-lg font-bold text-gray-900">{formatted}</span>
                 <span className="text-sm text-gray-400">Temps écoulé</span>
               </div>
+            )}
+
+            {!subject && isGenerating && (
+              <GenerationLoader
+                title="Génération de votre exercice"
+                subtitle={`Droit des obligations · ${selectedType === 'cas-pratique' ? 'Cas pratique' : selectedType === 'consultation' ? 'Consultation juridique' : 'Dissertation'}`}
+                accent="#b91c1c"
+              />
             )}
 
             {subject && (
