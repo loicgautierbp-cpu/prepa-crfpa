@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { usePremium } from '@/contexts/PremiumContext';
@@ -28,6 +28,154 @@ const DIFFICULTY_STYLES = {
   moyen: 'bg-amber-100 text-amber-700',
   difficile: 'bg-red-100 text-red-700',
 };
+
+/* ============================================================
+   ThemeSelector - Custom dropdown for theme selection
+   ============================================================ */
+// Catégorise un thème pour lui attribuer une icône + couleur
+function getThemeMeta(theme) {
+  const lower = (theme || '').toLowerCase();
+  if (lower.includes('données') || lower.includes('internet') || lower.includes('secret')) {
+    return { emoji: '🔒', color: 'bg-indigo-50 text-indigo-600 border-indigo-200' };
+  }
+  if (lower.includes('environ') || lower.includes('précaution')) {
+    return { emoji: '🌱', color: 'bg-emerald-50 text-emerald-600 border-emerald-200' };
+  }
+  if (lower.includes('pénal') || lower.includes('victime')) {
+    return { emoji: '⚖️', color: 'bg-rose-50 text-rose-600 border-rose-200' };
+  }
+  if (lower.includes('constitution') || lower.includes('justice') || lower.includes('laïcité')) {
+    return { emoji: '🏛️', color: 'bg-amber-50 text-amber-600 border-amber-200' };
+  }
+  if (lower.includes('contrat') || lower.includes('responsabilité civile') || lower.includes('produits')) {
+    return { emoji: '📜', color: 'bg-violet-50 text-violet-600 border-violet-200' };
+  }
+  if (lower.includes('logement') || lower.includes('droit')) {
+    return { emoji: '🏠', color: 'bg-sky-50 text-sky-600 border-sky-200' };
+  }
+  return { emoji: '📚', color: 'bg-slate-50 text-slate-600 border-slate-200' };
+}
+
+function ThemeSelector({ themes, value, onChange, placeholder = 'Thème aléatoire' }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) setIsOpen(false);
+    };
+    const handleKey = (e) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKey);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKey);
+    };
+  }, [isOpen]);
+
+  const selectedMeta = value ? getThemeMeta(value) : null;
+
+  const handleSelect = (theme) => {
+    onChange(theme);
+    setIsOpen(false);
+  };
+
+  return (
+    <div ref={ref} className="relative flex-1">
+      <button
+        type="button"
+        onClick={() => setIsOpen((v) => !v)}
+        className="w-full flex items-center justify-between gap-3 px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-700 hover:border-[#b91c1c]/40 transition-colors focus:outline-none focus:ring-2 focus:ring-[#b91c1c]/20 focus:border-[#b91c1c]/60"
+      >
+        <span className="flex items-center gap-2 min-w-0">
+          {value ? (
+            <>
+              <span className={`w-7 h-7 flex items-center justify-center rounded-md border ${selectedMeta.color} shrink-0 text-sm`}>
+                {selectedMeta.emoji}
+              </span>
+              <span className="truncate text-gray-900 font-medium">{value}</span>
+            </>
+          ) : (
+            <>
+              <span className="w-7 h-7 flex items-center justify-center rounded-md bg-[#b91c1c]/10 text-[#b91c1c] shrink-0">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                </svg>
+              </span>
+              <span className="text-gray-500">{placeholder}</span>
+            </>
+          )}
+        </span>
+        <svg
+          className={`w-4 h-4 text-gray-400 shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+      </button>
+
+      {isOpen && (
+        <div className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-50 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden">
+          {/* Option aléatoire */}
+          <button
+            type="button"
+            onClick={() => handleSelect('')}
+            className={`w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-[#fef2f2] transition-colors border-b border-gray-100 ${!value ? 'bg-[#fef2f2]' : ''}`}
+          >
+            <span className="w-8 h-8 flex items-center justify-center rounded-md bg-[#b91c1c]/10 text-[#b91c1c] shrink-0">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+              </svg>
+            </span>
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-semibold text-gray-900">Thème aléatoire</div>
+              <div className="text-xs text-gray-500">L'IA choisit un sujet au hasard</div>
+            </div>
+            {!value && (
+              <svg className="w-4 h-4 text-[#b91c1c] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+            )}
+          </button>
+
+          {/* Thèmes */}
+          <div className="max-h-72 overflow-y-auto py-1">
+            {themes.map((t) => {
+              const meta = getThemeMeta(t);
+              const isSelected = value === t;
+              return (
+                <button
+                  key={t}
+                  type="button"
+                  onClick={() => handleSelect(t)}
+                  className={`w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-gray-50 transition-colors ${isSelected ? 'bg-[#fef2f2]' : ''}`}
+                >
+                  <span className={`w-8 h-8 flex items-center justify-center rounded-md border ${meta.color} shrink-0 text-sm`}>
+                    {meta.emoji}
+                  </span>
+                  <span className={`flex-1 text-sm ${isSelected ? 'text-[#991b1b] font-semibold' : 'text-gray-700'}`}>
+                    {t}
+                  </span>
+                  {isSelected && (
+                    <svg className="w-4 h-4 text-[#b91c1c] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 /* ============================================================
    Methodologie Tab
@@ -457,20 +605,15 @@ function AIExerciseSection({ mode, title, description, icon }) {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
-            <select
+            <ThemeSelector
+              themes={SYNTHESE_THEMES}
               value={selectedTheme}
-              onChange={(e) => setSelectedTheme(e.target.value)}
-              className="flex-1 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 focus:outline-none focus:border-[#b91c1c]/40"
-            >
-              <option value="">Thème aléatoire</option>
-              {SYNTHESE_THEMES.map((t) => (
-                <option key={t} value={t}>{t}</option>
-              ))}
-            </select>
+              onChange={setSelectedTheme}
+            />
             <button
               onClick={handleGenerate}
               disabled={isGenerating}
-              className="px-6 py-2.5 bg-[#b91c1c] text-white font-semibold rounded-lg hover:bg-[#991b1b] transition-colors disabled:opacity-50 disabled:cursor-wait"
+              className="px-6 py-2.5 bg-[#b91c1c] text-white font-semibold rounded-lg hover:bg-[#991b1b] transition-colors disabled:opacity-50 disabled:cursor-wait shrink-0"
             >
               {isGenerating ? 'Génération en cours...' : 'Générer'}
             </button>
