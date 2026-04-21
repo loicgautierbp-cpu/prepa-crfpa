@@ -234,7 +234,7 @@ export default function TarifsPage() {
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    <span><strong>D&eacute;couverte +</strong></span>
+                    <span><strong>Formule D&eacute;couverte</strong> incluse</span>
                   </li>
                   <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
