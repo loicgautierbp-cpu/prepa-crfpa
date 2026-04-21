@@ -365,13 +365,6 @@ export default function ObligationsClient({ embedded = false }) {
                           <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                         {type.duree}
-                        <span className="hidden md:inline mx-1 w-1 h-1 rounded-full bg-slate-300" />
-                        <span className="hidden md:inline-flex items-center gap-1">
-                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
-                          </svg>
-                          Correction IA
-                        </span>
                       </span>
                       <span className="inline-flex items-center gap-1 font-semibold text-slate-700 group-hover:text-[#991b1b] transition-colors">
                         {isLoading ? (
