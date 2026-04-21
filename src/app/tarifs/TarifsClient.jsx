@@ -298,7 +298,7 @@ export default function TarifsPage() {
                   </li>
                   <li className="flex items-start gap-2 text-sm text-gray-300">
                     <PremiumCheckIcon />
-                    <span><strong className="text-white">Suivi avanc&eacute;</strong></span>
+                    <span><strong className="text-white">Suivi de progression avanc&eacute;</strong></span>
                   </li>
                   <li className="flex items-start gap-2 text-sm text-gray-300">
                     <PremiumCheckIcon />
