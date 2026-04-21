@@ -234,10 +234,6 @@ export default function TarifsPage() {
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    <span><strong>Questions du jour illimit&eacute;es</strong></span>
-                  </li>
-                  <li className="flex items-start gap-2 text-sm text-gray-600">
-                    <CheckIcon />
                     <span>Toutes les <strong>fiches</strong> des 14 mati&egrave;res (PDF inclus)</span>
                   </li>
                   <li className="flex items-start gap-2 text-sm text-gray-600">
