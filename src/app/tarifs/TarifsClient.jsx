@@ -175,31 +175,15 @@ export default function TarifsPage() {
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    <span><strong>1 question du jour</strong> par jour (QCM)</span>
+                    <span><strong>1 exercice</strong> par jour</span>
                   </li>
                   <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    <span>Aper&ccedil;u des fiches de r&eacute;vision</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-sm text-gray-600">
-                    <CheckIcon />
-                    <span>Programme complet du CRFPA</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-sm text-gray-400">
-                    <CrossIcon />
-                    <span>Fiches des 14 mati&egrave;res en acc&egrave;s complet</span>
+                    <span>Fiches de r&eacute;vision accessibles</span>
                   </li>
                   <li className="flex items-start gap-2 text-sm text-gray-400">
                     <CrossIcon />
                     <span>Cours d&eacute;taill&eacute;s de droit</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-sm text-gray-400">
-                    <CrossIcon />
-                    <span>Exercices corrig&eacute;s par IA</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-sm text-gray-400">
-                    <CrossIcon />
-                    <span>Entra&icirc;nement aux oraux (Grand Oral + Anglais)</span>
                   </li>
                   <li className="flex items-start gap-2 text-sm text-gray-400">
                     <CrossIcon />
