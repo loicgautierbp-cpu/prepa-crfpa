@@ -4,6 +4,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { usePremium } from '@/contexts/PremiumContext';
 import { useTimer } from '@/hooks/useTimer';
 import GenerationLoader from '@/components/ui/GenerationLoader';
+import QuitExerciseModal from '@/components/ui/QuitExerciseModal';
 
 const THEMES = [
   'Liberté d\'expression et ses limites',
@@ -91,6 +92,7 @@ export default function GrandOralClient({ embedded = false }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [juryAnswers, setJuryAnswers] = useState([]);
   const [currentJuryAnswer, setCurrentJuryAnswer] = useState('');
+  const [showQuitConfirm, setShowQuitConfirm] = useState(false);
 
   const handleSelectType = (type) => {
     setSelectedType(type);
@@ -307,14 +309,28 @@ export default function GrandOralClient({ embedded = false }) {
           )}
         </div>
 
-        {/* Back */}
+        {/* Back / Quit */}
         {step !== 'type' && (
-          <button onClick={handleBack} className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary-600 transition-colors mb-6">
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-            </svg>
-            {step === 'correction' ? 'Nouvel exercice' : 'Retour'}
-          </button>
+          <div className="flex items-center justify-between gap-3 mb-6">
+            <button onClick={handleBack} className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary-600 transition-colors">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+              </svg>
+              {step === 'correction' ? 'Nouvel exercice' : 'Retour'}
+            </button>
+            {step === 'exercise' && (sujet || juryQuestions) && (
+              <button
+                type="button"
+                onClick={() => setShowQuitConfirm(true)}
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-[#b91c1c] transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+                </svg>
+                Quitter
+              </button>
+            )}
+          </div>
         )}
 
         {/* Type selection */}
@@ -631,6 +647,12 @@ export default function GrandOralClient({ embedded = false }) {
           </div>
         )}
       </div>
+
+      <QuitExerciseModal
+        open={showQuitConfirm}
+        onCancel={() => setShowQuitConfirm(false)}
+        onConfirm={() => { setShowQuitConfirm(false); handleBack(); }}
+      />
     </div>
   );
 }

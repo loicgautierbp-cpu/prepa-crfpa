@@ -233,6 +233,12 @@ html { scroll-behavior: smooth; }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ===== MODAL ENTER ===== */
+@keyframes modalEnter {
+  from { opacity: 0; transform: scale(0.96) translateY(4px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);   }
+}
+
 /* ===== OPTION SLIDE IN ===== */
 .option-slide-in { animation: optionSlideIn 0.3s ease-out both; }
 @keyframes optionSlideIn {
