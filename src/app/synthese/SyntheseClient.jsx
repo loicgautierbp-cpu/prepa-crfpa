@@ -8,6 +8,7 @@ import { SYNTHESE_EXERCICES } from '@/data/synthese-exercices';
 import LoginRequiredModal from '@/components/ui/LoginRequiredModal';
 import UpgradeModal from '@/components/ui/UpgradeModal';
 import GenerationLoader from '@/components/ui/GenerationLoader';
+import QuitExerciseModal from '@/components/ui/QuitExerciseModal';
 import { useTimer } from '@/hooks/useTimer';
 import { useGeminiSynthese } from '@/hooks/useGeminiSynthese';
 import { SYNTHESE_THEMES } from '@/utils/prompts';
@@ -254,8 +255,17 @@ function ExerciceDetail({ exercice, onBack }) {
   const { isPremium } = usePremium();
   const [showLogin, setShowLogin] = useState(false);
   const [showUpgrade, setShowUpgrade] = useState(false);
+  const [showQuitConfirm, setShowQuitConfirm] = useState(false);
 
   const canAccess = !exercice.premium || isPremium;
+
+  const handleRequestBack = () => {
+    if (timerActive) {
+      setShowQuitConfirm(true);
+    } else {
+      onBack();
+    }
+  };
 
   const formatTime = (s) => {
     const h = Math.floor(s / 3600);
@@ -280,13 +290,27 @@ function ExerciceDetail({ exercice, onBack }) {
 
   return (
     <div className="space-y-6">
-      {/* Back + Header */}
-      <button onClick={onBack} className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-[#b91c1c] transition-colors">
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-        </svg>
-        Retour aux exercices
-      </button>
+      {/* Back / Quit */}
+      <div className="flex items-center justify-between gap-3">
+        <button onClick={handleRequestBack} className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-[#b91c1c] transition-colors">
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          </svg>
+          Retour aux exercices
+        </button>
+        {timerActive && (
+          <button
+            type="button"
+            onClick={() => setShowQuitConfirm(true)}
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-[#b91c1c] transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+            </svg>
+            Quitter
+          </button>
+        )}
+      </div>
 
       <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
         <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -449,6 +473,11 @@ function ExerciceDetail({ exercice, onBack }) {
 
       {showLogin && <LoginRequiredModal onClose={() => setShowLogin(false)} />}
       {showUpgrade && <UpgradeModal onClose={() => setShowUpgrade(false)} />}
+      <QuitExerciseModal
+        open={showQuitConfirm}
+        onCancel={() => setShowQuitConfirm(false)}
+        onConfirm={() => { setShowQuitConfirm(false); stop(); reset(); onBack(); }}
+      />
     </div>
   );
 }
@@ -482,6 +511,39 @@ function AIExerciseSection({ mode, title, description, icon }) {
   // Photo upload
   const [isUploading, setIsUploading] = useState(false);
   const [uploadedFileName, setUploadedFileName] = useState(null);
+  // Quit confirmation
+  const [showQuitConfirm, setShowQuitConfirm] = useState(false);
+
+  const resetAll = () => {
+    reset();
+    setShowCorrection(false);
+    setOpenDoc(null);
+    setSubmitted(false);
+    setScore(null);
+    setUserIdees('');
+    setUserContradictions('');
+    setUserDocsCles('');
+    setUserIntro('');
+    setUserPartie1('');
+    setUserPartie2('');
+    setUserConclusion('');
+    setRedactionMode(null);
+    setUploadedFileName(null);
+    setIsUploading(false);
+  };
+
+  const hasWorkInProgress = Boolean(
+    userIdees.trim() || userContradictions.trim() || userDocsCles.trim() ||
+    userIntro.trim() || userPartie1.trim() || userPartie2.trim() || userConclusion.trim()
+  );
+
+  const handleRequestReset = () => {
+    if (hasWorkInProgress && !showCorrection) {
+      setShowQuitConfirm(true);
+    } else {
+      resetAll();
+    }
+  };
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
@@ -634,11 +696,25 @@ function AIExerciseSection({ mode, title, description, icon }) {
       {/* Result display */}
       {result && (
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="font-bold text-gray-900">{result.sujet || result.theme}</h3>
-            <button onClick={() => { reset(); setShowCorrection(false); setOpenDoc(null); setSubmitted(false); setScore(null); setUserIdees(''); setUserContradictions(''); setUserDocsCles(''); setUserIntro(''); setUserPartie1(''); setUserPartie2(''); setUserConclusion(''); setRedactionMode(null); setUploadedFileName(null); setIsUploading(false); }} className="text-sm text-[#b91c1c] font-medium hover:underline">
-              Nouvel exercice
-            </button>
+          <div className="flex items-center justify-between gap-3">
+            <h3 className="font-bold text-gray-900 flex-1">{result.sujet || result.theme}</h3>
+            <div className="flex items-center gap-3 shrink-0">
+              {hasWorkInProgress && !showCorrection && (
+                <button
+                  type="button"
+                  onClick={() => setShowQuitConfirm(true)}
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-[#b91c1c] transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+                  </svg>
+                  Quitter
+                </button>
+              )}
+              <button onClick={handleRequestReset} className="text-sm text-[#b91c1c] font-medium hover:underline">
+                Nouvel exercice
+              </button>
+            </div>
           </div>
 
           {/* Consigne (redaction mode) */}
@@ -1032,6 +1108,11 @@ function AIExerciseSection({ mode, title, description, icon }) {
 
       {showLogin && <LoginRequiredModal onClose={() => setShowLogin(false)} />}
       {showUpgrade && <UpgradeModal onClose={() => setShowUpgrade(false)} />}
+      <QuitExerciseModal
+        open={showQuitConfirm}
+        onCancel={() => setShowQuitConfirm(false)}
+        onConfirm={() => { setShowQuitConfirm(false); resetAll(); }}
+      />
     </div>
   );
 }
