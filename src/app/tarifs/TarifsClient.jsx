@@ -298,11 +298,7 @@ export default function TarifsPage() {
                   </li>
                   <li className="flex items-start gap-2 text-sm text-gray-300">
                     <PremiumCheckIcon />
-                    <span><strong className="text-white">Simulation compl&egrave;te</strong> du CRFPA (&eacute;crits + oraux en conditions r&eacute;elles)</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-sm text-gray-300">
-                    <PremiumCheckIcon />
-                    <span><strong className="text-white">Suivi avanc&eacute;</strong> — historique 30 jours, par mati&egrave;re</span>
+                    <span><strong className="text-white">Suivi avanc&eacute;</strong></span>
                   </li>
                   <li className="flex items-start gap-2 text-sm text-gray-300">
                     <PremiumCheckIcon />
@@ -311,10 +307,6 @@ export default function TarifsPage() {
                   <li className="flex items-start gap-2 text-sm text-gray-300">
                     <PremiumCheckIcon />
                     <span><strong className="text-white">Classement anonyme</strong> entre candidats au barreau</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-sm text-gray-300">
-                    <PremiumCheckIcon />
-                    <span><strong className="text-white">Support prioritaire</strong> par email</span>
                   </li>
                 </ul>
               </div>
