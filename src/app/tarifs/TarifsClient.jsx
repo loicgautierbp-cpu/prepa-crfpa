@@ -250,6 +250,10 @@ export default function TarifsPage() {
                   </li>
                   <li className="flex items-start gap-2 text-sm text-gray-400">
                     <CrossIcon />
+                    <span>Objectif personnalis&eacute;</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm text-gray-400">
+                    <CrossIcon />
                     <span>Classement anonyme entre candidats</span>
                   </li>
                 </ul>
