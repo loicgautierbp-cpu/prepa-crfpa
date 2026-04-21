@@ -173,41 +173,41 @@ export default function TarifsPage() {
               <div className="mb-3" />
               <div className="border-t border-gray-100 pt-5">
                 <ul className="space-y-3">
-                  <li className="flex items-center gap-2 text-sm text-gray-600">
+                  <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    1 QCM par jour
+                    <span><strong>1 question du jour</strong> par jour (QCM)</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-600">
+                  <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    <strong>Toutes les fiches</strong> accessibles
+                    <span>Aper&ccedil;u des fiches de r&eacute;vision</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-600">
+                  <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    Corrections d&eacute;taill&eacute;es
+                    <span>Programme complet du CRFPA</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-400">
+                  <li className="flex items-start gap-2 text-sm text-gray-400">
                     <CrossIcon />
-                    Fiches t&eacute;l&eacute;chargeables en PDF
+                    <span>Fiches des 14 mati&egrave;res en acc&egrave;s complet</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-400">
+                  <li className="flex items-start gap-2 text-sm text-gray-400">
                     <CrossIcon />
-                    Acc&egrave;s aux cours
+                    <span>Cours d&eacute;taill&eacute;s de droit</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-400">
+                  <li className="flex items-start gap-2 text-sm text-gray-400">
                     <CrossIcon />
-                    Mode Examen
+                    <span>Exercices corrig&eacute;s par IA</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-400">
+                  <li className="flex items-start gap-2 text-sm text-gray-400">
                     <CrossIcon />
-                    Mode Examen complet
+                    <span>Entra&icirc;nement aux oraux (Grand Oral + Anglais)</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-400">
+                  <li className="flex items-start gap-2 text-sm text-gray-400">
                     <CrossIcon />
-                    Suivi de progression avanc&eacute;
+                    <span>Mode examen chronom&eacute;tr&eacute;</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-400">
+                  <li className="flex items-start gap-2 text-sm text-gray-400">
                     <CrossIcon />
-                    Objectifs personnalis&eacute;s
+                    <span>Suivi de progression</span>
                   </li>
                 </ul>
               </div>
@@ -248,41 +248,45 @@ export default function TarifsPage() {
               )}
               <div className="border-t border-slate-100 pt-5">
                 <ul className="space-y-3">
-                  <li className="flex items-center gap-2 text-sm text-gray-600">
+                  <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    <strong>QCM illimit&eacute;s</strong>
+                    <span><strong>Questions du jour illimit&eacute;es</strong></span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-600">
+                  <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    Fiches t&eacute;l&eacute;chargeables en <strong>PDF</strong>
+                    <span>Toutes les <strong>fiches</strong> des 14 mati&egrave;res (PDF inclus)</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-600">
+                  <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    <strong>Acc&egrave;s aux cours</strong> de droit d&eacute;taill&eacute;s
+                    <span>Tous les <strong>cours d&eacute;taill&eacute;s</strong> de droit</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-600">
+                  <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    <strong>Mode Examen</strong> chronom&eacute;tr&eacute;
+                    <span><strong>Exercices &eacute;crits</strong> corrig&eacute;s par IA : synth&egrave;se, obligations, sp&eacute;cialit&eacute;, proc&eacute;dure</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-600">
+                  <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    Corrections d&eacute;taill&eacute;es
+                    <span><strong>Entra&icirc;nement aux oraux</strong> : Grand Oral + Anglais juridique</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-400">
+                  <li className="flex items-start gap-2 text-sm text-gray-600">
+                    <CheckIcon />
+                    <span>Corrections IA avec <strong>r&eacute;f&eacute;rences aux articles</strong> de loi</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm text-gray-600">
+                    <CheckIcon />
+                    <span><strong>Mode examen</strong> chronom&eacute;tr&eacute;</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm text-gray-400">
                     <CrossIcon />
-                    Mode Examen complet
+                    <span>Simulation compl&egrave;te du CRFPA</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-400">
+                  <li className="flex items-start gap-2 text-sm text-gray-400">
                     <CrossIcon />
-                    Suivi de progression avanc&eacute;
+                    <span>Suivi de progression avanc&eacute; (30 jours)</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-400">
+                  <li className="flex items-start gap-2 text-sm text-gray-400">
                     <CrossIcon />
-                    Objectifs personnalis&eacute;s
-                  </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-400">
-                    <CrossIcon />
-                    Classement et comparaison
+                    <span>Classement anonyme entre candidats</span>
                   </li>
                 </ul>
               </div>
@@ -320,25 +324,29 @@ export default function TarifsPage() {
               )}
               <div className="border-t border-gray-700 pt-5">
                 <ul className="space-y-3">
-                  <li className="flex items-center gap-2 text-sm text-gray-300">
+                  <li className="flex items-start gap-2 text-sm text-gray-300">
                     <PremiumCheckIcon />
-                    <strong className="text-white">Tout de l&apos;Essentiel</strong>
+                    <span><strong className="text-white">Tout l&apos;Essentiel</strong> inclus</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-300">
+                  <li className="flex items-start gap-2 text-sm text-gray-300">
                     <PremiumCheckIcon />
-                    <strong className="text-white">Mode Examen complet</strong>
+                    <span><strong className="text-white">Simulation compl&egrave;te</strong> du CRFPA (&eacute;crits + oraux en conditions r&eacute;elles)</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-300">
+                  <li className="flex items-start gap-2 text-sm text-gray-300">
                     <PremiumCheckIcon />
-                    <strong className="text-white">Suivi de progression avanc&eacute;</strong>
+                    <span><strong className="text-white">Suivi avanc&eacute;</strong> — historique 30 jours, par mati&egrave;re</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-300">
+                  <li className="flex items-start gap-2 text-sm text-gray-300">
                     <PremiumCheckIcon />
-                    <strong className="text-white">Objectifs personnalis&eacute;s</strong>
+                    <span><strong className="text-white">Objectifs personnalis&eacute;s</strong> selon votre sp&eacute;cialit&eacute;</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm text-gray-300">
+                  <li className="flex items-start gap-2 text-sm text-gray-300">
                     <PremiumCheckIcon />
-                    <strong className="text-white">Classement et comparaison</strong>
+                    <span><strong className="text-white">Classement anonyme</strong> entre candidats au barreau</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm text-gray-300">
+                    <PremiumCheckIcon />
+                    <span><strong className="text-white">Support prioritaire</strong> par email</span>
                   </li>
                 </ul>
               </div>
