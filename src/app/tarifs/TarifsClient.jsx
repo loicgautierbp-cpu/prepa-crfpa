@@ -244,10 +244,6 @@ export default function TarifsPage() {
                     <CheckIcon />
                     <span><strong>Exercices illimit&eacute;s</strong></span>
                   </li>
-                  <li className="flex items-start gap-2 text-sm text-gray-600">
-                    <CheckIcon />
-                    <span><strong>Entra&icirc;nement aux oraux</strong> : Grand Oral + Anglais juridique</span>
-                  </li>
                   <li className="flex items-start gap-2 text-sm text-gray-400">
                     <CrossIcon />
                     <span>Suivi de progression avanc&eacute; (30 jours)</span>
