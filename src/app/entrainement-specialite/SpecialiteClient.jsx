@@ -277,36 +277,37 @@ export default function SpecialiteClient({ embedded = false }) {
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
                 </svg>
-                Épreuve d&apos;admissibilité — Matière au choix
+                Épreuve d&apos;admissibilité — 3h — Coefficient 2
               </div>
               <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-3">
                 Épreuve de <span className="home-gradient-text">spécialité</span>
               </h1>
               <div className="w-12 h-1 bg-[#991b1b] mx-auto mt-4 mb-6 rounded-full"></div>
-              <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base mb-6">
-                Choisissez votre matière de spécialité parmi les 7 proposées au CRFPA, puis entraînez-vous avec des sujets générés et corrigés par IA.
+              <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base mb-8">
+                Entraînez-vous sur les 7 matières de spécialité avec des sujets générés et corrigés par IA.
               </p>
-              {/* Stats row */}
-              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5">
-                <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-sm">
-                  <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                  </svg>
-                  <span className="font-semibold text-slate-700">3 heures</span>
-                </div>
-                <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-sm">
-                  <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
-                  </svg>
-                  <span className="font-semibold text-slate-700">Coefficient 2</span>
-                </div>
-                <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-sm">
-                  <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3" />
-                  </svg>
-                  <span className="font-semibold text-slate-700">7 matières au choix</span>
-                </div>
-              </div>
+
+              {/* Stepper — parcours en 3 étapes */}
+              <ol className="flex items-center justify-center gap-2 sm:gap-3 mb-2 text-xs sm:text-sm font-medium">
+                <li className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#991b1b] text-white rounded-full shadow-sm">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/20 text-white font-bold text-[11px]">1</span>
+                  <span>Matière</span>
+                </li>
+                <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+                <li className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white border border-slate-200 text-slate-400 rounded-full">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-slate-100 text-slate-500 font-bold text-[11px]">2</span>
+                  <span>Type d&apos;exercice</span>
+                </li>
+                <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+                <li className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white border border-slate-200 text-slate-400 rounded-full">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-slate-100 text-slate-500 font-bold text-[11px]">3</span>
+                  <span>Entraînement</span>
+                </li>
+              </ol>
             </div>
           ) : step === 'type' && !embedded ? (
             <div className="text-center max-w-3xl mx-auto">
@@ -314,15 +315,39 @@ export default function SpecialiteClient({ embedded = false }) {
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                 </svg>
-                {selectedSpecialite?.name} — Type d&apos;exercice
+                {selectedSpecialite?.name}
               </div>
               <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-3">
                 <span className="home-gradient-text">{selectedSpecialite?.name}</span>
               </h1>
               <div className="w-12 h-1 bg-[#991b1b] mx-auto mt-4 mb-6 rounded-full"></div>
-              <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base mb-2">
+              <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base mb-8">
                 Choisissez le type d&apos;exercice pour vous entraîner en conditions réelles.
               </p>
+
+              {/* Stepper — étape 2 */}
+              <ol className="flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-medium">
+                <li className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-full">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  <span>Matière</span>
+                </li>
+                <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+                <li className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#991b1b] text-white rounded-full shadow-sm">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/20 text-white font-bold text-[11px]">2</span>
+                  <span>Type d&apos;exercice</span>
+                </li>
+                <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+                <li className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white border border-slate-200 text-slate-400 rounded-full">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-slate-100 text-slate-500 font-bold text-[11px]">3</span>
+                  <span>Entraînement</span>
+                </li>
+              </ol>
             </div>
           ) : (
             <>
@@ -362,33 +387,60 @@ export default function SpecialiteClient({ embedded = false }) {
             Step 1: Choose Specialty
             ============================================================ */}
         {step === 'specialite' && (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {specialites.map((spec) => {
-              const colors = SUBJECT_COLORS[spec.color] || SUBJECT_COLORS.primary;
-              const iconData = SUBJECT_ICONS[spec.id];
-              return (
-                <button
-                  key={spec.id}
-                  onClick={() => handleSelectSpecialite(spec)}
-                  className={`group bg-white rounded-xl border border-gray-200 p-5 text-left hover:border-primary-300 hover:shadow-md transition-all`}
-                >
-                  <div className={`w-11 h-11 ${colors.bg} rounded-xl flex items-center justify-center mb-3`}>
-                    {iconData ? (
-                      <svg className={`w-6 h-6 ${colors.icon}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d={iconData.path} />
+          <>
+            {/* Instruction d'action claire */}
+            {!embedded && (
+              <div className="flex items-center gap-3 mb-5">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#991b1b] text-white font-bold text-sm shrink-0">
+                  1
+                </span>
+                <div className="flex-1">
+                  <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-xl sm:text-2xl font-bold text-slate-900">
+                    Choisissez votre matière de spécialité
+                  </h2>
+                  <p className="text-xs sm:text-sm text-slate-500">
+                    Sélectionnez l&apos;une des 7 matières proposées au CRFPA pour démarrer votre entraînement.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {specialites.map((spec) => {
+                const colors = SUBJECT_COLORS[spec.color] || SUBJECT_COLORS.primary;
+                const iconData = SUBJECT_ICONS[spec.id];
+                return (
+                  <button
+                    key={spec.id}
+                    onClick={() => handleSelectSpecialite(spec)}
+                    className="group relative bg-white rounded-xl border border-slate-200 p-5 text-left hover:border-[#991b1b] hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col"
+                  >
+                    <div className={`w-11 h-11 ${colors.bg} rounded-xl flex items-center justify-center mb-3 transition-transform group-hover:scale-110`}>
+                      {iconData ? (
+                        <svg className={`w-6 h-6 ${colors.icon}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d={iconData.path} />
+                        </svg>
+                      ) : (
+                        <span className={`text-lg ${colors.text}`}>{spec.icon}</span>
+                      )}
+                    </div>
+                    <h3 className="font-bold text-gray-900 mb-1 group-hover:text-[#991b1b] transition-colors">
+                      {spec.name}
+                    </h3>
+                    <p className="text-xs text-gray-500 leading-relaxed mb-4 flex-1">{spec.description}</p>
+
+                    {/* CTA subtil */}
+                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-slate-600 group-hover:text-[#991b1b] transition-colors pt-3 border-t border-slate-100">
+                      Choisir cette matière
+                      <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                       </svg>
-                    ) : (
-                      <span className={`text-lg ${colors.text}`}>{spec.icon}</span>
-                    )}
-                  </div>
-                  <h3 className="font-bold text-gray-900 mb-1 group-hover:text-primary-700 transition-colors">
-                    {spec.name}
-                  </h3>
-                  <p className="text-xs text-gray-500 leading-relaxed">{spec.description}</p>
-                </button>
-              );
-            })}
-          </div>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </>
         )}
 
         {/* ============================================================
