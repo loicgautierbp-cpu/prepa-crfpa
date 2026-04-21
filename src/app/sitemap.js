@@ -1,4 +1,5 @@
 import { BLOG_ARTICLES } from '@/data/blog';
+import { FICHES_DATA } from '@/data/fiches';
 
 export default function sitemap() {
   const baseUrl = 'https://prepa-crfpa.fr';
@@ -37,5 +38,12 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  const ficheRoutes = FICHES_DATA.map((fiche) => ({
+    url: `${baseUrl}/fiches/${fiche.id}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...ficheRoutes];
 }

@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { FICHES_DATA } from '@/data/fiches';
 import { SUBJECTS } from '@/data/subjects';
 import { usePremium } from '@/contexts/PremiumContext';
 import { useAuth } from '@/contexts/AuthContext';
-import { SUBJECT_COLORS, SUBJECT_ICONS } from '@/data/constants';
+import { SUBJECT_ICONS } from '@/data/constants';
+import { extractFicheSummary } from '@/utils/fiche-colors';
 import LoginRequiredModal from '@/components/ui/LoginRequiredModal';
 import UpgradeModal from '@/components/ui/UpgradeModal';
 
@@ -158,19 +159,26 @@ function FloatingSubjectCards() {
 }
 
 /* ================================================================
-   FICHE CARD
+   FICHE CARD — lien direct vers /fiches/[slug] (bon pour le SEO)
    ================================================================ */
-function FicheCard({ fiche, index, onOpen, premiumUser, user, onLoginRequired, onUpgradeRequired }) {
+function FicheCard({ fiche, index, premiumUser, user, onLoginRequired, onUpgradeRequired }) {
   const subject = SUBJECTS.find(s => s.id === fiche.subject);
   const colors = getColors(subject);
   const iconPath = SUBJECT_ICONS[fiche.subject]?.path || '';
+  const summary = fiche.summary || extractFicheSummary(fiche, 140);
 
   return (
     <article
-      className="group lift bg-white rounded-2xl border border-gray-200 overflow-hidden cursor-pointer hover:shadow-lg hover:shadow-gray-200/60 hover:border-gray-300 transition-all duration-300"
+      className="group lift relative bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg hover:shadow-gray-200/60 hover:border-gray-300 transition-all duration-300"
       style={{ animationDelay: `${Math.min(index * 0.04, 0.4)}s` }}
-      onClick={() => onOpen(fiche)}
     >
+      {/* Lien principal couvrant toute la card (sauf zones d'action) */}
+      <Link
+        href={`/fiches/${fiche.id}`}
+        className="absolute inset-0 z-10"
+        aria-label={`Lire la fiche : ${fiche.title}`}
+      />
+
       <div className={`h-1 ${colors.bar}`} />
       <div className="p-5">
         <div className="flex items-start gap-3 mb-3">
@@ -184,9 +192,9 @@ function FicheCard({ fiche, index, onOpen, premiumUser, user, onLoginRequired, o
             <h3 className="text-[15px] font-bold text-gray-900 leading-snug mt-0.5 group-hover:text-slate-900 transition-colors">{fiche.title}</h3>
           </div>
         </div>
-        <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 mb-4">{fiche.summary}</p>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-[#991b1b] text-xs font-bold group-hover:gap-2.5 transition-all">
+        <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 mb-4">{summary}</p>
+        <div className="flex items-center justify-between relative z-20">
+          <div className="flex items-center gap-1.5 text-[#991b1b] text-xs font-bold group-hover:gap-2.5 transition-all pointer-events-none">
             Lire la fiche
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -195,7 +203,6 @@ function FicheCard({ fiche, index, onOpen, premiumUser, user, onLoginRequired, o
           {premiumUser ? (
             <Link
               href={`/cours?id=${fiche.id}`}
-              onClick={(e) => e.stopPropagation()}
               className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-bold transition-all bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100"
             >
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -221,234 +228,6 @@ function FicheCard({ fiche, index, onOpen, premiumUser, user, onLoginRequired, o
 }
 
 /* ================================================================
-   FICHE MODAL
-   ================================================================ */
-function FicheModal({ fiche, onClose, premiumUser, user, onLoginRequired, onUpgradeRequired }) {
-  const subject = SUBJECTS.find(s => s.id === fiche.subject);
-  const colors = getColors(subject);
-
-  // Close on Escape
-  useEffect(() => {
-    const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
-    document.addEventListener('keydown', handleKey);
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.removeEventListener('keydown', handleKey);
-      document.body.style.overflow = '';
-    };
-  }, [onClose]);
-
-  const handleDownloadPDF = useCallback(async () => {
-    if (!user) {
-      onLoginRequired();
-      return;
-    }
-    if (!premiumUser) {
-      onUpgradeRequired();
-      return;
-    }
-    try {
-      const mod = await import('html2pdf.js');
-      const html2pdf = mod.default || mod;
-
-      const pdfHexColors = {
-        indigo:  { bg: '#eef2ff', accent: '#4f46e5', accentDark: '#3730a3', accentDeep: '#1e1b4b', badge: '#e0e7ff', badgeText: '#3730a3', light: '#c7d2fe', lighter: '#e0e7ff' },
-        primary: { bg: '#fef2f2', accent: '#b91c1c', accentDark: '#991b1b', accentDeep: '#7f1d1d', badge: '#fee2e2', badgeText: '#991b1b', light: '#fecaca', lighter: '#fee2e2' },
-        emerald: { bg: '#ecfdf5', accent: '#059669', accentDark: '#065f46', accentDeep: '#022c22', badge: '#d1fae5', badgeText: '#065f46', light: '#a7f3d0', lighter: '#d1fae5' },
-        violet:  { bg: '#f5f3ff', accent: '#7c3aed', accentDark: '#5b21b6', accentDeep: '#2e1065', badge: '#ede9fe', badgeText: '#5b21b6', light: '#ddd6fe', lighter: '#ede9fe' },
-        cyan:    { bg: '#ecfeff', accent: '#0891b2', accentDark: '#155e75', accentDeep: '#083344', badge: '#cffafe', badgeText: '#155e75', light: '#a5f3fc', lighter: '#cffafe' },
-        amber:   { bg: '#fffbeb', accent: '#d97706', accentDark: '#92400e', accentDeep: '#451a03', badge: '#fef3c7', badgeText: '#92400e', light: '#fde68a', lighter: '#fef3c7' },
-        rose:    { bg: '#fff1f2', accent: '#e11d48', accentDark: '#9f1239', accentDeep: '#4c0519', badge: '#ffe4e6', badgeText: '#9f1239', light: '#fecdd3', lighter: '#ffe4e6' },
-        teal:    { bg: '#f0fdfa', accent: '#0d9488', accentDark: '#115e59', accentDeep: '#042f2c', badge: '#ccfbf1', badgeText: '#115e59', light: '#99f6e4', lighter: '#ccfbf1' },
-        sky:     { bg: '#f0f9ff', accent: '#0284c7', accentDark: '#075985', accentDeep: '#082f49', badge: '#e0f2fe', badgeText: '#075985', light: '#bae6fd', lighter: '#e0f2fe' },
-        lime:    { bg: '#f7fee7', accent: '#65a30d', accentDark: '#3f6212', accentDeep: '#1a2e05', badge: '#ecfccb', badgeText: '#3f6212', light: '#d9f99d', lighter: '#ecfccb' },
-        orange:  { bg: '#fff7ed', accent: '#ea580c', accentDark: '#9a3412', accentDeep: '#431407', badge: '#ffedd5', badgeText: '#9a3412', light: '#fed7aa', lighter: '#ffedd5' },
-        yellow:  { bg: '#fefce8', accent: '#ca8a04', accentDark: '#854d0e', accentDeep: '#422006', badge: '#fef9c3', badgeText: '#854d0e', light: '#fef08a', lighter: '#fef9c3' },
-        slate:   { bg: '#f8fafc', accent: '#475569', accentDark: '#1e293b', accentDeep: '#0f172a', badge: '#e2e8f0', badgeText: '#1e293b', light: '#cbd5e1', lighter: '#e2e8f0' },
-        purple:  { bg: '#faf5ff', accent: '#9333ea', accentDark: '#6b21a8', accentDeep: '#3b0764', badge: '#f3e8ff', badgeText: '#6b21a8', light: '#e9d5ff', lighter: '#f3e8ff' },
-        red:     { bg: '#fef2f2', accent: '#dc2626', accentDark: '#991b1b', accentDeep: '#7f1d1d', badge: '#fee2e2', badgeText: '#991b1b', light: '#fecaca', lighter: '#fee2e2' },
-      };
-      const c = pdfHexColors[subject?.color] || pdfHexColors.primary;
-
-      let processedContent = (fiche.content || '')
-        .replace(/class="[^"]*text-xl font-bold[^"]*"/g,
-          `style="font-size:16px;font-weight:700;color:${c.accentDark};margin:24px 0 10px 0;padding:10px 0 8px 14px;border-left:3px solid ${c.accent};letter-spacing:-0.2px;"`)
-        .replace(/class="[^"]*text-lg font-semibold[^"]*"/g,
-          `style="font-size:14px;font-weight:600;color:#1f2937;margin:18px 0 8px 0;"`)
-        .replace(/class="[^"]*list-disc[^"]*"/g, 'style="padding-left:20px;margin:0 0 14px 0;"')
-        .replace(/class="[^"]*mb-3[^"]*"/g, 'style="margin:0 0 10px 0;line-height:1.7;"')
-        .replace(/class="[^"]*mb-4[^"]*"/g, 'style="margin:0 0 14px 0;line-height:1.7;"')
-        .replace(/<li>/g, '<li style="margin:0 0 4px 0;line-height:1.65;font-size:12.5px;">')
-        .replace(/class="[^"]*bg-[a-z]+-50 border border-[a-z]+-200 rounded-xl p-4[^"]*"/g,
-          `style="background:${c.bg};border:1.5px solid ${c.light};border-radius:10px;padding:14px 18px;margin-top:16px;margin-bottom:8px;"`)
-        .replace(/class="[^"]*text-sm font-semibold text-[a-z]+-800[^"]*"/g,
-          `style="font-size:11.5px;font-weight:600;color:${c.badgeText};margin:0;line-height:1.55;"`);
-
-      // Save current page state then replace body with clean PDF-only HTML
-      // (same technique as the original vanilla JS version — avoids Tailwind v4 lab() colors)
-      const savedHTML = document.body.innerHTML;
-      const savedScroll = window.scrollY;
-      const savedOverflow = document.body.style.overflow;
-      const savedBg = document.body.style.background;
-
-      const pdfHTML = `<div id="pdf-export" style="width:700px;margin:0 auto;font-family:Inter,Helvetica,Arial,sans-serif;color:#1f2937;background:#fff;">
-        <div style="background:${c.accent};padding:32px 36px 28px;color:#fff;">
-          <table style="width:100%;border-collapse:collapse;margin-bottom:18px;"><tr>
-            <td style="padding:0;">
-              <span style="display:inline-block;padding:5px 14px;background:rgba(255,255,255,0.15);font-size:10px;font-weight:700;border-radius:999px;letter-spacing:0.5px;text-transform:uppercase;margin-right:8px;">${subject?.name || ''}</span>
-              <span style="display:inline-block;padding:5px 12px;background:rgba(255,255,255,0.08);font-size:10px;font-weight:600;border-radius:999px;color:rgba(255,255,255,0.7);">Fiche de révision</span>
-            </td>
-            <td style="padding:0;text-align:right;">
-              <span style="font-size:10px;font-weight:700;opacity:0.5;letter-spacing:1px;">PRÉPA CRFPA</span>
-            </td>
-          </tr></table>
-          <h1 style="font-size:26px;font-weight:900;margin:0 0 8px 0;letter-spacing:-0.4px;line-height:1.2;color:#fff;">${fiche.title}</h1>
-          <p style="font-size:12px;color:rgba(255,255,255,0.6);margin:0;line-height:1.5;">${fiche.summary}</p>
-        </div>
-        <div style="height:3px;background:${c.light};"></div>
-        <div style="padding:28px 36px 20px;font-size:12.5px;line-height:1.75;color:#374151;">
-          ${processedContent}
-        </div>
-        <table style="width:calc(100% - 72px);margin:0 36px;padding:0;border-collapse:collapse;border-top:2px solid ${c.lighter};">
-          <tr>
-            <td style="padding:16px 0 10px;vertical-align:middle;">
-              <table style="border-collapse:collapse;"><tr>
-                <td style="padding:0 8px 0 0;vertical-align:middle;">
-                  <div style="width:24px;height:24px;background:${c.accent};border-radius:6px;text-align:center;line-height:24px;">
-                    <span style="color:#fff;font-size:10px;font-weight:900;">P</span>
-                  </div>
-                </td>
-                <td style="padding:0;vertical-align:middle;">
-                  <span style="font-size:9px;font-weight:700;color:#374151;display:block;">Prépa CRFPA</span>
-                  <span style="font-size:8px;color:#9ca3af;">Usage personnel uniquement</span>
-                </td>
-              </tr></table>
-            </td>
-            <td style="padding:16px 0 10px;text-align:right;vertical-align:middle;">
-              <span style="font-size:9px;color:${c.accent};font-weight:700;display:block;">prepa-crfpa.fr</span>
-              <span style="font-size:8px;color:#9ca3af;">${subject?.name || ''}</span>
-            </td>
-          </tr>
-        </table>
-      </div>`;
-
-      // Replace body entirely so html2canvas sees no Tailwind lab() colors
-      document.body.innerHTML = pdfHTML;
-      document.body.style.overflow = 'auto';
-      document.body.style.background = '#fff';
-      // Strip Tailwind v4 stylesheets that use lab() color functions
-      document.querySelectorAll('style, link[rel="stylesheet"]').forEach(s => s.remove());
-      document.documentElement.style.background = '#fff';
-      window.scrollTo(0, 0);
-
-      const pdfEl = document.getElementById('pdf-export');
-
-      await html2pdf().set({
-        margin: [8, 12, 8, 12],
-        filename: `fiche-${fiche.id}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, logging: false, scrollX: 0, scrollY: 0 },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
-      }).from(pdfEl).save();
-
-      // Restore the page — React will re-hydrate via full reload
-      window.location.reload();
-    } catch (err) {
-      console.error('PDF generation error:', err);
-    }
-  }, [fiche, subject, premiumUser, user, onLoginRequired, onUpgradeRequired]);
-
-  return (
-    <div className="fixed inset-0 z-50">
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-
-      {/* Modal content */}
-      <div className="relative z-10 max-w-3xl mx-auto mt-20 mb-10 mx-4">
-        <div className="bg-white rounded-2xl shadow-2xl max-h-[80vh] overflow-y-auto">
-          {/* Sticky header */}
-          <div className="sticky top-0 bg-white/90 backdrop-blur-md border-b border-gray-100 px-6 py-4 flex items-center justify-between rounded-t-2xl z-10">
-            <span className={`px-3 py-1 ${colors.badge} text-xs font-bold rounded-full`}>
-              {subject?.name || ''}
-            </span>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={handleDownloadPDF}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500 text-white text-xs font-bold rounded-lg hover:bg-emerald-600 transition-colors"
-                title="Telecharger en PDF"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                </svg>
-                <span className="hidden sm:inline">PDF</span>
-              </button>
-              <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                <svg className="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          {/* Body */}
-          <div className="px-6 md:px-8 py-6" id="fiche-modal-content">
-            <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-2xl font-black text-gray-900 tracking-tight mb-6">{fiche.title}</h2>
-            <div
-              className="prose prose-gray max-w-none text-gray-700 leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: fiche.content }}
-            />
-
-            {/* Cours CTA */}
-            <div className="mt-8 pt-6 border-t border-gray-200">
-              {premiumUser ? (
-                <Link
-                  href={`/cours?id=${fiche.id}`}
-                  className="flex items-center justify-between w-full px-6 py-4 bg-gradient-to-r from-amber-50 to-amber-100 border-2 border-amber-200 rounded-2xl hover:border-amber-300 hover:shadow-lg hover:shadow-amber-100/50 transition-all group"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-amber-200 rounded-xl flex items-center justify-center">
-                      <svg className="w-5 h-5 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-amber-900">Acceder au cours complet</p>
-                      <p className="text-xs text-amber-600">Cours detaille avec explications approfondies</p>
-                    </div>
-                  </div>
-                  <svg className="w-5 h-5 text-amber-500 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
-              ) : (
-                <button
-                  onClick={() => !user ? onLoginRequired() : onUpgradeRequired()}
-                  className="flex items-center justify-between w-full px-6 py-4 bg-gray-50 border-2 border-gray-200 rounded-2xl hover:border-gray-300 transition-all"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gray-200 rounded-xl flex items-center justify-center">
-                      <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                      </svg>
-                    </div>
-                    <div className="text-left">
-                      <p className="text-sm font-bold text-gray-500">Cours complet</p>
-                      <p className="text-xs text-gray-400">R&eacute;serv&eacute; aux membres Essentiel</p>
-                    </div>
-                  </div>
-                  <span className="px-3 py-1.5 bg-slate-100 text-slate-700 text-xs font-bold rounded-full">Essentiel</span>
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ================================================================
    MAIN PAGE
    ================================================================ */
 const EXCLUDED_SUBJECTS = ['synthese', 'grand-oral', 'anglais'];
@@ -460,7 +239,6 @@ export default function FichesPage() {
   const { user } = useAuth();
   const [currentSubject, setCurrentSubject] = useState('all');
   const [search, setSearch] = useState('');
-  const [selectedFiche, setSelectedFiche] = useState(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
 
@@ -676,7 +454,6 @@ export default function FichesPage() {
                         key={f.id}
                         fiche={f}
                         index={i}
-                        onOpen={setSelectedFiche}
                         premiumUser={isEssentiel} user={user} onLoginRequired={() => setShowLoginModal(true)} onUpgradeRequired={() => setShowUpgradeModal(true)}
                       />
                     ))}
@@ -692,7 +469,6 @@ export default function FichesPage() {
                   key={f.id}
                   fiche={f}
                   index={i}
-                  onOpen={setSelectedFiche}
                   premiumUser={isEssentiel} user={user} onLoginRequired={() => setShowLoginModal(true)} onUpgradeRequired={() => setShowUpgradeModal(true)}
                 />
               ))}
@@ -700,15 +476,6 @@ export default function FichesPage() {
           )}
         </div>
       </section>
-
-      {/* ====== MODAL ====== */}
-      {selectedFiche && (
-        <FicheModal
-          fiche={selectedFiche}
-          onClose={() => setSelectedFiche(null)}
-          premiumUser={isEssentiel} user={user} onLoginRequired={() => setShowLoginModal(true)} onUpgradeRequired={() => setShowUpgradeModal(true)}
-        />
-      )}
 
       {/* Auth & Upgrade modals */}
       {showLoginModal && <LoginRequiredModal onClose={() => setShowLoginModal(false)} />}
