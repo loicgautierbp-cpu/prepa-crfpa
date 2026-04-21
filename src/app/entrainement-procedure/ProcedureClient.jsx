@@ -268,36 +268,37 @@ export default function ProcedureClient({ embedded = false }) {
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
                 </svg>
-                Épreuve d&apos;admissibilité — Procédure au choix
+                Épreuve d&apos;admissibilité — 2h — Coefficient 2
               </div>
               <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-3">
                 Épreuve de <span className="home-gradient-text">procédure</span>
               </h1>
               <div className="w-12 h-1 bg-[#991b1b] mx-auto mt-4 mb-6 rounded-full"></div>
-              <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base mb-6">
-                Choisissez votre matière de procédure parmi les 3 proposées au CRFPA, puis entraînez-vous avec des sujets générés et corrigés par IA.
+              <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base mb-8">
+                Entraînez-vous sur les 3 matières de procédure avec des sujets générés et corrigés par IA.
               </p>
-              {/* Stats row */}
-              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5">
-                <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-sm">
-                  <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                  </svg>
-                  <span className="font-semibold text-slate-700">2 heures</span>
-                </div>
-                <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-sm">
-                  <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
-                  </svg>
-                  <span className="font-semibold text-slate-700">Coefficient 2</span>
-                </div>
-                <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-sm">
-                  <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
-                  </svg>
-                  <span className="font-semibold text-slate-700">3 matières au choix</span>
-                </div>
-              </div>
+
+              {/* Stepper — parcours en 3 étapes */}
+              <ol className="flex items-center justify-center gap-2 sm:gap-3 mb-2 text-xs sm:text-sm font-medium">
+                <li className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#991b1b] text-white rounded-full shadow-sm">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/20 text-white font-bold text-[11px]">1</span>
+                  <span>Matière</span>
+                </li>
+                <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+                <li className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white border border-slate-200 text-slate-400 rounded-full">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-slate-100 text-slate-500 font-bold text-[11px]">2</span>
+                  <span>Type d&apos;exercice</span>
+                </li>
+                <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+                <li className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white border border-slate-200 text-slate-400 rounded-full">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-slate-100 text-slate-500 font-bold text-[11px]">3</span>
+                  <span>Entraînement</span>
+                </li>
+              </ol>
             </div>
           ) : step === 'type' && !embedded ? (
             <div className="text-center max-w-3xl mx-auto">
@@ -305,15 +306,39 @@ export default function ProcedureClient({ embedded = false }) {
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                 </svg>
-                {selectedProcedure?.name} — Type d&apos;exercice
+                {selectedProcedure?.name}
               </div>
               <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-3">
                 <span className="home-gradient-text">{selectedProcedure?.name}</span>
               </h1>
               <div className="w-12 h-1 bg-[#991b1b] mx-auto mt-4 mb-6 rounded-full"></div>
-              <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base mb-2">
+              <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base mb-8">
                 Choisissez le type d&apos;exercice pour vous entraîner en conditions réelles.
               </p>
+
+              {/* Stepper — étape 2 */}
+              <ol className="flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-medium">
+                <li className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-full">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  <span>Matière</span>
+                </li>
+                <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+                <li className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-[#991b1b] text-white rounded-full shadow-sm">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-white/20 text-white font-bold text-[11px]">2</span>
+                  <span>Type d&apos;exercice</span>
+                </li>
+                <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+                <li className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-white border border-slate-200 text-slate-400 rounded-full">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-slate-100 text-slate-500 font-bold text-[11px]">3</span>
+                  <span>Entraînement</span>
+                </li>
+              </ol>
             </div>
           ) : (
             <>
@@ -352,6 +377,21 @@ export default function ProcedureClient({ embedded = false }) {
         {/* ============================================================
             Step 1: Choose Procedure
             ============================================================ */}
+        {step === 'procedure' && !embedded && (
+          <div className="flex items-center gap-3 mb-5">
+            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#991b1b] text-white font-bold text-sm shrink-0">
+              1
+            </span>
+            <div className="flex-1">
+              <h2 style={{ fontFamily: 'var(--font-display)' }} className="text-xl sm:text-2xl font-bold text-slate-900">
+                Choisissez votre matière de procédure
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500">
+                Sélectionnez l&apos;une des 3 matières proposées au CRFPA pour démarrer votre entraînement.
+              </p>
+            </div>
+          </div>
+        )}
         {step === 'procedure' && (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {procedures.map((proc) => {
@@ -361,9 +401,9 @@ export default function ProcedureClient({ embedded = false }) {
                 <button
                   key={proc.id}
                   onClick={() => handleSelectProcedure(proc)}
-                  className={`group bg-white rounded-xl border border-gray-200 p-5 text-left hover:border-primary-300 hover:shadow-md transition-all`}
+                  className="group relative bg-white rounded-xl border border-slate-200 p-5 text-left hover:border-[#991b1b] hover:shadow-lg hover:-translate-y-0.5 transition-all flex flex-col"
                 >
-                  <div className={`w-11 h-11 ${colors.bg} rounded-xl flex items-center justify-center mb-3`}>
+                  <div className={`w-11 h-11 ${colors.bg} rounded-xl flex items-center justify-center mb-3 transition-transform group-hover:scale-110`}>
                     {iconData ? (
                       <svg className={`w-6 h-6 ${colors.icon}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                         <path strokeLinecap="round" strokeLinejoin="round" d={iconData.path} />
@@ -372,10 +412,18 @@ export default function ProcedureClient({ embedded = false }) {
                       <span className={`text-lg ${colors.text}`}>{proc.icon}</span>
                     )}
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-1 group-hover:text-primary-700 transition-colors">
+                  <h3 className="font-bold text-gray-900 mb-1 group-hover:text-[#991b1b] transition-colors">
                     {proc.name}
                   </h3>
-                  <p className="text-xs text-gray-500 leading-relaxed">{proc.description}</p>
+                  <p className="text-xs text-gray-500 leading-relaxed mb-4 flex-1">{proc.description}</p>
+
+                  {/* CTA subtil */}
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-slate-600 group-hover:text-[#991b1b] transition-colors pt-3 border-t border-slate-100">
+                    Choisir cette matière
+                    <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                  </span>
                 </button>
               );
             })}
