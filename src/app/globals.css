@@ -193,22 +193,16 @@ html { scroll-behavior: smooth; }
   to { transform: rotate(360deg); }
 }
 
-.gen-pulse { animation: genPulse 2.6s ease-in-out infinite; }
+.gen-pulse { animation: genPulse 2.2s ease-in-out infinite; }
 @keyframes genPulse {
-  0%, 100% { transform: scale(0.9); opacity: 0.4; }
-  50%      { transform: scale(1.15); opacity: 0.75; }
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.08); opacity: 0.85; }
 }
 
-.gen-halo-1 { animation: genHalo1 8s ease-in-out infinite; }
-@keyframes genHalo1 {
-  0%, 100% { transform: translate(0, 0) scale(1);    opacity: 0.40; }
-  50%      { transform: translate(20px, 10px) scale(1.1); opacity: 0.55; }
-}
-
-.gen-halo-2 { animation: genHalo2 10s ease-in-out infinite; }
-@keyframes genHalo2 {
-  0%, 100% { transform: translate(0, 0) scale(1);    opacity: 0.22; }
-  50%      { transform: translate(-25px, -15px) scale(1.08); opacity: 0.35; }
+.gen-pulse-dot { animation: genPulseDot 1.4s ease-in-out infinite; }
+@keyframes genPulseDot {
+  0%, 100% { transform: scale(1);   opacity: 1;   }
+  50%      { transform: scale(1.5); opacity: 0.5; }
 }
 
 .gen-dot { display: inline-block; animation: genDot 1.2s ease-in-out infinite; }
