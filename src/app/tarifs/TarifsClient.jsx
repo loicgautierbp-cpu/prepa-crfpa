@@ -234,31 +234,19 @@ export default function TarifsPage() {
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    <span>Toutes les <strong>fiches</strong> des 14 mati&egrave;res (PDF inclus)</span>
+                    <span><strong>D&eacute;couverte +</strong></span>
                   </li>
                   <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    <span>Tous les <strong>cours d&eacute;taill&eacute;s</strong> de droit</span>
+                    <span><strong>Cours d&eacute;taill&eacute;s</strong></span>
                   </li>
                   <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
-                    <span><strong>Exercices &eacute;crits</strong> corrig&eacute;s par IA : synth&egrave;se, obligations, sp&eacute;cialit&eacute;, proc&eacute;dure</span>
+                    <span><strong>Exercices illimit&eacute;s</strong></span>
                   </li>
                   <li className="flex items-start gap-2 text-sm text-gray-600">
                     <CheckIcon />
                     <span><strong>Entra&icirc;nement aux oraux</strong> : Grand Oral + Anglais juridique</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-sm text-gray-600">
-                    <CheckIcon />
-                    <span>Corrections IA avec <strong>r&eacute;f&eacute;rences aux articles</strong> de loi</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-sm text-gray-600">
-                    <CheckIcon />
-                    <span><strong>Mode examen</strong> chronom&eacute;tr&eacute;</span>
-                  </li>
-                  <li className="flex items-start gap-2 text-sm text-gray-400">
-                    <CrossIcon />
-                    <span>Simulation compl&egrave;te du CRFPA</span>
                   </li>
                   <li className="flex items-start gap-2 text-sm text-gray-400">
                     <CrossIcon />
