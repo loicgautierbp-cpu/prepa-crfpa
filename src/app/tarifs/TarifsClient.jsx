@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { usePremium } from '@/contexts/PremiumContext';
 
 function FaqItem({ question, answer }) {
@@ -34,12 +33,93 @@ function CrossIcon() {
 
 function PremiumCheckIcon() {
   return (
-    <svg className="w-4 h-4 text-accent-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+    <svg className="w-4 h-4 text-green-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+  );
+}
+
+// Tableau de prix par période
+const PRICING = {
+  essentiel: {
+    mensuel:     { price: '19,90€',  base: null,      saving: null,       suffix: '/mois' },
+    trimestriel: { price: '16,90€',  base: '19,90€',  saving: '-36€/an',  suffix: '/mois, facturé trimestriellement' },
+    annuel:      { price: '14€',     base: '19,90€',  saving: '-72€/an',  suffix: '/mois, facturé annuellement' },
+  },
+  premium: {
+    mensuel:     { price: '39,90€',  base: null,      saving: null,       suffix: '/mois' },
+    trimestriel: { price: '33,90€',  base: '39,90€',  saving: '-72€/an',  suffix: '/mois, facturé trimestriellement' },
+    annuel:      { price: '28€',     base: '39,90€',  saving: '-144€/an', suffix: '/mois, facturé annuellement' },
+  },
+};
+
+function BillingToggle({ value, onChange }) {
+  const options = [
+    { id: 'mensuel',     label: 'Mensuel',     discount: null   },
+    { id: 'trimestriel', label: 'Trimestriel', discount: '-15%' },
+    { id: 'annuel',      label: 'Annuel',      discount: '-30%' },
+  ];
+
+  return (
+    <div className="inline-flex items-center gap-1 bg-white border border-slate-200 rounded-full p-1 shadow-sm">
+      {options.map((opt) => {
+        const active = value === opt.id;
+        return (
+          <button
+            key={opt.id}
+            onClick={() => onChange(opt.id)}
+            className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-full transition-all ${
+              active
+                ? 'bg-[#991b1b] text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            {opt.label}
+            {opt.discount && (
+              <span
+                className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                  active
+                    ? 'bg-white/20 text-white'
+                    : 'bg-green-100 text-green-700'
+                }`}
+              >
+                {opt.discount}
+              </span>
+            )}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function PriceDisplay({ data, dark = false }) {
+  const priceColor     = dark ? 'text-white'       : 'text-gray-900';
+  const strikeColor    = dark ? 'text-gray-500'    : 'text-gray-400';
+  const suffixColor    = dark ? 'text-gray-400'    : 'text-gray-500';
+
+  return (
+    <div className="mb-5">
+      <div className="flex items-baseline flex-wrap gap-x-2 gap-y-1">
+        {data.base && (
+          <span className={`text-lg font-medium line-through ${strikeColor}`}>{data.base}</span>
+        )}
+        <span className={`text-4xl font-black ${priceColor}`}>{data.price}</span>
+        <span className={`text-sm ${suffixColor}`}>{data.suffix}</span>
+        {data.saving && (
+          <span className="inline-flex items-center text-xs font-bold px-2 py-0.5 rounded bg-green-100 text-green-700">
+            {data.saving}
+          </span>
+        )}
+      </div>
+    </div>
   );
 }
 
 export default function TarifsPage() {
   const { tier, setSubscription, isLoaded } = usePremium();
+  const [billing, setBilling] = useState('annuel');
+
+  const essentielData = PRICING.essentiel[billing];
+  const premiumData = PRICING.premium[billing];
 
   return (
     <>
@@ -56,8 +136,13 @@ export default function TarifsPage() {
         </div>
       </section>
 
+      {/* Billing toggle */}
+      <section className="pt-4 pb-8 flex justify-center">
+        <BillingToggle value={billing} onChange={setBilling} />
+      </section>
+
       {/* Pricing Cards */}
-      <section id="formules" className="py-16 md:py-20 -mt-8">
+      <section id="formules" className="pb-16 md:pb-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-6">
 
@@ -74,7 +159,7 @@ export default function TarifsPage() {
                 <span className="text-4xl font-black text-gray-900">Gratuit</span>
               </div>
               {isLoaded && tier === 'gratuit' ? (
-                <button className="block w-full py-3 text-center bg-accent-500 text-white font-bold rounded-xl mb-2 cursor-default">
+                <button className="block w-full py-3 text-center bg-[#991b1b] text-white font-bold rounded-xl mb-2 cursor-default">
                   Plan actuel &#10003;
                 </button>
               ) : (
@@ -140,13 +225,10 @@ export default function TarifsPage() {
                 <h3 className="text-lg font-bold text-gray-900">Essentiel</h3>
                 <p className="text-sm text-gray-500 mt-1">Pour une pr&eacute;paration compl&egrave;te au barreau</p>
               </div>
-              <div className="mb-5">
-                <span className="text-4xl font-black text-gray-900">19,90&euro;</span>
-                <span className="text-sm text-gray-500">/mois</span>
-              </div>
+              <PriceDisplay data={essentielData} />
               {isLoaded && tier === 'essentiel' ? (
                 <>
-                  <button className="block w-full py-3 text-center bg-accent-500 text-white font-bold rounded-xl mb-2 cursor-default">
+                  <button className="block w-full py-3 text-center bg-[#991b1b] text-white font-bold rounded-xl mb-2 cursor-default">
                     Essentiel activ&eacute; &#10003;
                   </button>
                   <button
@@ -208,20 +290,17 @@ export default function TarifsPage() {
 
             {/* PREMIUM+ */}
             <div className="pricing-card lift bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl border-2 border-gray-700 p-7 text-white">
-              <div className="w-12 h-12 bg-accent-500/20 rounded-xl flex items-center justify-center mb-5">
-                <svg className="w-6 h-6 text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456Z" /></svg>
+              <div className="w-12 h-12 bg-[#b91c1c]/20 rounded-xl flex items-center justify-center mb-5">
+                <svg className="w-6 h-6 text-[#fca5a5]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456Z" /></svg>
               </div>
               <div className="mb-5">
                 <h3 className="text-lg font-bold">Premium+</h3>
                 <p className="text-sm text-gray-400 mt-1">La pr&eacute;paration ultime au CRFPA</p>
               </div>
-              <div className="mb-5">
-                <span className="text-4xl font-black">39,90&euro;</span>
-                <span className="text-sm text-gray-400">/mois</span>
-              </div>
+              <PriceDisplay data={premiumData} dark />
               {isLoaded && tier === 'premium+' ? (
                 <>
-                  <button className="block w-full py-3 text-center bg-accent-500 text-white font-bold rounded-xl mb-2 cursor-default">
+                  <button className="block w-full py-3 text-center bg-[#b91c1c] text-white font-bold rounded-xl mb-2 cursor-default">
                     Premium+ activ&eacute; &#10003;
                   </button>
                   <button
@@ -283,6 +362,10 @@ export default function TarifsPage() {
               <FaqItem
                 question="Y a-t-il un engagement de durée ?"
                 answer="Non, aucun engagement. Vous pouvez résilier à tout moment depuis votre tableau de bord. Votre accès reste actif jusqu'à la fin de la période payée."
+              />
+              <FaqItem
+                question="Quelle est la différence entre mensuel, trimestriel et annuel ?"
+                answer="Le tarif mensuel est le plus flexible mais le plus cher. Le trimestriel offre -15% de remise sur le prix mensuel. L'annuel permet d'économiser -30% sur le prix mensuel, soit plusieurs dizaines d'euros par an."
               />
             </div>
           </div>
