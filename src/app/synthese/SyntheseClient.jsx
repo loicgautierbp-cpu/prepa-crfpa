@@ -699,7 +699,7 @@ function AIExerciseSection({ mode, title, description, icon }) {
           <div className="flex items-center justify-between gap-3">
             <h3 className="font-bold text-gray-900 flex-1">{result.sujet || result.theme}</h3>
             <div className="flex items-center gap-3 shrink-0">
-              {hasWorkInProgress && !showCorrection && (
+              {hasWorkInProgress && !showCorrection ? (
                 <button
                   type="button"
                   onClick={() => setShowQuitConfirm(true)}
@@ -710,10 +710,11 @@ function AIExerciseSection({ mode, title, description, icon }) {
                   </svg>
                   Quitter
                 </button>
+              ) : (
+                <button onClick={handleRequestReset} className="text-sm text-[#b91c1c] font-medium hover:underline">
+                  Nouvel exercice
+                </button>
               )}
-              <button onClick={handleRequestReset} className="text-sm text-[#b91c1c] font-medium hover:underline">
-                Nouvel exercice
-              </button>
             </div>
           </div>
 
