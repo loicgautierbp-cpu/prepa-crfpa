@@ -1147,15 +1147,6 @@ function ExercicesTab() {
     },
   ];
 
-  const KEY_TOPICS = [
-    'Dossier documentaire',
-    'Problématisation',
-    'Plan dialectique',
-    'Reformulation',
-    'Introduction synthétique',
-    'Annonce du plan',
-  ];
-
   return (
     <div className="space-y-8">
       {/* AI Exercises */}
@@ -1226,31 +1217,6 @@ function ExercicesTab() {
                 </span>
               </div>
             </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Key topics */}
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-        <div className="flex items-center gap-2 mb-4">
-          <div className="w-8 h-8 bg-[#fef2f2] rounded-lg flex items-center justify-center text-[#991b1b]">
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
-            </svg>
-          </div>
-          <h4 className="font-bold text-slate-900">Compétences travaillées</h4>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {KEY_TOPICS.map((topic) => (
-            <span
-              key={topic}
-              className="inline-flex items-center gap-1.5 bg-slate-50 text-slate-700 border border-slate-200 text-xs font-medium px-3 py-1.5 rounded-full"
-            >
-              <svg className="w-3 h-3 text-[#991b1b]" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
-              </svg>
-              {topic}
-            </span>
           ))}
         </div>
       </div>
