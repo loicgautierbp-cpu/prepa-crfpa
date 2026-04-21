@@ -397,10 +397,15 @@ export default function SpecialiteClient({ embedded = false }) {
         {step === 'type' && (
           <>
             <div className="grid sm:grid-cols-2 gap-5">
-              {EXERCISE_TYPES.map((exType) => (
-                <div
+              {EXERCISE_TYPES.map((exType) => {
+                const isLoading = isGenerating && selectedType === exType.id;
+                return (
+                <button
                   key={exType.id}
-                  className={`lift group relative bg-white rounded-2xl border border-slate-200 border-t-4 ${exType.color.border} p-6 flex flex-col transition-all hover:shadow-xl`}
+                  type="button"
+                  onClick={() => handleStartExercise(exType.id)}
+                  disabled={isGenerating}
+                  className={`lift group relative text-left bg-white rounded-2xl border border-slate-200 border-t-4 ${exType.color.border} p-6 flex flex-col transition-all hover:shadow-xl hover:border-slate-300 disabled:cursor-wait ${isGenerating && !isLoading ? 'opacity-50 pointer-events-none' : ''}`}
                 >
                   {/* Badge difficulté */}
                   <span className={`absolute top-5 right-5 px-2.5 py-1 ${exType.color.badgeBg} text-[11px] font-bold rounded-full`}>
@@ -436,48 +441,43 @@ export default function SpecialiteClient({ embedded = false }) {
                     ))}
                   </div>
 
-                  {/* Meta */}
-                  <div className="flex items-center gap-3 text-xs text-slate-400 mb-4 pb-4 border-b border-slate-100">
-                    <span className="inline-flex items-center gap-1">
+                  {/* Meta + CTA */}
+                  <div className="flex items-center justify-between text-xs text-slate-500 pt-4 border-t border-slate-100 mt-auto">
+                    <span className="inline-flex items-center gap-1.5">
                       <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                       </svg>
                       {exType.duree}
+                      <span className="hidden md:inline mx-1 w-1 h-1 rounded-full bg-slate-300" />
+                      <span className="hidden md:inline-flex items-center gap-1">
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
+                        </svg>
+                        Correction IA
+                      </span>
                     </span>
-                    <span className="w-1 h-1 rounded-full bg-slate-300"></span>
-                    <span className="inline-flex items-center gap-1">
-                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
-                      </svg>
-                      Correction IA sur 20
+                    <span className="inline-flex items-center gap-1 font-semibold text-slate-700 group-hover:text-[#991b1b] transition-colors">
+                      {isLoading ? (
+                        <>
+                          <svg className="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                          </svg>
+                          Génération…
+                        </>
+                      ) : (
+                        <>
+                          Commencer
+                          <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                          </svg>
+                        </>
+                      )}
                     </span>
                   </div>
-
-                  {/* CTA */}
-                  <button
-                    onClick={() => handleStartExercise(exType.id)}
-                    disabled={isGenerating}
-                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#b91c1c] text-white text-sm font-semibold rounded-xl hover:bg-[#991b1b] transition-colors shadow-sm shadow-[#b91c1c]/20 disabled:opacity-60 disabled:cursor-wait"
-                  >
-                    {isGenerating && selectedType === exType.id ? (
-                      <>
-                        <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
-                        </svg>
-                        Génération du sujet...
-                      </>
-                    ) : (
-                      <>
-                        Commencer l&apos;entraînement
-                        <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                        </svg>
-                      </>
-                    )}
-                  </button>
-                </div>
-              ))}
+                </button>
+                );
+              })}
             </div>
 
             {/* Thèmes couverts */}
