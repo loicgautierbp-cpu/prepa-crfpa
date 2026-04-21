@@ -40,14 +40,14 @@ function PremiumCheckIcon() {
 // Tableau de prix par période
 const PRICING = {
   essentiel: {
-    mensuel:     { price: '19,90€',  base: null,      saving: null,       suffix: '/mois' },
-    trimestriel: { price: '16,90€',  base: '19,90€',  saving: '-36€/an',  suffix: '/mois, facturé trimestriellement' },
-    annuel:      { price: '14€',     base: '19,90€',  saving: '-72€/an',  suffix: '/mois, facturé annuellement' },
+    mensuel:     { price: '19,90€',  base: null,      saving: null,        suffix: '/mois' },
+    trimestriel: { price: '17€',     base: '19,90€',  saving: '-9€/trim.', suffix: '/mois, facturé trimestriellement' },
+    annuel:      { price: '14€',     base: '19,90€',  saving: '-72€/an',   suffix: '/mois, facturé annuellement' },
   },
   premium: {
-    mensuel:     { price: '39,90€',  base: null,      saving: null,       suffix: '/mois' },
-    trimestriel: { price: '33,90€',  base: '39,90€',  saving: '-72€/an',  suffix: '/mois, facturé trimestriellement' },
-    annuel:      { price: '28€',     base: '39,90€',  saving: '-144€/an', suffix: '/mois, facturé annuellement' },
+    mensuel:     { price: '39,90€',  base: null,      saving: null,         suffix: '/mois' },
+    trimestriel: { price: '34€',     base: '39,90€',  saving: '-18€/trim.', suffix: '/mois, facturé trimestriellement' },
+    annuel:      { price: '28€',     base: '39,90€',  saving: '-144€/an',   suffix: '/mois, facturé annuellement' },
   },
 };
 
