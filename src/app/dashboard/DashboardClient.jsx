@@ -301,23 +301,23 @@ export default function DashboardPage() {
 
         {/* ===== ACTIONS RAPIDES ===== */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-          <Link href="/qcm" className="group flex items-center gap-4 p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md hover:-translate-y-[2px] transition-all">
+          <Link href="/entrainement-ecrits" className="group flex items-center gap-4 p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md hover:-translate-y-[2px] transition-all">
             <div className="w-12 h-12 bg-[#b91c1c]/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#b91c1c]/20 transition-colors">
-              <svg className="w-6 h-6 text-[#991b1b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+              <svg className="w-6 h-6 text-[#991b1b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" /></svg>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-bold text-gray-900 group-hover:text-slate-900 transition-colors">Lancer un QCM</p>
-              <p className="text-xs text-gray-500 mt-0.5">Entrainez-vous sur les 14 matieres</p>
+              <p className="text-sm font-bold text-gray-900 group-hover:text-slate-900 transition-colors">Je m&apos;entra&icirc;ne &agrave; une &eacute;preuve &eacute;crite</p>
+              <p className="text-xs text-gray-500 mt-0.5">Synth&egrave;se, obligations, sp&eacute;cialit&eacute;, proc&eacute;dure</p>
             </div>
             <svg className="w-5 h-5 text-gray-300 group-hover:text-[#991b1b] transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
           </Link>
-          <Link href="/examen" className="group flex items-center gap-4 p-5 bg-gradient-to-br from-violet-50/40 to-white rounded-2xl border border-violet-100/50 shadow-sm hover:border-violet-300 hover:shadow-lg hover:shadow-violet-600/10 hover:-translate-y-[2px] transition-all">
+          <Link href="/entrainement-oraux" className="group flex items-center gap-4 p-5 bg-gradient-to-br from-violet-50/40 to-white rounded-2xl border border-violet-100/50 shadow-sm hover:border-violet-300 hover:shadow-lg hover:shadow-violet-600/10 hover:-translate-y-[2px] transition-all">
             <div className="w-12 h-12 bg-violet-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-violet-200 transition-colors">
-              <svg className="w-6 h-6 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" /></svg>
+              <svg className="w-6 h-6 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" /></svg>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-bold text-gray-900 group-hover:text-violet-700 transition-colors">Passer un examen</p>
-              <p className="text-xs text-gray-500 mt-0.5">Conditions reelles du CRFPA</p>
+              <p className="text-sm font-bold text-gray-900 group-hover:text-violet-700 transition-colors">Je m&apos;entra&icirc;ne &agrave; une &eacute;preuve orale</p>
+              <p className="text-xs text-gray-500 mt-0.5">Grand Oral + Anglais juridique</p>
             </div>
             <svg className="w-5 h-5 text-gray-300 group-hover:text-violet-500 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
           </Link>
