@@ -1,14 +1,17 @@
 'use client';
 
-import { useState, useMemo, useEffect, Fragment } from 'react';
+import { useState, useMemo, useEffect, useRef, Fragment } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { usePremium } from '@/contexts/PremiumContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { SUBJECTS } from '@/data/subjects';
-import { SUBJECT_COLORS, getSubjectName } from '@/data/constants';
+import { SUBJECT_COLORS, SUBJECT_ICONS, getSubjectName } from '@/data/constants';
 import { formatDate, formatDuration, scoreClass, scoreBarClass } from '@/utils/format';
+import { FICHES_DATA } from '@/data/fiches';
+import { loadCoursForFiche } from '@/data/cours';
+import { supabase } from '@/lib/supabase';
 
 /* ========== HELPERS ========== */
 function getSubjectBadgeColors(subjectId) {
@@ -17,8 +20,8 @@ function getSubjectBadgeColors(subjectId) {
 }
 
 const TYPE_BADGE = {
-  QCM: 'bg-slate-100 text-slate-700',
-  Examen: 'bg-violet-100 text-violet-700',
+  'Écrits': 'bg-slate-100 text-slate-700',
+  'Oraux': 'bg-violet-100 text-violet-700',
 };
 
 /* ========== SIDEBAR MENU ITEMS ========== */
@@ -53,6 +56,18 @@ const MENU_ITEMS = [
     iconActiveClass: 'text-rose-600',
     icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 0 1-.982-3.172M9.497 14.25a7.454 7.454 0 0 0 .981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 0 0 7.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0 1 16.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.023 6.023 0 0 1-2.52.587 6.023 6.023 0 0 1-2.52-.587" /></svg>,
   },
+  {
+    id: 'fiches', label: 'Fiches & Cours', premium: false, color: 'sky',
+    activeClasses: 'bg-sky-50 text-sky-700 border-sky-600',
+    iconActiveClass: 'text-sky-600',
+    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75"><path strokeLinecap="round" strokeLinejoin="round" d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2V5zM19 18v3H6" /></svg>,
+  },
+  {
+    id: 'account', label: 'Mon compte', premium: false, color: 'gray',
+    activeClasses: 'bg-gray-100 text-gray-700 border-gray-400',
+    iconActiveClass: 'text-gray-500',
+    icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>,
+  },
 ];
 
 /* ========== MAIN PAGE ========== */
@@ -73,12 +88,16 @@ export default function DashboardPage() {
   const [qcmStats] = useLocalStorage('prepa-qcm-stats', { sessions: [], totalCorrect: 0, totalAnswered: 0 });
   const [examStats] = useLocalStorage('prepa-examen-stats', { sessions: [], totalCorrect: 0, totalAnswered: 0 });
 
-  const { isPremiumPlus } = usePremium();
+  const { isPremiumPlus, tier } = usePremium();
+  const [activeFicheSubject, setActiveFicheSubject] = useState('all');
+  const [selectedFiche, setSelectedFiche] = useState(null);
+  const [selectedCours, setSelectedCours] = useState(null);
+  const [coursLoading, setCoursLoading] = useState(false);
 
   // ---- Tag sessions with type ----
   const allSessions = useMemo(() => [
-    ...qcmStats.sessions.map(s => ({ ...s, _type: 'QCM' })),
-    ...examStats.sessions.map(s => ({ ...s, _type: 'Examen' })),
+    ...qcmStats.sessions.map(s => ({ ...s, _type: 'Écrits' })),
+    ...examStats.sessions.map(s => ({ ...s, _type: 'Oraux' })),
   ], [qcmStats.sessions, examStats.sessions]);
 
   // ---- Centralized data computation ----
@@ -185,7 +204,7 @@ export default function DashboardPage() {
   const filteredHistory = useMemo(() => {
     let sessions = allSessions;
     if (historyFilter !== 'all') {
-      const filterMap = { qcm: 'QCM', examen: 'Examen' };
+      const filterMap = { ecrits: 'Écrits', oraux: 'Oraux' };
       sessions = sessions.filter(s => s._type === filterMap[historyFilter]);
     }
     return sessions.filter(s => s.date).sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -465,8 +484,8 @@ export default function DashboardPage() {
                   <div className="flex gap-2 flex-wrap">
                     {[
                       { key: 'all', label: 'Tout', count: allSessions.length },
-                      { key: 'qcm', label: 'QCM', count: data.qcmCount },
-                      { key: 'examen', label: 'Examens', count: data.examCount },
+                      { key: 'ecrits', label: 'Écrits', count: data.qcmCount },
+                      { key: 'oraux', label: 'Oraux', count: data.examCount },
                     ].map(f => (
                       <button key={f.key} onClick={() => setHistoryFilter(f.key)}
                         className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${historyFilter === f.key ? 'bg-[#b91c1c] text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
@@ -700,8 +719,45 @@ export default function DashboardPage() {
                 <ClassementSection allSessions={allSessions} />
               )
             )}
+
+            {/* ===== FICHES & COURS ===== */}
+            {activeSection === 'fiches' && (
+              <FichesSection
+                activeFicheSubject={activeFicheSubject}
+                setActiveFicheSubject={setActiveFicheSubject}
+                isPremiumPlus={isPremiumPlus}
+                onOpenFiche={(fiche) => setSelectedFiche(fiche)}
+              />
+            )}
+
+            {/* ===== MON COMPTE ===== */}
+            {activeSection === 'account' && (
+              <AccountSection user={user} tier={tier} />
+            )}
           </div>
         </div>
+
+        {/* ===== MODALS ===== */}
+        {selectedFiche && (
+          <FicheDetailModal
+            fiche={selectedFiche}
+            onClose={() => setSelectedFiche(null)}
+            onOpenCours={async (fiche) => {
+              setCoursLoading(true);
+              const cours = await loadCoursForFiche(fiche.id);
+              setCoursLoading(false);
+              if (cours) setSelectedCours({ cours, fiche });
+            }}
+            coursLoading={coursLoading}
+          />
+        )}
+        {selectedCours && (
+          <CoursModal
+            cours={selectedCours.cours}
+            fiche={selectedCours.fiche}
+            onClose={() => setSelectedCours(null)}
+          />
+        )}
 
         {/* ===== BANNIERE CONTACT ===== */}
         <div className="mt-8">
@@ -1028,6 +1084,492 @@ function ClassementSection({ allSessions }) {
             </tbody>
           </table>
         </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   FICHES SUBJECT COLORS
+   ============================================================ */
+const FICHES_SUBJECT_COLORS = {
+  indigo:  { badge: 'bg-indigo-100 text-indigo-700', bar: 'bg-indigo-500', icon: 'text-indigo-500', light: 'bg-indigo-50', border: 'border-indigo-100', pill: 'bg-indigo-600 text-white', pillIdle: 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100' },
+  emerald: { badge: 'bg-emerald-100 text-emerald-700', bar: 'bg-emerald-500', icon: 'text-emerald-500', light: 'bg-emerald-50', border: 'border-emerald-100', pill: 'bg-emerald-600 text-white', pillIdle: 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100' },
+  violet:  { badge: 'bg-violet-100 text-violet-700', bar: 'bg-violet-500', icon: 'text-violet-500', light: 'bg-violet-50', border: 'border-violet-100', pill: 'bg-violet-600 text-white', pillIdle: 'bg-violet-50 text-violet-700 hover:bg-violet-100' },
+  cyan:    { badge: 'bg-cyan-100 text-cyan-700', bar: 'bg-cyan-500', icon: 'text-cyan-500', light: 'bg-cyan-50', border: 'border-cyan-100', pill: 'bg-cyan-600 text-white', pillIdle: 'bg-cyan-50 text-cyan-700 hover:bg-cyan-100' },
+  rose:    { badge: 'bg-rose-100 text-rose-700', bar: 'bg-rose-500', icon: 'text-rose-500', light: 'bg-rose-50', border: 'border-rose-100', pill: 'bg-rose-600 text-white', pillIdle: 'bg-rose-50 text-rose-700 hover:bg-rose-100' },
+  amber:   { badge: 'bg-amber-100 text-amber-700', bar: 'bg-amber-500', icon: 'text-amber-500', light: 'bg-amber-50', border: 'border-amber-100', pill: 'bg-amber-600 text-white', pillIdle: 'bg-amber-50 text-amber-700 hover:bg-amber-100' },
+  teal:    { badge: 'bg-teal-100 text-teal-700', bar: 'bg-teal-500', icon: 'text-teal-500', light: 'bg-teal-50', border: 'border-teal-100', pill: 'bg-teal-600 text-white', pillIdle: 'bg-teal-50 text-teal-700 hover:bg-teal-100' },
+  sky:     { badge: 'bg-sky-100 text-sky-700', bar: 'bg-sky-500', icon: 'text-sky-500', light: 'bg-sky-50', border: 'border-sky-100', pill: 'bg-sky-600 text-white', pillIdle: 'bg-sky-50 text-sky-700 hover:bg-sky-100' },
+  lime:    { badge: 'bg-lime-100 text-lime-700', bar: 'bg-lime-500', icon: 'text-lime-500', light: 'bg-lime-50', border: 'border-lime-100', pill: 'bg-lime-600 text-white', pillIdle: 'bg-lime-50 text-lime-700 hover:bg-lime-100' },
+  orange:  { badge: 'bg-orange-100 text-orange-700', bar: 'bg-orange-500', icon: 'text-orange-500', light: 'bg-orange-50', border: 'border-orange-100', pill: 'bg-orange-600 text-white', pillIdle: 'bg-orange-50 text-orange-700 hover:bg-orange-100' },
+  yellow:  { badge: 'bg-yellow-100 text-yellow-700', bar: 'bg-yellow-500', icon: 'text-yellow-500', light: 'bg-yellow-50', border: 'border-yellow-100', pill: 'bg-yellow-600 text-white', pillIdle: 'bg-yellow-50 text-yellow-700 hover:bg-yellow-100' },
+  slate:   { badge: 'bg-slate-100 text-slate-700', bar: 'bg-slate-500', icon: 'text-slate-500', light: 'bg-slate-50', border: 'border-slate-100', pill: 'bg-slate-600 text-white', pillIdle: 'bg-slate-50 text-slate-700 hover:bg-slate-100' },
+  purple:  { badge: 'bg-purple-100 text-purple-700', bar: 'bg-purple-500', icon: 'text-purple-500', light: 'bg-purple-50', border: 'border-purple-100', pill: 'bg-purple-600 text-white', pillIdle: 'bg-purple-50 text-purple-700 hover:bg-purple-100' },
+  red:     { badge: 'bg-red-100 text-red-700', bar: 'bg-red-500', icon: 'text-red-500', light: 'bg-red-50', border: 'border-red-100', pill: 'bg-red-600 text-white', pillIdle: 'bg-red-50 text-red-700 hover:bg-red-100' },
+  primary: { badge: 'bg-red-100 text-red-700', bar: 'bg-red-500', icon: 'text-red-500', light: 'bg-red-50', border: 'border-red-100', pill: 'bg-red-700 text-white', pillIdle: 'bg-red-50 text-red-700 hover:bg-red-100' },
+};
+
+/* ============================================================
+   FICHES SECTION
+   ============================================================ */
+function FichesSection({ activeFicheSubject, setActiveFicheSubject, isPremiumPlus, onOpenFiche }) {
+  const filteredFiches = activeFicheSubject === 'all'
+    ? FICHES_DATA
+    : FICHES_DATA.filter(f => f.subject === activeFicheSubject);
+
+  const activeSubject = SUBJECTS.find(s => s.id === activeFicheSubject);
+  const activePalette = activeSubject ? (FICHES_SUBJECT_COLORS[activeSubject.color] || FICHES_SUBJECT_COLORS.primary) : FICHES_SUBJECT_COLORS.primary;
+
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+        <h3 className="text-lg font-bold text-gray-900 mb-1 flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-sky-500"></span>
+          Fiches &amp; Cours
+        </h3>
+        <p className="text-sm text-gray-500 mb-5">Révisez vos fiches de synthèse et accédez aux cours détaillés.</p>
+
+        {/* Subject filter pills */}
+        <div className="flex gap-2 flex-wrap">
+          <button
+            onClick={() => setActiveFicheSubject('all')}
+            className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
+              activeFicheSubject === 'all'
+                ? 'bg-[#b91c1c] text-white shadow-sm'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}
+          >
+            Toutes ({FICHES_DATA.length})
+          </button>
+          {SUBJECTS.map(s => {
+            const count = FICHES_DATA.filter(f => f.subject === s.id).length;
+            if (count === 0) return null;
+            const palette = FICHES_SUBJECT_COLORS[s.color] || FICHES_SUBJECT_COLORS.primary;
+            const isActive = activeFicheSubject === s.id;
+            return (
+              <button
+                key={s.id}
+                onClick={() => setActiveFicheSubject(s.id)}
+                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
+                  isActive ? palette.pill : palette.pillIdle
+                }`}
+              >
+                {s.name.length > 20 ? s.name.split(' ').slice(0, 2).join(' ') : s.name} ({count})
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Fiche cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {filteredFiches.map((fiche, i) => {
+          const subject = SUBJECTS.find(s => s.id === fiche.subject);
+          const palette = subject ? (FICHES_SUBJECT_COLORS[subject.color] || FICHES_SUBJECT_COLORS.primary) : FICHES_SUBJECT_COLORS.primary;
+          const isLocked = !isPremiumPlus && i >= 3;
+          const iconPath = SUBJECT_ICONS[fiche.subject];
+
+          return (
+            <button
+              key={fiche.id}
+              onClick={() => !isLocked && onOpenFiche(fiche)}
+              className={`text-left bg-white rounded-2xl border shadow-sm p-5 transition-all group ${
+                isLocked
+                  ? 'border-gray-100 cursor-default opacity-70'
+                  : `${palette.border} hover:shadow-md hover:-translate-y-[2px] cursor-pointer`
+              }`}
+            >
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <div className={`w-10 h-10 ${palette.light} rounded-xl flex items-center justify-center shrink-0`}>
+                  {iconPath ? (
+                    <svg className={`w-5 h-5 ${palette.icon}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+                      <path strokeLinecap="round" strokeLinejoin="round" d={iconPath} />
+                    </svg>
+                  ) : (
+                    <svg className={`w-5 h-5 ${palette.icon}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                    </svg>
+                  )}
+                </div>
+                {isLocked ? (
+                  <div className="w-7 h-7 bg-gray-100 rounded-lg flex items-center justify-center shrink-0">
+                    <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                    </svg>
+                  </div>
+                ) : (
+                  <svg className={`w-4 h-4 text-gray-300 group-hover:${palette.icon} transition-colors shrink-0 mt-1`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                )}
+              </div>
+              <p className="text-sm font-bold text-gray-900 group-hover:text-gray-700 leading-snug mb-2">{fiche.title}</p>
+              {subject && (
+                <span className={`inline-flex px-2 py-0.5 rounded-full text-[10px] font-semibold ${palette.badge}`}>
+                  {subject.name.length > 22 ? subject.name.split(' ').slice(0, 2).join(' ') : subject.name}
+                </span>
+              )}
+              {isLocked && (
+                <p className="text-[10px] text-gray-400 mt-2">Premium+ requis</p>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {!isPremiumPlus && FICHES_DATA.length > 3 && (
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 text-center">
+          <div className="w-12 h-12 bg-[#b91c1c]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg className="w-6 h-6 text-[#991b1b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+            </svg>
+          </div>
+          <p className="text-sm font-bold text-gray-900 mb-1">{FICHES_DATA.length - 3} fiches supplémentaires avec Premium+</p>
+          <p className="text-xs text-gray-500 mb-4">Accédez à l&apos;intégralité des fiches de révision et des cours détaillés.</p>
+          <Link href="/tarifs" className="inline-flex px-5 py-2 bg-[#b91c1c] text-white text-sm font-semibold rounded-xl hover:bg-[#991b1b] transition-colors">
+            Passer au Premium+
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ============================================================
+   FICHE DETAIL MODAL
+   ============================================================ */
+function FicheDetailModal({ fiche, onClose, onOpenCours, coursLoading }) {
+  const subject = SUBJECTS.find(s => s.id === fiche.subject);
+  const palette = subject ? (FICHES_SUBJECT_COLORS[subject.color] || FICHES_SUBJECT_COLORS.primary) : FICHES_SUBJECT_COLORS.primary;
+  const iconPath = SUBJECT_ICONS[fiche.subject];
+
+  useEffect(() => {
+    const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-start justify-center" role="dialog" aria-modal="true">
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative w-full max-w-3xl mx-auto mt-8 mb-8 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        {/* Header */}
+        <div className={`${palette.light} px-6 pt-6 pb-5 border-b ${palette.border}`}>
+          <div className="flex items-start gap-4">
+            <div className={`w-12 h-12 bg-white rounded-xl flex items-center justify-center shrink-0 shadow-sm`}>
+              {iconPath ? (
+                <svg className={`w-6 h-6 ${palette.icon}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+                  <path strokeLinecap="round" strokeLinejoin="round" d={iconPath} />
+                </svg>
+              ) : (
+                <svg className={`w-6 h-6 ${palette.icon}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                </svg>
+              )}
+            </div>
+            <div className="flex-1 min-w-0">
+              {subject && (
+                <span className={`inline-flex px-2.5 py-0.5 rounded-full text-[10px] font-bold ${palette.badge} mb-2`}>
+                  {subject.name}
+                </span>
+              )}
+              <h2 className="text-xl font-bold text-gray-900 leading-snug">{fiche.title}</h2>
+            </div>
+            <button onClick={onClose} className="shrink-0 w-8 h-8 flex items-center justify-center rounded-xl bg-white/80 hover:bg-white text-gray-500 hover:text-gray-900 transition-colors shadow-sm">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 overflow-y-auto px-6 py-6">
+          <div
+            className="prose prose-sm max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900"
+            dangerouslySetInnerHTML={{ __html: fiche.content }}
+          />
+        </div>
+
+        {/* Footer */}
+        <div className="px-6 py-4 border-t border-gray-100 bg-gray-50/50 flex flex-col sm:flex-row items-center gap-3">
+          <button
+            onClick={() => onOpenCours(fiche)}
+            disabled={coursLoading}
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 bg-[#b91c1c] text-white text-sm font-semibold rounded-xl hover:bg-[#991b1b] transition-colors disabled:opacity-60"
+          >
+            {coursLoading ? (
+              <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+            ) : (
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+              </svg>
+            )}
+            Voir le cours détaillé
+          </button>
+          <Link
+            href="/entrainement-ecrits"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 bg-white border border-gray-200 text-gray-700 text-sm font-semibold rounded-xl hover:bg-gray-50 transition-colors"
+          >
+            <svg className="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Z" />
+            </svg>
+            S&apos;entraîner à l&apos;écrit
+          </Link>
+          <button onClick={onClose} className="w-full sm:w-auto px-5 py-2.5 text-sm font-semibold text-gray-500 hover:text-gray-700 transition-colors">
+            Fermer
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   COURS MODAL
+   ============================================================ */
+function CoursModal({ cours, fiche, onClose }) {
+  const subject = SUBJECTS.find(s => s.id === fiche.subject);
+  const palette = subject ? (FICHES_SUBJECT_COLORS[subject.color] || FICHES_SUBJECT_COLORS.primary) : FICHES_SUBJECT_COLORS.primary;
+
+  useEffect(() => {
+    const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-[60] flex items-start justify-center" role="dialog" aria-modal="true">
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative w-full max-w-4xl mx-auto mt-6 mb-6 bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[94vh]">
+        {/* Hero */}
+        <div className="shrink-0 px-8 pt-8 pb-6 text-white" style={{ background: 'linear-gradient(135deg, #450a0a 0%, #991b1b 60%, #b91c1c 100%)' }}>
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1 min-w-0">
+              {subject && (
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/20 text-white/90 mb-3">
+                  {subject.name}
+                </span>
+              )}
+              <h2 className="text-2xl font-bold leading-snug mb-1">{cours.title || fiche.title}</h2>
+              {cours.subtitle && <p className="text-sm text-white/70 mt-1">{cours.subtitle}</p>}
+            </div>
+            <button onClick={onClose} className="shrink-0 w-9 h-9 flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          {cours.tags && cours.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-4">
+              {cours.tags.map(tag => (
+                <span key={tag} className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-white/15 text-white/90">{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 overflow-y-auto px-8 py-6">
+          <div
+            className="prose prose-sm max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-li:text-gray-700 prose-strong:text-gray-900 prose-h2:text-lg prose-h3:text-base"
+            dangerouslySetInnerHTML={{ __html: cours.content || cours.html || '' }}
+          />
+        </div>
+
+        {/* Footer */}
+        <div className="shrink-0 px-8 py-4 border-t border-gray-100 bg-gray-50/50 flex items-center justify-between gap-3">
+          <Link href="/entrainement-ecrits" className="flex items-center gap-2 px-5 py-2.5 bg-[#b91c1c] text-white text-sm font-semibold rounded-xl hover:bg-[#991b1b] transition-colors">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Z" />
+            </svg>
+            S&apos;entraîner
+          </Link>
+          <button onClick={onClose} className="px-5 py-2.5 text-sm font-semibold text-gray-500 hover:text-gray-700 transition-colors">
+            Fermer
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   ACCOUNT SECTION
+   ============================================================ */
+function AccountSection({ user, tier }) {
+  const [emailForm, setEmailForm] = useState({ email: user?.email || '', loading: false, success: '', error: '' });
+  const [pwForm, setPwForm] = useState({ password: '', confirm: '', loading: false, success: '', error: '' });
+
+  async function handleEmailUpdate(e) {
+    e.preventDefault();
+    if (!emailForm.email || emailForm.email === user?.email) return;
+    setEmailForm(f => ({ ...f, loading: true, success: '', error: '' }));
+    const { error } = await supabase.auth.updateUser({ email: emailForm.email });
+    if (error) {
+      setEmailForm(f => ({ ...f, loading: false, error: error.message }));
+    } else {
+      setEmailForm(f => ({ ...f, loading: false, success: 'Un e-mail de confirmation a été envoyé à votre nouvelle adresse.' }));
+    }
+  }
+
+  async function handlePasswordUpdate(e) {
+    e.preventDefault();
+    if (!pwForm.password || pwForm.password !== pwForm.confirm) {
+      setPwForm(f => ({ ...f, error: 'Les mots de passe ne correspondent pas.' }));
+      return;
+    }
+    if (pwForm.password.length < 8) {
+      setPwForm(f => ({ ...f, error: 'Le mot de passe doit contenir au moins 8 caractères.' }));
+      return;
+    }
+    setPwForm(f => ({ ...f, loading: true, success: '', error: '' }));
+    const { error } = await supabase.auth.updateUser({ password: pwForm.password });
+    if (error) {
+      setPwForm(f => ({ ...f, loading: false, error: error.message }));
+    } else {
+      setPwForm(f => ({ ...f, loading: false, success: 'Mot de passe mis à jour avec succès.', password: '', confirm: '' }));
+    }
+  }
+
+  const tierLabel = tier === 'premium+' ? 'Premium+' : tier === 'essentiel' ? 'Essentiel' : 'Gratuit';
+  const tierColor = tier === 'premium+' ? 'bg-violet-100 text-violet-700' : tier === 'essentiel' ? 'bg-amber-100 text-amber-700' : 'bg-gray-100 text-gray-600';
+
+  return (
+    <div className="space-y-6">
+      {/* Profile card */}
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+        <h3 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-gray-400"></span>
+          Mon profil
+        </h3>
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-14 h-14 bg-[#b91c1c]/10 rounded-2xl flex items-center justify-center shrink-0">
+            <span className="text-2xl font-black text-[#991b1b]">
+              {(user?.displayName || user?.email || 'U')[0].toUpperCase()}
+            </span>
+          </div>
+          <div>
+            <p className="text-base font-bold text-gray-900">{user?.displayName || user?.email}</p>
+            <p className="text-sm text-gray-500">{user?.email}</p>
+            <span className={`inline-flex mt-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold ${tierColor}`}>{tierLabel}</span>
+          </div>
+        </div>
+
+        {/* Email update */}
+        <form onSubmit={handleEmailUpdate} className="space-y-3 border-t border-gray-100 pt-5">
+          <label className="block text-sm font-semibold text-gray-700">Changer d&apos;adresse e-mail</label>
+          <input
+            type="email"
+            value={emailForm.email}
+            onChange={e => setEmailForm(f => ({ ...f, email: e.target.value }))}
+            className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#b91c1c]/30 focus:border-[#b91c1c] transition-all"
+            placeholder="nouvelle@adresse.com"
+            required
+          />
+          {emailForm.error && <p className="text-xs text-red-600">{emailForm.error}</p>}
+          {emailForm.success && <p className="text-xs text-emerald-600">{emailForm.success}</p>}
+          <button
+            type="submit"
+            disabled={emailForm.loading || emailForm.email === user?.email}
+            className="px-5 py-2 bg-[#b91c1c] text-white text-sm font-semibold rounded-xl hover:bg-[#991b1b] transition-colors disabled:opacity-50"
+          >
+            {emailForm.loading ? 'Mise à jour...' : 'Mettre à jour l\'e-mail'}
+          </button>
+        </form>
+      </div>
+
+      {/* Password update */}
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+        <h3 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-gray-300"></span>
+          Changer le mot de passe
+        </h3>
+        <form onSubmit={handlePasswordUpdate} className="space-y-3">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">Nouveau mot de passe</label>
+            <input
+              type="password"
+              value={pwForm.password}
+              onChange={e => setPwForm(f => ({ ...f, password: e.target.value }))}
+              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#b91c1c]/30 focus:border-[#b91c1c] transition-all"
+              placeholder="8 caractères minimum"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-1">Confirmer le mot de passe</label>
+            <input
+              type="password"
+              value={pwForm.confirm}
+              onChange={e => setPwForm(f => ({ ...f, confirm: e.target.value }))}
+              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#b91c1c]/30 focus:border-[#b91c1c] transition-all"
+              placeholder="Répétez le mot de passe"
+              required
+            />
+          </div>
+          {pwForm.error && <p className="text-xs text-red-600">{pwForm.error}</p>}
+          {pwForm.success && <p className="text-xs text-emerald-600">{pwForm.success}</p>}
+          <button
+            type="submit"
+            disabled={pwForm.loading}
+            className="px-5 py-2 bg-[#b91c1c] text-white text-sm font-semibold rounded-xl hover:bg-[#991b1b] transition-colors disabled:opacity-50"
+          >
+            {pwForm.loading ? 'Mise à jour...' : 'Changer le mot de passe'}
+          </button>
+        </form>
+      </div>
+
+      {/* Subscription */}
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+        <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-violet-400"></span>
+          Abonnement
+        </h3>
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm font-semibold text-gray-700">Plan actuel</p>
+            <span className={`inline-flex mt-1 px-3 py-1 rounded-full text-sm font-bold ${tierColor}`}>{tierLabel}</span>
+          </div>
+          {tier !== 'premium+' && (
+            <Link href="/tarifs" className="px-5 py-2.5 bg-[#b91c1c] text-white text-sm font-semibold rounded-xl hover:bg-[#991b1b] transition-colors">
+              Passer au Premium+
+            </Link>
+          )}
+        </div>
+        {tier !== 'premium+' && (
+          <div className="mt-4 pt-4 border-t border-gray-100">
+            <p className="text-xs text-gray-500 mb-3">Avec Premium+ : fiches illimitées, progression détaillée, objectifs, classement.</p>
+            <Link href="/tarifs" className="text-xs font-semibold text-[#991b1b] hover:underline">
+              Voir tous les avantages →
+            </Link>
+          </div>
+        )}
+      </div>
+
+      {/* Danger zone */}
+      <div className="bg-white rounded-2xl border border-red-100 shadow-sm p-6">
+        <h3 className="text-base font-bold text-red-700 mb-3">Zone dangereuse</h3>
+        <p className="text-sm text-gray-500 mb-4">La suppression de votre compte est irréversible. Toutes vos données seront effacées.</p>
+        <Link href="/contact" className="inline-flex items-center gap-2 px-4 py-2 border border-red-200 text-red-600 text-sm font-semibold rounded-xl hover:bg-red-50 transition-colors">
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+          </svg>
+          Contacter le support
+        </Link>
       </div>
     </div>
   );
