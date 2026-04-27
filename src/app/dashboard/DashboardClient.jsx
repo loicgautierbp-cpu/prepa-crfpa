@@ -24,6 +24,27 @@ const TYPE_BADGE = {
   'Oraux': 'bg-violet-100 text-violet-700',
 };
 
+/* ========== CRFPA EXAM SUBJECTS ========== */
+const ECRIT_SUBJECTS = [
+  { code: 'E1', name: 'Note de synthèse', tone: 'e1' },
+  { code: 'E2', name: 'Droit des obligations', tone: 'e2' },
+  { code: 'E3', name: 'Spécialité', tone: 'e3' },
+  { code: 'E4', name: 'Procédure', tone: 'e4' },
+];
+const ORAL_SUBJECTS = [
+  { code: 'O1', name: 'Grand Oral — Libertés fondamentales', tone: 'o1' },
+  { code: 'O2', name: 'Anglais juridique', tone: 'o2' },
+];
+const SPECIALITES = ['Droit civil', 'Droit des affaires', 'Droit social', 'Droit pénal', 'Droit administratif', 'Droit international'];
+const TONE_STYLES = {
+  e1: { bg: '#fbf2e3', border: '#e8d4a8', code: '#8a6a1f' },
+  e2: { bg: '#e7f0e9', border: '#b9d4be', code: '#2e5e3f' },
+  e3: { bg: '#e8f0f5', border: '#b8cfdc', code: '#2c5778' },
+  e4: { bg: '#efe9f4', border: '#cabddb', code: '#553c7a' },
+  o1: { bg: '#f4e3e6', border: '#e0b8c0', code: '#7a1a2b' },
+  o2: { bg: '#f3eae0', border: '#d8c0a8', code: '#6a4520' },
+};
+
 /* ========== SIDEBAR MENU ITEMS ========== */
 const MENU_ITEMS = [
   {
@@ -72,12 +93,14 @@ const MENU_ITEMS = [
 
 /* ========== MAIN PAGE ========== */
 export default function DashboardPage() {
-  const { user, loading: authLoading } = useAuth();
+  const { user, loading: authLoading, logOut } = useAuth();
   const router = useRouter();
   const [activeSection, setActiveSection] = useState('overview');
   const [historyFilter, setHistoryFilter] = useState('all');
   const [visibleCount, setVisibleCount] = useState(10);
   const [chartMode, setChartMode] = useState('epreuves');
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [specialOpen, setSpecialOpen] = useState(false);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -282,7 +305,7 @@ export default function DashboardPage() {
     );
   }
 
-  // Donut chart data
+  // Donut chart data (used in objectifs section)
   const segments = [
     { label: 'QCM', count: data.qcmCount, color: '#c92150' },
     { label: 'Examens', count: data.examCount, color: '#8b5cf6' },
@@ -296,188 +319,50 @@ export default function DashboardPage() {
     return `${seg.color} ${start}% ${end}%`;
   }).join(', ');
 
+  const firstName = user?.displayName?.split(' ')[0] || user?.email?.split('@')[0] || 'Loic';
+
   return (
-    <>
-      {/* ===== HERO ===== */}
-      <section className="bg-[#fef2f2] pt-28 pb-10 md:pt-36 md:pb-14 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 leading-[1.1] mb-4">
-            {user.displayName ? (
-              <>Bonjour <span className="text-[#991b1b]">{user.displayName.split(' ')[0]}</span> !</>
-            ) : (
-              <>Mon <span className="text-[#991b1b]">tableau de bord</span></>
-            )}
-          </h1>
-          <div className="w-12 h-1 bg-[#991b1b] mx-auto mt-4 mb-6 rounded-full"></div>
-          <p className="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
-            {data.currentStreak > 0 && <span className="mr-1">🔥</span>}
-            {heroSubtitle}
-          </p>
-        </div>
-      </section>
+    <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: '#fdf6f3', display: 'flex', overflow: 'hidden', fontFamily: "'Inter', sans-serif" }}>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      {/* Backdrop mobile */}
+      {drawerOpen && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 15, background: 'rgba(0,0,0,0.5)' }} onClick={() => setDrawerOpen(false)} />
+      )}
 
-        {/* ===== ACTIONS RAPIDES ===== */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-          <Link href="/entrainement-ecrits" className="group flex items-center gap-4 p-5 bg-white rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md hover:-translate-y-[2px] transition-all">
-            <div className="w-12 h-12 bg-[#b91c1c]/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#b91c1c]/20 transition-colors">
-              <svg className="w-6 h-6 text-[#991b1b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" /></svg>
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-bold text-gray-900 group-hover:text-slate-900 transition-colors">Je m&apos;entra&icirc;ne &agrave; une &eacute;preuve &eacute;crite</p>
-              <p className="text-xs text-gray-500 mt-0.5">Synth&egrave;se, obligations, sp&eacute;cialit&eacute;, proc&eacute;dure</p>
-            </div>
-            <svg className="w-5 h-5 text-gray-300 group-hover:text-[#991b1b] transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
-          </Link>
-          <Link href="/entrainement-oraux" className="group flex items-center gap-4 p-5 bg-gradient-to-br from-violet-50/40 to-white rounded-2xl border border-violet-100/50 shadow-sm hover:border-violet-300 hover:shadow-lg hover:shadow-violet-600/10 hover:-translate-y-[2px] transition-all">
-            <div className="w-12 h-12 bg-violet-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-violet-200 transition-colors">
-              <svg className="w-6 h-6 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" /></svg>
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-bold text-gray-900 group-hover:text-violet-700 transition-colors">Je m&apos;entra&icirc;ne &agrave; une &eacute;preuve orale</p>
-              <p className="text-xs text-gray-500 mt-0.5">Grand Oral + Anglais juridique</p>
-            </div>
-            <svg className="w-5 h-5 text-gray-300 group-hover:text-violet-500 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
-          </Link>
+      {/* SIDEBAR */}
+      <CRFPADashSidebar
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
+        user={user}
+        isPremiumPlus={isPremiumPlus}
+        logOut={logOut}
+        drawerOpen={drawerOpen}
+        setDrawerOpen={setDrawerOpen}
+      />
+
+      {/* MAIN */}
+      <main style={{ flex: 1, overflowY: 'auto', height: '100vh', display: 'flex', flexDirection: 'column' }}>
+
+        {/* Topbar mobile */}
+        <div className="md:hidden" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', height: 56, background: '#7a1a2b', flexShrink: 0 }}>
+          <button onClick={() => setDrawerOpen(true)} style={{ color: 'white', background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+          </button>
+          <span style={{ fontFamily: "'Source Serif 4', serif", color: 'white', fontWeight: 700, fontSize: 15 }}>Prépa <b>CRFPA</b></span>
+          <div style={{ width: 30, height: 30, borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 12, fontWeight: 700 }}>{firstName[0].toUpperCase()}</div>
         </div>
 
-        {/* ===== METRIQUES CLES ===== */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <StatCard label="Jours consecutifs" value={data.currentStreak > 0 ? `${data.currentStreak}j` : '0j'} badge={data.currentStreak > 0 ? '🔥' : null} tint="bg-amber-50/60 border-amber-100" icon={<svg className="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z" /></svg>} />
-          <StatCard label="Score moyen" value={data.hasAnySessions ? `${data.avgScore}%` : '--'} trend={data.trend} tint="bg-emerald-50/60 border-emerald-100" icon={<svg className="w-6 h-6 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" /></svg>} />
-          <StatCard label="Cette semaine" value={`${data.thisWeekSessions}`} sublabel={data.thisWeekSessions === 1 ? 'session' : 'sessions'} tint="bg-slate-50/60 border-slate-100" icon={<svg className="w-6 h-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>} />
-          <StatCard label="Temps total" value={data.hasAnySessions ? formatDuration(data.totalTime) : '--'} tint="bg-violet-50/60 border-violet-100" icon={<svg className="w-6 h-6 text-violet-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>} />
-        </div>
+        <div style={{ padding: '0 28px 48px', maxWidth: 980, margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
 
-        {/* ===== MOBILE: HORIZONTAL PILLS ===== */}
-        <div className="md:hidden flex gap-2 overflow-x-auto pb-3 mb-4 -mx-1 px-1">
-          {MENU_ITEMS.map(item => {
-            const isActive = activeSection === item.id;
-            const showLock = item.premium && !isPremiumPlus;
-            return (
-              <button
-                key={item.id}
-                onClick={() => setActiveSection(item.id)}
-                className={`flex items-center gap-2 whitespace-nowrap px-4 py-2.5 rounded-xl text-sm font-semibold transition-all shrink-0 ${
-                  isActive
-                    ? `${item.activeClasses} shadow-sm border border-current/10`
-                    : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
-                }`}
-              >
-                {item.icon}
-                <span>{item.label}</span>
-                {showLock && (
-                  <svg className="w-3.5 h-3.5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
-                )}
-              </button>
-            );
-          })}
-        </div>
+          {/* ===== VUE D'ENSEMBLE ===== */}
+          {activeSection === 'overview' && (
+            <OverviewSection data={data} firstName={firstName} specialOpen={specialOpen} setSpecialOpen={setSpecialOpen} />
+          )}
 
-        {/* ===== SIDEBAR + CONTENT ===== */}
-        <div className="flex gap-6">
-          {/* Desktop sidebar */}
-          <aside className="hidden md:block w-56 shrink-0">
-            <nav className="sticky top-24 bg-white rounded-2xl border border-gray-100 shadow-sm p-2 space-y-1">
-              <div className="px-3 py-2 mb-1">
-                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Navigation</p>
-              </div>
-              {MENU_ITEMS.map(item => {
-                const isActive = activeSection === item.id;
-                const showLock = item.premium && !isPremiumPlus;
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => setActiveSection(item.id)}
-                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left ${
-                      isActive
-                        ? `${item.activeClasses} font-semibold border-l-[3px] pl-[9px]`
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                    }`}
-                  >
-                    <span className={isActive ? item.iconActiveClass : 'text-gray-400'}>{item.icon}</span>
-                    <span className="flex-1">{item.label}</span>
-                    {showLock && (
-                      <svg className="w-4 h-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
-                    )}
-                  </button>
-                );
-              })}
-            </nav>
-          </aside>
-
-          {/* Main content area */}
-          <div className="flex-1 min-w-0 space-y-6">
-            {/* ===== VUE D'ENSEMBLE ===== */}
-            {activeSection === 'overview' && (
-              <>
-                {!data.hasAnySessions ? (
-                  <EmptyState title="Aucune session effectuee" description="Lancez un QCM ou un examen pour commencer a suivre votre progression." ctaHref="/qcm" ctaLabel="Commencer un QCM" />
-                ) : (
-                  <>
-                    {/* Maitrise par matiere */}
-                    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                      <h3 className="text-lg font-bold text-gray-900 mb-5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#991b1b]"></span>Maitrise par matiere</h3>
-                      <div className="space-y-4">
-                        {SUBJECTS.map(s => ({ ...s, ...(data.subjectStats[s.id] || { avg: 0, count: 0 }) })).sort((a, b) => b.count - a.count).map(s => {
-                          const colors = SUBJECT_COLORS[s.color] || SUBJECT_COLORS.primary;
-                          const aboveAvg = s.avg > data.avgScore;
-                          return (
-                            <div key={s.id}>
-                              <div className="flex justify-between items-center mb-1.5">
-                                <div className="flex items-center gap-2">
-                                  <span className="text-sm font-medium text-gray-700">{s.name}</span>
-                                  <span className="text-[10px] text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded-full">{s.count} session{s.count > 1 ? 's' : ''}</span>
-                                </div>
-                                <div className="flex items-center gap-1.5">
-                                  {s.count > 0 && <span className={`text-[10px] font-semibold ${aboveAvg ? 'text-emerald-500' : 'text-red-400'}`}>{aboveAvg ? '▲' : '▼'}</span>}
-                                  <span className={`text-sm font-bold ${scoreClass(s.avg)}`}>{s.avg > 0 ? `${s.avg}%` : '\u2014'}</span>
-                                </div>
-                              </div>
-                              <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
-                                <div className={`h-full rounded-full ${colors.bar} transition-all`} style={{ width: `${s.avg}%` }} />
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* Dernieres sessions */}
-                    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                      <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-slate-400"></span>Dernieres sessions</h3>
-                      <div className="space-y-3">
-                        {data.recent5.map((s, i) => {
-                          const subjectColors = getSubjectBadgeColors(s.subject);
-                          const pct = s.percentage || Math.round((s.correct / s.total) * 100);
-                          return (
-                            <div key={i} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-3 rounded-xl bg-gray-50/80 hover:bg-gray-100/80 transition-colors">
-                              <div className="flex items-center gap-2 flex-wrap">
-                                <span className={`inline-flex px-2 py-0.5 rounded-full text-[10px] font-bold ${TYPE_BADGE[s._type] || TYPE_BADGE.QCM}`}>{s._type}</span>
-                                <span className={`inline-flex px-2 py-0.5 rounded-full text-[10px] font-semibold ${subjectColors.badge}`}>{s.subjectName || getSubjectName(s.subject)}</span>
-                                {s.topic && <span className="text-xs text-gray-500 truncate max-w-[200px]">{s.topic}</span>}
-                              </div>
-                              <div className="flex items-center gap-3 sm:ml-auto">
-                                <div className="flex items-center gap-2 flex-1 sm:flex-none">
-                                  <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden"><div className={`h-full rounded-full ${scoreBarClass(pct)}`} style={{ width: `${pct}%` }} /></div>
-                                  <span className={`text-sm font-bold ${scoreClass(pct)} min-w-[36px]`}>{pct}%</span>
-                                </div>
-                                <span className="text-xs text-gray-400">{formatDate(s.date)}</span>
-                                <span className="text-xs text-gray-400">{formatDuration(s.duration)}</span>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </>
-                )}
-              </>
-            )}
-
-            {/* ===== HISTORIQUE ===== */}
-            {activeSection === 'historique' && (
+          {/* ===== HISTORIQUE ===== */}
+          {activeSection === 'historique' && (
+            <div style={{ paddingTop: 24 }}>
+              <h2 style={{ fontFamily: "'Source Serif 4', serif", fontSize: 26, fontWeight: 600, color: '#1c1410', marginBottom: 20 }}>Historique</h2>
               <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
                 <div className="p-6 pb-4">
                   <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-amber-500"></span>Historique des sessions</h3>
@@ -497,7 +382,7 @@ export default function DashboardPage() {
                 </div>
                 {filteredHistory.length === 0 ? (
                   <div className="px-6 pb-6">
-                    <EmptyState title="Aucune session" description="Aucune session trouvee pour ce filtre." ctaHref="/qcm" ctaLabel="Commencer un QCM" />
+                    <EmptyState title="Aucune session" description="Aucune session trouvée pour ce filtre." ctaHref="/entrainement-ecrits" ctaLabel="Commencer une session" />
                   </div>
                 ) : (
                   <>
@@ -507,10 +392,10 @@ export default function DashboardPage() {
                           <tr className="bg-gray-50/80 border-b border-gray-100">
                             <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Date</th>
                             <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Type</th>
-                            <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Matiere</th>
-                            <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider hidden md:table-cell">Theme</th>
+                            <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Matière</th>
+                            <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider hidden md:table-cell">Thème</th>
                             <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Score</th>
-                            <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Duree</th>
+                            <th className="text-left py-3 px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Durée</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -520,9 +405,9 @@ export default function DashboardPage() {
                             return (
                               <tr key={i} className="border-b border-gray-50 hover:bg-gray-50/50">
                                 <td className="py-3 px-4 text-sm text-gray-500">{formatDate(s.date)}</td>
-                                <td className="py-3 px-4"><span className={`inline-flex px-2 py-0.5 rounded-full text-[10px] font-bold ${TYPE_BADGE[s._type] || TYPE_BADGE.QCM}`}>{s._type}</span></td>
+                                <td className="py-3 px-4"><span className={`inline-flex px-2 py-0.5 rounded-full text-[10px] font-bold ${TYPE_BADGE[s._type] || TYPE_BADGE['Écrits']}`}>{s._type}</span></td>
                                 <td className="py-3 px-4"><span className={`inline-flex px-2.5 py-1 rounded-full text-xs font-semibold ${colors.badge}`}>{s.subjectName || getSubjectName(s.subject)}</span></td>
-                                <td className="py-3 px-4 text-sm text-gray-700 hidden md:table-cell">{s.topic || '\u2014'}</td>
+                                <td className="py-3 px-4 text-sm text-gray-700 hidden md:table-cell">{s.topic || '—'}</td>
                                 <td className="py-3 px-4"><div className="flex items-center gap-2"><div className="w-20 h-2 bg-gray-100 rounded-full overflow-hidden"><div className={`h-full rounded-full ${scoreBarClass(pct)}`} style={{ width: `${pct}%` }} /></div><span className={`text-sm font-bold ${scoreClass(pct)}`}>{pct}%</span></div></td>
                                 <td className="py-3 px-4 text-sm text-gray-500">{formatDuration(s.duration)}</td>
                               </tr>
@@ -541,165 +426,94 @@ export default function DashboardPage() {
                   </>
                 )}
               </div>
-            )}
+            </div>
+          )}
 
-            {/* ===== PROGRESSION (Premium) ===== */}
-            {activeSection === 'progression' && (
-              !isPremiumPlus ? (
-                <PremiumLock title="Progression detaillee" description="Visualisez votre courbe de progression, vos points forts et axes d'amelioration avec Premium+." />
+          {/* ===== PROGRESSION ===== */}
+          {activeSection === 'progression' && (
+            <div style={{ paddingTop: 24 }}>
+              <h2 style={{ fontFamily: "'Source Serif 4', serif", fontSize: 26, fontWeight: 600, color: '#1c1410', marginBottom: 20 }}>Progression</h2>
+              {!isPremiumPlus ? (
+                <PremiumLock title="Progression détaillée" description="Visualisez votre courbe de progression, vos points forts et axes d'amélioration avec Premium+." />
               ) : !data.hasAnySessions || data.last20.length < 2 ? (
-                  <EmptyState title="Pas assez de donnees" description="Effectuez plusieurs sessions pour voir votre progression." ctaHref="/qcm" ctaLabel="Commencer un QCM" />
-                ) : (
-                  <>
-                    {/* Score evolution */}
-                    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-                        <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-500"></span>Evolution des scores</h3>
-                        <div className="flex items-center gap-2">
-                          {data.trend === 'up' && <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700"><svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>En progression</span>}
-                          {data.trend === 'down' && <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-red-100 text-red-600"><svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6 9 12.75l4.286-4.286a11.948 11.948 0 0 1 5.834 5.46l2.63 1.326m0 0 .311-6.228m-.311 6.228-5.94-2.281" /></svg>En baisse</span>}
-                          {data.trend === 'stable' && <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700">Stable</span>}
-                        </div>
-                      </div>
-                      <div className="flex gap-2 mb-4">
-                        {[
-                          { key: 'epreuves', label: 'Par epreuve' },
-                          { key: 'jours', label: 'Par jour' },
-                          { key: 'semaines', label: 'Par semaine' },
-                        ].map(f => (
-                          <button key={f.key} onClick={() => setChartMode(f.key)}
-                            className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                              chartMode === f.key ? 'bg-emerald-600 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                            }`}
-                          >
-                            {f.label}
-                          </button>
-                        ))}
-                      </div>
-                      <ScoreLineChart points={chartData} />
-                      {isPremiumPlus && data.last5Avg !== null && data.prev5Avg !== null && (
-                        <div className="flex flex-wrap items-center gap-3 mt-4 pt-4 border-t border-gray-100">
-                          <div className="flex items-center gap-1.5 text-sm"><span className="text-gray-500">5 dernieres :</span><span className={`font-bold ${scoreClass(data.last5Avg)}`}>{data.last5Avg}%</span></div>
-                          <div className="flex items-center gap-1.5 text-sm"><span className="text-gray-500">5 precedentes :</span><span className={`font-bold ${scoreClass(data.prev5Avg)}`}>{data.prev5Avg}%</span></div>
-                          <span className={`inline-flex items-center gap-0.5 px-2.5 py-0.5 rounded-full text-xs font-bold ${data.last5Avg >= data.prev5Avg ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-600'}`}>{data.last5Avg >= data.prev5Avg ? '+' : ''}{data.last5Avg - data.prev5Avg}%</span>
-                        </div>
-                      )}
-                      {!isPremiumPlus && data.last20.length > 10 && (
-                        <div className="mt-3 pt-3 border-t border-gray-100 text-center">
-                          <Link href="/tarifs" className="text-xs font-semibold text-[#991b1b] hover:text-[#5a1028]">Voir les 20 dernieres sessions avec Premium+ →</Link>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Points forts & faiblesses */}
-                    {data.hasMultipleSubjects && (
-                      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                        <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-400"></span>Points forts & axes d&apos;amelioration</h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                          <div>
-                            <h4 className="text-sm font-bold text-emerald-600 uppercase tracking-wider mb-3 flex items-center gap-2">
-                              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>
-                              Points forts
-                            </h4>
-                            <div className="space-y-3">
-                              {(isPremiumPlus ? data.strengths : data.strengths.slice(0, 1)).map(s => {
-                                const colors = SUBJECT_COLORS[s.color] || SUBJECT_COLORS.primary;
-                                return (<div key={s.id} className={`p-3 rounded-xl border ${colors.border} ${colors.bg}`}><div className="flex justify-between items-center"><span className={`text-sm font-bold ${colors.text}`}>{s.name}</span><span className={`text-lg font-black ${scoreClass(s.avg)}`}>{s.avg}%</span></div><p className="text-[10px] text-gray-400 mt-0.5">{s.count} session{s.count > 1 ? 's' : ''}</p></div>);
-                              })}
-                            </div>
-                          </div>
-                          <div>
-                            <h4 className="text-sm font-bold text-amber-600 uppercase tracking-wider mb-3 flex items-center gap-2">
-                              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
-                              A ameliorer
-                            </h4>
-                            <div className="space-y-3">
-                              {(isPremiumPlus ? data.weaknesses : data.weaknesses.slice(0, 1)).map(s => {
-                                const colors = SUBJECT_COLORS[s.color] || SUBJECT_COLORS.primary;
-                                return (<div key={s.id} className={`p-3 rounded-xl border ${colors.border} ${colors.bg}`}><div className="flex justify-between items-center"><span className={`text-sm font-bold ${colors.text}`}>{s.name}</span><span className={`text-lg font-black ${scoreClass(s.avg)}`}>{s.avg}%</span></div><p className="text-[10px] text-gray-400 mt-0.5">{s.count} session{s.count > 1 ? 's' : ''}</p></div>);
-                              })}
-                            </div>
-                            {data.weaknesses.length > 0 && (
-                              <Link href="/qcm" className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#991b1b] hover:text-[#5a1028]">
-                                Travailler {data.weaknesses[0]?.name}
-                                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
-                              </Link>
-                            )}
-                          </div>
-                        </div>
-                        {!isPremiumPlus && data.strengths.length > 1 && (
-                          <div className="mt-4 pt-4 border-t border-gray-100 text-center">
-                            <Link href="/tarifs" className="text-xs font-semibold text-[#991b1b] hover:text-[#5a1028]">Voir l&apos;analyse complete avec Premium+ →</Link>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </>
-                )
-            )}
-
-            {/* ===== OBJECTIFS (Premium) ===== */}
-            {activeSection === 'objectifs' && (
-              !isPremiumPlus ? (
-                <PremiumLock title="Objectifs et statistiques detaillees" description="Suivez vos objectifs et visualisez la repartition de vos sessions avec Premium+." />
-              ) : !data.hasAnySessions ? (
-                <EmptyState title="Aucune donnee" description="Effectuez des sessions pour voir vos objectifs." ctaHref="/qcm" ctaLabel="Commencer un QCM" />
+                <EmptyState title="Pas assez de données" description="Effectuez plusieurs sessions pour voir votre progression." ctaHref="/entrainement-ecrits" ctaLabel="Commencer une session" />
               ) : (
                 <div className="space-y-6">
-                  {/* Carte 1 : Objectifs de la semaine */}
                   <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                    <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-violet-500"></span>
-                      Objectifs de la semaine
-                    </h3>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                      <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-500"></span>Évolution des scores</h3>
+                      <div className="flex items-center gap-2">
+                        {data.trend === 'up' && <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700">↑ En progression</span>}
+                        {data.trend === 'down' && <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-red-100 text-red-600">↓ En baisse</span>}
+                        {data.trend === 'stable' && <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700">→ Stable</span>}
+                      </div>
+                    </div>
+                    <div className="flex gap-2 mb-4">
+                      {[{ key: 'epreuves', label: 'Par épreuve' }, { key: 'jours', label: 'Par jour' }, { key: 'semaines', label: 'Par semaine' }].map(f => (
+                        <button key={f.key} onClick={() => setChartMode(f.key)} className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${chartMode === f.key ? 'bg-emerald-600 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>{f.label}</button>
+                      ))}
+                    </div>
+                    <ScoreLineChart points={chartData} />
+                    {data.last5Avg !== null && data.prev5Avg !== null && (
+                      <div className="flex flex-wrap items-center gap-3 mt-4 pt-4 border-t border-gray-100">
+                        <div className="flex items-center gap-1.5 text-sm"><span className="text-gray-500">5 dernières :</span><span className={`font-bold ${scoreClass(data.last5Avg)}`}>{data.last5Avg}%</span></div>
+                        <div className="flex items-center gap-1.5 text-sm"><span className="text-gray-500">5 précédentes :</span><span className={`font-bold ${scoreClass(data.prev5Avg)}`}>{data.prev5Avg}%</span></div>
+                        <span className={`inline-flex items-center gap-0.5 px-2.5 py-0.5 rounded-full text-xs font-bold ${data.last5Avg >= data.prev5Avg ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-600'}`}>{data.last5Avg >= data.prev5Avg ? '+' : ''}{data.last5Avg - data.prev5Avg}%</span>
+                      </div>
+                    )}
+                  </div>
+                  {data.hasMultipleSubjects && (
+                    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+                      <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-400"></span>Points forts &amp; axes d&apos;amélioration</h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                          <h4 className="text-sm font-bold text-emerald-600 uppercase tracking-wider mb-3">↑ Points forts</h4>
+                          <div className="space-y-3">{data.strengths.map(s => { const colors = SUBJECT_COLORS[s.color] || SUBJECT_COLORS.primary; return (<div key={s.id} className={`p-3 rounded-xl border ${colors.border} ${colors.bg}`}><div className="flex justify-between items-center"><span className={`text-sm font-bold ${colors.text}`}>{s.name}</span><span className={`text-lg font-black ${scoreClass(s.avg)}`}>{s.avg}%</span></div><p className="text-[10px] text-gray-400 mt-0.5">{s.count} session{s.count > 1 ? 's' : ''}</p></div>); })}</div>
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-bold text-amber-600 uppercase tracking-wider mb-3">À améliorer</h4>
+                          <div className="space-y-3">{data.weaknesses.map(s => { const colors = SUBJECT_COLORS[s.color] || SUBJECT_COLORS.primary; return (<div key={s.id} className={`p-3 rounded-xl border ${colors.border} ${colors.bg}`}><div className="flex justify-between items-center"><span className={`text-sm font-bold ${colors.text}`}>{s.name}</span><span className={`text-lg font-black ${scoreClass(s.avg)}`}>{s.avg}%</span></div><p className="text-[10px] text-gray-400 mt-0.5">{s.count} session{s.count > 1 ? 's' : ''}</p></div>); })}</div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* ===== OBJECTIFS ===== */}
+          {activeSection === 'objectifs' && (
+            <div style={{ paddingTop: 24 }}>
+              <h2 style={{ fontFamily: "'Source Serif 4', serif", fontSize: 26, fontWeight: 600, color: '#1c1410', marginBottom: 20 }}>Objectifs</h2>
+              {!isPremiumPlus ? (
+                <PremiumLock title="Objectifs et statistiques détaillées" description="Suivez vos objectifs et visualisez la répartition de vos sessions avec Premium+." />
+              ) : !data.hasAnySessions ? (
+                <EmptyState title="Aucune donnée" description="Effectuez des sessions pour voir vos objectifs." ctaHref="/entrainement-ecrits" ctaLabel="Commencer une session" />
+              ) : (
+                <div className="space-y-6">
+                  <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+                    <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-violet-500"></span>Objectifs de la semaine</h3>
                     <div className="space-y-4">
-                      {(() => { const pct = Math.min(100, Math.round((data.thisWeekSessions / 5) * 100)); return (<div><div className="flex justify-between items-center mb-1"><span className="text-sm text-gray-600">Sessions réalisées</span><span className="text-sm font-bold text-gray-900">{data.thisWeekSessions}/5 {pct >= 100 && <span className="text-emerald-500">✓</span>}</span></div><div className="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-violet-500 rounded-full transition-all duration-500" style={{ width: `${pct}%` }} /></div></div>); })()}
-                      {(() => { const mins = Math.round(data.thisWeekTime / 60000); const target = 120; const pct = Math.min(100, Math.round((mins / target) * 100)); return (<div><div className="flex justify-between items-center mb-1"><span className="text-sm text-gray-600">Temps d&apos;étude</span><span className="text-sm font-bold text-gray-900">{mins >= 60 ? `${Math.floor(mins / 60)}h${mins % 60 > 0 ? String(mins % 60).padStart(2, '0') : ''}` : `${mins} min`} / 2h{pct >= 100 && <span className="text-emerald-500 ml-1">✓</span>}</span></div><div className="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-[#991b1b] rounded-full transition-all duration-500" style={{ width: `${pct}%` }} /></div></div>); })()}
-                      {(() => { const pct = Math.min(100, Math.round((data.thisWeekActiveDays / 5) * 100)); return (<div><div className="flex justify-between items-center mb-1"><span className="text-sm text-gray-600">Jours actifs</span><span className="text-sm font-bold text-gray-900">{data.thisWeekActiveDays}/5 {pct >= 100 && <span className="text-emerald-500">✓</span>}</span></div><div className="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-purple-500 rounded-full transition-all duration-500" style={{ width: `${pct}%` }} /></div></div>); })()}
+                      {(() => { const pct = Math.min(100, Math.round((data.thisWeekSessions / 5) * 100)); return (<div><div className="flex justify-between items-center mb-1"><span className="text-sm text-gray-600">Sessions réalisées</span><span className="text-sm font-bold text-gray-900">{data.thisWeekSessions}/5 {pct >= 100 && '✓'}</span></div><div className="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-violet-500 rounded-full" style={{ width: `${pct}%` }} /></div></div>); })()}
+                      {(() => { const mins = Math.round(data.thisWeekTime / 60000); const target = 120; const pct = Math.min(100, Math.round((mins / target) * 100)); return (<div><div className="flex justify-between items-center mb-1"><span className="text-sm text-gray-600">Temps d&apos;étude</span><span className="text-sm font-bold text-gray-900">{mins >= 60 ? `${Math.floor(mins / 60)}h${mins % 60 > 0 ? String(mins % 60).padStart(2, '0') : ''}` : `${mins} min`} / 2h</span></div><div className="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-[#991b1b] rounded-full" style={{ width: `${pct}%` }} /></div></div>); })()}
+                      {(() => { const pct = Math.min(100, Math.round((data.thisWeekActiveDays / 5) * 100)); return (<div><div className="flex justify-between items-center mb-1"><span className="text-sm text-gray-600">Jours actifs</span><span className="text-sm font-bold text-gray-900">{data.thisWeekActiveDays}/5</span></div><div className="h-2.5 bg-gray-100 rounded-full overflow-hidden"><div className="h-full bg-purple-500 rounded-full" style={{ width: `${pct}%` }} /></div></div>); })()}
                     </div>
                   </div>
-
-                  {/* Carte 2 : Régularité */}
                   <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
                     <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-violet-400"></span>Régularité</h3>
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-violet-50 rounded-xl p-4 text-center">
-                        <p className="text-3xl font-black text-violet-700">{data.currentStreak}</p>
-                        <p className="text-xs font-medium text-violet-500 mt-1">Jours consécutifs</p>
-                        <p className="text-xs text-gray-400 mt-1">Record : {data.bestStreak} jours</p>
-                      </div>
-                      <div className="bg-slate-50 rounded-xl p-4 text-center">
-                        {(() => { const thisW = Math.round(data.thisWeekTime / 60000); const lastW = Math.round(data.lastWeekTime / 60000); const diff = lastW > 0 ? Math.round(((thisW - lastW) / lastW) * 100) : (thisW > 0 ? 100 : 0); return (<><p className="text-3xl font-black text-slate-700">{thisW >= 60 ? `${Math.floor(thisW / 60)}h${thisW % 60 > 0 ? String(thisW % 60).padStart(2, '0') : ''}` : `${thisW}m`}</p><p className="text-xs font-medium text-slate-500 mt-1">Cette semaine</p><p className={`text-xs mt-1 font-semibold ${diff > 0 ? 'text-emerald-600' : diff < 0 ? 'text-red-500' : 'text-gray-400'}`}>{diff > 0 ? `↑ +${diff}%` : diff < 0 ? `↓ ${diff}%` : '→ Identique'} vs sem. passée</p></>); })()}
-                      </div>
+                      <div className="bg-violet-50 rounded-xl p-4 text-center"><p className="text-3xl font-black text-violet-700">{data.currentStreak}</p><p className="text-xs font-medium text-violet-500 mt-1">Jours consécutifs</p><p className="text-xs text-gray-400 mt-1">Record : {data.bestStreak} jours</p></div>
+                      <div className="bg-slate-50 rounded-xl p-4 text-center">{(() => { const thisW = Math.round(data.thisWeekTime / 60000); const lastW = Math.round(data.lastWeekTime / 60000); const diff = lastW > 0 ? Math.round(((thisW - lastW) / lastW) * 100) : (thisW > 0 ? 100 : 0); return (<><p className="text-3xl font-black text-slate-700">{thisW >= 60 ? `${Math.floor(thisW / 60)}h${thisW % 60 > 0 ? String(thisW % 60).padStart(2, '0') : ''}` : `${thisW}m`}</p><p className="text-xs font-medium text-slate-500 mt-1">Cette semaine</p><p className={`text-xs mt-1 font-semibold ${diff > 0 ? 'text-emerald-600' : diff < 0 ? 'text-red-500' : 'text-gray-400'}`}>{diff > 0 ? `↑ +${diff}%` : diff < 0 ? `↓ ${diff}%` : '→ Identique'} vs sem. passée</p></>); })()}</div>
                     </div>
                   </div>
-
-                  {/* Carte 3 : Objectif score */}
                   <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
                     <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-500"></span>Objectif score</h3>
                     <div className="flex items-center gap-6">
                       <MiniProgressRing value={data.overallAvg} max={data.targetScore} color="#8b5cf6" />
-                      <div className="flex-1">
-                        <p className="text-sm font-bold text-gray-900">Score moyen : {data.overallAvg}%</p>
-                        <p className="text-sm text-gray-500">Prochain palier : {data.targetScore}%</p>
-                        {data.last5Avg !== null && data.prev5Avg !== null && (<p className={`text-xs font-semibold mt-2 ${data.last5Avg > data.prev5Avg ? 'text-emerald-600' : data.last5Avg < data.prev5Avg ? 'text-red-500' : 'text-amber-600'}`}>{data.last5Avg > data.prev5Avg ? `En progression (+${data.last5Avg - data.prev5Avg} pts)` : data.last5Avg < data.prev5Avg ? `En baisse (${data.last5Avg - data.prev5Avg} pts)` : 'Score stable'}</p>)}
-                        <div className="mt-3"><div className="flex justify-between text-xs text-gray-400 mb-1"><span>0%</span><span>Objectif 70%</span><span>100%</span></div><div className="h-2 bg-gray-100 rounded-full overflow-hidden relative"><div className="h-full bg-emerald-500 rounded-full transition-all duration-500" style={{ width: `${Math.min(100, data.overallAvg)}%` }} /><div className="absolute top-0 h-full w-0.5 bg-gray-400" style={{ left: '70%' }} /></div></div>
-                      </div>
+                      <div className="flex-1"><p className="text-sm font-bold text-gray-900">Score moyen : {data.overallAvg}%</p><p className="text-sm text-gray-500">Prochain palier : {data.targetScore}%</p></div>
                     </div>
                   </div>
-
-                  {/* Carte 4 : Maîtrise par matière */}
-                  {data.hasMultipleSubjects && (
-                    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-                      <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-violet-500"></span>Maîtrise par matière</h3>
-                      <div className="space-y-3">
-                        {Object.values(data.subjectStats).filter(s => s.count > 0).sort((a, b) => b.avg - a.avg).map(s => (<div key={s.id}><div className="flex justify-between items-center mb-1"><div className="flex items-center gap-2"><div className="w-2.5 h-2.5 rounded-full" style={{ background: s.color }} /><span className="text-sm font-medium text-gray-700">{s.name}</span></div><div className="flex items-center gap-2"><span className="text-xs text-gray-400">Record : {s.bestScore}%</span><span className="text-sm font-bold text-gray-900">{s.avg}%</span></div></div><div className="h-2 bg-gray-100 rounded-full overflow-hidden relative"><div className="h-full rounded-full transition-all duration-500" style={{ width: `${s.avg}%`, background: s.color }} /><div className="absolute top-0 h-full w-0.5 bg-gray-300" style={{ left: '70%' }} /></div></div>))}
-                        <p className="text-xs text-gray-400 mt-2 flex items-center gap-1"><span className="w-3 h-0.5 bg-gray-300 inline-block"></span> Seuil recommandé : 70%</p>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Carte 5 : Répartition QCM / Examen */}
                   <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
                     <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-violet-400"></span>Répartition des sessions</h3>
                     <div className="flex items-center gap-6">
@@ -708,36 +522,45 @@ export default function DashboardPage() {
                     </div>
                   </div>
                 </div>
-              )
-            )}
+              )}
+            </div>
+          )}
 
-            {/* ===== CLASSEMENT (Premium) ===== */}
-            {activeSection === 'classement' && (
-              !isPremiumPlus ? (
-                <PremiumLock title="Classement et comparaison" description="Comparez vos performances avec les autres etudiants en droit grace a Premium+." />
+          {/* ===== CLASSEMENT ===== */}
+          {activeSection === 'classement' && (
+            <div style={{ paddingTop: 24 }}>
+              <h2 style={{ fontFamily: "'Source Serif 4', serif", fontSize: 26, fontWeight: 600, color: '#1c1410', marginBottom: 20 }}>Classement</h2>
+              {!isPremiumPlus ? (
+                <PremiumLock title="Classement et comparaison" description="Comparez vos performances avec les autres étudiants en droit grâce à Premium+." />
               ) : (
                 <ClassementSection allSessions={allSessions} />
-              )
-            )}
+              )}
+            </div>
+          )}
 
-            {/* ===== FICHES & COURS ===== */}
-            {activeSection === 'fiches' && (
+          {/* ===== FICHES & COURS ===== */}
+          {activeSection === 'fiches' && (
+            <div style={{ paddingTop: 24 }}>
               <FichesSection
                 activeFicheSubject={activeFicheSubject}
                 setActiveFicheSubject={setActiveFicheSubject}
                 isPremiumPlus={isPremiumPlus}
                 onOpenFiche={(fiche) => setSelectedFiche(fiche)}
               />
-            )}
+            </div>
+          )}
 
-            {/* ===== MON COMPTE ===== */}
-            {activeSection === 'account' && (
+          {/* ===== MON COMPTE ===== */}
+          {activeSection === 'account' && (
+            <div style={{ paddingTop: 24 }}>
+              <h2 style={{ fontFamily: "'Source Serif 4', serif", fontSize: 26, fontWeight: 600, color: '#1c1410', marginBottom: 20 }}>Mon compte</h2>
               <AccountSection user={user} tier={tier} />
-            )}
-          </div>
+            </div>
+          )}
+
         </div>
 
-        {/* ===== MODALS ===== */}
+        {/* MODALS */}
         {selectedFiche && (
           <FicheDetailModal
             fiche={selectedFiche}
@@ -759,23 +582,356 @@ export default function DashboardPage() {
           />
         )}
 
-        {/* ===== BANNIERE CONTACT ===== */}
-        <div className="mt-8">
-          <Link href="/contact" className="flex items-center justify-between p-5 bg-gradient-to-r from-amber-50/80 to-orange-50/50 rounded-2xl border border-amber-100/60 shadow-sm hover:border-amber-200 hover:shadow-md transition-all group">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center shrink-0">
-                <svg className="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 12.75c1.148 0 2.278.08 3.383.237 1.037.146 1.866.966 1.866 2.013 0 3.728-2.35 6.75-5.25 6.75S6.75 18.728 6.75 15c0-1.046.83-1.867 1.866-2.013A24.204 24.204 0 0 1 12 12.75Zm0 0c2.883 0 5.647.508 8.207 1.44a23.91 23.91 0 0 1-1.152-6.135c-.22-2.057-1.907-3.555-3.967-3.555H8.912c-2.06 0-3.747 1.498-3.967 3.555A23.867 23.867 0 0 1 3.793 14.19c2.56-.932 5.324-1.44 8.207-1.44ZM12 6a2.25 2.25 0 1 0 0-4.5A2.25 2.25 0 0 0 12 6Z" /></svg>
-              </div>
-              <div>
-                <p className="text-sm font-bold text-gray-900">Un bug ou une suggestion ?</p>
-                <p className="text-xs text-gray-500">Aidez-nous a ameliorer la plateforme.</p>
-              </div>
-            </div>
-            <svg className="w-5 h-5 text-gray-400 group-hover:text-[#991b1b] transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
-          </Link>
+      </main>
+    </div>
+  );
+}
+
+/* ============================================================
+   CRFPA DASH SIDEBAR
+   ============================================================ */
+function CRFPADashSidebar({ activeSection, setActiveSection, user, isPremiumPlus, logOut, drawerOpen, setDrawerOpen }) {
+  const firstName = user?.displayName?.split(' ')[0] || user?.email?.split('@')[0] || 'Loic';
+
+  const navItems = [
+    {
+      id: 'overview', label: "Vue d'ensemble",
+      icon: <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.7"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25a2.25 2.25 0 0 1-2.25-2.25v-2.25Z" /></svg>,
+    },
+    {
+      id: 'fiches', label: 'Fiches & Cours', badge: '12 ch.',
+      icon: <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.7"><path strokeLinecap="round" strokeLinejoin="round" d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2V5zM19 18v3H6" /></svg>,
+    },
+    {
+      id: 'ecrit', label: 'Épreuves écrites', href: '/entrainement-ecrits',
+      icon: <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.7"><path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Z" /></svg>,
+    },
+    {
+      id: 'oral', label: 'Épreuves orales', href: '/entrainement-oraux',
+      icon: <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.7"><path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" /></svg>,
+    },
+    {
+      id: 'examen', label: 'Mode Examen', href: '/examen-blanc',
+      icon: <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.7"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>,
+    },
+    {
+      id: 'historique', label: 'Historique',
+      icon: <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.7"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>,
+    },
+    {
+      id: 'progression', label: 'Progression', locked: !isPremiumPlus,
+      icon: <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.7"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>,
+    },
+    {
+      id: 'objectifs', label: 'Objectifs', locked: !isPremiumPlus,
+      icon: <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.7"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" /></svg>,
+    },
+    {
+      id: 'classement', label: 'Classement', locked: !isPremiumPlus,
+      icon: <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.7"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 0 1-.982-3.172M9.497 14.25a7.454 7.454 0 0 0 .981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 0 0 7.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0 1 16.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.023 6.023 0 0 1-2.52.587 6.023 6.023 0 0 1-2.52-.587" /></svg>,
+    },
+  ];
+
+  const SidebarInner = () => (
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: 0 }}>
+      {/* Brand */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, paddingBottom: 14, borderBottom: '1px solid rgba(255,255,255,0.10)', marginBottom: 14, flexShrink: 0 }}>
+        <div style={{ width: 36, height: 36, borderRadius: 9, background: 'linear-gradient(135deg,#fff 0%,#f0e8e0 100%)', display: 'grid', placeItems: 'center', fontSize: 18, flexShrink: 0, boxShadow: '0 1px 4px rgba(0,0,0,0.12)' }}>⚖︎</div>
+        <div>
+          <div style={{ fontFamily: "'Source Serif 4', serif", fontSize: 15, fontWeight: 600, color: 'white', lineHeight: 1.2 }}>Prépa <b>CRFPA</b></div>
+          <div style={{ fontSize: 10, letterSpacing: '0.14em', opacity: 0.7, color: 'white', textTransform: 'uppercase' }}>Tableau de bord</div>
         </div>
       </div>
+
+      {/* Nav label */}
+      <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.16em', opacity: 0.55, color: 'white', textTransform: 'uppercase', marginBottom: 6, flexShrink: 0 }}>Navigation</div>
+
+      {/* Nav */}
+      <nav style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1, overflowY: 'auto' }}>
+        {navItems.map(item => {
+          const isActive = activeSection === item.id;
+          const baseStyle = {
+            display: 'flex', alignItems: 'center', gap: 10,
+            padding: '8px 10px', borderRadius: 9,
+            color: isActive ? 'white' : 'rgba(255,255,255,0.82)',
+            fontSize: 13.5, fontWeight: isActive ? 600 : 500,
+            textDecoration: 'none', border: 'none', cursor: 'pointer',
+            background: isActive ? 'rgba(255,255,255,0.14)' : 'transparent',
+            textAlign: 'left', width: '100%', boxSizing: 'border-box',
+            transition: 'background 120ms',
+          };
+          if (item.href) {
+            return (
+              <Link key={item.id} href={item.href} style={baseStyle}
+                onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.09)'}
+                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+              >
+                <span style={{ opacity: 0.85, display: 'flex' }}>{item.icon}</span>
+                <span style={{ flex: 1 }}>{item.label}</span>
+              </Link>
+            );
+          }
+          return (
+            <button key={item.id}
+              onClick={() => { if (!item.locked) { setActiveSection(item.id); setDrawerOpen(false); } }}
+              style={{ ...baseStyle, cursor: item.locked ? 'default' : 'pointer', opacity: item.locked ? 0.65 : 1 }}
+              onMouseEnter={e => { if (!isActive && !item.locked) e.currentTarget.style.background = 'rgba(255,255,255,0.09)'; }}
+              onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = item.locked ? 'transparent' : 'transparent'; }}
+            >
+              <span style={{ opacity: isActive ? 1 : 0.85, display: 'flex' }}>{item.icon}</span>
+              <span style={{ flex: 1 }}>{item.label}</span>
+              {item.badge && <span style={{ fontSize: 10, background: 'rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.9)', padding: '1px 6px', borderRadius: 4 }}>{item.badge}</span>}
+              {item.locked && <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="rgba(255,255,255,0.55)" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>}
+            </button>
+          );
+        })}
+      </nav>
+
+      {/* Premium card */}
+      {!isPremiumPlus && (
+        <div style={{ margin: '14px 0 10px', padding: 14, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.10)', borderRadius: 12, flexShrink: 0 }}>
+          <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: '0.12em', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', marginBottom: 6 }}>Plan Essentiel</div>
+          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', margin: '0 0 10px', lineHeight: 1.45 }}>Débloquez Progression, Objectifs &amp; Classement</p>
+          <Link href="/tarifs" style={{ display: 'block', padding: '7px 12px', background: 'white', color: '#7a1a2b', borderRadius: 8, fontSize: 12, fontWeight: 700, textAlign: 'center', textDecoration: 'none' }}>Passer Premium →</Link>
+        </div>
+      )}
+
+      {/* User + logout */}
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 10, flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '4px 2px 6px' }}>
+          <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'grid', placeItems: 'center', color: 'white', fontSize: 11.5, fontWeight: 700, flexShrink: 0 }}>{firstName[0].toUpperCase()}</div>
+          <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.9)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{firstName}</span>
+          <button onClick={() => setActiveSection('account')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.6)', padding: 2, display: 'flex' }} title="Mon compte">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
+          </button>
+        </div>
+        <button onClick={logOut} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '5px 2px', background: 'none', border: 'none', cursor: 'pointer', color: '#ffb4b8', fontSize: 12, fontWeight: 500, width: '100%' }}>
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" /></svg>
+          Se déconnecter
+        </button>
+      </div>
+    </div>
+  );
+
+  const sidebarStyle = {
+    width: 248, flexShrink: 0, background: '#7a1a2b',
+    padding: '18px 14px', height: '100vh', overflowY: 'auto',
+    boxSizing: 'border-box',
+  };
+
+  return (
+    <>
+      {/* Desktop */}
+      <aside className="hidden md:block" style={sidebarStyle}>
+        <SidebarInner />
+      </aside>
+      {/* Mobile drawer */}
+      <div className="md:hidden" style={{ ...sidebarStyle, position: 'fixed', top: 0, left: drawerOpen ? 0 : -260, zIndex: 20, transition: 'left 240ms ease', width: 260 }}>
+        <SidebarInner />
+      </div>
     </>
+  );
+}
+
+/* ============================================================
+   OVERVIEW SECTION
+   ============================================================ */
+function OverviewSection({ data, firstName, specialOpen, setSpecialOpen }) {
+  const today = new Date();
+  const FR_DAYS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+  const FR_MONTHS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+  const dateStr = `${FR_DAYS[today.getDay()]} ${today.getDate()} ${FR_MONTHS[today.getMonth()]}`;
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+
+      {/* Topbar desktop */}
+      <div className="hidden md:flex" style={{ alignItems: 'center', justifyContent: 'space-between', paddingTop: 20, paddingBottom: 4 }}>
+        <span style={{ fontSize: 13, color: '#8a766f' }}>{dateStr}</span>
+        <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#7a1a2b', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 12.5, fontWeight: 700 }}>
+          {firstName[0].toUpperCase()}
+        </div>
+      </div>
+
+      {/* Greeting */}
+      <h1 className="hidden md:block" style={{ fontFamily: "'Source Serif 4', serif", fontSize: 30, fontWeight: 600, letterSpacing: '-0.025em', color: '#1c1410', margin: 0 }}>
+        Bonjour {firstName}
+      </h1>
+
+      {/* Hero card */}
+      <div style={{ background: 'linear-gradient(120deg,#5a0f1f 0%,#7a1a2b 55%,#9b3548 100%)', borderRadius: 14, padding: '22px 120px 22px 26px', position: 'relative', overflow: 'hidden', color: 'white', minHeight: 110 }}>
+        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', opacity: 0.8, marginBottom: 6, textTransform: 'uppercase' }}>Bienvenue</div>
+        <h2 style={{ fontFamily: "'Source Serif 4', serif", fontSize: 22, fontWeight: 600, margin: '0 0 8px', lineHeight: 1.25 }}>Deux épreuves, un seul terrain d&apos;entraînement</h2>
+        <p style={{ fontSize: 13, lineHeight: 1.5, opacity: 0.9, margin: 0 }}>Côté écrit : note de synthèse, obligations, spécialité, procédure. Côté oral : Grand Oral et Anglais juridique.</p>
+        {/* Seal */}
+        <div style={{ position: 'absolute', right: 22, top: '50%', transform: 'translateY(-50%)', width: 84, height: 84, borderRadius: '50%', border: '1.5px dashed rgba(255,255,255,0.4)', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+          <span style={{ fontFamily: "'Source Serif 4', serif", fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.88)', textAlign: 'center', lineHeight: 1.1 }}>CRFPA</span>
+        </div>
+        {/* Decorative halos */}
+        <div style={{ position: 'absolute', top: -40, right: 120, width: 200, height: 200, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: -60, left: -30, width: 180, height: 180, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      </div>
+
+      {/* KPI row */}
+      <CRFPAKPIRow data={data} />
+
+      {/* Two-column grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+        <ColumnPane kind="ecrit" title="Épreuves écrites" sub="Synthèse · Obligations · Spécialité · Procédure" subjects={ECRIT_SUBJECTS} specialOpen={specialOpen} setSpecialOpen={setSpecialOpen} />
+        <ColumnPane kind="oral" title="Épreuves orales" sub="Grand Oral · Anglais juridique" subjects={ORAL_SUBJECTS} />
+      </div>
+
+      {/* Suggest footer */}
+      <Link href="/contact" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 18px', background: '#fff8e1', border: '1px solid #f3e3a8', borderRadius: 10, textDecoration: 'none', boxShadow: '0 1px 0 rgba(122,26,43,0.04)' }}>
+        <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#fff3cd', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#b07a0a" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" /></svg>
+        </div>
+        <div style={{ flex: 1 }}>
+          <p style={{ fontSize: 13.5, fontWeight: 600, color: '#1c1410', margin: 0 }}>Un bug ou une suggestion ?</p>
+          <p style={{ fontSize: 12, color: '#8a766f', margin: 0 }}>Aidez-nous à améliorer la plateforme</p>
+        </div>
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#8a766f" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+      </Link>
+    </div>
+  );
+}
+
+
+/* ============================================================
+   CRFPA KPI ROW
+   ============================================================ */
+function CRFPAKPIRow({ data }) {
+  const kpis = [
+    {
+      label: 'Jours consécutifs',
+      value: data.currentStreak > 0 ? `${data.currentStreak}j` : '0j',
+      icoColor: '#b07a0a', icoFill: '#fff4d6',
+      icon: <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8"><path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z" /></svg>,
+    },
+    {
+      label: 'Score moyen',
+      value: data.hasAnySessions ? `${data.avgScore}%` : '—',
+      icoColor: '#2e6a47', icoFill: '#e3f1e8',
+      icon: <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8"><path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" /></svg>,
+    },
+    {
+      label: 'Cette semaine',
+      value: `${data.thisWeekSessions}`,
+      suffix: 'sessions',
+      icoColor: '#345f8a', icoFill: '#e1ebf6',
+      icon: <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8"><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>,
+    },
+    {
+      label: 'Progression',
+      value: data.trend === 'up' ? '↑' : data.trend === 'down' ? '↓' : data.trend === 'stable' ? '→' : '—',
+      icoColor: '#4f4287', icoFill: '#ece6f5',
+      icon: <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>,
+    },
+  ];
+
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
+      {kpis.map((kpi, i) => (
+        <div key={i} style={{ background: '#fff', border: '1px solid #ead8d3', borderRadius: 10, padding: '13px 14px', display: 'flex', alignItems: 'center', gap: 10, boxShadow: '0 1px 0 rgba(122,26,43,0.04), 0 8px 24px -12px rgba(122,26,43,0.10)' }}>
+          <div style={{ width: 36, height: 36, borderRadius: 9, background: kpi.icoFill, display: 'grid', placeItems: 'center', color: kpi.icoColor, flexShrink: 0 }}>
+            {kpi.icon}
+          </div>
+          <div>
+            <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: '0.14em', color: '#8a766f', textTransform: 'uppercase', lineHeight: 1.3 }}>{kpi.label}</div>
+            <div style={{ fontFamily: "'Source Serif 4', serif", fontSize: 22, fontWeight: 600, letterSpacing: '-0.02em', color: '#1c1410', lineHeight: 1.15 }}>
+              {kpi.value}
+              {kpi.suffix && <span style={{ fontSize: 11, fontWeight: 500, color: '#8a766f', marginLeft: 3 }}>{kpi.suffix}</span>}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ============================================================
+   COLUMN PANE (Écrites | Oraux)
+   ============================================================ */
+function ColumnPane({ kind, title, sub, subjects, specialOpen, setSpecialOpen }) {
+  const accent = kind === 'ecrit' ? '#7a1a2b' : '#4f4287';
+  const icoFill = kind === 'ecrit' ? '#f9e9ec' : '#ece6f5';
+  const href = kind === 'ecrit' ? '/entrainement-ecrits' : '/entrainement-oraux';
+
+  const PaneIcon = kind === 'ecrit'
+    ? <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Z" /></svg>
+    : <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" /></svg>;
+
+  return (
+    <div style={{ background: '#fff', border: '1px solid #ead8d3', borderRadius: 14, padding: '18px 18px 20px', borderTop: `3px solid ${accent}`, display: 'flex', flexDirection: 'column' }}>
+      {/* Header */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+        <div style={{ width: 32, height: 32, borderRadius: 8, display: 'grid', placeItems: 'center', background: icoFill, color: accent, flexShrink: 0 }}>
+          {PaneIcon}
+        </div>
+        <div>
+          <h3 style={{ fontFamily: "'Source Serif 4', serif", fontSize: 17, fontWeight: 600, margin: 0, color: '#1c1410' }}>{title}</h3>
+          <p style={{ fontSize: 11.5, color: '#8a766f', margin: 0, lineHeight: 1.3 }}>{sub}</p>
+        </div>
+      </div>
+
+      {/* Subject tiles */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flex: 1 }}>
+        {subjects.map(s => {
+          const ts = TONE_STYLES[s.tone] || { bg: '#f5f5f5', border: '#ddd', code: '#555' };
+          const isE3 = s.code === 'E3';
+
+          if (isE3) {
+            return (
+              <div key={s.code}>
+                <button
+                  onClick={() => setSpecialOpen && setSpecialOpen(!specialOpen)}
+                  style={{ width: '100%', display: 'flex', alignItems: 'center', padding: '11px 14px', borderRadius: 10, border: `1px solid ${ts.border}`, background: ts.bg, cursor: 'pointer', textAlign: 'left', transition: 'transform 120ms, box-shadow 120ms', boxSizing: 'border-box' }}
+                  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 6px 16px -10px rgba(0,0,0,0.2)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
+                >
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: '0.12em', color: ts.code, textTransform: 'uppercase', opacity: 0.85 }}>{s.code}</div>
+                    <div style={{ fontSize: 13.5, fontWeight: 600, color: '#1c1410' }}>{s.name}</div>
+                  </div>
+                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke={ts.code} strokeWidth="2" style={{ transform: specialOpen ? 'rotate(180deg)' : '', transition: 'transform 120ms', flexShrink: 0 }}><path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                </button>
+                {specialOpen && (
+                  <div style={{ marginTop: 4, padding: '6px 8px', background: '#f0edf9', borderRadius: 8, display: 'flex', flexDirection: 'column', gap: 2 }}>
+                    {SPECIALITES.map(sp => (
+                      <Link key={sp} href="/entrainement-ecrits" style={{ fontSize: 12.5, color: '#553c7a', padding: '5px 8px', borderRadius: 6, textDecoration: 'none', display: 'block', transition: 'background 80ms' }}
+                        onMouseEnter={e => e.currentTarget.style.background = '#e2d9f3'}
+                        onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                      >
+                        {sp}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          }
+
+          return (
+            <Link key={s.code} href={href}
+              style={{ display: 'flex', flexDirection: 'column', padding: '11px 14px', borderRadius: 10, border: `1px solid ${ts.border}`, background: ts.bg, textDecoration: 'none', transition: 'transform 120ms, box-shadow 120ms' }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 6px 16px -10px rgba(0,0,0,0.2)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
+            >
+              <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: '0.12em', color: ts.code, textTransform: 'uppercase', opacity: 0.85 }}>{s.code}</div>
+              <div style={{ fontSize: 13.5, fontWeight: 600, color: '#1c1410' }}>{s.name}</div>
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* CTA */}
+      <Link href={href} style={{ display: 'block', marginTop: 14, border: `1px dashed ${accent}88`, background: 'transparent', color: accent, padding: '10px 12px', borderRadius: 9, fontWeight: 600, fontSize: 12.5, cursor: 'pointer', textAlign: 'center', textDecoration: 'none', boxSizing: 'border-box', transition: 'background 120ms' }}
+        onMouseEnter={e => e.currentTarget.style.background = kind === 'ecrit' ? '#f9e9ec' : '#ece6f5'}
+        onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+      >
+        + Lancer une session {kind === 'ecrit' ? 'écrite' : 'orale'}
+      </Link>
+    </div>
   );
 }
 
