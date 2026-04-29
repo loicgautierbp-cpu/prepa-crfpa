@@ -37,12 +37,12 @@ const ORAL_SUBJECTS = [
 ];
 const SPECIALITES = ['Droit civil', 'Droit des affaires', 'Droit social', 'Droit pénal', 'Droit administratif', 'Droit international'];
 const TONE_STYLES = {
-  e1: { bg: '#fbf2e3', border: '#e8d4a8', code: '#8a6a1f' },
-  e2: { bg: '#e7f0e9', border: '#b9d4be', code: '#2e5e3f' },
-  e3: { bg: '#e8f0f5', border: '#b8cfdc', code: '#2c5778' },
-  e4: { bg: '#efe9f4', border: '#cabddb', code: '#553c7a' },
-  o1: { bg: '#f4e3e6', border: '#e0b8c0', code: '#7a1a2b' },
-  o2: { bg: '#f3eae0', border: '#d8c0a8', code: '#6a4520' },
+  e1: { bg: '#fdfaf4', border: '#ede8d8', code: '#8a6a1f' },
+  e2: { bg: '#f5faf6', border: '#d8eadb', code: '#2e6040' },
+  e3: { bg: '#f3f8fc', border: '#d4e4ef', code: '#2c5778' },
+  e4: { bg: '#f7f4fb', border: '#ddd5ec', code: '#553c7a' },
+  o1: { bg: '#fdf5f6', border: '#ecd4d8', code: '#8b2035' },
+  o2: { bg: '#fdf8f3', border: '#e8dccc', code: '#6a4520' },
 };
 
 /* ========== SIDEBAR MENU ITEMS ========== */
@@ -322,7 +322,7 @@ export default function DashboardPage() {
   const firstName = user?.displayName?.split(' ')[0] || user?.email?.split('@')[0] || 'Loic';
 
   return (
-    <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: '#fdf6f3', display: 'flex', overflow: 'hidden', fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ position: 'fixed', inset: 0, zIndex: 200, background: '#f5f6f8', display: 'flex', overflow: 'hidden', fontFamily: "'Inter', sans-serif" }}>
 
       {/* Backdrop mobile */}
       {drawerOpen && (
@@ -341,7 +341,7 @@ export default function DashboardPage() {
       />
 
       {/* MAIN */}
-      <main style={{ flex: 1, overflowY: 'auto', height: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <main style={{ flex: 1, overflowY: 'auto', height: '100vh', display: 'flex', flexDirection: 'column', background: '#f5f6f8' }}>
 
         {/* Topbar mobile */}
         <div className="md:hidden flex items-center justify-between" style={{ padding: '0 16px', height: 56, background: '#7a1a2b', flexShrink: 0 }}>
@@ -743,33 +743,31 @@ function OverviewSection({ data, firstName, specialOpen, setSpecialOpen }) {
   const dateStr = `${FR_DAYS[today.getDay()]} ${today.getDate()} ${FR_MONTHS[today.getMonth()]}`;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
 
       {/* Topbar desktop */}
       <div className="hidden md:flex" style={{ alignItems: 'center', justifyContent: 'space-between', paddingTop: 20, paddingBottom: 4 }}>
-        <span style={{ fontSize: 13, color: '#8a766f' }}>{dateStr}</span>
+        <span style={{ fontSize: 13, color: '#9da3ae' }}>{dateStr}</span>
         <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#7a1a2b', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 12.5, fontWeight: 700 }}>
           {firstName[0].toUpperCase()}
         </div>
       </div>
 
       {/* Greeting */}
-      <h1 className="hidden md:block" style={{ fontFamily: "'Source Serif 4', serif", fontSize: 30, fontWeight: 600, letterSpacing: '-0.025em', color: '#1c1410', margin: 0 }}>
+      <h1 className="hidden md:block" style={{ fontFamily: "'Source Serif 4', serif", fontSize: 28, fontWeight: 600, letterSpacing: '-0.02em', color: '#1e2128', margin: 0 }}>
         Bonjour {firstName}
       </h1>
 
       {/* Hero card */}
-      <div style={{ background: 'linear-gradient(120deg,#5a0f1f 0%,#7a1a2b 55%,#9b3548 100%)', borderRadius: 14, padding: '22px 120px 22px 26px', position: 'relative', overflow: 'hidden', color: 'white', minHeight: 110 }}>
-        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', opacity: 0.8, marginBottom: 6, textTransform: 'uppercase' }}>Bienvenue</div>
-        <h2 style={{ fontFamily: "'Source Serif 4', serif", fontSize: 22, fontWeight: 600, margin: '0 0 8px', lineHeight: 1.25 }}>Deux épreuves, un seul terrain d&apos;entraînement</h2>
-        <p style={{ fontSize: 13, lineHeight: 1.5, opacity: 0.9, margin: 0 }}>Côté écrit : note de synthèse, obligations, spécialité, procédure. Côté oral : Grand Oral et Anglais juridique.</p>
+      <div style={{ background: 'linear-gradient(135deg, #8b2035 0%, #a83450 55%, #c25570 100%)', borderRadius: 14, padding: '22px 120px 22px 26px', position: 'relative', overflow: 'hidden', color: 'white', minHeight: 100 }}>
+        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', opacity: 0.75, marginBottom: 6, textTransform: 'uppercase' }}>Bienvenue</div>
+        <h2 style={{ fontFamily: "'Source Serif 4', serif", fontSize: 21, fontWeight: 600, margin: '0 0 7px', lineHeight: 1.25 }}>Deux épreuves, un seul terrain d&apos;entraînement</h2>
+        <p style={{ fontSize: 12.5, lineHeight: 1.5, opacity: 0.88, margin: 0 }}>Côté écrit : note de synthèse, obligations, spécialité, procédure. Côté oral : Grand Oral et Anglais juridique.</p>
         {/* Seal */}
-        <div style={{ position: 'absolute', right: 22, top: '50%', transform: 'translateY(-50%)', width: 84, height: 84, borderRadius: '50%', border: '1.5px dashed rgba(255,255,255,0.4)', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
-          <span style={{ fontFamily: "'Source Serif 4', serif", fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.88)', textAlign: 'center', lineHeight: 1.1 }}>CRFPA</span>
+        <div style={{ position: 'absolute', right: 22, top: '50%', transform: 'translateY(-50%)', width: 78, height: 78, borderRadius: '50%', border: '1.5px dashed rgba(255,255,255,0.35)', display: 'grid', placeItems: 'center' }}>
+          <span style={{ fontFamily: "'Source Serif 4', serif", fontSize: 16, fontWeight: 700, color: 'rgba(255,255,255,0.82)', textAlign: 'center', lineHeight: 1.1 }}>CRFPA</span>
         </div>
-        {/* Decorative halos */}
-        <div style={{ position: 'absolute', top: -40, right: 120, width: 200, height: 200, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: -60, left: -30, width: 180, height: 180, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: -50, right: 100, width: 220, height: 220, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 65%)', pointerEvents: 'none' }} />
       </div>
 
       {/* KPI row */}
@@ -782,15 +780,15 @@ function OverviewSection({ data, firstName, specialOpen, setSpecialOpen }) {
       </div>
 
       {/* Suggest footer */}
-      <Link href="/contact" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 18px', background: '#fff8e1', border: '1px solid #f3e3a8', borderRadius: 10, textDecoration: 'none', boxShadow: '0 1px 0 rgba(122,26,43,0.04)' }}>
-        <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#fff3cd', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#b07a0a" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" /></svg>
+      <Link href="/contact" style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '13px 16px', background: '#ffffff', border: '1px solid #e8eaed', borderRadius: 10, textDecoration: 'none', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+        <div style={{ width: 28, height: 28, borderRadius: 8, background: '#f0f2f5', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#6b7280" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" /></svg>
         </div>
         <div style={{ flex: 1 }}>
-          <p style={{ fontSize: 13.5, fontWeight: 600, color: '#1c1410', margin: 0 }}>Un bug ou une suggestion ?</p>
-          <p style={{ fontSize: 12, color: '#8a766f', margin: 0 }}>Aidez-nous à améliorer la plateforme</p>
+          <p style={{ fontSize: 13, fontWeight: 600, color: '#374151', margin: 0 }}>Un bug ou une suggestion ?</p>
+          <p style={{ fontSize: 11.5, color: '#9da3ae', margin: 0 }}>Aidez-nous à améliorer la plateforme</p>
         </div>
-        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#8a766f" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#c0c4cc" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
       </Link>
     </div>
   );
@@ -832,15 +830,15 @@ function CRFPAKPIRow({ data }) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
       {kpis.map((kpi, i) => (
-        <div key={i} style={{ background: '#fff', border: '1px solid #ead8d3', borderRadius: 10, padding: '13px 14px', display: 'flex', alignItems: 'center', gap: 10, boxShadow: '0 1px 0 rgba(122,26,43,0.04), 0 8px 24px -12px rgba(122,26,43,0.10)' }}>
-          <div style={{ width: 36, height: 36, borderRadius: 9, background: kpi.icoFill, display: 'grid', placeItems: 'center', color: kpi.icoColor, flexShrink: 0 }}>
+        <div key={i} style={{ background: '#ffffff', border: '1px solid #e8eaed', borderRadius: 12, padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 12, boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
+          <div style={{ width: 36, height: 36, borderRadius: 10, background: kpi.icoFill, display: 'grid', placeItems: 'center', color: kpi.icoColor, flexShrink: 0, opacity: 0.9 }}>
             {kpi.icon}
           </div>
           <div>
-            <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: '0.14em', color: '#8a766f', textTransform: 'uppercase', lineHeight: 1.3 }}>{kpi.label}</div>
-            <div style={{ fontFamily: "'Source Serif 4', serif", fontSize: 22, fontWeight: 600, letterSpacing: '-0.02em', color: '#1c1410', lineHeight: 1.15 }}>
+            <div style={{ fontSize: 9.5, fontWeight: 600, letterSpacing: '0.12em', color: '#9da3ae', textTransform: 'uppercase', lineHeight: 1.3 }}>{kpi.label}</div>
+            <div style={{ fontFamily: "'Source Serif 4', serif", fontSize: 21, fontWeight: 600, letterSpacing: '-0.02em', color: '#1e2128', lineHeight: 1.15 }}>
               {kpi.value}
-              {kpi.suffix && <span style={{ fontSize: 11, fontWeight: 500, color: '#8a766f', marginLeft: 3 }}>{kpi.suffix}</span>}
+              {kpi.suffix && <span style={{ fontSize: 11, fontWeight: 500, color: '#9da3ae', marginLeft: 3 }}>{kpi.suffix}</span>}
             </div>
           </div>
         </div>
@@ -862,7 +860,7 @@ function ColumnPane({ kind, title, sub, subjects, specialOpen, setSpecialOpen })
     : <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" /></svg>;
 
   return (
-    <div style={{ background: '#fff', border: '1px solid #ead8d3', borderRadius: 14, padding: '18px 18px 20px', borderTop: `3px solid ${accent}`, display: 'flex', flexDirection: 'column' }}>
+    <div style={{ background: '#ffffff', border: '1px solid #e8eaed', borderRadius: 14, padding: '18px 18px 20px', borderTop: `2px solid ${accent}`, display: 'flex', flexDirection: 'column', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
         <div style={{ width: 32, height: 32, borderRadius: 8, display: 'grid', placeItems: 'center', background: icoFill, color: accent, flexShrink: 0 }}>
