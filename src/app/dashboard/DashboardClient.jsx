@@ -37,12 +37,12 @@ const ORAL_SUBJECTS = [
 ];
 const SPECIALITES = ['Droit civil', 'Droit des affaires', 'Droit social', 'Droit pénal', 'Droit administratif', 'Droit international'];
 const TONE_STYLES = {
-  e1: { bg: '#fdfaf4', border: '#ede8d8', code: '#8a6a1f' },
-  e2: { bg: '#f5faf6', border: '#d8eadb', code: '#2e6040' },
-  e3: { bg: '#f3f8fc', border: '#d4e4ef', code: '#2c5778' },
-  e4: { bg: '#f7f4fb', border: '#ddd5ec', code: '#553c7a' },
-  o1: { bg: '#fdf5f6', border: '#ecd4d8', code: '#8b2035' },
-  o2: { bg: '#fdf8f3', border: '#e8dccc', code: '#6a4520' },
+  e1: { bg: '#fef7e6', border: '#f0d990', code: '#7a5c10' },  // ambre chaud
+  e2: { bg: '#e9f6ec', border: '#9fd4aa', code: '#236637' },  // vert frais
+  e3: { bg: '#e7f2fb', border: '#8ec4df', code: '#1f5070' },  // bleu clair
+  e4: { bg: '#f0eafb', border: '#c0a8e8', code: '#4a317a' },  // violet doux
+  o1: { bg: '#fce8ec', border: '#e8a4b0', code: '#8b2035' },  // rose bordeaux
+  o2: { bg: '#fdf1e4', border: '#e0c090', code: '#6a4520' },  // caramel
 };
 
 /* ========== SIDEBAR MENU ITEMS ========== */
@@ -632,80 +632,123 @@ function CRFPADashSidebar({ activeSection, setActiveSection, user, isPremiumPlus
     },
   ];
 
+  // Séparer les items nav en 2 groupes
+  const mainNav = navItems.filter(i => !i.locked);
+  const premiumNav = navItems.filter(i => i.locked);
+
+  const NavItem = ({ item }) => {
+    const isActive = activeSection === item.id;
+    const iconBox = (
+      <div style={{
+        width: 28, height: 28, borderRadius: 7, flexShrink: 0,
+        display: 'grid', placeItems: 'center',
+        background: isActive ? 'rgba(255,255,255,0.22)' : 'rgba(255,255,255,0.08)',
+        color: isActive ? 'white' : 'rgba(255,255,255,0.75)',
+        transition: 'background 120ms',
+      }}>
+        {item.icon}
+      </div>
+    );
+    const wrapStyle = {
+      display: 'flex', alignItems: 'center', gap: 9,
+      padding: '6px 8px 6px 4px', borderRadius: 9,
+      color: isActive ? 'white' : 'rgba(255,255,255,0.78)',
+      fontSize: 13, fontWeight: isActive ? 600 : 400,
+      textDecoration: 'none', border: 'none', cursor: 'pointer',
+      background: isActive ? 'rgba(255,255,255,0.13)' : 'transparent',
+      textAlign: 'left', width: '100%', boxSizing: 'border-box',
+      borderLeft: isActive ? '2px solid rgba(255,255,255,0.6)' : '2px solid transparent',
+      transition: 'background 120ms, border-color 120ms',
+      opacity: item.locked ? 0.6 : 1,
+    };
+
+    if (item.href) {
+      return (
+        <Link href={item.href} style={wrapStyle}
+          onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
+        >
+          {iconBox}
+          <span style={{ flex: 1 }}>{item.label}</span>
+        </Link>
+      );
+    }
+    return (
+      <button
+        onClick={() => { if (!item.locked) { setActiveSection(item.id); setDrawerOpen(false); } }}
+        style={{ ...wrapStyle, cursor: item.locked ? 'default' : 'pointer' }}
+        onMouseEnter={e => { if (!isActive && !item.locked) e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; }}
+        onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}
+      >
+        {iconBox}
+        <span style={{ flex: 1 }}>{item.label}</span>
+        {item.badge && (
+          <span style={{ fontSize: 9.5, background: 'rgba(255,255,255,0.18)', color: 'rgba(255,255,255,0.85)', padding: '1px 6px', borderRadius: 4, fontWeight: 600 }}>{item.badge}</span>
+        )}
+        {item.locked && (
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="rgba(255,255,255,0.5)" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+          </svg>
+        )}
+      </button>
+    );
+  };
+
   const SidebarInner = () => (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', gap: 0 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+
       {/* Brand */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, paddingBottom: 14, borderBottom: '1px solid rgba(255,255,255,0.10)', marginBottom: 14, flexShrink: 0 }}>
-        <div style={{ width: 36, height: 36, borderRadius: 9, background: 'linear-gradient(135deg,#fff 0%,#f0e8e0 100%)', display: 'grid', placeItems: 'center', fontSize: 18, flexShrink: 0, boxShadow: '0 1px 4px rgba(0,0,0,0.12)' }}>⚖︎</div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '0 0 16px', borderBottom: '1px solid rgba(255,255,255,0.10)', marginBottom: 16, flexShrink: 0 }}>
+        <div style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(4px)', border: '1px solid rgba(255,255,255,0.25)', display: 'grid', placeItems: 'center', fontSize: 19, flexShrink: 0 }}>⚖︎</div>
         <div>
-          <div style={{ fontFamily: "'Source Serif 4', serif", fontSize: 15, fontWeight: 600, color: 'white', lineHeight: 1.2 }}>Prépa <b>CRFPA</b></div>
-          <div style={{ fontSize: 10, letterSpacing: '0.14em', opacity: 0.7, color: 'white', textTransform: 'uppercase' }}>Tableau de bord</div>
+          <div style={{ fontFamily: "'Source Serif 4', serif", fontSize: 15, fontWeight: 700, color: 'white', lineHeight: 1.2 }}>Prépa <span style={{ fontWeight: 800 }}>CRFPA</span></div>
+          <div style={{ fontSize: 9.5, letterSpacing: '0.12em', color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase', marginTop: 1 }}>Tableau de bord</div>
         </div>
       </div>
 
-      {/* Nav label */}
-      <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.16em', opacity: 0.55, color: 'white', textTransform: 'uppercase', marginBottom: 6, flexShrink: 0 }}>Navigation</div>
+      {/* Nav principale */}
+      <div style={{ flexShrink: 0 }}>
+        <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', marginBottom: 6, paddingLeft: 4 }}>Navigation</div>
+        <nav style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+          {mainNav.map(item => <NavItem key={item.id} item={item} />)}
+        </nav>
+      </div>
 
-      {/* Nav */}
-      <nav style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1, overflowY: 'auto' }}>
-        {navItems.map(item => {
-          const isActive = activeSection === item.id;
-          const baseStyle = {
-            display: 'flex', alignItems: 'center', gap: 10,
-            padding: '8px 10px', borderRadius: 9,
-            color: isActive ? 'white' : 'rgba(255,255,255,0.82)',
-            fontSize: 13.5, fontWeight: isActive ? 600 : 500,
-            textDecoration: 'none', border: 'none', cursor: 'pointer',
-            background: isActive ? 'rgba(255,255,255,0.14)' : 'transparent',
-            textAlign: 'left', width: '100%', boxSizing: 'border-box',
-            transition: 'background 120ms',
-          };
-          if (item.href) {
-            return (
-              <Link key={item.id} href={item.href} style={baseStyle}
-                onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.09)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-              >
-                <span style={{ opacity: 0.85, display: 'flex' }}>{item.icon}</span>
-                <span style={{ flex: 1 }}>{item.label}</span>
-              </Link>
-            );
-          }
-          return (
-            <button key={item.id}
-              onClick={() => { if (!item.locked) { setActiveSection(item.id); setDrawerOpen(false); } }}
-              style={{ ...baseStyle, cursor: item.locked ? 'default' : 'pointer', opacity: item.locked ? 0.65 : 1 }}
-              onMouseEnter={e => { if (!isActive && !item.locked) e.currentTarget.style.background = 'rgba(255,255,255,0.09)'; }}
-              onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = item.locked ? 'transparent' : 'transparent'; }}
-            >
-              <span style={{ opacity: isActive ? 1 : 0.85, display: 'flex' }}>{item.icon}</span>
-              <span style={{ flex: 1 }}>{item.label}</span>
-              {item.badge && <span style={{ fontSize: 10, background: 'rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.9)', padding: '1px 6px', borderRadius: 4 }}>{item.badge}</span>}
-              {item.locked && <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="rgba(255,255,255,0.55)" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>}
-            </button>
-          );
-        })}
-      </nav>
+      {/* Séparateur + Premium nav */}
+      <div style={{ marginTop: 14, flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, paddingLeft: 4 }}>
+          <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase' }}>Premium</div>
+          <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.1)' }} />
+        </div>
+        <nav style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+          {premiumNav.map(item => <NavItem key={item.id} item={item} />)}
+        </nav>
+      </div>
+
+      <div style={{ flex: 1 }} />
 
       {/* Premium card */}
       {!isPremiumPlus && (
-        <div style={{ margin: '14px 0 10px', padding: 14, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.10)', borderRadius: 12, flexShrink: 0 }}>
-          <div style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: '0.12em', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', marginBottom: 6 }}>Plan Essentiel</div>
-          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', margin: '0 0 10px', lineHeight: 1.45 }}>Débloquez Progression, Objectifs &amp; Classement</p>
+        <div style={{ marginBottom: 12, padding: '12px 14px', background: 'linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 100%)', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 12, flexShrink: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+            <span style={{ fontSize: 14 }}>✦</span>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', color: 'rgba(255,220,180,0.9)', textTransform: 'uppercase' }}>Plan Essentiel</div>
+          </div>
+          <p style={{ fontSize: 11.5, color: 'rgba(255,255,255,0.8)', margin: '0 0 10px', lineHeight: 1.45 }}>Débloquez Progression, Objectifs &amp; Classement</p>
           <Link href="/tarifs" style={{ display: 'block', padding: '7px 12px', background: 'white', color: '#7a1a2b', borderRadius: 8, fontSize: 12, fontWeight: 700, textAlign: 'center', textDecoration: 'none' }}>Passer Premium →</Link>
         </div>
       )}
 
       {/* User + logout */}
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 10, flexShrink: 0 }}>
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: 10, flexShrink: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '4px 2px 6px' }}>
-          <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'grid', placeItems: 'center', color: 'white', fontSize: 11.5, fontWeight: 700, flexShrink: 0 }}>{firstName[0].toUpperCase()}</div>
+          <div style={{ width: 30, height: 30, borderRadius: '50%', background: 'rgba(255,255,255,0.18)', border: '1.5px solid rgba(255,255,255,0.25)', display: 'grid', placeItems: 'center', color: 'white', fontSize: 12, fontWeight: 700, flexShrink: 0 }}>{firstName[0].toUpperCase()}</div>
           <span style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.9)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{firstName}</span>
-          <button onClick={() => setActiveSection('account')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.6)', padding: 2, display: 'flex' }} title="Mon compte">
+          <button onClick={() => setActiveSection('account')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.5)', padding: 2, display: 'flex' }} title="Mon compte">
             <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
           </button>
         </div>
-        <button onClick={logOut} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '5px 2px', background: 'none', border: 'none', cursor: 'pointer', color: '#ffb4b8', fontSize: 12, fontWeight: 500, width: '100%' }}>
+        <button onClick={logOut} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '5px 4px', background: 'none', border: 'none', cursor: 'pointer', color: '#ffb4b8', fontSize: 12, fontWeight: 500, width: '100%' }}>
           <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" /></svg>
           Se déconnecter
         </button>
@@ -714,9 +757,11 @@ function CRFPADashSidebar({ activeSection, setActiveSection, user, isPremiumPlus
   );
 
   const sidebarStyle = {
-    width: 248, flexShrink: 0, background: '#7a1a2b',
+    width: 248, flexShrink: 0,
+    background: 'linear-gradient(170deg, #8b2035 0%, #7a1a2b 40%, #5e1020 100%)',
     padding: '18px 14px', height: '100vh', overflowY: 'auto',
     boxSizing: 'border-box',
+    boxShadow: '2px 0 16px rgba(0,0,0,0.18)',
   };
 
   return (
