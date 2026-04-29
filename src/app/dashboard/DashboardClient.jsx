@@ -352,7 +352,7 @@ export default function DashboardPage() {
           <div style={{ width: 30, height: 30, borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 12, fontWeight: 700 }}>{firstName[0].toUpperCase()}</div>
         </div>
 
-        <div style={{ padding: '0 28px 48px', maxWidth: 980, margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
+        <div style={{ padding: '0 28px 48px', width: '100%', boxSizing: 'border-box' }}>
 
           {/* ===== VUE D'ENSEMBLE ===== */}
           {activeSection === 'overview' && (
