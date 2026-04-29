@@ -344,7 +344,7 @@ export default function DashboardPage() {
       <main style={{ flex: 1, overflowY: 'auto', height: '100vh', display: 'flex', flexDirection: 'column' }}>
 
         {/* Topbar mobile */}
-        <div className="md:hidden" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', height: 56, background: '#7a1a2b', flexShrink: 0 }}>
+        <div className="md:hidden flex items-center justify-between" style={{ padding: '0 16px', height: 56, background: '#7a1a2b', flexShrink: 0 }}>
           <button onClick={() => setDrawerOpen(true)} style={{ color: 'white', background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
             <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
           </button>
